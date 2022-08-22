@@ -18,14 +18,15 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Documentation Web Log
+title: Spencerbug's Blog!
 email: spencer.neilan@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Notes on projects, approaches etc.
+  Code, Learning, Random Stuff
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: spencer_neilan
 github_username:  spencerbug
+instagram_username: spencerbug0
 
 # Build settings
 theme: minima
