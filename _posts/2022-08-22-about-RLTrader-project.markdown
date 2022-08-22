@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "About the RL Trader Project"
-date: 2022-08-21 10:37:00 -0500
+date: 2022-08-22 10:37:00 -0500
 categories: RLTrader OpenAI Gym
 ---
 ## Let's build the best RL Gym we can for algotrading!
