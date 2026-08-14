@@ -1,0 +1,3 @@
+ChatGPT GitHub connector write test.
+Created on 2026-08-14 to verify server-side repository editing.
+This file is on a temporary test branch only.
