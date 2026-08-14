@@ -1,0 +1,143 @@
+---
+---
+
+@import "minima";
+
+:root {
+  color-scheme: light dark;
+  --page-bg: #ffffff;
+  --text: #24292f;
+  --muted-text: #57606a;
+  --border: #d0d7de;
+  --surface: #f6f8fa;
+  --link: #0969da;
+  --visited-link: #8250df;
+  --code-bg: #f6f8fa;
+}
+
+html[data-theme="dark"] {
+  --page-bg: #0d1117;
+  --text: #e6edf3;
+  --muted-text: #8b949e;
+  --border: #30363d;
+  --surface: #161b22;
+  --link: #58a6ff;
+  --visited-link: #bc8cff;
+  --code-bg: #161b22;
+}
+
+html,
+body {
+  background: var(--page-bg);
+  color: var(--text);
+}
+
+body,
+.site-header,
+.site-footer,
+.site-nav,
+.page-content {
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-header,
+.site-footer {
+  background: var(--page-bg);
+  border-color: var(--border);
+}
+
+.site-title,
+.site-title:visited,
+.site-nav .page-link,
+.footer-heading,
+.post-title,
+.post-content h1,
+.post-content h2,
+.post-content h3,
+.post-content h4,
+.post-content h5,
+.post-content h6 {
+  color: var(--text);
+}
+
+.site-nav {
+  background-color: var(--page-bg);
+  border-color: var(--border);
+}
+
+.site-nav .menu-icon > svg path {
+  fill: var(--muted-text);
+}
+
+.post-meta,
+.footer-col-wrapper,
+.contact-list,
+.social-media-list {
+  color: var(--muted-text);
+}
+
+a {
+  color: var(--link);
+}
+
+a:visited {
+  color: var(--visited-link);
+}
+
+pre,
+code,
+.highlighter-rouge .highlight {
+  background-color: var(--code-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+blockquote {
+  color: var(--muted-text);
+  border-left-color: var(--border);
+}
+
+table {
+  color: var(--text);
+  border-color: var(--border);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--surface);
+}
+
+table th,
+table td {
+  border-color: var(--border);
+}
+
+.theme-toggle {
+  appearance: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+  margin-left: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  vertical-align: middle;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: var(--surface);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+@media screen and (max-width: 600px) {
+  .theme-toggle {
+    display: block;
+    margin: 0.5rem 10px 0.5rem auto;
+  }
+}
