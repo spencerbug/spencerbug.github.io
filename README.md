@@ -12,8 +12,30 @@ The site supports:
 
 - Markdown/Jekyll course pages and blog posts
 - persistent light/dark mode
+- browser-local course review annotations
 - Mermaid diagrams
 - MathJax equations
+
+## Course review annotations
+
+Course pages include a private, browser-local review system implemented by `assets/annotations.js`.
+
+Each `h2`, `h3`, and `h4` section gets a small 💬 button. Comments are stored in `localStorage` for that lesson URL and are not published to GitHub.
+
+Workflow:
+
+1. Read a lesson.
+2. Optionally select the specific text the comment refers to.
+3. Tap the 💬 button beside the section heading.
+4. Choose a type such as Question, Unclear, Expand, Diagram, Example, Correction, Lab idea, or Note.
+5. Add the comment.
+6. At the bottom of the page, review unresolved/resolved comments.
+7. Use **Copy report** or **Copy prompt + report** and paste the Markdown into ChatGPT.
+8. After the course page is updated, mark comments resolved, clear resolved comments, or use **Clear all comments** to start the lesson review over.
+
+The generated report includes the page URL, section heading, stable anchor, optional selected text, comment type, and comment body so an agent can locate the intended material reliably.
+
+Annotations are intentionally local to the current browser/device and are meant as temporary review notes rather than permanent storage.
 
 ### Mermaid diagrams
 
