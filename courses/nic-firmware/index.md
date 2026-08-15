@@ -36,7 +36,7 @@ By the end of this course I should be able to:
 1. **[The NIC as a System](/courses/nic-firmware/01-nic-as-a-system/)**  
    Establish the complete RX/TX path and define the major components before diving into details.
 
-2. **Ethernet from Wire to MAC**  
+2. **[Ethernet from Wire to MAC](/courses/nic-firmware/02-ethernet-wire-to-mac/)**  
    PHY, PCS, PMA, SerDes, MDI, link negotiation, framing, FCS, and MAC responsibilities.
 
 3. **PCIe for NIC Engineers**  
