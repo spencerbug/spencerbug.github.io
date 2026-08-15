@@ -110,11 +110,70 @@ When given a review report:
 
 ## Diagrams
 
-Prefer diagrams that communicate a concrete system relationship or data flow.
+Mermaid is supported site-wide and should be preferred for architecture, sequence, state, dependency, and data-flow diagrams that can be expressed clearly as text.
 
-ASCII/Markdown diagrams are acceptable when they are clear and portable. More elaborate visualizations may be added under site assets when they materially improve understanding.
+Use fenced Mermaid blocks:
 
-Diagrams should be tied to the surrounding explanation rather than added decoratively.
+````markdown
+```mermaid
+flowchart LR
+    CPU --> TLB
+    TLB --> Cache
+    Cache --> DRAM
+```
+````
+
+Guidelines:
+
+- Keep diagrams focused enough to remain readable on a phone.
+- Prefer several small diagrams over one enormous graph.
+- Tie each diagram directly to the surrounding explanation.
+- Use stable, descriptive node labels rather than unexplained abbreviations.
+- Prefer left-to-right or top-to-bottom flows that match the prose.
+- Do not use diagrams decoratively.
+- ASCII diagrams remain acceptable when they are simpler or more portable.
+
+Mermaid rendering is implemented in `assets/mermaid.js`. Preserve GitHub Pages compatibility and the site's light/dark readability when modifying it.
+
+## Equations
+
+MathJax is supported site-wide for TeX/LaTeX-style mathematics.
+
+Preferred syntax:
+
+Inline math:
+
+```text
+\( T = N / R \)
+```
+
+Display math:
+
+```text
+$$
+AMAT = T_{L1} + MR_{L1} \left(T_{L2} + MR_{L2} T_{mem}\right)
+$$
+```
+
+or:
+
+```text
+\[
+BW = \frac{bytes}{second}
+\]
+```
+
+Guidelines:
+
+- Do not use single `$...$` delimiters for inline math; dollar signs commonly occur in ordinary prose and costs.
+- Define every symbol near its first use.
+- Follow equations with a plain-language interpretation.
+- Prefer equations when they clarify a quantitative relationship, not merely to make a lesson look formal.
+- For derivations, show intermediate steps when they are pedagogically useful.
+- When useful, pair an equation with a concrete numerical example.
+- Keep wide equations usable on mobile; split very long expressions when possible.
+
+MathJax is configured in `_includes/head.html`.
 
 ## Labs and experiments
 
@@ -154,6 +213,7 @@ Avoid adding unnecessary personal or family information.
 - Use stable, explicit permalinks for course pages.
 - Keep internal links rooted consistently under `/courses/.../` when possible.
 - Preserve the existing light/dark theme functionality.
+- Preserve Mermaid and MathJax support when modifying the global head or stylesheet.
 - Avoid introducing large frameworks or dependencies for features that can be implemented with simple HTML/CSS/JavaScript.
 - Keep GitHub Pages compatibility in mind.
 
@@ -162,7 +222,7 @@ Avoid adding unnecessary personal or family information.
 Before restructuring or deleting coursework:
 
 - inspect the existing content;
-- preserve valuable explanations, exercises, and links;
+- preserve valuable explanations, exercises, diagrams, equations, and links;
 - update navigation when paths change;
 - avoid silently removing material that still belongs in the curriculum.
 
