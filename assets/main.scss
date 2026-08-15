@@ -111,6 +111,29 @@ table td {
   border-color: var(--border);
 }
 
+.mermaid {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.mermaid svg {
+  height: auto;
+  max-width: 100%;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  margin: 1.5rem 0 !important;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
 .theme-toggle {
   appearance: none;
   background: transparent;
@@ -139,5 +162,9 @@ table td {
   .theme-toggle {
     display: block;
     margin: 0.5rem 10px 0.5rem auto;
+  }
+
+  .mermaid {
+    padding: 0.75rem;
   }
 }
