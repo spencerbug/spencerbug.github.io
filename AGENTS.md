@@ -63,15 +63,19 @@ When a topic has actually been studied in conversation or through a lab, it can 
 
 ## Stable headings and annotation anchors
 
-The site is intended to support browser-local review comments attached to lesson sections.
+Course pages have a browser-local annotation system implemented in `assets/annotations.js`. It adds review-comment controls to `h2`, `h3`, and `h4` lesson headings.
+
+Comments are stored in browser `localStorage`, scoped by lesson URL. They are temporary review notes, not public comments and not repository content.
 
 Therefore:
 
 - Prefer descriptive Markdown headings.
 - Avoid renaming existing headings unless the new wording materially improves accuracy or clarity.
+- Preserve existing heading IDs/anchors when practical; review reports use them to locate comments.
 - When restructuring a reviewed page, preserve the meaning of existing sections whenever possible.
 - Avoid combining many unrelated concepts under one heading.
 - Keep sections short enough that a comment attached to a heading remains useful context.
+- Do not remove or disable `assets/annotations.js` when changing global page assets unless explicitly replacing the annotation system.
 
 A review comment may include:
 
@@ -79,34 +83,50 @@ A review comment may include:
 - section heading;
 - heading anchor;
 - selected text;
-- reviewer comment;
-- requested action/category.
+- comment type;
+- reviewer comment.
 
 Use all available context to locate the intended passage even if the page has changed slightly since the comment was generated.
 
 ## Review-report workflow
 
-The intended authoring loop is:
+The implemented authoring loop is:
 
 ```text
 Read lesson
-→ add comments in the browser
-→ generate a Markdown review report
-→ paste the report into ChatGPT or another coding agent
+→ optionally select relevant text
+→ tap the 💬 button beside a section heading
+→ add a typed review comment
+→ review comments at the bottom of the lesson
+→ copy the Markdown report or "prompt + report"
+→ paste it into ChatGPT or another coding agent
 → update the relevant lesson(s)
-→ review the changes
-→ clear resolved browser comments
+→ mark comments resolved or clear them
 ```
+
+The bottom review panel supports:
+
+- unresolved/resolved status;
+- per-comment deletion;
+- `Copy report`;
+- `Copy prompt + report`;
+- `Clear resolved`;
+- page-scoped `Clear all comments` with confirmation.
+
+`Copy report` contains unresolved comments only. Do not require resolved comments to be addressed again unless the user explicitly includes them.
 
 When given a review report:
 
 1. Address every actionable comment unless it conflicts with technical correctness or another explicit instruction.
 2. Update the existing relevant page rather than duplicating the explanation elsewhere.
-3. Add diagrams, examples, debugging notes, interview questions, or labs when requested and useful.
+3. Add Mermaid diagrams, equations, examples, debugging notes, interview questions, or labs when requested and useful.
 4. Correct misconceptions directly and clearly.
 5. Preserve useful existing content while improving weak sections.
 6. If a comment exposes a prerequisite gap, either add a concise prerequisite explanation or link to the appropriate lesson.
 7. Keep the resulting page readable in one sitting; split it when necessary.
+8. Preserve stable headings/anchors where practical so any remaining browser annotations continue to point to useful locations.
+
+Do not assume browser annotations synchronize across devices. The copied Markdown review report is the handoff format between the browser and the agent.
 
 ## Diagrams
 
@@ -213,7 +233,7 @@ Avoid adding unnecessary personal or family information.
 - Use stable, explicit permalinks for course pages.
 - Keep internal links rooted consistently under `/courses/.../` when possible.
 - Preserve the existing light/dark theme functionality.
-- Preserve Mermaid and MathJax support when modifying the global head or stylesheet.
+- Preserve Mermaid, MathJax, and annotation support when modifying the global head or stylesheet.
 - Avoid introducing large frameworks or dependencies for features that can be implemented with simple HTML/CSS/JavaScript.
 - Keep GitHub Pages compatibility in mind.
 
