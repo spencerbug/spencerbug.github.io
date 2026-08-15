@@ -21,215 +21,201 @@ Most advanced NIC topics make much more sense once every component has a place i
 
 DMA, descriptor rings, MSI-X, RSS, NAPI, PCIe ordering, cache locality, and RDMA are not separate tricks. They are mechanisms required to solve specific problems in moving packets through this path efficiently and correctly.
 
+## Why would a data center need custom NIC firmware?
+
+At data-center scale, a NIC is part of the infrastructure rather than just a peripheral. A server fleet may contain thousands or millions of ports, and small differences in packet-processing cost, failure recovery, telemetry, or queue behavior can become operationally significant when multiplied across the fleet.
+
+Custom or tightly controlled NIC firmware can help a data-center operator adapt the device to its own environment. Depending on the NIC architecture, firmware may participate in device initialization, queue management, link behavior, telemetry, offload control, security policy, error recovery, and communication with embedded processors or programmable datapaths.
+
+Typical challenges include:
+
+- **Scale:** a rare firmware bug can become a fleet-wide incident when deployed broadly.
+- **Performance:** queue scheduling, offloads, batching, interrupt behavior, and memory traffic can affect latency and throughput.
+- **Parallelism:** modern servers have many CPU cores, so traffic must be distributed without creating contention or poor cache locality.
+- **Observability:** operators need counters, traces, health information, and failure context when a NIC misbehaves in production.
+- **Reliability:** firmware must recover from malformed traffic, link faults, PCIe errors, queue stalls, resets, and partial failures without destabilizing the host.
+- **Security and isolation:** firmware may sit on a privileged path between the network and host memory, so validation, update security, access control, and tenant isolation matter.
+- **Fleet updates:** firmware needs safe rollout, compatibility checks, rollback strategies, and version management across heterogeneous hardware.
+- **Hardware/software coordination:** a firmware change may interact with drivers, operating-system networking, PCIe topology, switch configuration, and application traffic patterns.
+
+This is why NIC firmware engineering is often a whole-system debugging discipline: the visible symptom may be a dropped packet, but the root cause can live in firmware, hardware queues, DMA, PCIe, host memory, the driver, or the network itself.
+
 ## The simplest useful mental model
 
-For receive:
+The first picture to keep in mind is the complete path between an application and the wire:
 
-```text
-wire
-  ↓
-PHY
-  ↓
-MAC
-  ↓
-NIC receive datapath
-  ↓
-DMA engine
-  ↓
-PCIe
-  ↓
-host memory
-  ↓
-Linux driver / network stack
-  ↓
-application
+```mermaid
+flowchart LR
+    APP[Application] <--> STACK[Linux networking]
+    STACK <--> MEM[Host memory]
+    MEM <--> PCIE[PCIe]
+    PCIE <--> DMA[DMA engine]
+    DMA <--> DP[NIC datapath]
+    DP <--> MAC[Ethernet MAC]
+    MAC <--> PHY[PHY]
+    PHY <--> WIRE[Wire / optical link]
 ```
 
-For transmit, reverse the direction:
+For receive, traffic moves from right to left. For transmit, it moves from left to right.
 
-```text
-application
-  ↓
-Linux networking
-  ↓
-host memory
-  ↓
-PCIe
-  ↓
-DMA engine
-  ↓
-NIC transmit datapath
-  ↓
-MAC
-  ↓
-PHY
-  ↓
-wire
-```
-
-This picture is deliberately incomplete. The rest of the course will repeatedly refine it.
+This picture is deliberately incomplete. The rest of the course will repeatedly open these blocks and explain what is happening inside them.
 
 ## Component responsibilities
 
+For now, the blocks only need a brief identity. Later chapters will expand them in detail.
+
+```mermaid
+flowchart LR
+    PHY[PHY<br/>signals ↔ bits]
+    MAC[MAC<br/>Ethernet frames]
+    DP[NIC datapath<br/>parse, classify, choose queues]
+    DMA[DMA engine<br/>move packet bytes]
+    PCIE[PCIe interface<br/>device ↔ host transport]
+    MEM[Host memory<br/>buffers + descriptor rings]
+    DRIVER[Driver<br/>configure + manage queues]
+
+    PHY <--> MAC
+    MAC <--> DP
+    DP <--> DMA
+    DMA <--> PCIE
+    PCIE <--> MEM
+    DRIVER <--> MEM
+    DRIVER -. control .-> DP
+```
+
 ### PHY
 
-The physical-layer transceiver converts between electrical or optical signaling and a digital representation suitable for the rest of the Ethernet logic.
-
-Depending on link technology, its work can include encoding, clock recovery, equalization, link training, autonegotiation, and error detection at the physical layer.
+Converts electrical or optical signaling into a digital representation of the link, and vice versa.
 
 ### MAC
 
-The Ethernet MAC operates on frames rather than analog signaling. It is concerned with functions such as frame boundaries, source/destination MAC addresses, frame check sequence handling, and transmit/receive framing behavior.
+Operates on Ethernet frames: framing, MAC-layer addressing, frame-check handling, and transmission/reception at the Ethernet link layer.
 
 ### NIC datapath logic
 
-Modern NICs contain substantial hardware beyond the MAC. The datapath may parse packets, classify flows, calculate RSS hashes, verify checksums, perform segmentation offloads, choose queues, timestamp packets, and maintain statistics.
+Processes packets after they reach the NIC. It may parse headers, classify traffic, verify checksums, apply offloads, timestamp packets, collect statistics, and choose queues.
+
+**RSS means Receive Side Scaling.** A multiqueue NIC can hash fields from an incoming flow—commonly addresses, ports, and protocol—and use that hash to steer packets from the same flow toward a selected receive queue. That lets several CPU cores process network traffic in parallel without every packet funneling through one queue.
 
 ### Descriptor rings
 
-The host driver and NIC need a shared language for saying things like:
-
-> Here is an empty buffer where you may place the next received packet.
-
-or:
-
-> Please transmit the bytes located at this memory address.
-
-Descriptor rings provide that shared language.
-
-A descriptor usually contains metadata such as buffer addresses, lengths, flags, status, and offload information.
+Shared work queues between the driver and NIC. Descriptors describe host buffers and operations such as "receive into this buffer" or "transmit these bytes."
 
 ### DMA engine
 
-The NIC must move packet data between itself and host memory without requiring the CPU to copy every byte.
-
-Its DMA engine issues memory transactions across PCIe and reads or writes host memory directly.
+Moves packet data between the NIC and host memory without requiring the CPU to copy every byte itself.
 
 ### PCIe interface
 
-PCIe is the transport connecting the NIC to the host system.
-
-It carries several distinct kinds of traffic, including:
-
-- CPU MMIO accesses to NIC registers,
-- NIC DMA reads from host memory,
-- NIC DMA writes into host memory,
-- interrupt-related transactions such as MSI-X writes.
+Carries traffic between NIC and host, including DMA reads/writes, CPU MMIO accesses, and interrupt-related transactions.
 
 ### Driver
 
-The device driver configures the NIC and owns the software side of its queues.
-
-Typical responsibilities include:
-
-- allocating DMA-capable memory,
-- creating descriptor rings,
-- programming queue registers,
-- replenishing receive buffers,
-- submitting transmit descriptors,
-- handling interrupts,
-- polling completions,
-- maintaining statistics,
-- managing link state,
-- and exposing the device through the operating system's networking interfaces.
+Configures the device and manages the software side of its queues: allocating buffers, posting descriptors, handling notification/polling, reclaiming completions, and controlling device state.
 
 ## Walk through one received packet
 
-Consider a packet arriving while the interface is already configured.
+The receive path is easiest to understand as an interaction between the network, NIC, memory, driver, and application.
 
-### 1. Bits arrive at the physical interface
+```mermaid
+sequenceDiagram
+    participant Wire
+    participant PHYMAC as PHY + MAC
+    participant NIC as NIC datapath
+    participant Mem as Host memory
+    participant Driver as Linux driver
+    participant Stack as Network stack
+    participant App as Application
 
-The PHY receives signaling from the cable or optical module and recovers a digital bitstream.
+    Note over Driver,Mem: Earlier: driver posts empty RX buffers in descriptors
+    Wire->>PHYMAC: Ethernet signal / frame arrives
+    PHYMAC->>NIC: Valid received frame
+    NIC->>NIC: Parse packet and choose RX queue (for example via RSS)
+    NIC->>Mem: DMA-write packet into posted RX buffer
+    NIC->>Mem: Record completion/status
+    NIC-->>Driver: Notify queue activity (often MSI-X)
+    Driver->>Mem: Poll completed RX descriptors (often via NAPI)
+    Driver->>Stack: Hand received packet upward
+    Stack->>App: Socket data eventually becomes available
+```
 
-### 2. Ethernet framing is recovered
-
-The MAC recognizes the Ethernet frame and validates relevant framing information.
-
-### 3. The NIC chooses a receive queue
-
-A multiqueue NIC may hash packet header fields and use an RSS indirection table to select one of many RX queues.
-
-### 4. The NIC finds an available host buffer
-
-Earlier, the driver populated the RX descriptor ring with addresses of buffers in host memory.
-
-The NIC consumes one of those descriptors.
-
-### 5. DMA writes packet data into host memory
-
-The NIC becomes a PCIe requester and writes the packet bytes into the buffer described by the RX descriptor.
-
-The CPU is not copying these bytes.
-
-### 6. The NIC records completion state
-
-The device updates descriptor or completion information indicating that the buffer now contains a packet.
-
-### 7. The host is notified
-
-Depending on configuration and load, the NIC may trigger an MSI-X interrupt associated with the queue.
-
-### 8. The driver polls completed descriptors
-
-In Linux, high-speed drivers commonly use NAPI. An interrupt schedules polling, and the driver processes multiple completed packets in a batch.
-
-### 9. The packet enters the networking stack
-
-The driver turns received data into the representation expected by the Linux networking stack and passes it upward.
-
-### 10. The application eventually consumes the data
-
-After protocol processing and socket handling, application code can read the payload.
+The important idea at this stage is that **the driver posted buffers before the packet arrived**. The NIC does not ask the CPU to copy an arriving packet byte-by-byte; it DMA-writes into a host buffer the driver has already made available.
 
 ## Walk through one transmitted packet
 
-The TX direction answers a complementary question: how does the NIC learn what bytes it should transmit?
+Transmit is the complementary interaction, with the same actors in the opposite direction.
 
-A simplified path is:
+```mermaid
+sequenceDiagram
+    participant App as Application
+    participant Stack as Network stack
+    participant Driver as Linux driver
+    participant Mem as Host memory
+    participant NIC as NIC datapath
+    participant PHYMAC as MAC + PHY
+    participant Wire
 
-1. Application produces data.
-2. Kernel networking builds packet buffers.
-3. The NIC driver maps those buffers for DMA.
-4. The driver writes TX descriptors containing their DMA addresses and metadata.
-5. The driver updates a NIC-visible producer/tail register.
-6. The NIC fetches the descriptors.
-7. The NIC performs DMA reads of packet data from host memory.
-8. Offload engines may modify or segment the packet.
-9. MAC and PHY transmit it.
-10. The NIC later reports completion so software can reclaim resources.
+    App->>Stack: Produce data to send
+    Stack->>Mem: Build packet buffers
+    Driver->>Mem: Prepare TX descriptor(s) for packet buffers
+    Driver-->>NIC: Publish new TX work / update queue state
+    NIC->>Mem: Fetch TX descriptor(s)
+    NIC->>Mem: DMA-read packet bytes
+    NIC->>NIC: Apply requested offloads / packet processing
+    NIC->>PHYMAC: Submit frame for transmission
+    PHYMAC->>Wire: Transmit Ethernet signal / frame
+    NIC->>Mem: Record TX completion
+    NIC-->>Driver: Completion becomes visible / notification as needed
+    Driver->>Mem: Reclaim transmitted buffers and descriptors
+```
+
+The symmetry is useful:
+
+- **RX:** driver provides empty buffers; NIC fills them.
+- **TX:** driver provides filled buffers; NIC reads them.
+
+In both directions, descriptors tell the NIC where the host memory lives and ownership moves between software and hardware.
 
 ## The first important distinction: control path vs data path
 
-It helps to divide NIC activity into two broad categories.
+A NIC contains both relatively infrequent **control-path** activity and extremely frequent **data-path** activity.
+
+```mermaid
+flowchart TB
+    HOST[Host CPU / driver]
+
+    subgraph NIC[NIC]
+        CTRL[Control path<br/>configuration<br/>firmware commands<br/>queue setup<br/>link / reset / telemetry]
+        DATA[Data path<br/>RX/TX queues<br/>packet parsing<br/>offloads<br/>DMA<br/>completions]
+        PORT[MAC / PHY]
+        PCIE[PCIe interface]
+
+        PCIE <--> CTRL
+        PCIE <--> DATA
+        CTRL -. configures .-> DATA
+        DATA <--> PORT
+    end
+
+    MEM[Host memory<br/>descriptors + packet buffers]
+    NET[Network]
+
+    HOST -->|MMIO / commands| PCIE
+    HOST <--> MEM
+    DATA <--> |DMA| MEM
+    PORT <--> NET
+```
 
 ### Control path
 
-Relatively infrequent operations such as:
+Relatively infrequent operations such as configuring queues, changing MTU or MAC settings, programming RSS configuration, reading health information, loading firmware, or resetting the device.
 
-- configuring queues,
-- setting MAC addresses,
-- changing MTU,
-- programming RSS tables,
-- establishing link parameters,
-- reading statistics,
-- loading firmware,
-- and handling resets.
-
-These frequently involve MMIO register accesses, firmware commands, or device-management interfaces.
+These often involve MMIO, firmware commands, or management interfaces.
 
 ### Data path
 
-The high-frequency path taken by packets:
+The repeated work performed for packets: consume descriptors, parse/classify traffic, perform DMA, generate completions, notify or interact with polling, and recycle buffers.
 
-- descriptor consumption,
-- DMA,
-- packet parsing,
-- queue selection,
-- completion generation,
-- polling,
-- buffer recycling.
-
-A major theme of high-performance networking is to keep the data path extremely cheap.
+A major theme of high-performance networking is to make this path cheap, parallel, predictable, and observable.
 
 ## A second important distinction: ownership
 
@@ -237,25 +223,16 @@ For every shared queue element or packet buffer, someone must know whether the C
 
 This sounds simple, but it is one of the foundations of driver correctness.
 
-Conceptually:
-
-```text
-CPU prepares descriptor
-        ↓
-CPU transfers ownership to NIC
-        ↓
-NIC consumes descriptor
-        ↓
-NIC performs DMA / packet operation
-        ↓
-NIC records completion
-        ↓
-ownership returns to CPU
-        ↓
-CPU reclaims or reuses resource
+```mermaid
+stateDiagram-v2
+    [*] --> CPUOwned
+    CPUOwned --> NICOwned: CPU publishes descriptor
+    NICOwned --> Working: NIC consumes descriptor
+    Working --> Completed: DMA / packet operation finishes
+    Completed --> CPUOwned: CPU observes completion and reclaims resource
 ```
 
-Later lessons will show why memory ordering barriers are often required around these ownership transitions.
+Later lessons will show why memory-ordering barriers may be required around these ownership transitions.
 
 ## Questions this course will answer
 
@@ -268,9 +245,11 @@ For example:
 - How does software know when hardware has finished with it?
 - Why do drivers use rings instead of ordinary linked lists?
 - When does the CPU see DMA writes in its caches?
-- Why are MSI-X interrupts better suited to multiqueue NICs?
+- Why are MSI-X interrupts well suited to multiqueue NICs?
 - Why doesn't a high-speed NIC interrupt once per packet?
 - How can many CPU cores process traffic without fighting over the same cache lines?
+- Which behaviors belong in fixed-function hardware, firmware, the driver, or programmable datapath logic?
+- How do you debug a queue that stalls only under production load?
 
 Those questions become the spine of the rest of the curriculum.
 
@@ -278,27 +257,22 @@ Those questions become the spine of the rest of the curriculum.
 
 You should be able to answer these without memorizing implementation-specific details:
 
-1. Why does a NIC need DMA?
-2. What role does PCIe play in packet movement?
-3. What is the purpose of an RX descriptor?
-4. Who normally allocates host-side receive buffers: the NIC or the driver?
-5. Does the CPU copy every arriving packet from the NIC into RAM?
-6. What is the difference between the MAC and PHY?
-7. Why is ownership important in a descriptor ring?
-8. What is the broad purpose of MSI-X in a multiqueue NIC?
+1. What two worlds does a NIC bridge?
+2. Why does a NIC need DMA?
+3. What role does PCIe play in packet movement?
+4. What is the purpose of an RX descriptor?
+5. Who normally allocates host-side receive buffers: the NIC or the driver?
+6. Does the CPU copy every arriving packet from the NIC into RAM?
+7. What is the broad difference between MAC and PHY?
+8. What does RSS try to accomplish?
 9. What is the difference between the NIC control path and data path?
-10. Sketch an RX packet path from wire to application.
+10. Sketch the RX and TX packet paths at block-diagram level.
 
 ## Durable ideas
 
-If most details fade, retain these:
+This first lesson is only an orientation map. Do not try to memorize a final set of rules yet.
 
-- A NIC connects **packet-oriented network hardware** to **memory-oriented host software**.
-- Descriptor rings are the shared work queues between driver and NIC.
-- DMA lets the NIC move packet bytes directly to and from host memory.
-- PCIe carries both control traffic and DMA traffic.
-- Hardware and software continuously exchange ownership of descriptors and buffers.
-- High-performance networking is largely about making this exchange parallel, cache-friendly, and low-overhead.
+For now, be able to redraw the high-level packet path and identify the major blocks. The more durable performance and correctness principles—descriptor ownership, memory ordering, queue scaling, cache locality, interrupt behavior, and firmware/driver boundaries—will be introduced when the course reaches the mechanisms that make them concrete.
 
 ## Next lesson
 
