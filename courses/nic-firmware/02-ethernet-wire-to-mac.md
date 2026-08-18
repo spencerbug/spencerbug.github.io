@@ -8,9 +8,20 @@ permalink: /courses/nic-firmware/02-ethernet-wire-to-mac/
 
 The first lesson treated the NIC as one connected system. Now zoom in on the network-facing edge of that system.
 
-When we say a packet "arrives at the NIC," several layers of hardware have already done substantial work before the NIC datapath can inspect an Ethernet frame.
+When we say a packet "arrives at the NIC," several layers of hardware have already done substantial work before software or the deeper NIC datapath can do anything with it.
 
-This lesson builds the path from the physical medium to the MAC without trying to cover every Ethernet standard or PHY register yet.
+This lesson builds the path from the physical medium to a concrete Ethernet frame. It intentionally stops before PCIe, DMA, multiqueue steering, and other mechanisms that have not been taught yet.
+
+## What you should already know
+
+This lesson assumes only the mental model from Module 1:
+
+- a NIC bridges the packet-oriented network and the memory-oriented host;
+- the **PHY** handles the physical representation of the link;
+- the **MAC** handles Ethernet frames;
+- deeper NIC logic exists beyond the MAC, but we have not studied its internal organization yet.
+
+If a term belongs to a later module, this lesson will label it as a preview rather than relying on it as assumed knowledge.
 
 ## Why this matters
 
@@ -20,10 +31,9 @@ A firmware or driver engineer debugging a dead or unstable network interface nee
 
 - no usable signal is reaching the receiver,
 - the PHY cannot establish or maintain the link,
-- autonegotiation selected unexpected parameters,
-- the PHY-to-MAC interface is misconfigured,
+- the PHY-to-MAC connection is misconfigured,
 - frames reach the MAC but fail validation,
-- or the MAC works and the actual problem is farther inside the NIC.
+- or valid frames leave the MAC and the problem is farther inside the NIC.
 
 The goal is to stop thinking of the Ethernet connector as if it feeds packet bytes directly into software.
 
@@ -31,23 +41,26 @@ The goal is to stop thinking of the Ethernet connector as if it feeds packet byt
 
 ```mermaid
 flowchart LR
-    Medium["Cable / fiber"] --> MDI["MDI / optical interface"]
-    MDI --> PMA["PMA<br/>signal recovery"]
-    PMA --> PCS["PCS<br/>coding and block recovery"]
-    PCS --> MAC["MAC<br/>Ethernet frames"]
-    MAC --> DP["NIC datapath"]
-
-    PHY["PHY"]
-    PHY -. contains / implements .-> PMA
-    PHY -. contains / implements .-> PCS
+    Medium["Cable / fiber"] --> PHY["PHY<br/>recover the physical link"]
+    PHY --> MAC["MAC<br/>recognize Ethernet frames"]
+    MAC --> DP["Deeper NIC logic<br/>covered later"]
 ```
 
-The exact partitioning depends on Ethernet generation and hardware implementation, but this is a useful first model:
+That is the main model for this lesson.
 
-- the **physical side** deals with signals and encoded symbols/blocks;
-- the **MAC side** deals with Ethernet frames.
+Inside the PHY there are additional sublayers and implementation blocks that are useful to recognize in documentation:
 
-The PHY is the bridge between those worlds.
+```mermaid
+flowchart LR
+    Medium["Cable / fiber"] --> MDI["MDI / optical interface"]
+    MDI --> PMA["PMA<br/>signal-oriented work"]
+    PMA --> PCS["PCS<br/>coding / block recovery"]
+    PCS --> MAC["MAC<br/>Ethernet frames"]
+```
+
+The exact partitioning depends on Ethernet generation and hardware implementation. Do not memorize these as a universal chip block diagram. For now, the important transition is:
+
+> **physical signal → recovered digital link data → Ethernet frame**
 
 ## PHY, PCS, PMA, SerDes, and MDI
 
@@ -69,13 +82,13 @@ Depending on the Ethernet technology, this can include functions such as seriali
 
 **PCS — Physical Coding Sublayer** — sits above the PMA and deals with the coding used to represent data on the link.
 
-Its exact work depends strongly on Ethernet generation. The durable idea is that the wire does not simply carry the Ethernet frame byte-for-byte in the same representation the MAC sees. Physical-layer encoding must be decoded into a usable digital stream.
+Its exact work depends strongly on Ethernet generation. The important idea is that the wire does not simply carry the Ethernet frame byte-for-byte in the same representation the MAC sees. Physical-layer encoding must first be decoded into a usable digital stream.
 
 ### SerDes
 
 A **serializer/deserializer (SerDes)** converts between parallel internal data and high-speed serial signaling.
 
-At high link rates, SerDes behavior becomes a major part of signal integrity and link-debugging work. Equalization, lane alignment, and training can matter before the MAC ever sees a frame.
+At high link rates, SerDes behavior becomes a major part of signal-integrity and link-debugging work. Equalization, lane alignment, and training can matter before the MAC ever sees a frame.
 
 ### PHY
 
@@ -93,19 +106,16 @@ On an embedded board, the MAC may live inside an SoC while the Ethernet PHY is a
 
 ```mermaid
 flowchart LR
-    CPU["SoC / CPU"]
-    MAC["Ethernet MAC"]
-    IFACE["MAC-PHY interface<br/>for example RGMII / SGMII"]
-    PHY["External PHY"]
-    MAG["Magnetics / connector"]
-    CABLE["Ethernet cable"]
-
-    CPU --- MAC --> IFACE --> PHY --> MAG --> CABLE
+    SOC["SoC"] --> MAC["Ethernet MAC"]
+    MAC --> IFACE["MAC-PHY interface<br/>for example RGMII / SGMII"]
+    IFACE --> PHY["External PHY"]
+    PHY --> MAG["Magnetics / connector"]
+    MAG --> CABLE["Ethernet cable"]
 ```
 
-That creates another interface that can fail independently.
+That creates another boundary that can fail independently.
 
-For example, a board can report that the PHY has established link with its link partner while still failing to pass packets because the MAC-to-PHY interface has incorrect timing, clocking, mode configuration, or pin setup.
+For example, a board can report that the PHY has established link with its link partner while still failing to pass frames because the MAC-to-PHY interface has incorrect timing, clocking, mode configuration, or pin setup.
 
 This distinction is particularly important in embedded Linux systems where device-tree configuration, pinmux, clocks, PHY mode, and driver setup all meet at this boundary.
 
@@ -113,20 +123,13 @@ This distinction is particularly important in embedded Linux systems where devic
 
 A lit link LED does **not** mean that Linux networking is working end-to-end.
 
-At a high level, link-up means the physical/link partners have established enough agreement for the PHY-level connection to operate.
+At a high level, link-up means the two ends have established enough agreement for the physical connection to operate.
 
-That may include negotiation of parameters such as:
-
-- supported link speed,
-- duplex behavior on technologies where it is relevant,
-- pause/flow-control capabilities,
-- and other technology-specific features.
-
-The exact negotiation mechanism varies across Ethernet standards.
+Depending on the Ethernet technology, the peers may establish parameters such as supported link speed and other link capabilities.
 
 The important debugging lesson is:
 
-> **Link up proves something about the physical connection. It does not prove that the MAC, DMA engine, descriptor rings, driver, IP configuration, or application path works.**
+> **Link up proves something about the physical connection. It does not prove that valid frames are reaching the MAC or that anything farther inside the NIC or host works.**
 
 ## Autonegotiation
 
@@ -144,65 +147,176 @@ sequenceDiagram
     A->>A: Find compatible mode
     B->>B: Find compatible mode
     A->>B: Establish agreed link mode
-    Note over A,B: Link can now become operational if the physical channel is viable
+    Note over A,B: Physical link can become operational if the channel is viable
 ```
 
-Real autonegotiation is technology-specific and more complicated than this diagram. For this lesson, retain the idea that both ends exchange capabilities and establish compatible link parameters rather than software blindly assuming a speed.
+Real autonegotiation is technology-specific and more complicated than this diagram. For this lesson, retain only the idea that both ends establish compatible link parameters rather than software blindly assuming a speed.
 
 ## From recovered data to an Ethernet frame
 
 Once the physical layers have recovered usable data, the MAC operates on Ethernet frames.
 
-A simplified Ethernet frame looks like this:
+For an ordinary **untagged Ethernet II** frame, the on-wire layout is:
 
-```text
-+----------+-----+-------------+-------------+------------+---------+
-| Preamble | SFD | Destination |   Source    | Type/Len   | Payload |
-+----------+-----+-------------+-------------+------------+---------+
-                                                        ...
-+----------------+-----+
-| Payload / Pad  | FCS |
-+----------------+-----+
-```
+| Field | Length | Bit length | Example / meaning |
+|---|---:|---:|---|
+| Preamble | 7 bytes | 56 bits | normally `55 55 55 55 55 55 55` |
+| SFD | 1 byte | 8 bits | normally `D5` |
+| Destination MAC | 6 bytes | 48 bits | receiver address |
+| Source MAC | 6 bytes | 48 bits | sender address |
+| EtherType | 2 bytes | 16 bits | identifies payload protocol |
+| Payload + optional pad | 46–1500 bytes | 368–12000 bits | higher-layer data; short payloads are padded |
+| FCS | 4 bytes | 32 bits | CRC over the Ethernet frame fields from destination through payload/pad |
 
-A more useful conceptual view is:
+Ignoring VLAN tags for now, the Ethernet frame from **Destination MAC through FCS** is therefore normally **64–1518 bytes**. The 7-byte preamble and 1-byte SFD are transmitted on the link but are usually discussed separately from the frame-length calculation.
+
+There is also an **inter-packet gap** between transmitted frames. It is not another frame field, so we will leave it out of the byte breakdown for now.
 
 ```mermaid
 flowchart LR
-    PRE["Preamble + SFD"] --> DST["Destination MAC"]
-    DST --> SRC["Source MAC"]
-    SRC --> TYPE["EtherType / Length"]
-    TYPE --> DATA["Payload + optional padding"]
-    DATA --> FCS["Frame Check Sequence"]
+    PRE["Preamble<br/>7 B / 56 b"] --> SFD["SFD<br/>1 B / 8 b"]
+    SFD --> DST["Destination MAC<br/>6 B / 48 b"]
+    DST --> SRC["Source MAC<br/>6 B / 48 b"]
+    SRC --> TYPE["EtherType<br/>2 B / 16 b"]
+    TYPE --> DATA["Payload + pad<br/>46–1500 B"]
+    DATA --> FCS["FCS<br/>4 B / 32 b"]
 ```
+
+### Example 1: a minimum-size ARP request
+
+Consider a host at MAC `02:00:00:00:00:01`, IP `192.168.1.10`, asking:
+
+> Who has `192.168.1.1`?
+
+A representative Ethernet II frame can look like this before the FCS is appended:
+
+```text
+Preamble:        55 55 55 55 55 55 55                 7 bytes
+SFD:             d5                                      1 byte
+
+Destination MAC: ff ff ff ff ff ff                       6 bytes
+Source MAC:      02 00 00 00 00 01                       6 bytes
+EtherType:       08 06                                    2 bytes  (ARP)
+
+ARP payload:
+  Hardware type: 00 01                                    2 bytes  (Ethernet)
+  Protocol type: 08 00                                    2 bytes  (IPv4)
+  HW addr len:   06                                       1 byte
+  Proto addr len:04                                       1 byte
+  Opcode:        00 01                                    2 bytes  (request)
+  Sender MAC:    02 00 00 00 00 01                       6 bytes
+  Sender IP:     c0 a8 01 0a                              4 bytes  (192.168.1.10)
+  Target MAC:    00 00 00 00 00 00                       6 bytes  (unknown)
+  Target IP:     c0 a8 01 01                              4 bytes  (192.168.1.1)
+                                                        --------
+  ARP payload:                                             28 bytes
+
+Padding:         00 ... 00                                18 bytes
+FCS:             <CRC-32 calculated by transmitter>        4 bytes
+```
+
+Why 18 bytes of padding?
+
+The ARP message itself is only 28 bytes. Ethernet requires at least 46 bytes in the payload/pad region for this ordinary untagged frame:
+
+\[
+46 - 28 = 18\text{ bytes of padding}
+\]
+
+Now add the fields counted in the standard 64-byte minimum frame size:
+
+\[
+6 + 6 + 2 + 46 + 4 = 64\text{ bytes}
+\]
+
+That 64-byte count starts at the destination MAC and includes the FCS. Preamble and SFD are additional on-wire bytes.
+
+This is a useful first real frame because every byte has a reason to exist.
+
+### Example 2: an IPv4 packet carried by Ethernet
+
+If the EtherType bytes are:
+
+```text
+08 00
+```
+
+the MAC does not interpret the whole IPv4 packet. At the Ethernet layer, it only needs to know that the bytes after the EtherType belong to an IPv4 payload.
+
+A simplified beginning might be:
+
+```text
+Destination MAC  00 11 22 33 44 55
+Source MAC       66 77 88 99 aa bb
+EtherType        08 00                <-- IPv4
+Payload          45 00 ...            <-- IPv4 header begins here
+FCS              <4-byte CRC>
+```
+
+The first payload byte `45` belongs to IPv4, not Ethernet. We will later learn how deeper NIC logic may inspect those higher-layer bytes, but the MAC-level frame boundary is already complete.
 
 ### Preamble and SFD
 
-The preamble and **Start Frame Delimiter (SFD)** help establish the beginning of the Ethernet frame on the link.
+The **preamble is 7 bytes (56 bits)** and is normally the repeating pattern:
+
+```text
+55 55 55 55 55 55 55
+```
+
+The **Start Frame Delimiter (SFD) is 1 byte (8 bits)**:
+
+```text
+d5
+```
+
+Together they give the receiver a recognizable lead-in and mark the transition to the destination address that begins the MAC frame contents.
 
 ### Destination and source addresses
 
-Ethernet MAC addresses identify the destination and source at the link layer. They are not IP addresses and solve a different problem from IP routing.
+Each Ethernet MAC address is **6 bytes = 48 bits**.
+
+The destination address comes first, followed by the source address:
+
+```text
+Destination: 6 bytes
+Source:      6 bytes
+```
+
+They are link-layer addresses, not IP addresses.
 
 ### EtherType
 
-For Ethernet II frames, the EtherType identifies the protocol carried in the payload—for example IPv4, IPv6, or ARP.
+For Ethernet II, the EtherType field is **2 bytes = 16 bits**.
+
+Common examples include:
+
+```text
+08 00  IPv4
+08 06  ARP
+86 dd  IPv6
+```
+
+For now, treat EtherType as the label that tells the next layer what kind of payload follows.
 
 ### Payload and padding
 
-The frame carries higher-layer data. Short frames may require padding to meet Ethernet's minimum frame-size requirements.
+For the ordinary untagged frame model used here, the payload plus any required padding is **46–1500 bytes**.
+
+A short higher-layer message such as ARP therefore needs padding. A larger IP packet may already be long enough that no pad is needed.
 
 ### FCS
 
-The **Frame Check Sequence (FCS)** contains a CRC used to detect corruption of the Ethernet frame.
+The **Frame Check Sequence is 4 bytes = 32 bits**.
 
-A receiver that detects an invalid FCS normally treats the frame as corrupted rather than delivering it as an ordinary valid packet.
+It contains a CRC used to detect corruption in the frame. The receiver recomputes/checks that value and normally rejects a frame whose FCS does not match.
+
+Many NICs remove the FCS before delivering packet data to host software, so a normal packet capture may not show those four bytes even though they existed on the wire.
 
 ## What the MAC is responsible for
 
 For this course, use this mental model:
 
-> **The PHY gives the MAC a usable link-level data stream; the MAC turns that stream into valid Ethernet frames and turns outgoing frames back into the form required by the PHY.**
+> **The PHY gives the MAC a usable link-level data stream; the MAC recognizes valid Ethernet frames and produces the corresponding frame stream for transmit.**
 
 Receive-side MAC work can include:
 
@@ -211,78 +325,78 @@ Receive-side MAC work can include:
 - checking frame length and format,
 - checking the FCS,
 - collecting MAC-level error statistics,
-- and delivering accepted frames toward the NIC datapath.
+- and delivering accepted frames toward deeper NIC logic.
 
-Transmit-side work includes constructing the required framing behavior and sending frames toward the physical layer.
+Transmit-side work includes constructing the required Ethernet framing behavior and sending it toward the physical layer.
 
-The precise division of responsibilities varies by implementation, so avoid assuming every feature called an "Ethernet feature" literally executes inside the MAC block.
+The precise division of responsibilities varies by implementation, so avoid assuming every feature associated with Ethernet literally executes inside one block named `MAC`.
 
 ## Where does packet parsing begin?
 
-Once a valid Ethernet frame leaves the MAC, richer NIC datapath logic can inspect it.
+The phrase **packet parser** is a functional description, not a standardized hardware module in the same sense that "Ethernet MAC" names a well-defined protocol function.
+
+A particular NIC might implement header inspection using hardwired logic, a programmable pipeline, microcode, several classifier blocks, or some combination of these. Datasheets may use different names.
+
+So a less misleading block diagram is:
 
 ```mermaid
 flowchart LR
-    PHY --> MAC
-    MAC --> PARSER["Packet parser"]
-    PARSER --> CLASS["Classification / filtering"]
-    CLASS --> RSS["RSS / queue selection"]
-    RSS --> RXQ["RX queue"]
-    RXQ --> DMA["DMA to host memory"]
+    PHY["PHY"] --> MAC["Ethernet MAC"]
+    MAC --> NIC
+
+    subgraph NIC["Deeper NIC receive datapath — implementation-specific"]
+        INSPECT["Inspect higher-layer headers"] --> CLASS["Classify / decide what to do"]
+        CLASS --> QUEUE["Place work on a receive path / queue"]
+    end
 ```
 
-This is where the boundary from **Ethernet framing** to **NIC packet processing** becomes useful.
+The important architectural boundary is not "MAC chip → parser chip." It is:
 
-The MAC does not need to decide which CPU core should process a TCP flow. Later datapath logic can parse higher-layer headers, compute an RSS hash, and steer the packet toward a receive queue.
+> **The MAC finishes Ethernet framing; deeper NIC logic may then inspect the contents of the valid frame.**
+
+Later modules will give names and mechanisms to that deeper logic. For example, RSS is one possible queue-selection mechanism, but you do not need RSS to understand this lesson.
 
 ## A receive walk from cable to NIC datapath
 
 ```mermaid
 sequenceDiagram
     participant Wire as Cable / fiber
-    participant PHY as PHY / PCS / PMA
+    participant PHY as PHY
     participant MAC as Ethernet MAC
-    participant DP as NIC datapath
+    participant NIC as Deeper NIC logic
 
-    Wire->>PHY: Encoded physical signal
-    PHY->>PHY: Recover signal, timing, coding
-    PHY->>MAC: Recovered link data
-    MAC->>MAC: Recognize and validate Ethernet frame
-    MAC->>DP: Accepted Ethernet frame
-    DP->>DP: Parse, classify, choose RX queue
+    Wire->>PHY: Physical signal
+    PHY->>PHY: Recover usable link data
+    PHY->>MAC: Recovered data stream
+    MAC->>MAC: Find frame boundary and validate frame
+    MAC->>NIC: Accepted Ethernet frame
+    Note over NIC: Later lessons explain what happens next
 ```
 
-Notice where this lesson stops: **before DMA**.
+Notice where this lesson stops: **at an accepted Ethernet frame**.
 
-The next several lessons will explain how the NIC crosses PCIe and places that accepted frame into host memory.
+We are deliberately not yet tracing queue steering, descriptor ownership, DMA, interrupts, or CPU processing. Those mechanisms make more sense once their prerequisites have been taught.
 
 ## A practical debugging ladder
 
-When an Ethernet interface does not work, debug from the lowest layer upward instead of changing unrelated software settings at random.
+This is useful, but the full NIC debugging ladder belongs later in the course. At this point you only know enough to use three checkpoints confidently:
 
 ```mermaid
 flowchart TD
-    A{"Physical connection present?"} -->|No| B["Cable / module / power / signal"]
-    A -->|Yes| C{"PHY reports link?"}
-    C -->|No| D["PHY config / negotiation / signal integrity"]
-    C -->|Yes| E{"MAC sees RX/TX activity?"}
-    E -->|No| F["MAC-PHY interface / clocks / mode / MAC config"]
-    E -->|Yes| G{"Frames valid?"}
-    G -->|No| H["FCS / framing / link errors"]
-    G -->|Yes| I["Continue inward: queues / DMA / interrupts / driver"]
+    A{"1. Is the physical link up?"} -->|No| B["Stay on the physical / PHY side"]
+    A -->|Yes| C{"2. Does the MAC observe frames or frame errors?"}
+    C -->|No| D["Investigate the PHY-to-MAC boundary"]
+    C -->|Yes| E["3. Frame reached or passed the MAC"]
+    E --> F["Stop here for now; later modules continue inward"]
 ```
 
-Useful evidence can come from multiple places:
+For this lesson, that is enough:
 
-- PHY link and error registers,
-- MAC statistics,
-- NIC hardware counters,
-- Linux interface statistics,
-- `ethtool`,
-- packet captures,
-- and, on hardware bring-up, scopes or other signal-analysis equipment.
+1. **PHY/link evidence** tells you whether the physical connection is operating.
+2. **MAC counters or frame errors** tell you whether usable frames are reaching the frame layer.
+3. If frames are valid at the MAC, the failure may be deeper inside the NIC or host—but we have not learned those layers yet.
 
-The exact tools depend on which boundary is under suspicion.
+Later lessons will extend this ladder one boundary at a time as PCIe, DMA, descriptors, interrupts, queues, and the driver become familiar concepts.
 
 ## Common misconceptions
 
@@ -304,19 +418,37 @@ No. Ethernet FCS protects the frame at the link layer. TCP/UDP/IP checksums oper
 
 ## Knowledge check
 
+These questions intentionally use only concepts introduced in Modules 1 and 2.
+
 1. What conceptual boundary separates the PHY from the MAC?
 2. What are PCS and PMA doing that the MAC should not need to care about?
-3. Why can a system have link-up but still pass no packets?
-4. What is the purpose of autonegotiation?
-5. What is the FCS intended to detect?
-6. Why is an Ethernet MAC address different from an IP address?
-7. If the PHY reports link but the MAC receives nothing, what boundary would you investigate next?
-8. Where would RSS logically sit relative to the MAC and DMA engine?
-9. Why is it useful to debug an interface from the physical layer inward?
+3. Why can a system have link-up but still pass no valid Ethernet frames?
+4. What is the purpose of autonegotiation at the level described in this lesson?
+5. How many bytes are the preamble and SFD?
+6. How many bytes are each source and destination MAC address?
+7. What does the EtherType field tell you?
+8. What is the purpose and size of the FCS?
+9. Why did the example ARP request need 18 bytes of padding?
+10. Is a "packet parser" necessarily one standardized hardware block? Explain.
+11. If the PHY reports link but the MAC sees no frames, which boundary would you investigate next?
+12. Sketch an untagged Ethernet II frame and label each field with its byte length.
+
+## Mini experiment: inspect a real Ethernet frame
+
+Capture one packet on a Linux system using a tool such as Wireshark or `tcpdump`, then identify:
+
+- destination MAC;
+- source MAC;
+- EtherType;
+- where the next protocol begins.
+
+If the capture does not contain preamble, SFD, or FCS, do not assume they were absent from the wire. Ask instead **where the capture was taken in the receive path and which link-layer fields the NIC or capture interface preserved**.
+
+The goal is not yet to decode every protocol. It is to make the Ethernet frame boundary concrete.
 
 ## What to carry into the next lesson
 
-You do not need to memorize every Ethernet sublayer yet. Keep three boundaries clear:
+Keep this sequence clear:
 
 ```text
 physical medium
@@ -325,12 +457,19 @@ PHY: recover and maintain the physical link
     ↓
 MAC: recognize and produce Ethernet frames
     ↓
-NIC datapath: parse, classify, steer, queue
+deeper NIC logic: implementation-specific work on accepted frames
 ```
 
-Once a valid frame reaches the NIC datapath, a new question becomes central:
+And keep the basic untagged Ethernet II frame in your head:
 
-> **How does this PCIe device communicate with the host and eventually move packet data into system memory?**
+```text
+7 B       1 B     6 B       6 B       2 B       46–1500 B      4 B
+Preamble | SFD | Dest MAC | Src MAC | EtherType | Payload/Pad | FCS
+```
+
+Once a valid frame reaches deeper NIC logic, a new question becomes central:
+
+> **How does this PCIe device communicate with the host before it can move packet data into system memory?**
 
 That is the next layer inward.
 
