@@ -9,6 +9,7 @@
   if (!article) return;
 
   const storageKey = "course-annotations:v1:" + window.location.pathname;
+  const draftStorageKey = "course-annotation-drafts:v1:" + window.location.pathname;
   const headingSelector = "h2, h3, h4";
   const commentTypes = [
     "Question",
@@ -23,6 +24,7 @@
 
   let storageAvailable = true;
   let comments = loadComments();
+  let drafts = loadDrafts();
   let activeHeading = null;
   let lastSelection = { anchor: "", text: "" };
 
@@ -45,6 +47,59 @@
     } catch (_) {
       storageAvailable = false;
     }
+  }
+
+  function loadDrafts() {
+    try {
+      const raw = window.localStorage.getItem(draftStorageKey);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    } catch (_) {
+      storageAvailable = false;
+      return {};
+    }
+  }
+
+  function saveDrafts() {
+    if (!storageAvailable) return;
+    try {
+      if (Object.keys(drafts).length === 0) {
+        window.localStorage.removeItem(draftStorageKey);
+      } else {
+        window.localStorage.setItem(draftStorageKey, JSON.stringify(drafts));
+      }
+    } catch (_) {
+      storageAvailable = false;
+    }
+  }
+
+  function saveActiveDraft() {
+    if (!activeHeading) return;
+    const anchor = ensureHeadingId(activeHeading);
+    const text = dialogText.value;
+    const type = dialogType.value;
+    const quote = lastSelection.anchor === anchor ? lastSelection.text : "";
+
+    if (!text && type === "Question" && !quote) {
+      delete drafts[anchor];
+    } else {
+      drafts[anchor] = {
+        section: activeHeading.dataset.annotationSection || normalizeText(activeHeading.textContent),
+        anchor: anchor,
+        quote: quote,
+        type: type,
+        comment: text,
+        updatedAt: new Date().toISOString()
+      };
+    }
+    saveDrafts();
+  }
+
+  function clearDraft(anchor) {
+    if (!anchor) return;
+    delete drafts[anchor];
+    saveDrafts();
   }
 
   function makeId() {
@@ -161,6 +216,7 @@
       </label>
 
       <div class="annotation-form-actions">
+        <button type="button" class="annotation-button danger" data-discard-draft>Discard draft</button>
         <button type="button" class="annotation-button secondary" data-dialog-close>Cancel</button>
         <button type="submit" class="annotation-button primary">Save comment</button>
       </div>
@@ -174,10 +230,28 @@
   const quoteWrap = dialog.querySelector(".annotation-quote-wrap");
   const quoteElement = dialog.querySelector(".annotation-quote");
 
+  dialogText.addEventListener("input", saveActiveDraft);
+  dialogType.addEventListener("change", saveActiveDraft);
+
   dialog.querySelectorAll("[data-dialog-close]").forEach(function (button) {
     button.addEventListener("click", function () {
+      saveActiveDraft();
       dialog.close();
     });
+  });
+
+  dialog.querySelector("[data-discard-draft]").addEventListener("click", function () {
+    if (!activeHeading) return;
+    const anchor = ensureHeadingId(activeHeading);
+    clearDraft(anchor);
+    dialogText.value = "";
+    dialogType.value = "Question";
+    lastSelection = { anchor: "", text: "" };
+    dialog.close();
+  });
+
+  dialog.addEventListener("cancel", function () {
+    saveActiveDraft();
   });
 
   dialog.querySelector("form").addEventListener("submit", function (event) {
@@ -200,6 +274,7 @@
     });
 
     saveComments();
+    clearDraft(anchor);
     dialogText.value = "";
     dialogType.value = "Question";
     lastSelection = { anchor: "", text: "" };
@@ -212,12 +287,25 @@
     activeHeading = heading;
     const anchor = ensureHeadingId(heading);
     const section = heading.dataset.annotationSection || normalizeText(heading.textContent);
+    const draft = drafts[anchor] || null;
     dialogSection.textContent = section;
 
-    const quote = lastSelection.anchor === anchor ? lastSelection.text : "";
+    if (draft) {
+      dialogText.value = draft.comment || "";
+      dialogType.value = commentTypes.includes(draft.type) ? draft.type : "Question";
+      if (draft.quote) {
+        lastSelection = { anchor: anchor, text: draft.quote };
+      }
+    } else {
+      dialogText.value = "";
+      dialogType.value = "Question";
+    }
+
+    const quote = draft && draft.quote
+      ? draft.quote
+      : (lastSelection.anchor === anchor ? lastSelection.text : "");
     quoteWrap.hidden = !quote;
     quoteElement.textContent = quote;
-    dialogText.value = "";
 
     dialog.showModal();
     window.setTimeout(function () { dialogText.focus(); }, 0);
@@ -365,7 +453,7 @@
         </div>
       </div>
 
-      ${storageAvailable ? "" : `<p class="annotation-storage-warning"><strong>Local storage is unavailable.</strong> Comments will only last for this page session.</p>`}
+      ${storageAvailable ? "" : `<p class="annotation-storage-warning"><strong>Local storage is unavailable.</strong> Comments and drafts will only last for this page session.</p>`}
 
       <div class="annotation-list">
         ${cards || `<p class="annotation-empty">No comments yet. Use the 💬 button beside a section heading to add one.</p>`}
@@ -439,9 +527,13 @@
   });
 
   window.addEventListener("storage", function (event) {
-    if (event.key !== storageKey) return;
-    comments = loadComments();
-    render();
+    if (event.key === storageKey) {
+      comments = loadComments();
+      render();
+    }
+    if (event.key === draftStorageKey) {
+      drafts = loadDrafts();
+    }
   });
 
   function render() {
