@@ -18,6 +18,7 @@
   }
 
   function applyTheme(theme) {
+    const changed = root.dataset.theme !== theme;
     root.dataset.theme = theme;
     const toggle = document.querySelector(".theme-toggle");
     if (toggle) {
@@ -26,6 +27,12 @@
       toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
       toggle.setAttribute("title", dark ? "Switch to light mode" : "Switch to dark mode");
       toggle.setAttribute("aria-pressed", String(dark));
+    }
+
+    if (changed) {
+      window.dispatchEvent(new CustomEvent("site-theme-change", {
+        detail: { theme: theme }
+      }));
     }
   }
 
