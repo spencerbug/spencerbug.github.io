@@ -11,6 +11,7 @@ Agents working in this repository should treat the coursework as an evolving tec
 - Prefer improving existing explanations over creating redundant pages.
 - Keep lessons short enough to read and review in one sitting.
 - Turn questions, review comments, debugging observations, and experiments into durable improvements to the coursework.
+- Build concepts linearly from established knowledge instead of assuming familiarity with terms that have not yet been taught.
 
 ## Site structure
 
@@ -18,7 +19,7 @@ Current major areas include:
 
 - `courses/nic-firmware/`
 - `courses/performance-cache/`
-- future `courses/openbmc/`
+- `courses/openbmc/`
 - `_posts/` for the Markdown blog
 - `about.markdown` for the professional site description
 
@@ -33,18 +34,52 @@ If a lesson becomes too large, split it into smaller pages rather than allowing 
 Where appropriate, lessons should include:
 
 1. Why the topic matters.
-2. A simple mental model.
-3. Hardware/system view.
-4. Software/firmware view.
-5. An end-to-end trace or worked example.
-6. Failure modes and common misconceptions.
-7. Debugging or measurement techniques.
-8. Performance implications.
-9. Knowledge-check questions.
-10. Labs or experiments.
-11. A short list of durable ideas worth remembering.
+2. What the learner is expected to already know.
+3. A simple mental model.
+4. Hardware/system view.
+5. Software/firmware view.
+6. An end-to-end trace or worked example.
+7. Failure modes and common misconceptions.
+8. Debugging or measurement techniques.
+9. Performance implications.
+10. Knowledge-check questions.
+11. Labs or experiments.
+12. A short list of durable ideas worth remembering.
 
 Not every lesson needs every section, but explanations should favor connected system models over isolated definitions.
+
+## Prerequisite tracking and concept order
+
+Treat each course as a dependency graph of concepts, not merely an ordered list of pages.
+
+Before using a concept as part of an explanation, diagram, debugging workflow, quiz, or lab, determine whether the learner has already encountered it in the current or an earlier lesson.
+
+Use these rules:
+
+- Build new explanations primarily from concepts already introduced.
+- Introduce only a small number of genuinely new concepts at a time.
+- When a lesson relies on prior material, include a short `What you should already know`, `Prerequisites`, or equivalent section when useful.
+- Do not place unexplained future-course concepts in the critical path of a diagram or worked example.
+- If a future concept is useful for orientation, label it explicitly as a **preview** and do not require the learner to understand it yet.
+- Prefer diagrams that add one layer or subsystem at a time rather than showing a complete production architecture before its pieces are familiar.
+- Keep a conceptual block generic when its internal implementation has not yet been taught. For example, say `deeper NIC logic` before introducing specific steering or parsing mechanisms.
+- Distinguish standardized architectural/protocol blocks from descriptive functional labels. Do not draw a functional label as if it must be a discrete hardware module.
+- Knowledge checks should primarily test material actually taught in that lesson or earlier lessons. Do not grade an answer as a misconception when it is a reasonable hypothesis about material not yet covered.
+- Labs should not require unexplained tools, protocols, or subsystems unless the lab explicitly teaches them first.
+- When a review comment says an explanation assumes too much, treat that as a curriculum-ordering defect, not merely a local wording problem. Consider whether the concept belongs later or whether a missing prerequisite should be added earlier.
+
+### Learner state categories
+
+When interpreting quiz answers or review feedback, distinguish among:
+
+- **misconception** — conflicts with material that has already been taught;
+- **incomplete model** — partially correct understanding of taught material;
+- **learner hypothesis** — a plausible inference about material not yet taught;
+- **unknown prerequisite** — a concept the course assumed without establishing it;
+- **retained understanding** — previously taught material recalled correctly;
+- **applied understanding** — learned material used successfully in a new situation.
+
+This distinction matters for a personalized living course. A learner hypothesis should normally be revisited after the relevant lesson rather than immediately treated as an error.
 
 ## Covered material vs. planned material
 
@@ -122,9 +157,10 @@ When given a review report:
 3. Add Mermaid diagrams, equations, examples, debugging notes, interview questions, or labs when requested and useful.
 4. Correct misconceptions directly and clearly.
 5. Preserve useful existing content while improving weak sections.
-6. If a comment exposes a prerequisite gap, either add a concise prerequisite explanation or link to the appropriate lesson.
-7. Keep the resulting page readable in one sitting; split it when necessary.
-8. Preserve stable headings/anchors where practical so any remaining browser annotations continue to point to useful locations.
+6. If a comment exposes a prerequisite gap, either add a concise prerequisite explanation, simplify/defer the dependent concept, or link to the appropriate lesson.
+7. Check whether the feedback reveals a broader sequencing problem that should change `AGENTS.md` or the course structure.
+8. Keep the resulting page readable in one sitting; split it when necessary.
+9. Preserve stable headings/anchors where practical so any remaining browser annotations continue to point to useful locations.
 
 Do not assume browser annotations synchronize across devices. The copied Markdown review report is the handoff format between the browser and the agent.
 
@@ -151,6 +187,8 @@ Guidelines:
 - Use stable, descriptive node labels rather than unexplained abbreviations.
 - Prefer left-to-right or top-to-bottom flows that match the prose.
 - Do not use diagrams decoratively.
+- Build diagrams from already-established concepts when possible; mark future concepts as previews.
+- Do not imply that every named function is necessarily a discrete hardware module.
 - ASCII diagrams remain acceptable when they are simpler or more portable.
 
 Mermaid rendering is implemented in `assets/mermaid.js`. Preserve GitHub Pages compatibility and the site's light/dark readability when modifying it.
@@ -210,6 +248,8 @@ Examples include:
 - driver tracing and register inspection.
 
 When adding a lab, state what hypothesis or system behavior it is intended to demonstrate and what should be measured.
+
+Introduce the required conceptual model and tools before expecting the learner to diagnose results from them.
 
 ## Technical accuracy
 
