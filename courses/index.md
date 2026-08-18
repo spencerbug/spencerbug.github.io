@@ -22,8 +22,8 @@ A systems-first course organized around tracing memory accesses end-to-end: virt
 
 The goal is to connect CPU architecture to practical optimization rather than treating caches, virtual memory, concurrency, and profiling as isolated topics.
 
-## Planned
+### [OpenBMC & UEFI Platform Firmware](/courses/openbmc/)
 
-### OpenBMC & Platform Firmware
+A systems-first course on server management and boot firmware: BMC hardware, OpenBMC Linux, Yocto, D-Bus, Redfish, IPMI/KCS, MCTP/PLDM, UEFI, power sequencing, firmware update, security, debugging, and fleet-scale reliability.
 
-BMC architecture, OpenBMC, Yocto, D-Bus services, Redfish, IPMI, host lifecycle management, security, firmware update, telemetry, and fleet reliability.
+The course uses external material such as Arm's RD-V3 OpenBMC/UEFI learning path as a practical companion while keeping this repository as the canonical personalized textbook.
