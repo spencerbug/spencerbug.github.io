@@ -2,11 +2,11 @@
   "use strict";
 
   const path = window.location.pathname;
-  if (!path.startsWith("/courses/") || path === "/courses/") return;
+  if (path === "/" || path === "") return;
 
   const style = document.createElement("style");
   style.textContent = `
-    .course-breadcrumbs {
+    .site-breadcrumbs {
       border-bottom: 1px solid var(--border);
       color: var(--muted-text);
       font-size: 0.9rem;
@@ -15,7 +15,7 @@
       padding: 0 0 0.75rem;
       white-space: nowrap;
     }
-    .course-breadcrumbs ol {
+    .site-breadcrumbs ol {
       align-items: center;
       display: flex;
       gap: 0;
@@ -23,34 +23,30 @@
       margin: 0;
       padding: 0;
     }
-    .course-breadcrumbs li {
+    .site-breadcrumbs li {
       align-items: center;
       display: inline-flex;
       margin: 0;
     }
-    .course-breadcrumbs li + li::before {
+    .site-breadcrumbs li + li::before {
       color: var(--muted-text);
       content: "›";
       margin: 0 0.55rem;
     }
-    .course-breadcrumbs a {
+    .site-breadcrumbs a {
       color: var(--link);
       text-decoration: none;
     }
-    .course-breadcrumbs a:hover,
-    .course-breadcrumbs a:focus-visible {
+    .site-breadcrumbs a:hover,
+    .site-breadcrumbs a:focus-visible {
       text-decoration: underline;
     }
-    .course-breadcrumbs [aria-current="page"] {
+    .site-breadcrumbs [aria-current="page"] {
       color: var(--muted-text);
     }
   `;
   document.head.appendChild(style);
 
-  const parts = path.split("/").filter(Boolean);
-  if (parts.length < 2 || parts[0] !== "courses") return;
-
-  const courseSlug = parts[1];
   const courseNames = {
     "nic-firmware": "NIC Firmware Engineering",
     "performance-cache": "Performance & Cache Optimization",
@@ -75,15 +71,12 @@
     if (title) return title.textContent.trim();
     const h1 = document.querySelector(".post-content h1, main h1");
     if (h1) return h1.textContent.trim();
-    return document.title.replace(/\s*[|·-]\s*.*$/, "").trim();
+    return document.title.replace(/\s*[|·]\s*.*$/, "").trim();
   }
 
-  const courseName = courseNames[courseSlug] || titleFromSlug(courseSlug);
-  const isCourseIndex = parts.length === 2;
-
   const nav = document.createElement("nav");
-  nav.className = "course-breadcrumbs";
-  nav.setAttribute("aria-label", "Course breadcrumb");
+  nav.className = "site-breadcrumbs";
+  nav.setAttribute("aria-label", "Breadcrumb");
 
   const list = document.createElement("ol");
 
@@ -105,12 +98,32 @@
     list.appendChild(item);
   }
 
-  addLink("Courses", "/courses/");
+  addLink("Home", "/");
 
-  if (isCourseIndex) {
-    addCurrent(courseName);
+  const parts = path.split("/").filter(Boolean);
+
+  if (path === "/courses/") {
+    addCurrent("Courses");
+  } else if (path.startsWith("/courses/") && parts.length >= 2) {
+    const courseSlug = parts[1];
+    const courseName = courseNames[courseSlug] || titleFromSlug(courseSlug);
+
+    addLink("Courses", "/courses/");
+
+    if (parts.length === 2) {
+      addCurrent(courseName);
+    } else {
+      addLink(courseName, "/courses/" + courseSlug + "/");
+      addCurrent(pageTitle());
+    }
+  } else if (path === "/blog/") {
+    addCurrent("Blog");
+  } else if (path === "/about/") {
+    addCurrent("About");
+  } else if (document.querySelector("article.post .post-meta")) {
+    addLink("Blog", "/blog/");
+    addCurrent(pageTitle());
   } else {
-    addLink(courseName, "/courses/" + courseSlug + "/");
     addCurrent(pageTitle());
   }
 
@@ -124,5 +137,8 @@
     post.insertBefore(nav, postHeader);
   } else if (postContent && postContent.parentElement) {
     postContent.parentElement.insertBefore(nav, postContent);
+  } else {
+    const main = document.querySelector("main .wrapper, main");
+    if (main) main.insertBefore(nav, main.firstChild);
   }
 })();
