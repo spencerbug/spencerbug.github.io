@@ -50,7 +50,7 @@
   const courseNames = {
     "nic-firmware": "NIC Firmware Engineering",
     "performance-cache": "Performance & Cache Optimization",
-    "openbmc": "OpenBMC & Platform Firmware"
+    "openbmc": "OpenBMC & UEFI Platform Firmware"
   };
 
   function titleFromSlug(slug) {
