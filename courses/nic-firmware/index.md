@@ -39,8 +39,8 @@ By the end of this course I should be able to:
 2. **[Ethernet from Wire to MAC](/courses/nic-firmware/02-ethernet-wire-to-mac/)**  
    PHY, PCS, PMA, SerDes, MDI, link negotiation, framing, FCS, and MAC responsibilities.
 
-3. **PCIe for NIC Engineers**  
-   Enumeration, BARs, MMIO, transactions, bus mastering, ordering, and the NIC as a PCIe endpoint.
+3. **[PCIe for NIC Engineers](/courses/nic-firmware/03-pcie-for-nic-engineers/)**  
+   Enumeration, configuration space, BARs, MMIO, transactions, bus mastering, and the NIC as a PCIe endpoint.
 
 ### Part II — Move data
 
