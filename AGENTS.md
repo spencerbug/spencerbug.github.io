@@ -81,6 +81,29 @@ When interpreting quiz answers or review feedback, distinguish among:
 
 This distinction matters for a personalized living course. A learner hypothesis should normally be revisited after the relevant lesson rather than immediately treated as an error.
 
+## Interactive understanding checks
+
+Each completed course lesson should have a short interactive multiple-choice quiz rendered by `assets/quizzes.js`.
+
+The purpose is **retrieval practice and immediate feedback, not grading**.
+
+Guidelines:
+
+- Prefer about 4–6 questions per lesson.
+- Each question must have exactly one defensible answer.
+- Test concepts actually taught in the current or earlier lessons; do not require unexplained future material.
+- Prefer reasoning, prediction, tracing, boundary-identification, and misconception checks over trivia.
+- Use plausible distractors that reveal nearby misunderstandings rather than absurd choices.
+- Give immediate explanatory feedback after every selected option.
+- Allow the learner to change an answer and try again.
+- Do not compute or display a score, percentage, grade, pass/fail result, or leaderboard.
+- Browser-local response history may be stored for later pedagogy analysis, but the user-facing experience should remain low-stakes.
+- Keep question IDs stable when possible so longitudinal response data remains meaningful.
+- When lesson content changes materially, review its quiz for stale assumptions or answer keys.
+- When adding a new lesson, add a corresponding entry keyed by its permalink in `assets/quizzes.js`.
+
+Quiz response state is currently stored in browser `localStorage` under a lesson-scoped `course-quiz-responses:v1:` key. Treat this as local learning telemetry, not repository content or a durable backend.
+
 ## Covered material vs. planned material
 
 Do not present unstudied material as completed coursework.
@@ -273,7 +296,7 @@ Avoid adding unnecessary personal or family information.
 - Use stable, explicit permalinks for course pages.
 - Keep internal links rooted consistently under `/courses/.../` when possible.
 - Preserve the existing light/dark theme functionality.
-- Preserve Mermaid, MathJax, and annotation support when modifying the global head or stylesheet.
+- Preserve Mermaid, MathJax, annotation, and quiz support when modifying global page assets.
 - Avoid introducing large frameworks or dependencies for features that can be implemented with simple HTML/CSS/JavaScript.
 - Keep GitHub Pages compatibility in mind.
 
