@@ -1,0 +1,65 @@
+/* Site-wide contrast fixes plus PCFH series components. */
+
+table thead,
+table th {
+  background-color: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+table tr {
+  color: var(--text);
+}
+
+.pcfh-series-nav {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 1.25rem 0 1.5rem;
+  padding: 0.85rem 1rem;
+}
+
+.pcfh-series-nav strong {
+  display: block;
+  margin-bottom: 0.55rem;
+}
+
+.pcfh-series-nav ol {
+  display: grid;
+  gap: 0.35rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pcfh-series-nav a {
+  display: block;
+  padding: 0.15rem 0;
+}
+
+.pcfh-series-nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.pcfh-plot {
+  background: var(--page-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+  min-height: 440px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.pcfh-plot-wide {
+  min-height: 520px;
+}
+
+@media screen and (max-width: 600px) {
+  .pcfh-plot,
+  .pcfh-plot-wide {
+    min-height: 420px;
+  }
+}

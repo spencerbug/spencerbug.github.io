@@ -21,6 +21,7 @@
 
   <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/quizzes.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/site-fixes.css' | relative_url }}">
   <script defer src="{{ '/assets/theme.js' | relative_url }}"></script>
   <script defer src="{{ '/assets/breadcrumbs.js' | relative_url }}"></script>
   <script defer src="{{ '/assets/annotations.js' | relative_url }}"></script>
@@ -39,6 +40,11 @@
   </script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
   <script type="module" src="{{ '/assets/mermaid.js' | relative_url }}"></script>
+
+  {%- if page.plotly -%}
+  <script defer src="https://cdn.plot.ly/plotly-4.0.0.min.js" charset="utf-8"></script>
+  <script defer src="{{ '/assets/pcfh-visualizer.js' | relative_url }}"></script>
+  {%- endif -%}
 
   {%- feed_meta -%}
 
