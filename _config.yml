@@ -1,8 +1,8 @@
-title: Spencer Neilan — Systems Coursework
+title: Spencer Neilan
 email: spencer.neilan@gmail.com
 description: >-
-  A living textbook for systems engineering, infrastructure firmware, networking,
-  and performance — built through study, experiments, and hands-on labs.
+  Embedded Linux, platform firmware, low-level systems, networking, embedded security,
+  and embodied intelligence.
 baseurl: ""
 url: "https://spencerbug.github.io"
 twitter_username: spencer_neilan
@@ -16,6 +16,7 @@ plugins:
 
 # Explicit top-level navigation. Course content lives beneath /courses/.
 header_pages:
-  - courses/index.md
   - blog.md
+  - courses/index.md
   - about.markdown
+  - site.markdown
