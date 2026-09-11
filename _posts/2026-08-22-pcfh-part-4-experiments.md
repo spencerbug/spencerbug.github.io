@@ -6,7 +6,7 @@ permalink: /blog/predictive-control-factor-hierarchy/experiments/
 pcfh_part: 4
 ---
 
-> **AI-generated content disclaimer:** This article was generated with AI assistance from the author's research ideas, questions, and iterative review comments. It describes a speculative research architecture, not an established or peer-reviewed result.
+{% include ai-assisted-author-note.html %}
 
 {% include pcfh-series-nav.html %}
 

@@ -1,39 +1,52 @@
 ---
 layout: page
-title: Systems Coursework
+title: Spencer Neilan
 permalink: /
 ---
 
-# Systems Coursework
+<p class="home-tagline">Embedded Linux · Platform Firmware · Systems · Embodied Intelligence</p>
 
-This site is my living textbook for low-level systems engineering.
+I’m a senior embedded systems and Linux engineer working across production firmware, boot and device security, networking, update systems, and hardware/software debugging. I use this site for technical writing, experiments, living coursework, and research ideas about systems that interact with the physical world.
 
-The goal is not to collect notes. It is to build durable mental models, connect hardware and software behavior, and turn each course into hands-on work that can survive an interview, a debugging session, or a real production system.
+<div class="landing-links">
+  <a class="landing-card" href="{{ '/blog/' | relative_url }}">
+    <strong>Writing</strong>
+    <span>Technical essays, research notes, project retrospectives, and experiments.</span>
+  </a>
+  <a class="landing-card" href="{{ '/courses/' | relative_url }}">
+    <strong>Coursework</strong>
+    <span>Living systems-engineering courses built around mental models, debugging, measurement, and labs.</span>
+  </a>
+  <a class="landing-card" href="{{ '/about/' | relative_url }}">
+    <strong>About</strong>
+    <span>My engineering background, current technical interests, and the threads connecting this work.</span>
+  </a>
+</div>
 
-## Courses
+## Current writing
 
-### [NIC Firmware Engineering](/courses/nic-firmware/)
-**Active course.** A ground-up study of the network interface card as a complete system: packet paths, Ethernet hardware, DMA, descriptor rings, interrupts, Linux drivers, multiqueue, RSS, PCIe, kernel bypass, RDMA, and SmartNIC/DPU architecture.
+<div class="feature-card">
+  <div class="card-meta"><span class="topic-pill">Embodied AI</span><span class="topic-pill">Research architecture</span></div>
+  <h3><a href="{{ '/blog/predictive-control-factor-hierarchy/' | relative_url }}">Predictive Control Factor Hierarchy</a></h3>
+  <p>A four-part exploration of whether learned dynamical relationships can be composed into a hierarchy that supports both prediction and control.</p>
+  <p class="card-links"><a href="{{ '/blog/predictive-control-factor-hierarchy/' | relative_url }}">Part I</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/dynamics-control/' | relative_url }}">Part II</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/composition-scaling/' | relative_url }}">Part III</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/experiments/' | relative_url }}">Part IV</a></p>
+</div>
 
-### OpenBMC & Platform Firmware
-Planned. BMC architecture, OpenBMC services, Yocto integration, Redfish, IPMI, host management, security, update systems, and fleet-scale reliability.
+## Current coursework
 
-### Performance & Cache Optimization
-Planned. Caches, TLBs, memory ordering, atomics, NUMA, prefetching, branch prediction, data-oriented design, profiling, and low-latency optimization.
+<div class="course-grid">
+  <a class="course-card" href="{{ '/courses/nic-firmware/' | relative_url }}">
+    <strong>NIC Firmware Engineering</strong>
+    <span>Packet paths, DMA, descriptor rings, interrupts, PCIe, drivers, RDMA, and SmartNIC/DPU architecture.</span>
+  </a>
+  <a class="course-card" href="{{ '/courses/openbmc/' | relative_url }}">
+    <strong>OpenBMC &amp; UEFI Platform Firmware</strong>
+    <span>BMC architecture, Yocto, D-Bus, Redfish, IPMI, MCTP/PLDM, update, security, and fleet reliability.</span>
+  </a>
+  <a class="course-card" href="{{ '/courses/performance-cache/' | relative_url }}">
+    <strong>Performance &amp; Cache Optimization</strong>
+    <span>TLBs, caches, DRAM, coherence, memory ordering, atomics, profiling, and low-latency experiments.</span>
+  </a>
+</div>
 
-## How I use this site
-
-Each course is built around a repeated loop:
-
-1. Build the mental model.
-2. Follow real data through the system.
-3. Connect hardware behavior to software abstractions.
-4. Study failure modes and debugging techniques.
-5. Measure performance implications.
-6. Answer interview-style questions.
-7. Implement a lab or experiment.
-8. Fold new questions back into the textbook.
-
-## [Blog](/blog/)
-
-The blog remains separate from the coursework. It is for technical write-ups, project retrospectives, experiments, and ideas that are worth publishing but do not belong in the linear curriculum.
+The site itself is also iterative. The coursework and writing include a browser-local review system that I use to turn questions and annotations back into revisions. [How this site works →]({{ '/site/' | relative_url }})

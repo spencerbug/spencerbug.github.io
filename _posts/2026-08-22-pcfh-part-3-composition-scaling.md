@@ -7,7 +7,7 @@ pcfh_part: 3
 plotly: true
 ---
 
-> **AI-generated content disclaimer:** This article was generated with AI assistance from the author's research ideas, questions, and iterative review comments. It describes a speculative research architecture, not an established or peer-reviewed result.
+{% include ai-assisted-author-note.html %}
 
 {% include pcfh-series-nav.html %}
 
