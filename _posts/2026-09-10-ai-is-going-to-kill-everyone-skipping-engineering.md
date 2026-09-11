@@ -39,6 +39,18 @@ Humans and animals get the experience.
 
 That distinction feels important to me.
 
+One comparison I keep coming back to is how little language a child needs compared with a large language model. The exact number varies a lot depending on how you measure it and what environment the child grows up in, but by around four a child has heard on the order of tens of millions of words. I usually shorthand it as something like **15 million words**. By that age, a child already understands language remarkably well and is becoming fluent.
+
+Modern language models are trained on **trillions of tokens**. Meta says Llama 3 was pretrained on more than [15 trillion tokens](https://ai.meta.com/blog/meta-llama-3/).
+
+That is an enormous difference in learning efficiency.
+
+A child does not have to infer the entire meaning of “hot” from statistical relationships among sentences about hot things. They touch things. They feel temperature. They watch steam rise. They hear an adult say “hot” while something hot is actually in front of them. The same thing happens with weight, distance, ownership, fear, falling, giving, hiding, wanting, and thousands of other concepts.
+
+Language is attached to an enormous stream of physical and social experience. In a sense, it is the human experience encoded into a communication system.
+
+That makes me suspect an embodied intelligence could eventually learn and process language with dramatically less training data and compute than modern language models require. If the concepts are already grounded in perception, action, memory, and consequences, language does not have to reconstruct the world indirectly from correlations in text. The words can point at concepts the intelligence already has.
+
 If I have a bad model of where a wall is, eventually I walk into the wall. Reality corrects me.
 
 If I misunderstand how much force is required to pick something up, I drop it.
