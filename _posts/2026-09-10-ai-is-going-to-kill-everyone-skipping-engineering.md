@@ -87,182 +87,53 @@ My suspicion is that once you start solving those problems, you end up moving to
 
 And that’s where the argument gets interesting.
 
-## Persistence probably needs reality in the loop
+<a id="persistence-probably-needs-reality-in-the-loop"></a>
+## Why persistence probably needs reality in the loop
 
-For an intelligence to remain coherent over long periods of time, I think it eventually needs some kind of continuous loop with reality.
+For an intelligence to stay coherent over long periods of time, I think it eventually needs a continuous loop with reality. It predicts something, acts on that prediction, sees what actually happened, and then corrects itself. You can fake pieces of that with databases, memory systems and agent frameworks, and we already do, but at some point there is a difference between remembering a description of the world and actually being in the world while it changes around you.
 
-It predicts something.
+That does not necessarily mean a humanoid robot. An embodied intelligence could be a car, a factory, a laboratory, a building, maybe even a datacenter. The important part is that it has sensors and actuators and some real environment that keeps pushing back on its internal model. If it thinks a valve opened and the pressure sensor says it did not, that is a correction. If it thinks a robot arm is somewhere it is not, the encoder tells it. Reality keeps re-anchoring the state instead of letting an error get repeated for another thousand tokens.
 
-It acts.
+This is also where embodiment changes the safety question in a way I don't hear discussed much. Once an intelligence acts through a real system, it has a scope. A robot has motors and whatever tools are attached to it. A car has steering, acceleration and braking. A factory controller has whatever equipment is actually wired into that control system. Even a datacenter agent still has credentials, network boundaries and machines it can or cannot reach.
 
-Something actually happens.
-
-It senses the result.
-
-It updates.
-
-Then it does it again.
-
-That doesn’t necessarily mean a humanoid robot.
-
-An embodied intelligence could be a robot, a car, a factory, a laboratory, a building, maybe even a datacenter.
-
-The important part is that it has sensors and actuators and is continuously interacting with a real environment.
-
-Reality becomes the thing that keeps the intelligence from drifting indefinitely.
-
-And embodiment has another interesting property:
-
-**it gives the intelligence a scope.**
-
-A robot controls its motors.
-
-A car controls the car.
-
-A factory controller controls a factory.
-
-A building automation system controls a building.
-
-Now I can ask very normal engineering questions.
-
-What can this thing actually control?
-
-What network can it access?
-
-What credentials does it have?
-
-What happens if it fails?
-
-How do I shut it off?
-
-How large is the failure domain?
-
-Those questions are a lot less mysterious than “how do we control a superintelligence?”
+So suddenly the questions are pretty ordinary engineering questions. What can this thing actually control? What network can it reach? Which credentials does it have? What happens if it gets something wrong? Can another system revoke its access? How large is the failure domain? These are questions we already know how to reason about, even if the answers get harder as the systems get more capable.
 
 ## Don’t build Skynet
 
-Obviously you could connect everything together.
+Obviously we *could* throw all of that away and connect everything together. Give one intelligence access to every robot, every factory, every power station, every military system and half the Internet. I mean, sure, that sounds dangerous. It also sounds like an unbelievably bad system design.
 
-You could give one intelligence access to every robot, every factory, every power station, every military system and half the Internet.
+We already spend a huge amount of effort trying not to design normal computer systems that way. We use authentication, permissions, separate administrative domains, least privilege, defense in depth, auditing, physical segmentation, all of that stuff. None of those ideas stop applying because the software got smarter.
 
-That would be incredibly dumb.
+If one future AI somehow has root access to civilization, the first catastrophic mistake happened before it decided to do anything. Somebody built a control plane with root access to civilization.
 
-We don’t even design ordinary computer systems that way if we can avoid it.
-
-We use permissions. Authentication. Separate failure domains. Defense in depth. Independent systems. Different administrators. Auditing. Least privilege.
-
-If one future AI has root access to civilization, I would argue that the first failure happened long before the AI did anything.
-
-Somebody gave it root access to civilization.
-
-There is no reason advanced artificial intelligence has to be centralized that way.
-
-In fact, I think pluralism should be one of the basic safety properties of advanced AI systems.
+And I don't really see why advanced AI should naturally converge on one giant central intelligence anyway. We don't have one human brain controlling the planet. We have governments, companies, communities, machines, protocols, competing interests and lots of overlapping authorities. It is messy, sometimes terribly so, but the mess is also part of what keeps one failure from instantly becoming everyone's failure. I think advanced AI probably needs that same kind of pluralism.
 
 ## Robot sociology
 
-This is the part I find really interesting.
+This is probably the part of the whole argument that I find most interesting. If embodied intelligence becomes common, there won't be *a* robot. There will be millions of machines and systems owned by different people, doing different jobs, sharing spaces and depending on one another. At that point their biggest environmental complication may actually be each other.
 
-If embodied intelligence becomes common, there won’t be one robot.
-
-There will be millions of them.
-
-And then the robots have a new problem:
-
-**each other.**
-
-Two machines need the same resource.
-
-One needs another machine to finish something first.
-
-Two robots try to move through the same space.
-
-One system promises to do something for another one.
-
-Machines owned by different people need to cooperate.
-
-Very quickly you start needing identity, communication, negotiation, trust, reputation, agreements, rules, conflict resolution.
+Two machines want the same charging station. One robot needs another robot to move first. A warehouse system needs a delivery system to show up when it said it would. Machines owned by completely different organizations need to share a road, a loading dock, radio spectrum, electrical power, compute, whatever. Pretty quickly you need identity and communication, but then probably also reputation, negotiation, agreements and some way to handle conflicts when somebody doesn't do what they said they would.
 
 Basically, robot sociology.
 
-Human beings already went through a version of this.
+And humans already have a version of this problem. We are intelligent, autonomous, persistent, frequently selfish, occasionally violent, very good at manipulating our environment, and definitely not all aligned to the same objective function. Civilization works as well as it does because we built a huge pile of social systems around ourselves: contracts, laws, courts, norms, markets, governments, professional standards, reputation, checks and balances. They're all flawed, and some are a mess, but the basic idea is that nobody has to be perfectly trustworthy for the larger system to function.
 
-Humans aren’t trustworthy.
+I don't see why artificial agents would be fundamentally different there. In some ways we could even make the machinery more explicit. Machines can have cryptographic identities. Permissions can expire. Actions can be logged. Capabilities can be revoked. Dangerous actions could require agreement from several independent systems. Different vendors and different models could reduce the chance that one bug, one bad update, or one weird behavior propagates everywhere at once.
 
-We’re intelligent, autonomous, persistent, frequently selfish, sometimes violent, and really good at manipulating our environment.
-
-Civilization doesn’t work because we finally figured out how to align every human being.
-
-It works because we built social systems around ourselves.
-
-Laws. Contracts. Courts. Governments. Markets. Norms. Reputation. Checks and balances. Separation of authority.
-
-They aren’t perfect. Obviously.
-
-But they allow billions of independent intelligent agents with completely different goals to coexist.
-
-Why wouldn’t artificial intelligence need something similar?
-
-And since we’re actually designing these systems, we may be able to build some of those safety mechanisms directly into them.
-
-Cryptographic identities.
-
-Explicit permissions.
-
-Logs.
-
-Revocable capabilities.
-
-Multiple independent systems approving dangerous actions.
-
-Different models and different vendors so one bug doesn’t propagate everywhere.
-
-No single intelligence controlling everything.
-
-That sounds a lot more realistic to me than hoping one giant model develops the perfect internal value system.
+That seems like a much more realistic safety model to me than putting all of our effort into making one gigantic intelligence perfectly good forever. You assume individual parts can fail, including intelligent parts, and then you design the system so one failure doesn't own everything.
 
 ## Does this mean AI can’t be dangerous?
 
-Of course not.
+No, and I don't want to make that claim. AI can already be used for fraud, cyberattacks, propaganda and plenty of other harmful things. Humans can connect models to dangerous systems right now, and future models are obviously going to become more capable.
 
-AI can already be used for fraud, cyberattacks, propaganda and all kinds of other harmful things. Humans can connect AI to dangerous systems. Future models will become much more capable.
+What I don't buy is the idea that the path from today's LLMs to “AI kills every human” is short or automatic. There are a lot of hard things that have to get solved along the way: persistent agency, grounding, long-horizon reliability, physical autonomy, access to resources, and then enough real-world authority to do something at civilization scale. Any one of those is a serious engineering problem.
 
-I just don’t think the path from today’s LLMs to “AI kills every human” is anywhere near as direct as it is sometimes presented.
+And the thing I keep coming back to is that solving those problems may change the risk at the same time. If persistence needs better grounding, and better grounding pushes us toward embodied systems, then those systems start having actual boundaries. Once there are lots of bounded intelligent systems, they need ways to coexist, and that creates pressure for some kind of social structure and governance between them. None of that guarantees safety, obviously, but it means the future does not have to look like one giant intelligence suddenly escaping from a chat window and taking over the planet.
 
-There are a lot of major unsolved problems in between.
+Could we still screw this up? Absolutely. We could centralize everything, give one system absurd permissions, connect critical infrastructure together in ways that create giant correlated failure domains, or deliberately build autonomous weapons without enough checks. Humans are very capable of making bad architectural decisions when convenience or money is involved.
 
-Persistent agency.
+I just think the extinction argument often skips over too much of this middle. It takes today's models, assumes the limitations disappear, assumes autonomy and persistence get solved, assumes intelligence turns into real-world power, and then jumps to the end state. Maybe that chain happens. I don't think it is impossible. I just don't think we have enough reason to treat it as the default outcome.
 
-Grounding.
+The future I find more plausible, and honestly more interesting, is a huge number of specialized intelligences living and working alongside us. Some will be robots, some will run facilities, some will help people, some will do science or manage infrastructure. They'll have to cooperate with humans and with each other, and we'll end up building rules and institutions around that whether we call it “robot sociology” or something less silly.
 
-Long-horizon reliability.
-
-Physical autonomy.
-
-Resource acquisition.
-
-Real-world authority.
-
-And I think solving some of those problems changes the safety picture at the same time.
-
-Persistence may require grounding.
-
-Grounding pushes intelligence toward embodiment.
-
-Embodiment creates physical boundaries.
-
-Multiple embodied intelligences create pressure for social systems.
-
-Social systems create opportunities for pluralism and checks on power.
-
-None of that proves extinction is impossible.
-
-It does make me think the probability is a lot lower than some of the current rhetoric suggests.
-
-And honestly, I think the alternative future is much more interesting anyway.
-
-Instead of one giant superintelligence taking over the world, maybe we end up with a huge number of specialized intelligences living and working alongside us, cooperating with each other, negotiating, sharing resources, developing their own protocols and operating inside institutions designed to prevent any one participant from having too much power.
-
-That doesn’t sound like the end of humanity.
-
-That sounds like the beginning of something pretty fascinating. I think we have a bright future to look forward to.
+That sounds difficult, but it doesn't sound hopeless. I think we have a pretty bright future to look forward to.
