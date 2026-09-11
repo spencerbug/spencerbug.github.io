@@ -1,0 +1,157 @@
+/* Public-facing landing, writing, and metadata components. */
+
+.post-content {
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+
+.post-content > p,
+.post-content > ul,
+.post-content > ol,
+.post-content > blockquote {
+  max-width: 48rem;
+}
+
+.home-tagline {
+  color: var(--muted-text);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: -0.45rem 0 1.5rem;
+  max-width: none !important;
+}
+
+.landing-links,
+.course-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 1.5rem 0 2.25rem;
+}
+
+.landing-card,
+.course-card,
+.feature-card,
+.writing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.landing-card,
+.course-card {
+  color: var(--text) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.landing-card:hover,
+.course-card:hover,
+.landing-card:focus-visible,
+.course-card:focus-visible {
+  border-color: var(--link);
+  text-decoration: none;
+}
+
+.landing-card strong,
+.course-card strong {
+  font-size: 1.02rem;
+}
+
+.landing-card span,
+.course-card span {
+  color: var(--muted-text);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.feature-card {
+  margin: 1rem 0 2.25rem;
+  padding: 1.1rem 1.2rem;
+}
+
+.feature-card h3 {
+  margin: 0.55rem 0 0.45rem;
+}
+
+.feature-card p {
+  margin-bottom: 0.7rem;
+}
+
+.card-links {
+  color: var(--muted-text);
+  font-size: 0.92rem;
+}
+
+.writing-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.writing-card {
+  padding: 1rem 1.15rem;
+}
+
+.writing-card h2 {
+  font-size: 1.35rem;
+  margin: 0.6rem 0 0.5rem;
+}
+
+.writing-card p {
+  color: var(--muted-text);
+  margin: 0;
+}
+
+.card-meta {
+  align-items: center;
+  color: var(--muted-text);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  gap: 0.4rem;
+}
+
+.card-meta time {
+  margin-left: auto;
+}
+
+.topic-pill {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted-text);
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 0.18rem 0.45rem;
+}
+
+.author-note {
+  background: var(--surface);
+  border-left: 3px solid var(--border);
+  color: var(--muted-text);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 1.1rem 0 1.4rem;
+  padding: 0.75rem 0.9rem;
+}
+
+.author-note strong {
+  color: var(--text);
+}
+
+@media screen and (max-width: 800px) {
+  .landing-links,
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-meta time {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
