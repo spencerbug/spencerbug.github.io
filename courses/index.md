@@ -1,12 +1,10 @@
 ---
 layout: page
-title: Courses
+title: Coursework
 permalink: /courses/
 ---
 
-# Courses
-
-These courses are living documents. They are expected to change as my understanding improves, as labs expose gaps, and as new questions reveal better ways to explain the material.
+These are living systems-engineering courses rather than polished textbooks. I use them to build connected mental models, work through debugging and measurement, and turn questions or failed assumptions into better explanations and experiments.
 
 ## Active
 
@@ -27,3 +25,7 @@ The goal is to connect CPU architecture to practical optimization rather than tr
 A systems-first course on server management and boot firmware: BMC hardware, OpenBMC Linux, Yocto, D-Bus, Redfish, IPMI/KCS, MCTP/PLDM, UEFI, power sequencing, firmware update, security, debugging, and fleet-scale reliability.
 
 The course uses external material such as Arm's RD-V3 OpenBMC/UEFI learning path as a practical companion while keeping this repository as the canonical personalized textbook.
+
+## How the coursework evolves
+
+Each lesson can carry browser-local review comments beside section headings. Questions, unclear explanations, correction notes, diagram requests, and lab ideas can be collected into a Markdown report and fed back into the next revision. [See how the review system works →]({{ '/site/' | relative_url }})
