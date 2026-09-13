@@ -1,0 +1,31 @@
+---
+layout: page
+---
+
+<article class="issue-detail">
+  <p class="issue-back"><a href="{{ '/issues/' | relative_url }}">← Course board</a></p>
+
+  <div class="issue-detail-meta" aria-label="Ticket metadata">
+    <span class="issue-id">{{ page.issue_id }}</span>
+    <span class="issue-status issue-status--{{ page.status }}">{{ page.status | replace: '-', ' ' }}</span>
+    <span class="issue-priority">{{ page.priority }}</span>
+    <span>{{ page.type }}</span>
+    <span>{{ page.area | replace: '-', ' ' }}</span>
+    <span>Effort {{ page.effort }}</span>
+  </div>
+
+  {% if page.summary %}
+  <p class="issue-summary">{{ page.summary }}</p>
+  {% endif %}
+
+  {% if page.depends_on and page.depends_on != empty %}
+  <p class="issue-dependencies"><strong>Depends on:</strong> {{ page.depends_on | join: ', ' }}</p>
+  {% endif %}
+
+  {{ content }}
+
+  <footer class="issue-footer">
+    <span>Created {{ page.created | date: "%Y-%m-%d" }}</span>
+    <span>Updated {{ page.updated | date: "%Y-%m-%d" }}</span>
+  </footer>
+</article>

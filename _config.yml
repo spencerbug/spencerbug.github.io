@@ -14,9 +14,22 @@ theme: minima
 plugins:
   - jekyll-feed
 
+collections:
+  issues:
+    output: true
+    permalink: /issues/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: issues
+    values:
+      layout: issue
+
 # Explicit top-level navigation. Course content lives beneath /courses/.
 header_pages:
   - blog.md
   - courses/index.md
+  - issues/index.md
   - about.markdown
   - site.markdown
