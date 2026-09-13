@@ -1,0 +1,16 @@
+<article class="issue-card">
+  <div class="issue-card-topline">
+    <span class="issue-id">{{ include.issue.issue_id }}</span>
+    <span class="issue-priority">{{ include.issue.priority }}</span>
+    <span class="issue-effort">{{ include.issue.effort }}</span>
+  </div>
+  <h3><a href="{{ include.issue.url | relative_url }}">{{ include.issue.title }}</a></h3>
+  <p>{{ include.issue.summary }}</p>
+  <div class="issue-card-labels">
+    <span>{{ include.issue.area | replace: '-', ' ' }}</span>
+    <span>{{ include.issue.type }}</span>
+  </div>
+  {% if include.issue.depends_on and include.issue.depends_on != empty %}
+  <div class="issue-card-dependencies">After {{ include.issue.depends_on | join: ', ' }}</div>
+  {% endif %}
+</article>

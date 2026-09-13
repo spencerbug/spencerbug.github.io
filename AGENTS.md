@@ -22,8 +22,46 @@ Current major areas include:
 - `courses/openbmc/`
 - `_posts/` for the Markdown blog
 - `about.markdown` for the professional site description
+- `_issues/` for course-development tickets
+- `issues/index.md` for the generated public course board
 
 When adding a new course, add it to `courses/index.md` and use a consistent permalink under `/courses/<course-name>/`.
+
+## Course project tickets
+
+The AI Infrastructure Firmware Engineering specialization is managed through repository-backed Markdown tickets in `_issues/`. The public board at `/issues/` is generated from that Jekyll collection.
+
+Use one file per durable unit of work. Prefer tickets that result in a reviewable artifact: a curriculum decision, lesson, lab, interview, source review, or integration change. Do not create tickets for trivial wording edits that belong in an existing ticket or annotation report.
+
+Required front matter:
+
+```yaml
+---
+title: Short action-oriented title
+issue_id: AIINFRA-000
+summary: One-sentence description shown on the board.
+status: backlog
+priority: P1
+type: curriculum
+area: specialization
+effort: M
+depends_on: []
+labels: [curriculum]
+created: 2026-09-13
+updated: 2026-09-13
+---
+```
+
+Allowed values:
+
+- `status`: `backlog`, `ready`, `in-progress`, `blocked`, or `done`.
+- `priority`: `P0`, `P1`, `P2`, or `P3`.
+- `type`: `infrastructure`, `curriculum`, `lesson`, `lab`, `interview`, `research`, or `capstone`.
+- `effort`: `S`, `M`, `L`, or `XL`; this is relative scope, not a time estimate.
+
+Use stable `issue_id` values and list dependencies by ID in `depends_on`. A ticket body should normally include `Outcome`, `Why it matters`, `Deliverables`, and `Acceptance criteria`. Add `Notes` when assumptions, open questions, or relevant existing pages need to be preserved.
+
+When work starts or finishes, update both `status` and `updated`. Mark a ticket `done` only when its acceptance criteria are satisfied. If GitHub Project synchronization is added later, keep the Markdown ticket as the durable course-planning record unless the migration explicitly replaces it.
 
 ## Lesson design
 

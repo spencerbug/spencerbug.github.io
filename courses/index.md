@@ -6,6 +6,14 @@ permalink: /courses/
 
 These are living systems-engineering courses rather than polished textbooks. I use them to build connected mental models, work through debugging and measurement, and turn questions or failed assumptions into better explanations and experiments.
 
+## In development
+
+### AI Infrastructure Firmware Engineering Specialization
+
+A larger, connected curriculum is taking shape around the firmware and platform systems behind AI infrastructure: OpenBMC and UEFI, PCIe, NIC firmware and RDMA, hardware trust, rack onboarding, continuous host assurance, fleet updates, observability, and serviceability.
+
+The specialization will reuse and connect the focused courses below instead of duplicating them. Its [public course board]({{ '/issues/' | relative_url }}) tracks curriculum design, lessons, labs, expert review, and interviews while the material is being developed.
+
 ## Active
 
 ### [NIC Firmware Engineering](/courses/nic-firmware/)

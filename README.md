@@ -13,8 +13,13 @@ The site supports:
 - Markdown/Jekyll course pages and blog posts
 - persistent light/dark mode
 - browser-local course review annotations
+- a repository-backed course issue board
 - Mermaid diagrams
 - MathJax equations
+
+## Course issue board
+
+Larger curriculum work is tracked as Markdown tickets in `_issues/` and rendered at [https://spencerbug.github.io/issues/](https://spencerbug.github.io/issues/). Ticket front matter records a stable ID, workflow status, priority, type, area, relative effort, dependencies, labels, and created/updated dates. See [`AGENTS.md`](AGENTS.md) for the schema and workflow rules.
 
 ## Course review annotations
 
