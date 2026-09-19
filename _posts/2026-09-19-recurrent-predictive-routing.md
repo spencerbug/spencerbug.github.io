@@ -36,14 +36,14 @@ The hope is that tracking, selective attention, and some forms of object persist
 
 Imagine following a red ball with a camera.
 
-At first the ball activates a sensor region on the right side of the image. The camera turns right. Activity falls in that region and rises in a neighboring region nearer the center. The action, the falling activity, the rising activity, and the continued visibility of the ball form a repeatable pattern.
+At first the ball activates a sensor region on one side of the image. The camera turns toward it. Activity falls in that region and rises in a neighboring region nearer the center. The action, the falling activity, the rising activity, and the continued visibility of the ball form a repeatable pattern.
 
 RPR does not begin by declaring that both regions contain “the same ball.” Instead, it remembers the relationships that made the transition predictable:
 
 ```text
-ball-like activity on the right
-    + turn-camera-right action
-    + falling right-side activity
+ball-like activity on one side
+    + turn-camera-toward-target action
+    + falling off-center activity
     + rising center activity
     = continued successful engagement
 ```
@@ -93,7 +93,7 @@ We will now rebuild this diagram from the bottom up.
 
 To keep the symbols attached to something physical, consider a simulated pan-camera robot in a \(4\text{ m}\times3\text{ m}\) room.
 
-The robot is at \((0.5,1.5)\text{ m}\). A target is fixed at \((2.8,2.1)\text{ m}\), and a distractor is fixed at \((3.2,0.8)\text{ m}\). The target begins \(14.62^\circ\) to the robot's right at a range of \(2.38\text{ m}\). The camera has a \(110^\circ\) field of view divided into twelve soft bearing bins centered at
+The robot is at \((0.5,1.5)\text{ m}\). A target is fixed at \((2.8,2.1)\text{ m}\), and a distractor is fixed at \((3.2,0.8)\text{ m}\). With counterclockwise angles defined as positive, the target begins at a bearing of \(+14.62^\circ\) and a range of \(2.38\text{ m}\). The camera has a \(110^\circ\) field of view divided into twelve soft bearing bins centered at
 
 $$
 [-55,-45,-35,-25,-15,-5,5,15,25,35,45,55]^\circ.
@@ -126,7 +126,7 @@ This is deliberately tiny. It is large enough to exhibit action-conditioned sens
 
 ### Interactive world and sensor geometry
 
-Move the time slider. The camera turns toward the target. In the right-hand plot, target activity migrates from the \(+15^\circ\) retinal bin toward the center while distractor activity moves farther left.
+Move the time slider. The camera turns toward the target. In the right-hand plot, target activity migrates from the \(+15^\circ\) retinal bin toward the center while distractor activity moves toward more negative bearings.
 
 <div id="rpr-geometry-explorer" class="pcfh-plot pcfh-plot-wide" aria-label="Interactive RPR camera tracking geometry"></div>
 
@@ -341,7 +341,7 @@ The low-level activity therefore shifts from the \(+15^\circ\) visual token towa
 
 ```mermaid
 flowchart TD
-    A["Target activity near +15 degrees"] --> B["Pan-right action"]
+    A["Target activity near +15 degrees"] --> B["Positive-pan action"]
     B --> C["Activity falls at +15 degrees"]
     B --> D["Activity rises near +5 degrees"]
     C --> E["Target remains visible and becomes centered"]
