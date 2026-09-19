@@ -47,6 +47,10 @@
   <script defer src="{{ '/assets/pcfh-visualizer.js' | relative_url }}"></script>
   {%- endif -%}
 
+  {%- if page.rpr_visualizer -%}
+  <script defer src="{{ '/assets/rpr-visualizer.js' | relative_url }}"></script>
+  {%- endif -%}
+
   {%- feed_meta -%}
 
   {%- if jekyll.environment == 'production' and site.google_analytics -%}
