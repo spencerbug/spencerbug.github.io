@@ -9,7 +9,7 @@
   const storageKey = "course-annotations:v1:" + window.location.pathname;
   const draftStorageKey = "course-annotation-drafts:v1:" + window.location.pathname;
   const headingSelector = "h2, h3, h4";
-  const commentTypes = ["Question", "Unclear", "Expand", "Diagram", "Example", "Correction", "Lab idea", "Note"];
+  const commentTypes = ["Question", "Unclear", "Expand", "Diagram", "Example", "Correction", "Lab idea", "Note", "Report issue", "Theory", "Ideas"];
 
   let storageAvailable = true;
   let comments = loadJson(storageKey, []);
