@@ -54,8 +54,15 @@
     var fovHigh = rayEnd(pan + 55, 3.3);
     var targetRetinal = targetWorldBearing - pan;
     var distractorRetinal = distractorWorldBearing - pan;
-    var targetActivation = bins.map(function (bin) { return gaussian(bin, targetRetinal, 6); });
-    var distractorActivation = bins.map(function (bin) { return gaussian(bin, distractorRetinal, 6); });
+    var targetActivation = bins.map(function (bin) {
+      return Math.abs(targetRetinal) <= 55 ? gaussian(bin, targetRetinal, 6) : 0;
+    });
+    var distractorActivation = bins.map(function (bin) {
+      return Math.abs(distractorRetinal) <= 55 ? gaussian(bin, distractorRetinal, 6) : 0;
+    });
+    var combined = bins.map(function (_, i) {
+      return Math.min(1, targetActivation[i] + distractorActivation[i]);
+    });
 
     return [
       {
@@ -63,7 +70,7 @@
         y: [robot[1], target[1], distractor[1]],
         xaxis: 'x', yaxis: 'y',
         type: 'scatter', mode: 'markers+text',
-        text: ['robot', 'target', 'distractor'],
+        text: ['camera', 'green marker', 'amber marker'],
         textposition: ['bottom center', 'top center', 'bottom center'],
         marker: { size: [15, 18, 16], color: ['#57606a', '#2da44e', '#bf8700'], symbol: ['square', 'circle', 'diamond'] },
         hovertemplate: '%{text}<br>x=%{x:.2f} m<br>y=%{y:.2f} m<extra></extra>',
@@ -82,40 +89,47 @@
       },
       {
         x: bins, y: targetActivation, xaxis: 'x2', yaxis: 'y2',
-        type: 'bar', name: 'target activation', marker: { color: '#2da44e' },
-        hovertemplate: 'bin=%{x}°<br>target activation=%{y:.3f}<extra></extra>'
+        type: 'scatter', mode: 'lines+markers', name: 'green component (diagnostic)', line: { color: '#2da44e' },
+        hovertemplate: 'bin=%{x}°<br>green diagnostic=%{y:.3f}<extra></extra>'
       },
       {
         x: bins, y: distractorActivation, xaxis: 'x2', yaxis: 'y2',
-        type: 'bar', name: 'distractor activation', marker: { color: '#bf8700' },
-        hovertemplate: 'bin=%{x}°<br>distractor activation=%{y:.3f}<extra></extra>'
+        type: 'scatter', mode: 'lines+markers', name: 'amber component (diagnostic)', line: { color: '#bf8700' },
+        hovertemplate: 'bin=%{x}°<br>amber diagnostic=%{y:.3f}<extra></extra>'
+      },
+      {
+        x: bins, y: combined, xaxis: 'x2', yaxis: 'y2',
+        type: 'bar', name: 'combined input', marker: { color: '#6985ab' }, opacity: 0.65,
+        hovertemplate: 'bin=%{x}°<br>unlabeled input=%{y:.3f}<extra></extra>'
       }
     ];
   }
 
   function geometryLayout(index) {
     var t = theme();
+    var narrow = window.innerWidth < 650;
     return {
       autosize: true,
-      height: 570,
-      margin: { l: 55, r: 25, t: 90, b: 70 },
+      height: narrow ? 720 : 590,
+      margin: { l: 55, r: 20, t: 100, b: 110 },
       paper_bgcolor: t.bg,
       plot_bgcolor: t.bg,
       font: { color: t.text, family: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
       title: {
-        text: 't=' + times[index].toFixed(1) + ' s · camera pan=' + pans[index] + '° · target retinal bearing=' + (targetWorldBearing - pans[index]).toFixed(2) + '°',
+        text: 'Scripted geometry · t=' + times[index].toFixed(1) + ' s<br>pan=' + pans[index] + '° · green bearing=' + (targetWorldBearing - pans[index]).toFixed(2) + '°',
+        font: { size: narrow ? 15 : 18 },
         x: 0.02, xanchor: 'left'
       },
       barmode: 'group',
-      legend: { orientation: 'h', x: 0.58, y: 1.08 },
-      xaxis: { domain: [0, 0.46], range: [0, 4], title: 'world x (m)', gridcolor: t.border, zeroline: false },
-      yaxis: { domain: [0, 1], range: [0, 3], title: 'world y (m)', scaleanchor: 'x', scaleratio: 1, gridcolor: t.border, zeroline: false },
-      xaxis2: { domain: [0.57, 1], range: [-61, 61], title: 'retinal bearing bin (degrees)', gridcolor: t.border, zeroline: false },
-      yaxis2: { domain: [0, 1], range: [0, 1.08], title: 'soft activation', gridcolor: t.border, zeroline: false },
+      legend: { orientation: 'h', x: 0, y: 1.12, font: { size: 10 } },
+      xaxis: { domain: narrow ? [0, 1] : [0, 0.44], anchor: 'y', range: [0, 4], title: { text: 'world x (m)' }, gridcolor: t.border, zeroline: false },
+      yaxis: { domain: narrow ? [0.58, 1] : [0, 1], anchor: 'x', range: [0, 3], title: { text: 'world y (m)' }, scaleanchor: 'x', scaleratio: 1, gridcolor: t.border, zeroline: false },
+      xaxis2: { domain: narrow ? [0, 1] : [0.61, 1], anchor: 'y2', range: [-61, 61], title: { text: 'retinal bearing (°)' }, gridcolor: t.border, zeroline: false },
+      yaxis2: { domain: narrow ? [0, 0.4] : [0, 1], anchor: 'x2', range: [0, 1.08], title: { text: 'intensity' }, gridcolor: t.border, zeroline: false },
       sliders: [{
         active: index,
         currentvalue: { prefix: 'time: ', suffix: ' s' },
-        pad: { t: 38 },
+        pad: { t: 58 },
         steps: times.map(function (time, i) {
           return {
             label: time.toFixed(1),
@@ -153,7 +167,7 @@
       textposition: 'top center',
       marker: { size: 6, color: times, colorscale: 'Viridis', colorbar: { title: 'time (s)' } },
       line: { color: t.link, width: 6 },
-      hovertemplate: '%{text}<br>retinal bearing=%{x:.2f}°<br>camera pan=%{y:.1f}°<br>command=%{z:.1f}°/s<extra></extra>'
+      hovertemplate: '%{text}<br>green retinal bearing=%{x:.2f}°<br>camera pan=%{y:.1f}°<br>command=%{z:.1f}°/s<extra></extra>'
     };
     var layout = {
       autosize: true,
@@ -161,12 +175,12 @@
       margin: { l: 20, r: 20, t: 70, b: 20 },
       paper_bgcolor: t.bg,
       font: { color: t.text, family: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' },
-      title: { text: 'Known action-sensor trajectory for the toy tracking sequence', x: 0.02, xanchor: 'left' },
+      title: { text: 'Scripted physical trajectory<br>not a learned latent space', font: { size: 17 }, x: 0.02, xanchor: 'left' },
       scene: {
         bgcolor: t.bg,
-        xaxis: { title: 'target retinal bearing (°)', gridcolor: t.border },
-        yaxis: { title: 'camera pan (°)', gridcolor: t.border },
-        zaxis: { title: 'pan command (°/s)', gridcolor: t.border },
+        xaxis: { title: { text: 'green bearing (°)' }, gridcolor: t.border },
+        yaxis: { title: { text: 'camera pan (°)' }, gridcolor: t.border },
+        zaxis: { title: { text: 'pan command (°/s)' }, gridcolor: t.border },
         camera: { eye: { x: 1.5, y: 1.5, z: 1.0 } }
       }
     };

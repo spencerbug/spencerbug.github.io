@@ -65,6 +65,22 @@ When work starts or finishes, update both `status` and `updated`. Mark a ticket 
 
 ## Lesson design
 
+### Build the reader's visual mental model deliberately
+
+Treat teaching as growing a mental model in a human reader's head. Each paragraph should extend the picture already established, not force the reader to discard it and reconstruct a different one.
+
+- Define a term before relying on it. State what a quantity is, where it comes from, what it contains, where it goes, and how its learning objective constrains it.
+- Explain pipelines in execution order: concrete inputs, each transformation, state feedback, then outputs. Number diagram stages and use the same numbers in the prose. Show a missing recurrent update rather than jumping from input encoding to a compatibility matrix.
+- Use visual forms that convey operations: sampled history as a row of cells, compatibility as a matrix with labeled axes and diagonal, routing as gates, and recurrence as a computation with a state-feedback loop. Explain each symbol's meaning.
+- Distinguish a graph edge (an indexed relationship) from a rising/falling signal transition in time. Prefer explicit terms such as pair-state record and increasing/decreasing activation when both appear nearby.
+- Introduce tensor axes and chosen widths; distinguish history length from learned feature count and recurrent state size. Explain whether an encoder is feed-forward or recurrent, and whether an output is immediate or delayed.
+- Lead with a positive definition. Avoid giving discarded speculative mechanisms equal prominence to the retained design, or defining a new quantity mainly by saying what it is not.
+- Distinguish an author's agreed design from an illustrative implementation choice. Do not silently turn an underspecified research proposal into a settled architecture.
+- A visualization must disclose whether it runs a trained model, a scripted illustration, a controller, or synthetic geometry. Synthetic object labels must not masquerade as discovered identities.
+- Treat successful prediction and successful correspondence as different claims. Describe limitations of sensor-indexed evidence accumulation explicitly.
+
+For review categories, both blog and course annotations support `Report issue` (rendering/display/behavior), `Theory` (architecture and assumptions), and `Ideas` (new proposals), alongside the existing categories. Preserve existing stored category values and annotation keys.
+
 Prefer focused lesson pages rather than very large chapters. A useful target is roughly 5–15 minutes of reading per page.
 
 If a lesson becomes too large, split it into smaller pages rather than allowing one page to become difficult to review.
@@ -293,6 +309,8 @@ Guidelines:
 - Keep wide equations usable on mobile; split very long expressions when possible.
 
 MathJax is configured in `_includes/head.html`.
+
+In Markdown prose, the single-backslash inline delimiters shown above can be consumed by the Markdown parser. Use double-backslash delimiters in the Markdown source (`\\(` and `\\)`) so the generated HTML retains `\(` and `\)`. Confirm actual inline typesetting on the built page; counting display equations alone is insufficient. Do not change delimiters inside fenced code examples or display equations indiscriminately.
 
 ## Labs and experiments
 

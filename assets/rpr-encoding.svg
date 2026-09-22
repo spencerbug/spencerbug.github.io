@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 760" role="img" aria-labelledby="title desc">
+<title id="title">Stage 1: one sensor lane, from samples to recurrent state</title>
+<desc id="desc">Four scalar samples are encoded to 16 features h, expanded to 32 features n, then used with old state by a GRU to emit 32 new state values s. Only the raw buffer is a shift register.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#34465d"/></marker></defs>
+<rect width="680" height="760" rx="14" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#18283e">
+<text x="30" y="40" font-size="24" font-weight="700">1 · One sensor index i</text>
+<text x="30" y="70" font-size="18">15 parallel lanes · shared weights · separate states</text>
+<text x="30" y="112" font-size="20" font-weight="700">1a · Four real samples in time order</text>
+<g fill="#e0edf9" stroke="#526f8e">
+<rect x="50" y="130" width="130" height="52" rx="5"/><rect x="195" y="130" width="130" height="52" rx="5"/><rect x="340" y="130" width="130" height="52" rx="5"/><rect x="485" y="130" width="130" height="52" rx="5"/>
+</g>
+<text x="115" y="164" font-size="21" text-anchor="middle">x[t−3]</text><text x="260" y="164" font-size="21" text-anchor="middle">x[t−2]</text><text x="405" y="164" font-size="21" text-anchor="middle">x[t−1]</text><text x="550" y="164" font-size="21" text-anchor="middle">x[t]</text>
+<text x="50" y="209" font-size="17">Oldest</text><text x="550" y="209" font-size="17">Newest</text>
+<path d="M340 216 V242" stroke="#34465d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="110" y="250" width="460" height="84" rx="10" fill="#e5f5ef" stroke="#387862"/>
+<text x="130" y="280" font-size="20" font-weight="700">1b · Learned encoder: 4 → 16</text>
+<text x="130" y="310" font-size="18">h = tanh(W · buffer + bias)</text>
+<path d="M340 338 V369" stroke="#34465d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="110" y="377" width="460" height="84" rx="10" fill="#e5f5ef" stroke="#387862"/>
+<text x="130" y="406" font-size="20" font-weight="700">1c · Learned expansion: 16 → 32</text>
+<text x="130" y="437" font-size="18">n = tanh(W · h + bias) · current encoding</text>
+<path d="M340 465 V504" stroke="#34465d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="185" y="512" width="310" height="80" rx="12" fill="#e9e4ff" stroke="#6951a1"/>
+<text x="340" y="545" text-anchor="middle" font-size="21" font-weight="700">1d · GRU update</text>
+<text x="340" y="574" text-anchor="middle" font-size="18">mix old state + candidate</text>
+<path d="M340 596 V635" stroke="#34465d" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="195" y="643" width="290" height="46" rx="6" fill="#e9e4ff" stroke="#6951a1"/>
+<text x="340" y="674" text-anchor="middle" font-size="20">s[t] · 32 state values</text>
+<path d="M490 666 H613 V552 H502" fill="none" stroke="#34465d" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="625" y="629" text-anchor="middle" font-size="16" transform="rotate(-90 625 629)">save for next tick</text>
+<text x="30" y="729" font-size="18">Stage 2 reads s[t] immediately. No 32-tick delay.</text>
+</g></svg>

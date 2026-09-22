@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 660" role="img" aria-labelledby="title desc">
+<title id="title">Stage 2: compatibility matrix and pair gates</title>
+<desc id="desc">A schematic excerpt of the 15 by 15 matrix shows source rows and destination columns, three preserved diagonal cells, and an example cross cell at source 7 destination 6. Its gate opens to a pair-state record and decoder. Scores are illustrative.</desc>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#34465d"/></marker></defs>
+<rect width="680" height="660" rx="14" fill="#f8fafc"/>
+<g font-family="system-ui,sans-serif" fill="#18283e">
+<text x="28" y="40" font-size="23" font-weight="700">2 · Scores become gates on indexed pairs</text>
+<text x="28" y="73" font-size="18">Schematic excerpt · actual matrix is 15 × 15</text>
+<text x="270" y="116" font-size="20">Destination j: predict this channel</text>
+<text x="73" y="223" font-size="18" transform="rotate(-90 73 223)">Source i</text>
+<text x="245" y="150" font-size="20" text-anchor="middle">6</text><text x="156" y="207" font-size="20" text-anchor="middle">6</text><text x="350" y="150" font-size="20" text-anchor="middle">7</text><text x="156" y="262" font-size="20" text-anchor="middle">7</text><text x="455" y="150" font-size="20" text-anchor="middle">14</text><text x="156" y="317" font-size="20" text-anchor="middle">14</text>
+<rect x="195" y="169" width="100" height="50" rx="4" fill="#cceee1" stroke="#5a6f85"/><text x="245" y="201" text-anchor="middle" font-size="18">self</text><rect x="300" y="169" width="100" height="50" rx="4" fill="#e9edf2" stroke="#5a6f85"/><rect x="405" y="169" width="100" height="50" rx="4" fill="#e9edf2" stroke="#5a6f85"/><rect x="195" y="224" width="100" height="50" rx="4" fill="#cbdfff" stroke="#5a6f85"/><text x="245" y="256" text-anchor="middle" font-size="18">C[7,6]</text><rect x="300" y="224" width="100" height="50" rx="4" fill="#cceee1" stroke="#5a6f85"/><text x="350" y="256" text-anchor="middle" font-size="18">self</text><rect x="405" y="224" width="100" height="50" rx="4" fill="#e9edf2" stroke="#5a6f85"/><rect x="195" y="279" width="100" height="50" rx="4" fill="#e9edf2" stroke="#5a6f85"/><rect x="300" y="279" width="100" height="50" rx="4" fill="#e9edf2" stroke="#5a6f85"/><rect x="405" y="279" width="100" height="50" rx="4" fill="#cceee1" stroke="#5a6f85"/><text x="455" y="311" text-anchor="middle" font-size="18">self</text>
+<text x="535" y="211" font-size="24">…</text>
+<text x="336" y="358" font-size="17" text-anchor="middle">15 self pathways reserved + up to 45 cross-pairs</text>
+<text x="28" y="409" font-size="19" font-weight="700">Selected pair (7,6) opens a computation gate</text>
+<rect x="28" y="437" width="156" height="60" rx="6" fill="#e5f5ef" stroke="#387862"/>
+<text x="106" y="462" font-size="18" text-anchor="middle">Source n[7]</text>
+<text x="106" y="485" font-size="17" text-anchor="middle">32 values</text>
+<path d="M189 467 H228" stroke="#34465d" stroke-width="2" marker-end="url(#a)"/>
+<path d="M237 467 L270 437 L303 467 L270 497 Z" fill="#fff1cc" stroke="#926e10"/>
+<text x="270" y="474" font-size="16" text-anchor="middle">gate</text>
+<path d="M308 467 H356" stroke="#34465d" stroke-width="2" marker-end="url(#a)"/>
+<rect x="366" y="437" width="280" height="60" rx="8" fill="#e9e4ff" stroke="#6951a1"/>
+<text x="506" y="462" font-size="18" text-anchor="middle">3 · Pair-state update e[7,6]</text>
+<text x="506" y="485" font-size="16" text-anchor="middle">also receives n[6], age, old e</text>
+<path d="M506 502 V541" stroke="#34465d" stroke-width="2" marker-end="url(#a)"/>
+<rect x="202" y="550" width="443" height="60" rx="8" fill="#e5f5ef" stroke="#387862"/>
+<text x="422" y="576" font-size="19" text-anchor="middle">4 · Decoder → message → prediction</text>
+<text x="422" y="599" font-size="17" text-anchor="middle">Contribution to destination 6's next value</text>
+<text x="28" y="639" font-size="17">Diagonal records keep local history; novelty gates their output.</text>
+</g></svg>
