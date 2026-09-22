@@ -48,7 +48,7 @@
   {%- endif -%}
 
   {%- if page.rpr_visualizer -%}
-  <script defer src="{{ '/assets/rpr-visualizer.js' | relative_url }}"></script>
+  <script defer src="{{ '/assets/rpr-visualizer.js' | relative_url }}?v={{ page.rpr_visualizer_version | default: 1 }}"></script>
   {%- endif -%}
 
   {%- feed_meta -%}

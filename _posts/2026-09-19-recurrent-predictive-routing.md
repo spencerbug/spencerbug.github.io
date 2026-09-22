@@ -7,6 +7,7 @@ permalink: /blog/recurrent-predictive-routing/
 description: "A single-layer RPR working sketch: sensor histories, recurrent encoders, compatibility gates, prediction, and the unresolved problem of correspondence."
 plotly: true
 rpr_visualizer: true
+rpr_visualizer_version: 2
 ---
 
 {% include ai-assisted-author-note.html %}
@@ -135,8 +136,7 @@ The 3D view uses the same scripted values as coordinates. Its axes are physical 
 
 <div id="rpr-state-trajectory" class="pcfh-plot" aria-label="Scripted physical camera trajectory, not an RPR latent space"></div>
 
-## 1. From sensor samples to an expanded recurrent representation
-{: #1-nodes-separate-the-current-observation-from-remembered-state}
+<h2 id="1-nodes-separate-the-current-observation-from-remembered-state">1. From sensor samples to an expanded recurrent representation</h2>
 
 The first stage runs independently for each sensor index. The diagram shows one such lane; there are fifteen lanes with separate buffers and recurrent states.
 
@@ -218,8 +218,7 @@ Each gate has 32 components; `*` in the last two lines is elementwise multiplica
 
 The input-to-state pipeline is now complete: **four samples → 16 features → 32 expanded features → 32 recurrent-state values, per index**.
 
-## 2. Compatibility becomes a matrix of pair gates
-{: #2-routing-creates-a-sparse-directed-graph}
+<h2 id="2-routing-creates-a-sparse-directed-graph">2. Compatibility becomes a matrix of pair gates</h2>
 
 Now place the fifteen current recurrent vectors into a matrix \\(S[t]\in\mathbb R^{15\times32}\\). The next computation compares every source row \\(i\\) with every prediction destination \\(j\\).
 
@@ -260,8 +259,7 @@ There are 210 off-diagonal candidate scores and fifteen diagonal scores; only 45
 
 Selection and transmission are separate: the self predictor stays available even when its outgoing novelty gate is closed. Cross-pair gates may start with Top-3 selection per column, then be compared against soft or hybrid selection.
 
-## 3. Selected pairs update a recurrent relationship record
-{: #3-the-relationships-remember-too}
+<h2 id="3-the-relationships-remember-too">3. Selected pairs update a recurrent relationship record</h2>
 
 Take one selected pair, `(i,j)`. It gets a record with a stable pair key, its last-update time, and a 16-value recurrent summary \\(e_{ij}\\). Think of a small row in a table addressed by `(i,j)`, rather than trying to picture memory living inside a drawn arrow.
 
@@ -297,8 +295,7 @@ We will call increases and decreases in a sensor signal **temporal transitions**
 
 Even a perfectly trained `(7,6)` record is still organized by sensor indices. It could summarize both a basketball seam and a court line passing those bins. That is a central limitation, returned to in the correspondence section.
 
-## 4. Decode gated contributions and form destination predictions
-{: #4-predictive-messages-update-the-destination}
+<h2 id="4-predictive-messages-update-the-destination">4. Decode gated contributions and form destination predictions</h2>
 
 The function `G` is a shared learned feed-forward **message decoder**. An MLP (multilayer perceptron) here means a learned linear projection, a tanh hidden activation, and a learned linear output. It takes the pair state and source encoding and emits a 16-value predictive contribution:
 
@@ -351,8 +348,7 @@ The original heading called this “messages update the destination.” More pre
 
 We cache each forecast now and judge it only after the next measurement arrives. All messages are computed from information available at the current tick.
 
-## 5. Evaluate cross-prediction gain and self novelty
-{: #5-a-relationship-must-beat-self-prediction}
+<h2 id="5-a-relationship-must-beat-self-prediction">5. Evaluate cross-prediction gain and self novelty</h2>
 
 Stage 5 closes the learning loop at the next sample. Squared error on normalized raw observations is a simple initial loss:
 
@@ -397,8 +393,7 @@ These are rising/falling **novelty transitions**, not graph edges. A reliably pr
 
 Cross-gain and novelty should both be retained as potential predictive-signature features. Neither is an object-identity certificate or proof of causality. Several individually useful cross-pairs can also be redundant; test combined forecasts and leave-one-pair-out contributions.
 
-## The complete toy forward pass
-{: #8-the-complete-toy-forward-pass}
+<h2 id="8-the-complete-toy-forward-pass">The complete toy forward pass</h2>
 
 Returning to the overview, here is the dimension ledger for the same five stages. The formerly ambiguous “directional candidates” are simply the entries of the compatibility matrix.
 
@@ -439,8 +434,7 @@ The capacity is an upper bound. Cross-records targeting the exogenous action cha
 
 Fifteen local states and sixty pair states require 1,440 FP32 values: 5,760 bytes. Four-sample buffers add 240 bytes. These figures **exclude weights, indices, timestamps, cached forecasts, transient tensors, training activations, optimizer state, and allocator overhead**. A fixed state size describes bounded storage per slot, not lossless storage of an unlimited history.
 
-## The correspondence problem: a design-session placeholder
-{: #6-tracking-without-a-temporal-transport-head}
+<h2 id="6-tracking-without-a-temporal-transport-head">The correspondence problem: a design-session placeholder</h2>
 
 **Status: open theory / interactive design session pending.** The single-layer sketch above can learn sensor-level predictive relationships. It does not yet specify how evidence becomes associated with a persistent object.
 
@@ -478,8 +472,7 @@ The [Thousand Brains Theory account from Numenta](https://www.numenta.com/blog/2
 
 The next design session should follow one part—or one moving patch—through several observations and answer: *Which record receives this evidence, why that record, and what evidence would make us reverse the assignment?*
 
-## Recursion is a later question
-{: #7-recursion-turns-local-transitions-into-slower-relationships}
+<h2 id="7-recursion-turns-local-transitions-into-slower-relationships">Recursion is a later question</h2>
 
 First establish one layer's evidence semantics, learning objective, and correspondence mechanism. Adding layers before those are clear risks hiding the same ambiguity inside larger latent vectors.
 
