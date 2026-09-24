@@ -2,7 +2,7 @@
 layout: post
 title: "Predictive Sensorimotor Grouping: From Motifs to Persistent Things"
 date: 2026-09-22 22:36:00 -0500
-last_modified_at: 2026-09-22
+last_modified_at: 2026-09-23
 permalink: /blog/predictive-sensorimotor-grouping/
 description: "A working architecture for grouping visual, tactile, motion, and action-conditioned evidence into revisable persistent hypotheses."
 ---
@@ -44,9 +44,11 @@ That distinction is the foundation of the architecture.
 
 The current proposal has two nested loops.
 
-The first loop rereads the same observation. A tentative persistent hypothesis predicts what evidence should exist and routes additional computation toward the places and feature types that could confirm, refine, or contradict it. This is the role of **Recurrent Predictive Routing (RPR)** inside PSG.
+The first loop spends additional computation on evidence already available at the current physical time. A tentative persistent hypothesis predicts what evidence would be useful next, but the exact computation is still an open design question: it might request a fresh sensory filter, compose already-detected motifs into a higher-order relation, or do both recursively.
 
-The second loop changes the observation itself. A hypothesis predicts the consequences of possible actions; the robot can then move, touch, push, rotate, or otherwise intervene to obtain evidence that passive inference cannot provide.
+The second loop changes the observation itself. A hypothesis predicts the consequences of possible actions; the robot can then move, touch, push, rotate, or otherwise intervene to obtain evidence that internal computation cannot provide.
+
+An earlier research direction, **Recurrent Predictive Routing (RPR)**, also used prediction to route computation, but RPR was a more specific architecture involving sliding input histories, compatibility-gated input pairs, recurrent pair states, and future prediction. PSG should not treat every predictive feedback loop as RPR. Whether any of RPR's specific machinery belongs here remains an open question.
 
 ~~~mermaid
 flowchart TD
@@ -65,9 +67,10 @@ flowchart TD
     H --> P["5 · Action-conditioned predictions"]
     P --> D{"6 · What evidence is worth buying?"}
 
-    D -->|"think harder"| R["RPR: route/gate another inference pass"]
-    R --> VE
-    R --> TE
+    D -->|"think harder"| R["Prediction-directed evidence refinement"]
+    R -->|"fresh sensory operation"| VE
+    R -->|"fresh sensory operation"| TE
+    R -->|"compose existing evidence"| O
 
     D -->|"act"| A1["Choose sensing / manipulation action"]
     A1 --> V
@@ -80,7 +83,7 @@ The diagram should not be read as saying that vision and touch need identical en
 
 The important architectural claim is narrower: scattered observations can compete for ownership by persistent hypotheses, and those hypotheses can then generate predictions that guide either more computation or new physical sensing.
 
-## 1. Build local sensorimotor motifs before trying to build objects
+## 1. Visual Motif Encoder: Build local sensorimotor motifs before trying to build objects {:#1-build-local-sensorimotor-motifs-before-trying-to-build-objects}
 
 The first stage deliberately avoids asking which object produced an observation.
 
@@ -286,58 +289,98 @@ persistent hypothesis H[k]
 
 If the predicted consequences occur together, they provide evidence for the common hypothesis.
 
-## 4. Thinking harder means another pass over the same evidence
+## 4. Predictive Evidence Refinement: Thinking harder over available evidence {:#4-thinking-harder-means-another-pass-over-the-same-evidence}
 
-PSG has two fundamentally different ways to resolve uncertainty.
+PSG has two fundamentally different ways to resolve uncertainty. The first is internal: spend more computation on evidence that is already available. But **thinking harder should not be defined as blindly rerunning the same kernels over the same raw input**.
 
-The first is internal.
+Suppose the first visual pass detects two local edges but fails to recognize that their relative geometry supports one curved boundary. Repeating exactly the same computation adds little. The missing computation may instead be a relation over the outputs of the first pass. In another case, the first pass may simply have used the wrong sensory filter or resolution, and prediction may identify a raw region that deserves a different, more expensive operation.
 
-Suppose the initial visual pass produces a tentative hypothesis: *there may be one continuing round structure here*. That hypothesis predicts where its boundary should continue and which motif families would be informative.
+This suggests two distinct forms of prediction-directed refinement.
 
-Those predictions can be scattered back toward the sensory front end and used to route or gate another pass over the **same observation**.
+### Fresh sensory operations
 
-Let \(t\) denote physical time and \(r\) denote the inference iteration within time \(t\):
+A hypothesis can request another operation on retained raw sensory history:
+
+~~~text
+raw sensory history
+        |
+        v
+prediction-selected region / kernel / resolution
+        |
+        v
+new local motif evidence
+~~~
+
+For example, a cheap first pass may find a possible boundary. The current hypothesis can then request a higher-resolution motion kernel only around that boundary. This is useful when the first representation **failed to extract evidence that was present in the raw observation**.
+
+### Composite evidence operations
+
+A different failure occurs when the first pass found the relevant pieces but did not relate them:
+
+~~~text
+edge A + spatial support A
+edge B + spatial support B
+motion motif + support
+            |
+            v
+prediction-selected composition
+            |
+            v
+higher-order geometric / dynamic evidence
+~~~
+
+Here the new operation acts on existing occurrences and their spatial or temporal supports. It is closer to a second layer: a filter over the products of earlier filters rather than another filter over pixels.
+
+This is why spatial support must survive the first encoder. If compression discards where a motif came from, a later operation cannot easily ask whether two motifs form a useful configuration.
+
+### Fixed layers or conditional depth?
+
+A conventional design could make this a fixed hierarchy: local motifs in layer 1, relations among motifs in layer 2, relations among those relations in layer 3. That is a strong baseline because it is simple and trainable.
+
+A more exploratory PSG design removes the assumption that every observation traverses the same fixed depth. Let $R_t^{(r)}$ denote the working evidence representation at physical time $t$ after refinement iteration $r$:
 
 $$
-H_t^{(0)}
+R_t^{(0)}
 \rightarrow
-H_t^{(1)}
+R_t^{(1)}
 \rightarrow
-H_t^{(2)}
+R_t^{(2)}
 \rightarrow \cdots
 $$
 
+Each refinement can choose among operations such as:
+
 ~~~text
-for r in inference_budget:
-    guidance = scatter(predictions(H[r]))
-
-    features = selectively_encode(
-        same_raw_input,
-        guidance
-    )
-
-    ownership = regroup(features, H[r])
-    H[r + 1] = revise(H[r], ownership)
+current evidence R[r]
+      |
+      +----> fresh sensory operation on retained raw history
+      |
+      +----> composite operation over existing occurrences
+      |
+      +----> regroup / revise persistent hypotheses
+      |
+      +----> stop and preserve current uncertainty
 ~~~
 
-This is where Recurrent Predictive Routing fits inside PSG.
+The important idea is **conditional computational depth**. An easy observation might stop after local motifs and grouping. A difficult observation might compose two motifs, regroup, request a specialized raw filter, and regroup again.
 
-~~~mermaid
-flowchart LR
-    X["Same observation at time t"] --> K["Routed / gated motif kernels"]
-    K --> C["Local compression"]
-    C --> G["Ownership / grouping"]
-    G --> H["Persistent hypotheses"]
-    H --> P["Predictions"]
-    P --> S["Scatter spatial + feature guidance"]
-    S --> K
-~~~
+In that formulation, "think harder" does not mean one particular layer or one particular recurrence. It means allowing prediction to choose which evidence-building operation is worth buying next.
 
-Iteration \(r+1\) has not observed the future. It is a revised interpretation of evidence already available at physical time \(t\).
+### Why this is not currently called RPR
 
-The feedback must also remain distinguishable from evidence. A hypothesis should not inject a predicted feature into the sensory stream and then count its own injected feature as independent confirmation. Prediction can control routing, gating, comparison, and compute allocation while the actual observation remains separately identifiable.
+This mechanism shares a broad principle with Recurrent Predictive Routing: predictions can influence where subsequent computation goes. But the existing RPR proposal was substantially more specific. It encoded sliding windows of inputs, used a learned compatibility mechanism to select pairs, routed pair representations into recurrent units such as GRUs, and decoded those recurrent states into future predictions.
 
-If routing is intended to save compute, later iterations should not blindly rerun the entire front end. Prediction should determine which regions, kernels, temporal histories, or resolutions receive additional execution.
+PSG currently operates on modality-specific motif occurrences, spatial supports, ownership assignments, and persistent hypotheses. Those are different computational objects. It would therefore be premature to claim that RPR is the recursive mechanism inside PSG.
+
+A future design may discover a useful correspondence—for example, a compatibility mechanism for choosing which occurrence pairs deserve a composite operation—but that should be demonstrated rather than assumed.
+
+### Keep inference time separate from physical time
+
+Let $t$ denote physical time and $r$ denote refinement within the evidence available at time $t$. A refinement at $r+1$ has not observed the future. It is a revised interpretation or representation of information already available at physical time $t$.
+
+The feedback must remain distinguishable from evidence. A hypothesis should not inject a predicted feature into the sensory stream and then count that feature as independent confirmation. Prediction may choose computation, routing, comparison, or composition while actual observations remain separately identifiable.
+
+If refinement is intended to save compute, later iterations should also avoid blindly executing every available operation. The research question is whether prediction can spend additional computation selectively enough to improve inference per unit cost.
 
 ## 5. Acting obtains evidence that does not exist yet
 
@@ -348,7 +391,7 @@ The robot can act.
 ~~~text
 uncertain grouping
       |
-      +---- THINK ----> reread same evidence with another routed pass
+      +---- THINK ----> build more evidence from what is already available
       |
       +---- ACT ------> change sensor/world relation and obtain new evidence
       |
@@ -394,7 +437,7 @@ Once the architecture can estimate uncertainty and predict consequences, attenti
 
 A difficult ambiguity does not automatically deserve resolution.
 
-The system can spend computation on another recursive inference pass, spend physical time and energy on an informative action, or retain competing hypotheses and continue without resolving them.
+The system can spend computation on a fresh sensory operation or a higher-order composition of existing evidence, spend physical time and energy on an informative action, or retain competing hypotheses and continue without resolving them.
 
 A future controller could compare an operation's expected information value with its cost:
 
@@ -425,7 +468,7 @@ flowchart TD
     C --> Q["Which observation would distinguish the hypotheses?"]
     Q --> A["Move / touch / push / change viewpoint"]
     A --> E["New sensory evidence"]
-    E --> R["Route extra computation to informative regions/features"]
+    E --> R["Select useful fresh or composite computation"]
     R --> H["Revise persistent hypotheses"]
 ~~~
 
@@ -457,8 +500,9 @@ ownership / posterior inference
         v
 H[t, r=0]
         |
-        +---- recursive inference over same observation
-        |       H[t,1] -> H[t,2] -> ...
+        +---- evidence refinement using information available at t
+        |       fresh filters and/or composite operations
+        |       R[t,0] -> R[t,1] -> ...
         |
         v
 final H[t]
@@ -483,11 +527,29 @@ The first experiment asks four separate questions:
 
 **Grouping:** Do occurrences that share a physical source accumulate in a stable candidate more often than unrelated but visually similar occurrences?
 
-**Recursive attention:** Under a fixed compute budget, do additional RPR passes spend computation where it improves inference rather than simply rerunning everything?
+**Predictive evidence refinement:** Under a fixed compute budget, can prediction choose additional sensory or composite operations that improve inference more efficiently than a fixed computation path?
 
 **Active sensing:** When passive evidence is ambiguous, does an action-conditioned policy choose interventions whose consequences reduce the ambiguity?
 
 Those metrics must remain separate. Better next-frame prediction does not prove better correspondence. Better correspondence does not prove compute-efficient attention. A successful touch intervention does not prove that the same architecture would choose that action autonomously.
+
+### Experiment: fresh filters versus composite refinement
+
+The "think harder" mechanism should earn its complexity rather than be assumed. A direct ablation can compare five versions of the same toy world while holding training data and resource accounting as constant as practical:
+
+| Variant | Additional computation after the first grouping pass |
+| --- | --- |
+| **A0 — one pass** | None. Local motifs are grouped once. |
+| **A1 — fresh only** | Prediction may select new kernels, regions, temporal supports, or resolutions over retained raw sensory history. |
+| **A2 — composite only** | Prediction may select operations over already-detected occurrences and their spatial/temporal supports. |
+| **A3 — fresh + composite** | Prediction may choose either operation once. |
+| **A4 — recurrent fresh + composite** | Prediction may repeatedly choose either operation until a compute budget, confidence threshold, or stopping rule is reached. |
+
+This separates two different reasons the first pass can fail. **A1** tests whether PSG benefits from looking at the same raw evidence in a different way. **A2** tests whether it benefits from combining evidence that was already extracted. **A3** tests whether the mechanisms are complementary. **A4** tests the stronger claim that useful computational depth should itself be conditional on the observation.
+
+Measure grouping accuracy, persistent identity through occlusion, multi-horizon prediction error, novel-event recall, executed multiply-accumulate operations or another hardware-relevant compute measure, latency, and number of refinement iterations. Plot task performance against computation rather than comparing accuracy alone.
+
+Several outcomes would be informative. If A2 captures nearly all of A4's benefit, recurrent refinement may be unnecessary. If A1 helps mainly when the first-pass encoder is deliberately capacity-limited, that identifies the role of fresh refiltering. If A4 learns to stop early on easy observations but spends extra iterations on ambiguous ones while improving performance per unit compute, conditional depth has earned some of its complexity. A result in which the larger variants merely consume more compute for the same correspondence quality would argue for the simpler architecture.
 
 A particularly important test is occlusion:
 
@@ -517,7 +579,7 @@ The current proposal is not that CNN kernels discover objects, that prediction e
 
 The narrower research hypothesis is:
 
-> **Local sensorimotor motifs, bounded revisable ownership, persistent hypotheses, action-conditioned prediction, and recurrent predictive routing may together provide enough structure for useful persistent groups to emerge without supplying object identities.**
+> **Local sensorimotor motifs, bounded revisable ownership, persistent hypotheses, action-conditioned prediction, and prediction-directed evidence refinement may together provide enough structure for useful persistent groups to emerge without supplying object identities.**
 
 Several pieces remain unresolved:
 
@@ -527,6 +589,9 @@ Several pieces remain unresolved:
 - how tactile sensor topology should be represented;
 - how action candidates should be generated;
 - how information value should be estimated;
+- whether prediction-directed refinement should use fresh sensory operations, composite operations, or both;
+- whether useful depth should be fixed or dynamically allocated;
+- whether any of RPR's compatibility and recurrent pair-state machinery belongs in PSG;
 - how to prevent feedback from becoming self-confirming;
 - when a persistent group should represent a part rather than a whole object;
 - how this mechanism should eventually compose hierarchically.
@@ -559,7 +624,8 @@ sensor change + self-motion + executed action
              |             |
              v             v
         THINK HARDER       ACT
-        same evidence      new evidence
+        refine available   new evidence
+        evidence
              |             |
              +------+------+
                     |
