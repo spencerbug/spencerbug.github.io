@@ -777,122 +777,132 @@ This remains part of the broader PSG direction, but it should not contaminate th
 
 ## 9. A first falsifiable world
 
-V1 should test the smallest mechanism that distinguishes the new formulation.
+The revised architecture suggests that V1 should be split into several experiments rather than jumping directly to motor prediction.
 
-### V1 environment
+### V1a: streaming track formation
 
-Start with procedurally generated or controlled video containing:
+Start with controlled video containing:
 
 - two to five moving objects;
-- some objects with identical or near-identical appearance;
-- occasional contact or overlap;
+- identical or near-identical appearances;
 - path crossings;
 - brief occlusions;
 - temporary common motion followed by separation;
-- appearance changes caused by rotation or lighting;
 - hidden simulator identities used only for evaluation.
 
-The learner receives no object IDs or segmentation labels during training.
+Test whether recent evidence trails can remain associated with stable active tracks.
 
-The model operates continuously:
+Relevant metrics include identity switches, fragmentation, inappropriate merging, recovery after occlusion, and uncertainty during genuinely ambiguous intervals.
+
+### V1b: persistent object-model construction
+
+Next, expose one tracked object through changing views.
+
+The model should accumulate landmark-like evidence states and transition structure that survives after individual landmarks leave the recent trail.
+
+For example:
 
 ~~~text
-video stream
-    |
-    v
-local temporal encoder
-    |
-    v
-evidence occurrences at t
-    |
-    v
-evidence <----> persistent-hypothesis messages
-    |
-    v
-soft association slice W[t]
-    |
-    +---- update fast evidence memory
-    |
-    +---- selectively update slow evidence memory
-    |
-    +---- update persistent hypothesis state
-    |
-    +------------------------------> t+1
+encounter over time:
+
+rim
+ -> side
+ -> handle junction
+ -> handle
+ -> side
+ -> bottom
+
+persistent model after encounter:
+
+L1 rim
+L2 side
+L3 handle junction
+L4 handle
+L5 bottom
+
+plus learned transition relationships
 ~~~
 
-The live demonstration can display a soft segmentation or ownership visualization derived from the associations.
+The important test is whether old landmarks remain available after they have left recent memory.
 
-The important result is not merely a good-looking mask. It is whether the **same persistent hypothesis remains connected to the same hidden physical source through time** when the evidence supports that conclusion.
+### V1c: recognition and relocalization
 
-### V1 ablations
+Let the object leave the scene.
+
+Later reintroduce it under a different starting view.
+
+The system forms a new active track first. It should then:
+
+1. match that track to the previously learned object model;
+2. localize the recent trail within the stored landmark structure;
+3. preserve the possibility of UNKNOWN when evidence is insufficient.
+
+This directly tests the separation between tracking and recognition.
+
+### Baselines and ablations
 
 A useful experimental ladder is:
 
-| Variant | Grouping mechanism |
+| Variant | Capability |
 | --- | --- |
-| **A0 — static Slot Attention** | Independent image decomposition. |
-| **A1 — recurrent Slot Attention baseline** | Prior slot state carried into the next frame. |
-| **B0 — one-way streaming association** | Evidence votes for persistent hypotheses through time. |
-| **B1 — bidirectional association** | Evidence and hypotheses exchange iterative messages. |
-| **B2 — bidirectional + fast memory** | Add dense recent per-hypothesis evidence. |
-| **B3 — bidirectional + fast + slow memory** | Add a slower representative evidence history. |
+| **A0 — framewise segmentation baseline** | No temporal object continuity. |
+| **A1 — recurrent/video Slot Attention baseline** | Persistent competitive latent slots. |
+| **B0 — trail-to-track association** | Recent trails maintain active tracks. |
+| **B1 — bidirectional trail↔track messages** | Collaborative recurrent tracking. |
+| **C0 — landmark store without structure** | Persistent bag of object evidence. |
+| **C1 — structured landmark/transition model** | Durable object topology. |
+| **C2 — track→object matching** | Recognition of a current track as a stored object. |
+| **C3 — recognition + trail localization** | Current trail localized within the persistent model. |
 
-The experiment should not assume B3 is best. If A1 or B0 gives the same persistence with less machinery, that is evidence against the more elaborate design.
+The experiment should not assume the larger model is best.
 
-### Metrics
+If a bag of old landmarks performs as well as a structured transition model, the topology may be unnecessary.
 
-Measure at least:
+If recognition works without a distinct active-track layer, the two-stage association may be unnecessary.
 
-- per-frame grouping or segmentation quality;
-- identity switches;
-- hypothesis fragmentation;
-- inappropriate merging;
-- recovery after brief occlusion;
-- recovery after appearance change;
-- stability when two objects temporarily move together;
-- ability to separate them when their trajectories diverge;
-- calibration or entropy when the scene is genuinely ambiguous;
-- compute and memory cost per streaming step.
+If recurrent Slot Attention matches the full tracking performance with much less machinery, PSG should retain the simpler mechanism.
 
-For evaluation, assign a persistent hypothesis to a hidden simulator object and then **do not independently rematch identities every frame**. Otherwise the system can silently swap identities while receiving a good segmentation score.
+### What would falsify the current formulation?
 
-There should also be intentionally unidentifiable cases. If two identical objects always move together, remain adjacent, disappear together, and reappear symmetrically, the evidence may not determine which is which.
+Useful negative results include:
 
-A useful system should preserve uncertainty rather than manufacture a boundary.
+- active tracks fragment whenever appearance changes;
+- track-to-object recognition merely memorizes recent appearance;
+- persistent landmark models fail to retain unobserved parts;
+- relocalization fails after an object leaves and reappears;
+- the structured landmark graph gives no benefit over an unstructured memory bank;
+- unknown objects are incorrectly forced into known identities;
+- introducing recognition destabilizes otherwise-correct active tracking.
 
-### What would falsify the V1 idea?
+V1 exists to discover which separations are actually necessary.
 
-Several outcomes would argue against the proposed machinery:
+## Persistent object models and scalable lifelong retrieval are separate layers
 
-- recurrent Slot Attention performs just as well as bidirectional message passing;
-- bidirectional messages produce no benefit over one-way association;
-- the slow evidence memory increases stale lock-in;
-- hypothesis persistence improves only when objects have distinct appearance;
-- temporal ambiguity is resolved no better than a framewise baseline;
-- the association process collapses into one dominant hypothesis or fragments into many unstable ones;
-- improvements disappear when identity-aware evaluation prevents per-frame rematching.
+A persistent object model is now part of the core architecture: it is the durable landmark and transition structure that represents one learned thing across encounters.
 
-These are useful failures. V1 exists to learn which pieces are actually necessary.
+But **retrieving one object model from a lifetime containing millions of models** is still a separate scaling problem.
 
-## Long-term object memory is a separate problem
+The distinction is:
 
-A live scene may contain a small active set of hypotheses. A lifetime may contain millions.
+~~~text
+core persistent model:
+    what is stored for one object?
 
-Those are different scaling problems.
+global retrieval:
+    which stored object models should be considered now?
+~~~
 
-One future direction is a sparse associative index inspired by sparse distributed representations or other approximate retrieval methods.
+A future sparse associative index, dense approximate-nearest-neighbor system, or hybrid mechanism could nominate candidate persistent models for the second bipartite association.
 
-The retrieval system could compress evidence into a search-oriented representation and nominate a small number of long-term memories.
+The important architectural rule remains:
 
-But the important architectural rule remains:
+> **Global retrieval may nominate persistent object models; it should not decide object identity by itself.**
 
-> **Retrieval may nominate hypotheses; it should not decide that representational novelty means a new object exists.**
+An unstable retrieval encoder can create a destructive positive feedback loop: failure to retrieve a known model creates a new object, and the existence of separate objects then teaches the encoder to preserve a distinction that may have been accidental.
 
-An unstable encoder can create a destructive positive feedback loop: failure to match creates a new object, and the existence of separate objects then teaches the encoder to distinguish evidence that should perhaps have remained together.
+The active tracking layer protects against this failure. A novel or poorly recognized object can remain one coherent active track while recognition stays unresolved.
 
-That failure mode appeared in earlier categorical state/transition experiments and is a reason to keep global recall out of V1.
-
-First establish how active hypotheses form and persist. Then ask how to store and retrieve them efficiently.
+First solve what one persistent model should contain and how an active track maps into it. Then solve retrieval across a very large model library.
 
 ## Relationship to Thousand Brains / Monty
 
