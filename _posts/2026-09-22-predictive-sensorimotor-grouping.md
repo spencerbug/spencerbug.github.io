@@ -935,87 +935,117 @@ That is a hypothesis, not yet a result.
 
 ## What PSG is claiming—and what it is not
 
-The current research program now separates three claims.
+The current research program separates four claims.
 
-### V1 claim
+### V1a tracking claim
 
-> **Persistent objects may be recoverable as temporally coherent trajectories in a recurrent evidence-hypothesis association process, without requiring every video frame to be independently partitioned into a fixed set of competitive slots.**
+> **A recent evidence trail can be associated through time with an active persistent track, allowing physical continuity to remain stable even while the visible evidence changes.**
 
-### V2 predictive claim
+### V1b/V1c object-memory claim
 
-> **Pre-observation predictions about future local evidence may provide additional support for persistence and ownership when current appearance is ambiguous.**
+> **A currently tracked thing can be matched separately to a durable landmark/transition model, allowing recognition and relocalization without making long-term identity a prerequisite for tracking.**
 
-### V3 sensorimotor claim
+### Predictive claim
 
-> **Known actions may condition transitions between association states, allowing predictable sensorimotor consequences to strengthen persistent grouping without requiring an explicit object-relative geometric model.**
+> **Once a recent trail is localized within a persistent object model, the model and current local state can predict likely future trail transitions.**
+
+### Sensorimotor claim
+
+> **Known actions may condition those landmark transitions, allowing the persistent object model to acquire useful sensorimotor geometry without requiring an explicit object-relative Cartesian coordinate system.**
 
 Several pieces remain unresolved:
 
-- what the exact evidence occurrence representation should be;
-- whether bidirectional message passing outperforms simpler one-way assignment;
-- when association values should be normalized;
-- which relationships should be exclusive and which should remain collaborative;
-- how many within-timestep message-passing iterations are useful;
-- how fast and slow evidence memories should be encoded;
-- how the slow memory should sample or consolidate evidence;
-- how hypothesis birth, retirement, split, and merge should work;
-- how uncertainty should be represented through time;
-- what future evidence representation V2 should predict;
-- how predictive messages should avoid self-confirmation;
-- how action should condition V3 transitions;
-- how touch should join visual evidence;
-- how hierarchy should distinguish part support from mutually exclusive object ownership;
-- how long-term retrieval should nominate old hypotheses without controlling ontology.
+- how local occurrences should be compressed into recent trails;
+- whether trail↔track inference should be competitive, collaborative, or hybrid;
+- how active tracks should be born, split, merged, retired, and recovered;
+- what constitutes a useful landmark;
+- whether landmarks should be prototypes, learned latent states, short paths, or something else;
+- how transition structure should be represented and consolidated;
+- how a novel active track should become a new persistent object model;
+- how track→object association should avoid premature recognition;
+- what form localization \(\ell_t\) should take;
+- how prediction should influence tracking, recognition, and localization without self-confirmation;
+- how action-conditioned transitions should be learned;
+- how touch should add landmarks or transition evidence;
+- how part-whole hierarchy should interact with object identity;
+- how global retrieval should nominate persistent models without controlling ontology.
 
 Those are not details to hide. PSG is useful only if they can be converted into small falsifiable experiments rather than protected by adding machinery after failure.
 
 ## The mental model to keep
 
-For V1:
+The current shortest picture is:
 
 ~~~text
-                   TIME --->
-
-      t                t+1               t+2
-
- evidence           evidence           evidence
-    ^  |               ^  |               ^  |
-    |  v               |  v               |  v
- hypotheses        hypotheses        hypotheses
-    |                  |                  |
-    +---- persistent state / memory ------+
+sensory stream
+      |
+      v
+local motif occurrences
+      |
+      v
+recent evidence trail
+      |
+      v
++-------------------------------+
+| MATCH 1                       |
+| trail <-> active track        |
+| "is this still the same       |
+|  currently observed thing?"   |
++-------------------------------+
+      |
+      v
+active persistent track
+      |
+      v
++-------------------------------+
+| MATCH 2                       |
+| track + trail <-> object      |
+| "is this a known thing?"      |
++-------------------------------+
+      |
+      v
+persistent landmark /
+transition model
+      |
+      v
+localize recent trail
+within persistent model
+      |
+      v
+later:
+model + local trail + action
+      |
+      v
+predicted next landmark /
+evidence transition
 ~~~
 
-Within each vertical slice:
-
-> **Evidence and hypotheses negotiate association.**
-
-Across slices:
-
-> **Temporal continuity turns those associations into persistence.**
-
-Later:
+The architecture therefore separates three kinds of state:
 
 ~~~text
-V1
-evidence <-> hypothesis association through time
-        |
-        v
-V2
-+ predictive messages across time
-        |
-        v
-V3
-+ actions conditioning those transitions
-        |
-        v
-V4+
-+ touch
-+ active sensing
-+ conditional computation
-+ hierarchy
-+ lifelong recall
+RECENT TRAIL
+where the current evidence has just been
+
+ACTIVE TRACK
+which continuing physical source is being followed
+
+PERSISTENT OBJECT MODEL
+what has been learned about that source across
+views and encounters, including landmarks that
+have not been seen recently
 ~~~
+
+The time-indexed trail↔track association still matters. It describes continuity through the current encounter.
+
+The persistent object model sits above that tracking process. It supplies durable structure against which the current trail can be recognized and localized.
+
+Action-conditioned prediction then operates on the combination:
+
+$$
+(\text{persistent model},\text{localized recent trail},\text{action})
+\rightarrow
+\text{predicted next trail / landmark transition}.
+$$
 
 The robot does not need to decide immediately what every observation *is*.
 
