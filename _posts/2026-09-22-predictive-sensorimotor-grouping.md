@@ -638,116 +638,90 @@ A useful experimental comparison is therefore:
 
 If a simpler competitive recurrent-slot model performs equally well, PSG should prefer the simpler mechanism.
 
-## 6. Prediction comes after streaming association
+## 6. Prediction comes after tracking and object localization
 
-Prediction is deliberately moved out of V1.
+Prediction is deliberately staged after PSG can maintain active tracks and construct or recognize persistent object models.
 
-First establish whether the evidence-hypothesis-time representation produces stable online grouping.
+The architecture now gives prediction a much more specific input.
 
-Then V2 can add predictive messages.
+At time \(t\), PSG may know:
 
-### V2: passive predictive persistence
+- persistent object model \(M_j\);
+- current local state \(\ell_t\), inferred from the recent trail;
+- recent trail \(R_t\);
+- later, known action or self-motion \(a_t\).
 
-At time \(t\), each hypothesis has:
-
-- its current recurrent state;
-- fast evidence history;
-- slow evidence history;
-- current association pattern.
-
-Before time \(t+1\) arrives, it can predict the **kind of evidence and association change** it expects next.
-
-The future evidence indices themselves do not yet exist, so the system need not literally predict a dense \(W_{t+1}\) matrix.
-
-Instead, it can predict a distribution or latent expectation over future local evidence:
+A passive predictive version can begin with:
 
 $$
-\hat R_{k,t+1}
+\hat R_{t+1}
 =
-F(H_k(t),B_k^S,B_k^L).
+F(M_j,\ell_t,R_t).
 $$
 
-When actual evidence arrives, predictive compatibility becomes another message:
+When new evidence arrives, the predicted trail can provide additional support for both track continuity and localization.
 
-$$
-m^{\text{pred}}_{ik}(t+1)
-=
-C\!\left(e_i(t+1),\hat R_{k,t+1}\right).
-$$
-
-The association process can then combine:
-
-- bottom-up evidence support;
-- hypothesis-to-evidence support;
-- temporal continuity;
-- predictive agreement.
-
-The causal rule is strict:
+The causal rule remains strict:
 
 > A prediction used to support an association at time \(t+1\) must have been generated before the evidence at \(t+1\) was incorporated.
 
 Otherwise a hypothesis can claim evidence, train on it, and then cite its own reconstruction as proof of ownership.
 
-## 7. Actions belong on the transitions, not as another axis
+## 7. Actions condition transitions in the persistent trail
 
-Action enters naturally after the time-indexed association model is established.
+Action fits naturally once the object has a learned landmark or transition structure.
 
-The evidence axis, hypothesis axis, and time axis describe the history of grouping.
-
-Action is better understood as a **condition or label on the transition between time slices**.
-
-Without action:
+The key prediction becomes:
 
 $$
-\text{state at }t
-\longrightarrow
-\text{state at }t+1.
-$$
-
-With known action \(a_t\):
-
-$$
-(\text{state at }t,a_t)
-\longrightarrow
-\text{state at }t+1.
-$$
-
-For a hypothesis:
-
-$$
-\hat R_{k,t+1}
+(\hat \ell_{t+1},\hat R_{t+1})
 =
-F(H_k(t),B_k^S,B_k^L,a_t).
+F(M_j,\ell_t,R_t,a_t).
 $$
+
+The terms now have distinct roles:
+
+- \(M_j\): the persistent object model;
+- \(\ell_t\): current localization within that model;
+- \(R_t\): immediate recent evidence trail;
+- \(a_t\): executed action or known self-motion;
+- \(\hat \ell_{t+1}\): predicted next local state;
+- \(\hat R_{t+1}\): predicted next evidence trail.
 
 ~~~text
-association state at t
-        +
-known action a[t]
-        |
-        v
-expected future evidence / support
-        |
-        v
-actual evidence at t+1
-        |
-        v
-new association slice
+persistent object model M42
+          +
+current local trail near L3
+          +
+known move-right action
+          |
+          v
+predict transition toward L4
+          |
+          v
+predict handle-like evidence
+          |
+          v
+actual next trail
 ~~~
 
-This gives action a useful role in persistence.
+If the expected transition occurs, several beliefs strengthen together:
 
-The system can ask not merely whether two observations occurred near each other in time, but whether a known intervention produced a predictable transformation in the evidence associated with one continuing hypothesis.
+- the active track is probably still following the same thing;
+- the recognition match to \(M_{42}\) becomes stronger;
+- localization within \(M_{42}\) advances toward the predicted region.
 
-This also suggests a route to **implicit geometry**.
+This gives PSG a form of **sensorimotor geometry**.
 
-PSG may not need to build an explicit persistent object-relative coordinate frame. If recent evidence plus action reliably predicts the next local evidence state, the learned transition structure can encode the useful topology of the object without naming coordinates such as
+The model need not explicitly store an object-relative coordinate such as
 
 $$
 (x,y,z,\theta).
 $$
 
-That is a later hypothesis, not a V1 requirement.
+Instead, the landmark topology plus learned action-conditioned transitions can encode which local evidence states are reachable from which others.
+
+Actions therefore label or condition transitions through the persistent object model rather than becoming another axis of the representation.
 
 ## 8. Predictive Evidence Refinement and active sensing are later stages
 
