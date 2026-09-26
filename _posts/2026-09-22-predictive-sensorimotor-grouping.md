@@ -278,9 +278,19 @@ Touch should eventually get its own modality-specific encoder rather than being 
 
 That remains important to the broader PSG program, but it is intentionally out of scope for V1.
 
-## 2. Group occurrences into revisable persistent hypotheses
+## 2. First matching problem: recent trails to active persistent tracks
 
-After local feature extraction, PSG maintains a bounded active set of persistent hypotheses:
+After local feature extraction, PSG groups temporally adjacent occurrences into short recent trails.
+
+A trail is more informative than one raw pixel or one isolated feature. It can contain local appearance, motion, timing, and the order in which nearby motifs were encountered.
+
+~~~text
+recent trail R_i(t)
+
+e(t-3) -> e(t-2) -> e(t-1) -> e(t)
+~~~
+
+PSG then maintains a bounded active set of tracks:
 
 $$
 H_1,H_2,\ldots,H_K.
@@ -288,16 +298,16 @@ $$
 
 \(K\) is a computational budget, not a claim that the world contains exactly \(K\) objects.
 
-A hypothesis can be activated, weakened, retired, recycled, split, or merged as evidence changes. V1 does not need sophisticated lifecycle logic, but it should avoid treating the active count as an ontological constant.
+The first association matrix \(A_t(i,k)\) asks:
 
-### Evidence can vote upward
+> Which active track, if any, best explains the continuity of this recent trail?
 
-A local occurrence can evaluate which hypotheses it supports.
+### Trails can vote upward
 
-Conceptually:
+A recent trail can support several active tracks while evidence is ambiguous:
 
 ~~~text
-occurrence e29 says:
+trail R29 says:
 
 H1: weak support
 H2: strong support
@@ -305,215 +315,278 @@ H3: little support
 H7: moderate support
 ~~~
 
-The key point is that those values do **not** initially have to sum to one.
+Those values do not initially have to sum to one.
 
-An ambiguous observation may legitimately support multiple explanations.
+Two visually similar objects may remain ambiguous during an overlap or occlusion. PSG should be allowed to defer the decision until later evidence separates their trajectories.
 
-This is different from making every local feature immediately participate in a normalized winner-take-more competition.
+### Active tracks can answer downward
 
-### Hypotheses can answer downward
+An active track can also inspect the current trails:
 
-Inference can also run in the opposite direction.
-
-A persistent hypothesis can inspect current occurrences and ask:
-
-> Which evidence is consistent with the thing I have been explaining?
+> Which recent trails are consistent with the physical source I have been following?
 
 ~~~text
-hypothesis H7 says:
+active track H7 says:
 
-e3:  strong claim
-e8:  weak claim
-e29: strong claim
-e44: moderate claim
+R3:  strong continuity
+R8:  weak continuity
+R29: strong continuity
+R44: moderate continuity
 ~~~
 
-Again, another hypothesis may also claim \(e_{29}\).
-
-The association \(W_t(i,k)\) can therefore be understood as something negotiated from both directions rather than produced by only one side.
-
-### Bidirectional message passing
+This makes the first matching problem naturally bidirectional.
 
 A V1 update can alternate between:
 
 ~~~text
-1. evidence -> hypothesis
-   "which hypotheses do I support?"
+1. recent trail -> active track
+   "which continuing source do I support?"
 
-2. hypothesis update
-   integrate current messages with persistent memory
+2. active-track update
+   integrate support with recent continuity state
 
-3. hypothesis -> evidence
-   "which current occurrences are consistent with me?"
+3. active track -> recent trail
+   "which trails remain consistent with me?"
 
-4. evidence update
-   revise association strengths
+4. revise A[t]
 
 5. repeat for a bounded number of inference iterations
 ~~~
 
-This resembles learned message passing or belief refinement more than classical static segmentation.
+Competition is still useful where physical ownership should be exclusive, but it is not assumed to be the universal operation.
 
-It also makes recurrence natural. The same hypothesis nodes continue to exist while the evidence nodes change as video arrives.
+### Time is the third dimension of tracking
 
-### Collaboration first, competition where justified
+A single \(A_t\) matrix describes only one physical moment.
 
-Competition is still useful, but PSG should not assume that all evidence ownership is globally exclusive.
-
-Some cases really do imply competition. If two hypotheses represent distinct physical objects and one highly local occurrence cannot plausibly come from both, then stronger support for one should suppress the other.
-
-Other cases should remain collaborative:
-
-- one occurrence may support an object and one of its parts;
-- evidence may support both a local group and a future composite group;
-- two hypotheses may both remain plausible during an occlusion;
-- an occurrence may support a relation between hypotheses rather than either object alone.
-
-So competition is better treated as a **constraint on particular relationships** than as the universal inference rule.
-
-This leaves room for later hierarchy and compositionality without forcing every level to steal evidence from every other level.
-
-## 3. Time is a third dimension of the matching problem
-
-A single association matrix \(W_t\) is only one slice.
-
-The more interesting PSG object is the history:
+The history
 
 $$
-W(i,k,t).
+A(i,k,t)
 $$
 
-Conceptually:
+describes how recent trails remain associated with active tracks over time.
 
-- the evidence axis asks which local observations are present;
-- the hypothesis axis asks which persistent explanations are active;
-- the time axis asks how those relationships evolve.
-
-Persistence then becomes more precise.
-
-Suppose \(H_7\) is supported by evidence \(e_2,e_3,e_4\) at one moment and by entirely different evidence \(e_{17},e_{21},e_{28}\) later.
+Suppose \(H_7\) is supported by one collection of trails now and a different collection later:
 
 ~~~text
-time t        time t+1       time t+2       time t+3
+time t          time t+1        time t+2
 
-e2  --\
-e3  ----> H7   e8  --\        e14 --\        e22 --\
-e4  --/        e9  ----> H7   e15 ----> H7   e24 ----> H7
-               e10 --/        e19 --/        e27 --/
+R2 --\
+R3 ----> H7      R8 --\          R14 --\
+R4 --/           R9 ----> H7     R15 ----> H7
+                  R10 --/         R19 --/
 ~~~
 
-The pixels and local motifs have changed.
+The individual evidence changes. The continuing source hypothesis persists.
 
-What persists is the continuing hypothesis and the temporal coherence of the evidence supporting it.
+This is the first meaning of persistence in PSG:
 
-This suggests a stronger working definition:
+> **An active track is a temporally coherent path through changing recent evidence.**
 
-> **A persistent hypothesis is a temporally coherent trajectory through changing evidence associations.**
+The implementation does not need to store the entire \(A(i,k,t)\) volume. It can keep a bounded recent trail history plus recurrent track state.
 
-### Ambiguity can remain unresolved
+## 3. Second matching problem: active tracks to persistent object models
 
-This view changes how PSG should treat uncertain segmentation.
+Tracking continuity is not the same as recognizing a known object.
 
-Suppose one time slice contains:
+Once an active track has enough evidence, PSG can compare it with a collection of persistent object models:
+
+$$
+M_1,M_2,\ldots,M_N.
+$$
+
+The second association matrix
+
+$$
+B_t(k,j)
+$$
+
+asks:
+
+> Does active track \(H_k\), together with its current trail and accumulated encounter evidence, correspond to persistent object model \(M_j\)?
+
+This association can also remain uncertain.
 
 ~~~text
-             H1      H2
+active track H7:
 
-e17          .65     .62
-e18          .70     .66
-e19          .61     .64
+M12: 0.08
+M42: 0.91
+M77: 0.18
+NEW: 0.11
 ~~~
 
-A static decomposition would be pressured to decide.
+The exact values need not be calibrated probabilities.
 
-PSG can preserve the ambiguity.
+### Unknown but consistently traceable objects
 
-If later slices show that one subset of evidence evolves with \(H_1\) while another evolves with \(H_2\), the temporal trajectory resolves the earlier uncertainty.
-
-So instead of asking only:
-
-> Which hypothesis owns this evidence now?
-
-PSG can ask:
-
-> Which evolving assignment produces the most coherent explanation over time?
-
-**Time itself becomes evidence.**
-
-### The implementation does not store the whole volume
-
-The full \(W(i,k,t)\) history may be useful conceptually but wasteful computationally.
-
-A streaming implementation can retain:
+A particularly important state is:
 
 ~~~text
-current association slice W[t]
+H7
 
-recent association history
-    W[t-L] ... W[t]
-
-per-hypothesis recent evidence
-
-per-hypothesis slower evidence memory
-
-persistent hypothesis state
+tracking continuity: strong
+known object match: none
 ~~~
 
-Older information can be consolidated or discarded.
+The system should be able to follow a previously unseen object for an extended encounter without prematurely forcing it into the nearest known identity.
 
-The complete trajectory describes what the system has inferred. The online state only needs enough history to continue inference.
+As evidence accumulates, PSG can construct a new persistent object model from the active track.
 
-## 4. Short- and long-timescale evidence memory {:#4-thinking-harder-means-another-pass-over-the-same-evidence}
+Later, when the object disappears and reappears, the new active track can be matched back to that stored model.
 
-The earlier PSG draft attached short- and long-term buffers to recurrent slots. The buffers remain useful, but they now belong more generally to **persistent hypothesis nodes**.
+### A persistent object is not a long FIFO
 
-A hypothesis can carry:
+The previous PSG draft treated slower evidence memory as though it might itself become the object representation.
+
+That is insufficient.
+
+An object model needs to preserve evidence that is not currently or recently visible and organize it into a structure that can be revisited.
+
+A candidate model is:
 
 ~~~text
-H[k]
-├── fast evidence memory
-│   ├── recent occurrence references or embeddings
-│   ├── recent association strengths
-│   ├── timestamps
-│   └── dense local temporal context
+M[j]
+├── landmarks / persistent evidence states
+│   ├── representative motif evidence
+│   ├── uncertainty
+│   └── modality-specific evidence later
 │
-├── slow evidence memory
-│   ├── older representative evidence
-│   ├── historical association confidence
-│   ├── sparse / consolidated samples
-│   └── broader identity context
+├── transition structure
+│   ├── observed landmark-to-landmark transitions
+│   ├── transition confidence
+│   └── later: action-conditioned transition models
 │
-└── hypothesis state
-    ├── activity / confidence
-    ├── age / last support
-    └── learned recurrent summary
+└── identity-level state
+    ├── accumulated encounters
+    ├── model confidence
+    └── lifecycle / consolidation state
 ~~~
 
-The fast memory asks:
+The representation need not be an explicit metric mesh.
 
-> What has been supporting this hypothesis recently?
+It can instead be a learned topology: a structured memory of which evidence states tend to follow or become reachable from which others.
 
-The slow memory asks:
+### Object construction and recognition are reciprocal
 
-> What broader range of evidence has historically been compatible with this continuing hypothesis?
+During a novel encounter:
 
-These memories can influence both directions of message passing.
+~~~text
+recent trail
+    |
+    v
+active track H_new
+    |
+    v
+accumulate landmarks / transitions
+    |
+    v
+new persistent model M_new
+~~~
 
-An incoming occurrence can compare itself with recent and older evidence associated with a hypothesis.
+During a later encounter:
 
-A hypothesis can use both memories when deciding which current occurrences it expects to be relevant.
+~~~text
+recent trail
+    |
+    v
+active track H7
+    |
+    v
+match H7 + trail against stored models
+    |
+    v
+recognize M_new
+~~~
 
-### Why keep literal evidence initially?
+This separation prevents representational novelty from automatically becoming ontological novelty. Failure to match a known model can remain uncertain while tracking continues.
 
-A single recurrent vector can hide whether the model retained several distinct modes or simply averaged them together.
+## 4. Recent trails localize within persistent object models {:#4-thinking-harder-means-another-pass-over-the-same-evidence}
 
-Literal bounded evidence buffers make V1 easier to inspect and allow recent assignments to remain revisable.
+Once an active track has a plausible object-model match, the recent trail provides the current local state within that object's learned topology.
 
-A mug may generate very different evidence at its rim, side, handle, and base. The hypothesis should not be forced to compress all of that diversity into one average appearance before we know whether such compression is safe.
+Let the currently favored model be \(M_j\).
 
-For V1, the slow buffer does not need an elaborate learned consolidation mechanism. Periodic sampling, reservoir sampling, or a simple novelty gate are enough to test whether a second timescale helps.
+PSG can infer
 
-Later versions can replace literal buffers with learned prototypes, memory tokens, consolidated states, or another representation if experiments justify it.
+$$
+\ell_t
+=
+\operatorname{Localize}(R_t,M_j),
+$$
+
+where \(\ell_t\) is the current position in the learned landmark structure.
+
+This position does not have to be a Cartesian coordinate.
+
+It could be:
+
+- one landmark;
+- a soft distribution over landmarks;
+- a short sequence such as \(L_{12}\rightarrow L_{13}\rightarrow L_{19}\);
+- a learned latent state associated with a neighborhood of the object model.
+
+### Example: building a mug model
+
+A persistent mug model might eventually contain:
+
+~~~text
+L1: circular rim evidence
+L2: smooth side evidence
+L3: handle junction evidence
+L4: handle outer-curve evidence
+L5: bottom-transition evidence
+
+learned topology:
+
+L1 -> L2
+L2 -> L3
+L3 -> L4
+L2 -> L5
+~~~
+
+Now suppose the current recent trail contains:
+
+~~~text
+circular edge
+    ->
+smooth vertical surface
+    ->
+small horizontal protrusion
+~~~
+
+The trail can match approximately to
+
+~~~text
+L1 -> L2 -> L3
+~~~
+
+inside the persistent model.
+
+That gives the system both identity context and local state:
+
+~~~text
+active track: H7
+recognized model: M42
+localized trail: near L3
+~~~
+
+This is more informative than a long-term bag of historical evidence. Evidence that has not appeared for a long time can still remain part of \(M_{42}\) and become relevant again when the recent trail reaches that region.
+
+### Recent memory and persistent memory now have different jobs
+
+The short recent trail answers:
+
+> Where am I in the currently experienced evidence topology, and how did I get here?
+
+The persistent object model answers:
+
+> What broader landmark and transition structure has been learned for this thing, including evidence not seen recently?
+
+That distinction replaces the earlier fast-buffer / slow-buffer picture.
+
+A small recent FIFO may still be an implementation detail, but the long-lived object representation should be structured rather than merely older evidence.
 
 ## 5. Slot Attention is a baseline, not the ontology
 
