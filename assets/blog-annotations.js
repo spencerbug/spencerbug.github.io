@@ -6,6 +6,12 @@
   const article = document.querySelector(".post-content");
   if (!article) return;
 
+  // The prose before the first h2 is the article's first section, but it has no
+  // heading inside .post-content. Use the post title as a stable annotation
+  // control for that introductory section.
+  const introHeading = document.querySelector(".post-title");
+  if (introHeading && !introHeading.id) introHeading.id = "article-introduction";
+
   const storageKey = "blog-annotations:v1:" + window.location.pathname;
   const draftStorageKey = "blog-annotation-drafts:v1:" + window.location.pathname;
   const headingSelector = "h2, h3, h4";
@@ -84,7 +90,8 @@
       if (element.matches && element.matches(headingSelector)) return element;
       element = element.previousElementSibling;
     }
-    return null;
+    // Text before the first h2 belongs to the article introduction.
+    return introHeading;
   }
 
   function rememberSelection() {
@@ -318,9 +325,13 @@
   }
 
   const headings = Array.from(article.querySelectorAll(headingSelector));
+  if (introHeading) headings.unshift(introHeading);
+
   headings.forEach(function (heading) {
     ensureHeadingId(heading);
-    heading.dataset.annotationSection = normalizeText(heading.textContent);
+    heading.dataset.annotationSection = heading === introHeading
+      ? "Introduction"
+      : normalizeText(heading.textContent);
     const button = document.createElement("button");
     button.type = "button";
     button.className = "annotation-add";
