@@ -4,18 +4,20 @@ title: "Predictive Sensorimotor Grouping: From Motifs to Persistent Things"
 date: 2026-09-22 22:36:00 -0500
 last_modified_at: 2026-09-26
 permalink: /blog/predictive-sensorimotor-grouping/
-description: "A working architecture for streaming evidence-hypothesis association through time, with persistent revisable groups and staged predictive extensions."
+description: "A working architecture for forming active tracks from recent evidence, matching them to persistent landmark models, and learning sensorimotor transitions."
 ---
 
 {% include ai-assisted-author-note.html %}
 
 **Working research note · architecture under active review.** Predictive Sensorimotor Grouping (PSG) is an exploratory design, not an experimentally validated model. The architecture has changed as the research question has become more precise.
 
-The current V1 no longer assumes that Slot Attention is the grouping mechanism. Slot Attention remains an important baseline and source of ideas, but the more general PSG picture is now:
+The current V1 no longer assumes that Slot Attention is the grouping mechanism. Slot Attention remains an important baseline and source of ideas, but PSG now separates two problems that were previously conflated:
 
-> **At each moment, local evidence and persistent hypotheses form a soft bipartite association problem. Those associations evolve through time. Persistence is the continuity of that evolving evidence-hypothesis structure, not merely the recurrence of a fixed slot vector.**
+> **First, a recent evidence trail must be associated with a continuing active track: is this still the same currently observed thing? Second, that active track must be associated with a structured persistent object model: is this a known thing, and where is the current trail within its learned landmark topology?**
 
-Prediction, action conditioning, tactile sensing, active sensing, hierarchy, and lifelong object recall remain staged extensions rather than requirements for V1.
+The recent trail supplies local state. The active track supplies continuity through the current encounter. The persistent object model stores evidence and transition structure that may not have been observed recently at all.
+
+Prediction, action conditioning, tactile sensing, active sensing, hierarchy, and scalable lifelong retrieval remain staged extensions rather than requirements for the first tracking and object-model experiments.
 
 ## The problem: how does experience become a thing?
 
@@ -51,88 +53,142 @@ The third item is the difficult one. A persistent thing does not need to be repr
 
 ## Architecture at a glance
 
-The central V1 object is a changing association structure between **evidence occurrences** and **persistent hypotheses**.
+The revised PSG architecture has three distinct temporal structures:
 
-At one physical time \(t\), define an association value
+1. a **recent evidence trail**, containing what has just been observed;
+2. an **active persistent track**, representing one currently traceable source through the ongoing encounter;
+3. a **persistent object model**, retaining landmarks and transitions that can survive long absences from the current sensory stream.
 
-$$
-W_t(i,k)
-=
-\text{support between evidence occurrence } e_i(t)
-\text{ and hypothesis } H_k(t).
-$$
+The important distinction is:
 
-\(W_t(i,k)\) does not have to be a calibrated probability in the first prototype. It can be a learned support or compatibility score.
+> **Tracking asks whether current evidence belongs to the same continuing thing. Recognition asks whether that currently tracked thing corresponds to a durable object model encountered before.**
 
-Each time slice therefore looks like a soft bipartite graph:
-
-~~~text
-evidence occurrences                 persistent hypotheses
-
-e1  -------------------------------> H1
- | \                                  ^
- |  \-------------------------------> H2
- |
-e2  -------------------------------> H2
- |  \-------------------------------> H3
- |
-e3  -------------------------------> H1
-    \-------------------------------> H3
-~~~
-
-The key addition is **time**.
-
-Stack the association slices conceptually and PSG becomes a three-dimensional structure:
-
-~~~text
-                     physical time
-                          ^
-                          |
-                  [ W(t+2) ]
-                 /         /
-                /         /
-               [ W(t+1) ]
-              /         /
-             /         /
-            [  W(t)  ]
-
-      evidence x hypotheses in each slice
-~~~
-
-This is a conceptual volume, not necessarily a literal dense tensor stored in memory. The number and identity of evidence occurrences can change from moment to moment.
-
-The current research hypothesis is:
-
-> **A persistent thing can be represented as a temporally coherent path through a changing field of evidence-hypothesis associations.**
-
-That framing makes uncertainty useful. PSG does not have to force a complete partition of the current frame before moving forward. An ambiguous occurrence can support several hypotheses until later temporal evidence distinguishes them.
-
-### V1, V2, and V3
-
-The implementation sequence is now:
+Those are two different association problems.
 
 ~~~mermaid
 flowchart TD
-    V["V1 · streaming video"] --> E["local evidence occurrences"]
-    E --> B["soft evidence ↔ hypothesis associations"]
-    B --> H["persistent hypothesis state"]
-    H --> B
-    B --> T["association structure through time"]
-
-    T --> P["V2 · predictive messages across time"]
-    P --> B
-
-    P --> A["V3 · action-conditioned transitions"]
-    A --> S["sensorimotor persistence"]
-
-    S --> X["V4+ · touch, active sensing, hierarchy, lifelong recall"]
+    V["streaming video"] --> E["local motif occurrences"]
+    E --> R["recent evidence trails"]
+    R --> A1["association 1: trail ↔ active track"]
+    A1 --> T["active persistent tracks"]
+    T --> A2["association 2: track + trail ↔ object model"]
+    R --> A2
+    A2 --> M["persistent landmark / transition models"]
+    M --> L["localize recent trail within object model"]
+    R --> L
+    L --> P["later: predict next trail / landmark transition"]
+    M --> P
+    X["known action or self-motion"] --> P
 ~~~
 
-The immediate V1 question is:
+An active track can remain strong even when recognition is unresolved:
 
-> **Can a recurrent evidence-hypothesis association process maintain stable unsupervised groupings in live video by combining current support with temporal continuity, without requiring a fixed competitive slot decomposition?**
+~~~text
+active track H7
 
-Slot Attention is an important baseline for that question, not the definition of PSG.
+continuity confidence: high
+persistent identity: unknown
+~~~
+
+That is a feature rather than a failure. A novel object should be trackable before the system knows whether it has seen that object before.
+
+### First association: recent trail to active track
+
+Let \(R_i(t)\) denote recent evidence trail \(i\), and let \(H_k(t)\) denote active track \(k\).
+
+Define a soft association
+
+$$
+A_t(i,k)
+=
+\text{support that recent trail }R_i(t)
+\text{ belongs to active track }H_k(t).
+$$
+
+At each time slice, this is a bipartite association problem:
+
+~~~text
+recent trails                         active tracks
+
+R1  --------------------------------> H1
+ | \                                  ^
+ |  \-------------------------------> H2
+ |
+R2  --------------------------------> H2
+ |  \-------------------------------> H3
+ |
+R3  --------------------------------> H1
+    \-------------------------------> H3
+~~~
+
+Stack those association slices through physical time and the tracking problem becomes a conceptual volume
+
+$$
+A(i,k,t).
+$$
+
+A continuing thing is therefore not one fixed set of pixels. It is a coherent path through changing trail-to-track associations.
+
+### Second association: active track to persistent object model
+
+Now let \(M_j\) denote persistent object model \(j\).
+
+A second relation asks whether active track \(H_k\), together with its accumulated and current trail evidence, corresponds to a known persistent object:
+
+$$
+B_t(k,j)
+=
+\text{support that active track }H_k(t)
+\text{ corresponds to object model }M_j.
+$$
+
+Failure to recognize an object therefore does not break tracking. A high-confidence active track can remain associated with an UNKNOWN alternative while PSG gradually constructs a new object model.
+
+### The persistent object model is structured
+
+The long-term representation should not be only a FIFO of old evidence.
+
+A persistent object model needs to retain evidence that may not have been observed recently and organize that evidence into something that can support relocalization and future transition prediction.
+
+A minimal conceptual model is a set of landmarks plus learned transitions:
+
+~~~text
+persistent object M42
+
+        [L1 rim]
+        /      \
+       /        \
+ [L2 side] ---- [L4 opposite side]
+      |
+      |
+ [L3 handle junction] ---- [L5 handle]
+~~~
+
+A landmark need not be a named semantic part or an explicit 3-D coordinate. It can be a learned recurring evidence state, a prototype, a local latent state, or another compact representation.
+
+The edges encode observed reachability or transition structure. Later, those edges can be conditioned on known action or self-motion.
+
+### The recent trail can act as the local coordinate
+
+PSG does not necessarily need to encode the current location on an object as an explicit Euclidean pose such as
+
+$$
+(x,y,z,\theta).
+$$
+
+Instead, the recent trail can be matched against the object's learned landmark topology:
+
+$$
+\ell_t
+=
+\operatorname{Localize}(R_t,M_j).
+$$
+
+Here \(\ell_t\) may be a landmark, a probability distribution over landmarks, a short landmark path, or a learned local state.
+
+The persistent object model provides global context. The recent trail says where the current encounter appears to be within that structure.
+
+This gives the architecture a route to learned geometry without requiring a pre-specified geometric coordinate system.
 
 ## 1. Visual Motif Encoder: Build local sensorimotor motifs before trying to build objects {:#1-build-local-sensorimotor-motifs-before-trying-to-build-objects}
 
