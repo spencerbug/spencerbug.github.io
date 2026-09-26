@@ -257,7 +257,7 @@ uncertainty
 
 The occurrence itself already contains a small amount of **micro-time**: it summarizes what happened locally over a short window.
 
-The evidence-hypothesis association process then evolves over a longer **macro-time**. This distinction matters:
+The trail-to-track association process then evolves over a longer **macro-time**. This distinction matters:
 
 ~~~text
 short temporal motif
@@ -266,10 +266,13 @@ short temporal motif
 evidence occurrence
         |
         v
+recent evidence trail
+        |
+        v
 association through many video steps
         |
         v
-persistent hypothesis
+active persistent track
 ~~~
 
 ### Tactile motifs are a later extension
@@ -592,9 +595,7 @@ A small recent FIFO may still be an implementation detail, but the long-lived ob
 
 Slot Attention remains relevant because it offers a clear solution to one nearby problem: a fixed number of latent slots can compete to explain features within an observation.
 
-That makes it an important baseline.
-
-But PSG now asks a more general question.
+That makes it an important baseline for the **first matching problem**.
 
 Slot Attention can be summarized roughly as:
 
@@ -611,32 +612,38 @@ fixed slot set
 scene decomposition
 ~~~
 
-The PSG candidate mechanism is:
+The PSG tracking candidate is broader:
 
 ~~~text
-streaming evidence
+local occurrences
       |
       v
-evidence <----> persistent hypotheses
-      |              |
-      +---- messages-+
-             |
-             v
-     associations through time
+recent evidence trails
+      |
+      v
+trails <----> active tracks
+      |
+      v
+associations evolving through time
 ~~~
 
-The difference is not that competition is forbidden. It is that **competition is no longer assumed to be the only or fundamental interaction**.
+The difference is not that competition is forbidden. It is that **competition is no longer assumed to be the only or fundamental interaction**, and the active tracking layer is only one stage of the architecture.
+
+Even a successful recurrent Slot Attention baseline would still leave the second problem open:
+
+> How does a currently tracked thing map to a durable object model containing landmarks that may not have been visible during the current encounter?
 
 A useful experimental comparison is therefore:
 
 - static Slot Attention;
 - a recurrent/video Slot Attention baseline;
-- one-way evidence-to-hypothesis assignment;
-- bidirectional evidence-hypothesis message passing;
-- message passing with fast memory;
-- message passing with fast and slow memory.
+- one-way trail-to-track assignment;
+- bidirectional trail↔track message passing;
+- a persistent landmark store;
+- a structured landmark/transition model;
+- track→object recognition and relocalization.
 
-If a simpler competitive recurrent-slot model performs equally well, PSG should prefer the simpler mechanism.
+If a simpler competitive recurrent-slot model performs equally well for active tracking, PSG should use the simpler tracking mechanism and reserve complexity for the object-model problem that actually requires it.
 
 ## 6. Prediction comes after tracking and object localization
 
@@ -908,30 +915,33 @@ First solve what one persistent model should contain and how an active track map
 
 PSG and the Thousand Brains / Monty direction share several motivations: local sensing, temporal persistence, multiple hypotheses, movement, and eventually compositional behavior.
 
-One conceptual difference is what must become explicit.
+One conceptual difference is how geometry and persistence are represented.
 
-A reference-frame-centered system can represent features at locations in an object-relative model and infer identity and pose.
+A reference-frame-centered system can represent features at explicit locations in an object-relative model and infer identity and pose within that coordinate frame.
 
-PSG explores a weaker commitment.
+PSG now proposes a different decomposition:
 
-A persistent hypothesis can instead be defined by:
+- a recent evidence trail supplies the current local history;
+- an active track preserves continuity through the current encounter;
+- a persistent object model stores landmarks and their learned transition structure across encounters.
 
-- its accumulated evidence;
-- its current support relations;
-- the temporal trajectory of those relations;
-- later, the predictable consequences of action.
-
-An action-conditioned predictor can eventually learn:
+The recent trail can then be localized within the persistent object model:
 
 $$
-P(R_{t+1}\mid R_t,M,a_t),
+\ell_t
+=
+\operatorname{Localize}(R_t,M_j).
 $$
 
-where \(R_t\) is the recent local evidence state and \(M\) is broader persistent context.
+Later, an action-conditioned predictor can learn:
 
-If that is sufficient for useful prediction and grouping, explicit object-relative geometry may not be required. The topology of predictable transitions can itself become the useful geometry.
+$$
+P(R_{t+1},\ell_{t+1}\mid R_t,\ell_t,M_j,a_t).
+$$
 
-That is a hypothesis, not yet a result.
+If this is sufficient for useful prediction and grouping, PSG may not need to construct an explicit object-relative Cartesian frame. The topology of landmarks and predictable transitions can itself provide the geometry needed for action and persistence.
+
+This is a hypothesis, not yet a result. An explicit reference frame may still prove more efficient or more stable. The proposed experiments should compare those possibilities rather than assume the topological representation is sufficient.
 
 ## What PSG is claiming—and what it is not
 
@@ -1049,4 +1059,4 @@ $$
 
 The robot does not need to decide immediately what every observation *is*.
 
-It needs a disciplined way to maintain provisional explanations, let evidence and hypotheses influence each other, preserve uncertainty when the present moment is insufficient, and use time to discover which explanations actually persist.
+It needs a disciplined way to turn local evidence into recent trails, keep those trails attached to continuing active tracks, preserve uncertainty when identity is unresolved, and build durable object models whose landmarks remain available long after they leave the current view.
