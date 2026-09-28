@@ -54,13 +54,13 @@ The first design mistake to avoid is treating every kind of error as the represe
 
 A **relational state** is a learned description of the current configuration or interaction among a factor's participants.
 
-For a simple pair of current-layer tokens \(z_i\) and \(z_j\), a relation encoder could compute
+For a simple pair of current-layer tokens \\(z_i\\) and \\(z_j\\), a relation encoder could compute
 
 $$
 r_{ij,t}=g_\theta(z_{i,t},z_{j,t}).
 $$
 
-For a factor \(f\) with participant set \(S_f\), the more general form is
+For a factor \\(f\\) with participant set \\(S_f\\), the more general form is
 
 $$
 r_{f,t}
@@ -68,11 +68,11 @@ r_{f,t}
 g_\theta\!\left(\{z_{i,t}:i\in S_f\},c_{f,t}\right),
 $$
 
-where \(c_{f,t}\) is optional context such as a factor-type embedding or local reference frame.
+where \\(c_{f,t}\\) is optional context such as a factor-type embedding or local reference frame.
 
-The participant tokens still contain their live current values. The factor stores **references or assignments to those tokens** and derives \(r_{f,t}\) from their current contents. In other words, “participating variables” identifies *which variables are involved*; it does not duplicate their current state inside the factor specification.
+The participant tokens still contain their live current values. The factor stores **references or assignments to those tokens** and derives \\(r_{f,t}\\) from their current contents. In other words, “participating variables” identifies *which variables are involved*; it does not duplicate their current state inside the factor specification.
 
-The relational state itself *is* current runtime state. For a hand-object factor, components of \(r_f\) might eventually behave like relative pose, contact mode, slip state, or another latent coordinate that makes the joint dynamics simple. Those meanings are learned rather than hand-labelled.
+The relational state itself *is* current runtime state. For a hand-object factor, components of \\(r_f\\) might eventually behave like relative pose, contact mode, slip state, or another latent coordinate that makes the joint dynamics simple. Those meanings are learned rather than hand-labelled.
 
 ### Model innovation
 
@@ -84,9 +84,9 @@ $$
 F_\theta(r_{f,t},a_{f,t},c_{f,t}),
 $$
 
-where \(a_{f,t}\) is the action input visible to the factor.
+where \\(a_{f,t}\\) is the action input visible to the factor.
 
-When the next observation arrives, the relation encoder produces \(r_{f,t+1}\). The transition innovation is
+When the next observation arrives, the relation encoder produces \\(r_{f,t+1}\\). The transition innovation is
 
 $$
 \epsilon_{f,t+1}
@@ -94,11 +94,11 @@ $$
 r_{f,t+1}-\hat r_{f,t+1}.
 $$
 
-So \(r_f\) answers **what relationship exists now?**, while \(\epsilon_f\) answers **what did the learned law fail to predict?**
+So \\(r_f\\) answers **what relationship exists now?**, while \\(\epsilon_f\\) answers **what did the learned law fail to predict?**
 
 ### Goal discrepancy
 
-When a higher level requests a desired relational state \(r_f^*\), define
+When a higher level requests a desired relational state \\(r_f^*\\), define
 
 $$
 \delta_{f,t}
@@ -157,7 +157,7 @@ g_\theta(z_{S_f,t+1})
 F_\theta(r_{f,t},a_{f,t},c_{f,t}).
 $$
 
-Since \(g_\theta(z_{S_f,t+1})=r_{f,t+1}\),
+Since \\(g_\theta(z_{S_f,t+1})=r_{f,t+1}\\),
 
 $$
 e^{\mathrm{pred}}_{f,t+1}=\epsilon_{f,t+1}.
@@ -176,9 +176,9 @@ $$
 \right].
 $$
 
-Here \(\Lambda_f\) is an **information or precision matrix**. It is not the learned relationship and it is not multiplied by a Jacobian because of some special architectural rule. It simply weights residual directions according to uncertainty and scale. If the residual coordinates carry physical units, the precision entries carry the corresponding inverse-squared units so the exponent is dimensionless.
+Here \\(\Lambda_f\\) is an **information or precision matrix**. It is not the learned relationship and it is not multiplied by a Jacobian because of some special architectural rule. It simply weights residual directions according to uncertainty and scale. If the residual coordinates carry physical units, the precision entries carry the corresponding inverse-squared units so the exponent is dimensionless.
 
-The learned relationship is represented by the current factor state \(r_f\) together with the transition law \(F_\theta\).
+The learned relationship is represented by the current factor state \\(r_f\\) together with the transition law \\(F_\theta\\).
 
 ### A factor slot is an instance, not a new network
 
@@ -190,7 +190,7 @@ That distinction matters for scaling. If every pair of tokens instantiated an in
 
 The compatibility mechanism is a proposal system. It does not itself learn the full transformation law.
 
-For candidate current-layer tokens \(i\) and \(j\), head \(h\) can produce a pairwise score such as
+For candidate current-layer tokens \\(i\\) and \\(j\\), head \\(h\\) can produce a pairwise score such as
 
 $$
 C_{ij,h}
@@ -202,18 +202,18 @@ $$
 
 The symbols are:
 
-- \(i,j\): current-layer token indices;
-- \(h\): compatibility-head index;
-- \(q_{i,h}=W_h^Qz_{i,t}\): query representation of token \(i\);
-- \(k_{j,h}=W_h^Kz_{j,t}\): key representation of token \(j\);
-- \(M_h\): a learned bilinear compatibility matrix;
-- \(\rho_{ij,t}\): cheap pairwise features available before a full factor exists;
-- \(\dot\rho_{ij,t}\): optional recent change in those pairwise features;
-- \(a_t\): relevant action context;
-- \(\Delta t\): elapsed time;
-- \(m_{ij,t-1}\): optional cached summary if a previous retained factor involved the pair;
-- \(b_h\): a learned auxiliary scoring function;
-- \(C_{ij,h}\): the final proposal score.
+- \\(i,j\\): current-layer token indices;
+- \\(h\\): compatibility-head index;
+- \\(q_{i,h}=W_h^Qz_{i,t}\\): query representation of token \\(i\\);
+- \\(k_{j,h}=W_h^Kz_{j,t}\\): key representation of token \\(j\\);
+- \\(M_h\\): a learned bilinear compatibility matrix;
+- \\(\rho_{ij,t}\\): cheap pairwise features available before a full factor exists;
+- \\(\dot\rho_{ij,t}\\): optional recent change in those pairwise features;
+- \\(a_t\\): relevant action context;
+- \\(\Delta t\\): elapsed time;
+- \\(m_{ij,t-1}\\): optional cached summary if a previous retained factor involved the pair;
+- \\(b_h\\): a learned auxiliary scoring function;
+- \\(C_{ij,h}\\): the final proposal score.
 
 Crucially, the score does **not** require computing a full predictive factor for every possible pair. Compatibility is the cheaper routing stage that decides which interactions deserve more compute.
 
@@ -259,21 +259,21 @@ This diagram intentionally stops at the **retained factor graph**. The second gr
 
 A candidate factor can be created in seven conceptual steps:
 
-1. **Score edges.** Compatibility heads compute \(C_{ij,h}\).
+1. **Score edges.** Compatibility heads compute \\(C_{ij,h}\\).
 2. **Sparsify.** Keep a bounded set of strong candidate edges.
 3. **Participant-group proposal.** Turn pairwise edges into one or more candidate participant sets.
 4. **Allocate factor slots.** Each group hypothesis receives an active factor instance.
-5. **Encode and predict.** The factor encoder computes \(r_f\); shared dynamics predict \(\hat r_{f,t+1}\).
+5. **Encode and predict.** The factor encoder computes \\(r_f\\); shared dynamics predict \\(\hat r_{f,t+1}\\).
 6. **Validate.** Prediction, persistence, intervention response, uncertainty, and control usefulness determine whether the hypothesis is worth retaining.
 7. **Build the retained factor graph.** Useful predictive factors become nodes for later message passing and composition.
 
-The expensive learned dynamics therefore run on sparse factor hypotheses rather than all \(N^2\) token pairs.
+The expensive learned dynamics therefore run on sparse factor hypotheses rather than all \\(N^2\\) token pairs.
 
 #### Does A–B plus B–C imply one A–B–C factor?
 
 This question refers specifically to **pairwise compatibility edges in the first grouping stage**.
 
-Suppose a compatibility head gives a high score to A–B and another high score to B–C. Does that mean the participant-grouping algorithm should create one factor over \(\{A,B,C\}\)?
+Suppose a compatibility head gives a high score to A–B and another high score to B–C. Does that mean the participant-grouping algorithm should create one factor over \\(\{A,B,C\}\\)?
 
 **No—not automatically. Pairwise compatibility is not transitive.**
 
