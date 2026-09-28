@@ -10,6 +10,13 @@ ROOTS = [pathlib.Path("_posts")]
 
 def scan_line(line: str, path: pathlib.Path, lineno: int) -> list[str]:
     errors: list[str] = []
+
+    stripped = line.strip()
+    if stripped in {r"\\[", r"\\]"}:
+        errors.append(
+            f"{path}:{lineno}: single-backslash display MathJax delimiter "
+            f"{stripped!r}; use $ delimiters in Markdown source"
+        )
     in_code = False
     i = 0
 
@@ -70,12 +77,12 @@ def main() -> int:
             errors.extend(scan_file(path))
 
     if errors:
-        print("Inline MathJax delimiter errors:")
+        print("MathJax delimiter errors:")
         for error in errors:
             print(f"  {error}")
         return 1
 
-    print("Inline MathJax delimiters look source-safe.")
+    print("MathJax delimiters look source-safe.")
     return 0
 
 
