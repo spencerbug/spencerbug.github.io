@@ -196,11 +196,11 @@ If higher factors retain their predictive/control meaning while low-level realiz
 
 Sweep:
 
-- input-token count \(N\);
-- retained-neighbor budget \(k\);
-- factor-slot budget \(F_{\max}\);
-- factor dimension \(d_f\);
-- hierarchy depth \(L\).
+- input-token count \\(N\\);
+- retained-neighbor budget \\(k\\);
+- factor-slot budget \\(F_{\max}\\);
+- factor dimension \\(d_f\\);
+- hierarchy depth \\(L\\).
 
 Measure wall-clock latency, memory, active factor count, compression ratio, rollout quality, control quality, planning horizon, and transfer at matched compute.
 
