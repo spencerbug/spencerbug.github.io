@@ -39,7 +39,7 @@ p(y\mid x)
 
 That assumes the identity vocabulary is known when the model is built.
 
-An embodied learner has a different problem. It may encounter object \(K+1\) tomorrow, \(K+2\) next week, and millions more over its lifetime. Rebuilding and retraining a softmax head whenever a new identity appears is the wrong abstraction.
+An embodied learner has a different problem. It may encounter object \\(K+1\\) tomorrow, \\(K+2\\) next week, and millions more over its lifetime. Rebuilding and retraining a softmax head whenever a new identity appears is the wrong abstraction.
 
 A more natural starting point is a shared encoder:
 
@@ -204,7 +204,7 @@ If
 v_{ij}<\rho,
 \]
 
-candidate \(M_j\) is reset for that patch and another candidate may be tested.
+candidate \\(M_j\\) is reset for that patch and another candidate may be tested.
 
 If no stored identity passes vigilance, the legal outcome is:
 
@@ -238,7 +238,7 @@ The central architectural rule is simple:
 }
 \]
 
-Suppose evidence through time \(t\) proposes object hypothesis \(H\).
+Suppose evidence through time \\(t\\) proposes object hypothesis \\(H\\).
 
 That evidence is sufficient to create the hypothesis:
 
@@ -288,7 +288,7 @@ Now the hypothesis can earn evidence:
 {p(E_{t+1}\mid U,E_{\le t},a_t)}.
 \]
 
-The important causal fact is that \(E_{t+1}\) could not have been used to construct the prediction that is now being tested against it.
+The important causal fact is that \\(E_{t+1}\\) could not have been used to construct the prediction that is now being tested against it.
 
 This prevents a dangerous loop:
 
@@ -358,7 +358,7 @@ Suppose two object hypotheses currently fit:
 H_1,\quad H_2.
 \]
 
-They predict similar present evidence, but different consequences under action \(a\):
+They predict similar present evidence, but different consequences under action \\(a\\):
 
 \[
 p(E_{t+1}\mid H_1,a)
@@ -448,7 +448,7 @@ A toy loss might be:
 
 All of these losses may backpropagate through overlapping shared parameters.
 
-So learning object \(M_{1001}\) does not mean:
+So learning object \\(M_{1001}\\) does not mean:
 
 > update the circuitry belonging to object 1001.
 
@@ -472,7 +472,7 @@ M_{17},M_{51},M_{983}.
 
 If future evidence confirms that none of them was correct, those are useful hard negatives.
 
-A contrastive loss can use the confirmed identity \(M_+\) against its confusing neighbors:
+A contrastive loss can use the confirmed identity \\(M_+\\) against its confusing neighbors:
 
 \[
 \mathcal L_{\text{metric}}
@@ -541,7 +541,7 @@ If object memories store embeddings,
 z=E_\theta(x),
 \]
 
-while \(E_\theta\) continues to learn, then old stored vectors eventually become stale.
+while \\(E_\theta\\) continues to learn, then old stored vectors eventually become stale.
 
 The coordinate system itself moves.
 
@@ -707,7 +707,7 @@ Higher levels may represent:
 
 The architectural rule does not have to change.
 
-A higher-level model \(H^{(\ell+1)}\) can be proposed from lower-level states:
+A higher-level model \\(H^{(\ell+1)}\\) can be proposed from lower-level states:
 
 \[
 H^{(\ell+1)}
