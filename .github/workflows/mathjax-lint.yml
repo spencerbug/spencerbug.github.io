@@ -1,0 +1,23 @@
+name: Validate MathJax delimiters
+
+on:
+  push:
+    paths:
+      - "_posts/**/*.md"
+      - "courses/**/*.md"
+      - "scripts/check_inline_mathjax.py"
+      - ".github/workflows/mathjax-lint.yml"
+  pull_request:
+    paths:
+      - "_posts/**/*.md"
+      - "courses/**/*.md"
+      - "scripts/check_inline_mathjax.py"
+      - ".github/workflows/mathjax-lint.yml"
+
+jobs:
+  inline-mathjax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check inline MathJax source delimiters
+        run: python3 scripts/check_inline_mathjax.py
