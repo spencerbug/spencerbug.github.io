@@ -274,33 +274,36 @@ Mermaid rendering is implemented in `assets/mermaid.js`. Preserve GitHub Pages c
 
 MathJax is supported site-wide for TeX/LaTeX-style mathematics.
 
-Preferred syntax:
+### Required source syntax
+
+The site is built through Jekyll/Kramdown **before** MathJax runs in the browser. Kramdown can consume TeX delimiters if they are written in an unsafe source form. Therefore use these exact Markdown-source conventions.
 
 Inline math:
 
-```text
-\( T = N / R \)
-```
+\`\`\`text
+\\( T = N / R \\)
+\`\`\`
+
+The Markdown file must contain **two literal backslashes** before each parenthesis. After Kramdown renders the page, the generated HTML should contain \`\( T = N / R \)\`, which MathJax can then typeset.
 
 Display math:
 
-```text
-$$
+\`\`\`text
+$
 AMAT = T_{L1} + MR_{L1} \left(T_{L2} + MR_{L2} T_{mem}\right)
-$$
-```
+$
+\`\`\`
 
-or:
+Use \`$ ... $\` for display equations in Markdown source.
 
-```text
-\[
-BW = \frac{bytes}{second}
-\]
-```
+**Do not use \`\[ ... \]\` as display delimiters in Markdown source.** Kramdown can strip those backslashes and emit literal square brackets around the TeX, leaving MathJax with nothing to process.
 
 Guidelines:
 
-- Do not use single `$...$` delimiters for inline math; dollar signs commonly occur in ordinary prose and costs.
+- Do not use single \`$...$\` delimiters for inline math; dollar signs commonly occur in ordinary prose and costs.
+- For inline math, always use doubled source delimiters: \`\\(\` and \`\\)\`.
+- For display math, always use \`$\` delimiters on their own lines.
+- Do not use source \`\[\` / \`\]\` delimiters in posts or course Markdown.
 - Define every symbol near its first use.
 - Follow equations with a plain-language interpretation.
 - Prefer equations when they clarify a quantitative relationship, not merely to make a lesson look formal.
@@ -308,9 +311,20 @@ Guidelines:
 - When useful, pair an equation with a concrete numerical example.
 - Keep wide equations usable on mobile; split very long expressions when possible.
 
-MathJax is configured in `_includes/head.html`.
+MathJax is configured in \`_includes/head.html\`.
 
-In Markdown prose, the single-backslash inline delimiters shown above can be consumed by the Markdown parser. Use double-backslash delimiters in the Markdown source (`\\(` and `\\)`) so the generated HTML retains `\(` and `\)`. Confirm actual inline typesetting on the built page; counting display equations alone is insufficient. Do not change delimiters inside fenced code examples or display equations indiscriminately.
+### Verification
+
+Do not treat correct-looking Markdown as sufficient verification.
+
+For a changed page containing math:
+
+1. Check the Markdown source uses \`\\(...\\)\` for inline math and \`$ ... $\` for display math.
+2. Confirm the generated HTML still contains \`\(...\)\` for inline math.
+3. Confirm display equations are not emitted as literal \`[ ... ]\` text.
+4. When practical, verify the deployed page actually typesets at least one inline and one display equation.
+
+The repository check in \`scripts/check_inline_mathjax.py\` rejects unsafe single-backslash inline delimiters and unsafe \`\[\` / \`\]\` display delimiters outside fenced code blocks. Do not change delimiters inside fenced code examples unless the example itself is intended to demonstrate the source convention.
 
 ## Labs and experiments
 
