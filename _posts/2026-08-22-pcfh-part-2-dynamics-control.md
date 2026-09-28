@@ -12,23 +12,23 @@ pcfh_part: 2
 
 **Part II · Dynamics, temporal basis, and control · approximately 10–12 minutes**
 
-Part I ended with a retained graph of predictive factors. Each factor has participant references, a current relational state \(r_f\), a learned transition law \(F_\theta\), prediction innovation \(\epsilon_f\), and uncertainty. This part asks how that same factor can support both forward prediction and downward control.
+Part I ended with a retained graph of predictive factors. Each factor has participant references, a current relational state \\(r_f\\), a learned transition law \\(F_\theta\\), prediction innovation \\(\epsilon_f\\), and uncertainty. This part asks how that same factor can support both forward prediction and downward control.
 
 ## 4. PID becomes a temporal basis, not the state representation
 
 The original inspiration used proportional, integral, and derivative quantities heavily. The important refinement is that PID-like channels are **temporal views of factor state or factor error**, not the underlying representation itself.
 
-For a retained factor \(f\), useful channels include:
+For a retained factor \\(f\\), useful channels include:
 
 | Channel | Source | Interpretation |
 | --- | --- | --- |
-| \(r_f\) | current relational state | What relationship exists now? |
-| \(D_f^r\) | change in relational state | What transformation is occurring? |
-| \(\epsilon_f\) | prediction innovation | What did the dynamics model miss? |
-| \(I_f^\epsilon\) | persistent innovation | Has the mismatch persisted? |
-| \(\delta_f\) | desired minus current relation | How far are we from the requested relationship? |
-| \(I_f^\delta\) | persistent goal discrepancy | Has the control discrepancy persisted? |
-| \(D_f^\delta\) | change in goal discrepancy | Are we approaching or leaving the goal? |
+| \\(r_f\\) | current relational state | What relationship exists now? |
+| \\(D_f^r\\) | change in relational state | What transformation is occurring? |
+| \\(\epsilon_f\\) | prediction innovation | What did the dynamics model miss? |
+| \\(I_f^\epsilon\\) | persistent innovation | Has the mismatch persisted? |
+| \\(\delta_f\\) | desired minus current relation | How far are we from the requested relationship? |
+| \\(I_f^\delta\\) | persistent goal discrepancy | Has the control discrepancy persisted? |
+| \\(D_f^\delta\\) | change in goal discrepancy | Are we approaching or leaving the goal? |
 
 Not every factor requires every channel at every timestep. In particular, goal channels exist only when the factor currently has a target.
 
@@ -45,7 +45,7 @@ D_t^{r,(\tau)}
 \right).
 $$
 
-Numerical derivatives amplify noise, so \(\operatorname{LPF}_\tau\) denotes low-pass filtering over a characteristic timescale \(\tau\). A first-order filter can be
+Numerical derivatives amplify noise, so \\(\operatorname{LPF}_\tau\\) denotes low-pass filtering over a characteristic timescale \\(\tau\\). A first-order filter can be
 
 $$
 y_t
@@ -59,7 +59,7 @@ $$
 \alpha_\tau=\frac{\Delta t}{\tau+\Delta t}.
 $$
 
-Several \(\tau\) values give the factor both fast and slow views of the same transformation.
+Several \\(\tau\\) values give the factor both fast and slow views of the same transformation.
 
 ### Persistent model mismatch
 
@@ -77,7 +77,7 @@ Persistent innovation might indicate a payload change, friction mismatch, sensor
 
 ### Goal-directed control
 
-A desired relational state \(r_f^*\) lives in the same factor-state space as the current relationship. For a hand-object factor, a target could correspond to a latent configuration such as “aligned and in stable contact” even if the coordinates are not explicitly named.
+A desired relational state \\(r_f^*\\) lives in the same factor-state space as the current relationship. For a hand-object factor, a target could correspond to a latent configuration such as “aligned and in stable contact” even if the coordinates are not explicitly named.
 
 The instantaneous goal discrepancy is
 
@@ -152,12 +152,12 @@ $$
 
 The two Jacobians have different jobs:
 
-- \(A_f\) asks how a state perturbation changes the next factor state;
-- \(B_f\) asks how an action perturbation changes the next factor state.
+- \\(A_f\\) asks how a state perturbation changes the next factor state;
+- \\(B_f\\) asks how an action perturbation changes the next factor state.
 
 This avoids the ambiguous phrase “Jacobian of the factor structure.” We differentiate a concrete learned function with known input and output spaces.
 
-For a one-step desired state \(r_f^*\), define
+For a one-step desired state \\(r_f^*\\), define
 
 $$
 \delta_f^{\mathrm{next}}
@@ -177,7 +177,7 @@ B_f^T\Lambda_f
 \delta_f^{\mathrm{next}},
 $$
 
-where \(\Lambda_f\) weights factor-state error directions and \(R_f\) regularizes action magnitude or cost.
+where \\(\Lambda_f\\) weights factor-state error directions and \\(R_f\\) regularizes action magnitude or cost.
 
 This is one possible local controller, not a requirement that every factor perform a matrix inverse. In practice, the system may use iterative optimization, learned inverse models, model-predictive control, Jacobian-vector products, or lower-dimensional action ports.
 
@@ -187,7 +187,7 @@ The architectural claim is simpler:
 
 ## The factor need not store a dense Jacobian
 
-Materializing \(A_f\) and \(B_f\) for every factor at every step could be expensive. Many calculations only require directional products such as \(Bv\) or \(B^Tv\). Automatic differentiation can compute Jacobian-vector products and vector-Jacobian products without storing the entire matrix.
+Materializing \\(A_f\\) and \\(B_f\\) for every factor at every step could be expensive. Many calculations only require directional products such as \\(Bv\\) or \\(B^Tv\\). Automatic differentiation can compute Jacobian-vector products and vector-Jacobian products without storing the entire matrix.
 
 That lets sensitivity be a *query against the factor model* rather than permanent metadata embedded in every upward token.
 
