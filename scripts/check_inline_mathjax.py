@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import pathlib
 
-ROOTS = [pathlib.Path("_posts"), pathlib.Path("courses")]
+ROOTS = [pathlib.Path("_posts")]
 
 
 def scan_line(line: str, path: pathlib.Path, lineno: int) -> list[str]:
