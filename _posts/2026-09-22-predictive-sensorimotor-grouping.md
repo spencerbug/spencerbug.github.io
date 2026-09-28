@@ -94,7 +94,7 @@ That is a feature rather than a failure. A novel object should be trackable befo
 
 ### First association: recent trail to active track
 
-Let \(R_i(t)\) denote recent evidence trail \(i\), and let \(H_k(t)\) denote active track \(k\).
+Let \\(R_i(t)\\) denote recent evidence trail \\(i\\), and let \\(H_k(t)\\) denote active track \\(k\\).
 
 Define a soft association
 
@@ -131,9 +131,9 @@ A continuing thing is therefore not one fixed set of pixels. It is a coherent pa
 
 ### Second association: active track to persistent object model
 
-Now let \(M_j\) denote persistent object model \(j\).
+Now let \\(M_j\\) denote persistent object model \\(j\\).
 
-A second relation asks whether active track \(H_k\), together with its accumulated and current trail evidence, corresponds to a known persistent object:
+A second relation asks whether active track \\(H_k\\), together with its accumulated and current trail evidence, corresponds to a known persistent object:
 
 $$
 B_t(k,j)
@@ -184,7 +184,7 @@ $$
 \operatorname{Localize}(R_t,M_j).
 $$
 
-Here \(\ell_t\) may be a landmark, a probability distribution over landmarks, a short landmark path, or a learned local state.
+Here \\(\ell_t\\) may be a landmark, a probability distribution over landmarks, a short landmark path, or a learned local state.
 
 The persistent object model provides global context. The recent trail says where the current encounter appears to be within that structure.
 
@@ -208,7 +208,7 @@ One illustrative design retains nine camera samples and therefore eight differen
 - local image motion or optical-flow-like x change;
 - local image motion or optical-flow-like y change.
 
-For a \(32\times32\) toy image:
+For a \\(32\times32\\) toy image:
 
 $$
 X_t^V \in \mathbb{R}^{3\times8\times32\times32}.
@@ -216,7 +216,7 @@ $$
 
 The eight entries on the temporal axis are differences, not eight original frames. Producing eight differences requires nine samples unless the preceding difference has already been retained.
 
-One illustrative 3D convolution uses ten filters, each spanning all three input channels with temporal-height-width extent \(3\times3\times3\):
+One illustrative 3D convolution uses ten filters, each spanning all three input channels with temporal-height-width extent \\(3\times3\times3\\):
 
 $$
 [3,8,32,32]
@@ -299,9 +299,9 @@ $$
 H_1,H_2,\ldots,H_K.
 $$
 
-\(K\) is a computational budget, not a claim that the world contains exactly \(K\) objects.
+\\(K\\) is a computational budget, not a claim that the world contains exactly \\(K\\) objects.
 
-The first association matrix \(A_t(i,k)\) asks:
+The first association matrix \\(A_t(i,k)\\) asks:
 
 > Which active track, if any, best explains the continuity of this recent trail?
 
@@ -360,7 +360,7 @@ Competition is still useful where physical ownership should be exclusive, but it
 
 ### Time is the third dimension of tracking
 
-A single \(A_t\) matrix describes only one physical moment.
+A single \\(A_t\\) matrix describes only one physical moment.
 
 The history
 
@@ -370,7 +370,7 @@ $$
 
 describes how recent trails remain associated with active tracks over time.
 
-Suppose \(H_7\) is supported by one collection of trails now and a different collection later:
+Suppose \\(H_7\\) is supported by one collection of trails now and a different collection later:
 
 ~~~text
 time t          time t+1        time t+2
@@ -387,7 +387,7 @@ This is the first meaning of persistence in PSG:
 
 > **An active track is a temporally coherent path through changing recent evidence.**
 
-The implementation does not need to store the entire \(A(i,k,t)\) volume. It can keep a bounded recent trail history plus recurrent track state.
+The implementation does not need to store the entire \\(A(i,k,t)\\) volume. It can keep a bounded recent trail history plus recurrent track state.
 
 ## 3. Second matching problem: active tracks to persistent object models
 
@@ -407,7 +407,7 @@ $$
 
 asks:
 
-> Does active track \(H_k\), together with its current trail and accumulated encounter evidence, correspond to persistent object model \(M_j\)?
+> Does active track \\(H_k\\), together with its current trail and accumulated encounter evidence, correspond to persistent object model \\(M_j\\)?
 
 This association can also remain uncertain.
 
@@ -509,7 +509,7 @@ This separation prevents representational novelty from automatically becoming on
 
 Once an active track has a plausible object-model match, the recent trail provides the current local state within that object's learned topology.
 
-Let the currently favored model be \(M_j\).
+Let the currently favored model be \\(M_j\\).
 
 PSG can infer
 
@@ -519,7 +519,7 @@ $$
 \operatorname{Localize}(R_t,M_j),
 $$
 
-where \(\ell_t\) is the current position in the learned landmark structure.
+where \\(\ell_t\\) is the current position in the learned landmark structure.
 
 This position does not have to be a Cartesian coordinate.
 
@@ -527,7 +527,7 @@ It could be:
 
 - one landmark;
 - a soft distribution over landmarks;
-- a short sequence such as \(L_{12}\rightarrow L_{13}\rightarrow L_{19}\);
+- a short sequence such as \\(L_{12}\rightarrow L_{13}\rightarrow L_{19}\\);
 - a learned latent state associated with a neighborhood of the object model.
 
 ### Example: building a mug model
@@ -575,7 +575,7 @@ recognized model: M42
 localized trail: near L3
 ~~~
 
-This is more informative than a long-term bag of historical evidence. Evidence that has not appeared for a long time can still remain part of \(M_{42}\) and become relevant again when the recent trail reaches that region.
+This is more informative than a long-term bag of historical evidence. Evidence that has not appeared for a long time can still remain part of \\(M_{42}\\) and become relevant again when the recent trail reaches that region.
 
 ### Recent memory and persistent memory now have different jobs
 
@@ -651,12 +651,12 @@ Prediction is deliberately staged after PSG can maintain active tracks and const
 
 The architecture now gives prediction a much more specific input.
 
-At time \(t\), PSG may know:
+At time \\(t\\), PSG may know:
 
-- persistent object model \(M_j\);
-- current local state \(\ell_t\), inferred from the recent trail;
-- recent trail \(R_t\);
-- later, known action or self-motion \(a_t\).
+- persistent object model \\(M_j\\);
+- current local state \\(\ell_t\\), inferred from the recent trail;
+- recent trail \\(R_t\\);
+- later, known action or self-motion \\(a_t\\).
 
 A passive predictive version can begin with:
 
@@ -670,7 +670,7 @@ When new evidence arrives, the predicted trail can provide additional support fo
 
 The causal rule remains strict:
 
-> A prediction used to support an association at time \(t+1\) must have been generated before the evidence at \(t+1\) was incorporated.
+> A prediction used to support an association at time \\(t+1\\) must have been generated before the evidence at \\(t+1\\) was incorporated.
 
 Otherwise a hypothesis can claim evidence, train on it, and then cite its own reconstruction as proof of ownership.
 
@@ -688,12 +688,12 @@ $$
 
 The terms now have distinct roles:
 
-- \(M_j\): the persistent object model;
-- \(\ell_t\): current localization within that model;
-- \(R_t\): immediate recent evidence trail;
-- \(a_t\): executed action or known self-motion;
-- \(\hat \ell_{t+1}\): predicted next local state;
-- \(\hat R_{t+1}\): predicted next evidence trail.
+- \\(M_j\\): the persistent object model;
+- \\(\ell_t\\): current localization within that model;
+- \\(R_t\\): immediate recent evidence trail;
+- \\(a_t\\): executed action or known self-motion;
+- \\(\hat \ell_{t+1}\\): predicted next local state;
+- \\(\hat R_{t+1}\\): predicted next evidence trail.
 
 ~~~text
 persistent object model M42
@@ -715,8 +715,8 @@ actual next trail
 If the expected transition occurs, several beliefs strengthen together:
 
 - the active track is probably still following the same thing;
-- the recognition match to \(M_{42}\) becomes stronger;
-- localization within \(M_{42}\) advances toward the predicted region.
+- the recognition match to \\(M_{42}\\) becomes stronger;
+- localization within \\(M_{42}\\) advances toward the predicted region.
 
 This gives PSG a form of **sensorimotor geometry**.
 
@@ -973,7 +973,7 @@ Several pieces remain unresolved:
 - how transition structure should be represented and consolidated;
 - how a novel active track should become a new persistent object model;
 - how track→object association should avoid premature recognition;
-- what form localization \(\ell_t\) should take;
+- what form localization \\(\ell_t\\) should take;
 - how prediction should influence tracking, recognition, and localization without self-confirmation;
 - how action-conditioned transitions should be learned;
 - how touch should add landmarks or transition evidence;
