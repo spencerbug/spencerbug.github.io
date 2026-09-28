@@ -15,7 +15,7 @@ The central proposal is:
 
 > **Persistent identities should be fast nonparametric memories interpreted by a shared deep predictive substrate. A hypothesis may influence what is predicted or tested next, but evidence used to create that hypothesis is held in escrow: it cannot also validate the hypothesis. Validation must come from evidence that did not yet exist when the prediction was committed.**
 
-This separates two jobs that are easy to conflate:
+This separates two jobs:
 
 1. **Fast memory** creates and updates individual object hypotheses with little or no gradient descent.
 2. **Shared deep learning** continuously updates the encoder, retrieval metric, predictor, vigilance machinery, grouping machinery, and later abstraction layers.
@@ -32,7 +32,7 @@ The architecture starts with fixed sensor patches, sparse approximate-nearest-ne
 A conventional classifier usually ends in a fixed output vector:
 
 \[
-p(ymid x)
+p(y\mid x)
 =
 [p(C_1),p(C_2),\ldots,p(C_K)].
 \]
@@ -44,7 +44,7 @@ An embodied learner has a different problem. It may encounter object \(K+1\) tom
 A more natural starting point is a shared encoder:
 
 \[
-z = E_	heta(x),
+z = E_\theta(x),
 \]
 
 with persistent identities represented separately in memory:
@@ -98,26 +98,26 @@ A persistent object memory might contain data such as:
 \[
 M_j=
 \{
-	ext{prototypes},
-	ext{episodic traces},
-	ext{transition anchors},
-	ext{uncertainty},
-	ext{relations}
+\text{prototypes},
+\text{episodic traces},
+\text{transition anchors},
+\text{uncertainty},
+\text{relations}
 \}.
 \]
 
 The shared neural substrate contains functions such as:
 
 \[
-z_{i,t}=E_	heta(x_{i,t-L:t}),
+z_{i,t}=E_\theta(x_{i,t-L:t}),
 \]
 
 \[
-k_{i,t}=R_	heta(z_{i,t}),
+k_{i,t}=R_\theta(z_{i,t}),
 \]
 
 \[
-s_{ij}=V_	heta(z_{i,t},M_j),
+s_{ij}=V_\theta(z_{i,t},M_j),
 \]
 
 and
@@ -125,7 +125,7 @@ and
 \[
 \hat z_{i,t+1}
 =
-P_	heta(z_{i,t},M_j,a_t).
+P_\theta(z_{i,t},M_j,a_t).
 \]
 
 The object does not get its own deep neural network. It supplies memory that the shared functions interpret.
@@ -145,13 +145,13 @@ x_{i,t-L:t}.
 The shared encoder produces a compact population code:
 
 \[
-z_{i,t}=E_	heta(x_{i,t-L:t}).
+z_{i,t}=E_\theta(x_{i,t-L:t}).
 \]
 
 A retrieval projection produces a stable key:
 
 \[
-k_{i,t}=R_	heta(z_{i,t}).
+k_{i,t}=R_\theta(z_{i,t}).
 \]
 
 Rather than score every persistent identity, each patch queries an approximate-nearest-neighbor index:
@@ -179,7 +179,7 @@ A stored object may contain many local prototypes or transition anchors rather t
 
 \[
 M_j=
-{p_{j1},p_{j2},\ldots,p_{jn_j}}.
+\{p_{j1},p_{j2},\ldots,p_{jn_j}\}.
 \]
 
 The ANN index can therefore retrieve local evidence and map each hit back to a persistent parent identity.
@@ -195,21 +195,21 @@ A retrieved candidate must still survive a vigilance test:
 \[
 v_{ij}
 =
-V_	heta(z_i,M_j).
+V_\theta(z_i,M_j).
 \]
 
 If
 
 \[
-v_{ij}<ho,
+v_{ij}<\rho,
 \]
 
-candidate (M_j) is reset for that patch and another candidate may be tested.
+candidate \(M_j\) is reset for that patch and another candidate may be tested.
 
 If no stored identity passes vigilance, the legal outcome is:
 
 \[
-	ext{UNKNOWN}.
+\text{UNKNOWN}.
 \]
 
 This is inspired by Adaptive Resonance Theory (ART), where bottom-up evidence activates a candidate category, the category supplies a top-down expectation, and mismatch can reset the candidate and continue search. High vigilance produces finer categories; lower vigilance permits broader categories.
@@ -225,25 +225,25 @@ That distinction becomes crucial once recurrence is introduced.
 The central architectural rule is simple:
 
 \[
-oxed{
-	ext{predict}
-ightarrow
-	ext{commit}
-ightarrow
-	ext{observe}
-ightarrow
-	ext{score}
-ightarrow
-	ext{learn}
-\}
+\boxed{
+\text{predict}
+\rightarrow
+\text{commit}
+\rightarrow
+\text{observe}
+\rightarrow
+\text{score}
+\rightarrow
+\text{learn}
+}
 \]
 
-Suppose evidence through time \(t\) proposes object hypothesis (H).
+Suppose evidence through time \(t\) proposes object hypothesis \(H\).
 
 That evidence is sufficient to create the hypothesis:
 
 \[
-E_{le t}ightarrow H.
+E_{\le t}\rightarrow H.
 \]
 
 It is **not** allowed to confirm the hypothesis.
@@ -253,10 +253,10 @@ Before the next observation exists, the system commits a prediction:
 \[
 \hat E_{t+1}
 =
-P_	heta(H,E_{le t},a_t).
+P_\theta(H,E_{\le t},a_t).
 \]
 
-The prediction and the relevant model state are placed in a conceptual escrow record:
+The prediction and relevant model state are placed in a conceptual escrow record:
 
 ~~~text
 prediction ticket
@@ -283,12 +283,12 @@ Now the hypothesis can earn evidence:
 \lambda(H)
 =
 \log
-rac
-{p(E_{t+1}\mid H,E_{le t},a_t)}
-{p(E_{t+1}\mid U,E_{le t},a_t)}.
+\frac
+{p(E_{t+1}\mid H,E_{\le t},a_t)}
+{p(E_{t+1}\mid U,E_{\le t},a_t)}.
 \]
 
-The important causal fact is that (E_{t+1}) could not have been used to construct the prediction that is now being tested against it.
+The important causal fact is that \(E_{t+1}\) could not have been used to construct the prediction that is now being tested against it.
 
 This prevents a dangerous loop:
 
@@ -338,8 +338,6 @@ Instead it imposes an evidence-conservation rule:
 
 A returned message may cause A to test a different prediction. It cannot increase global confidence merely because the hypothesis completed another circuit.
 
-This is intentionally stricter than ordinary recurrent activation.
-
 The recurrent network is free to ask:
 
 - which candidate should be tested?
@@ -354,20 +352,17 @@ The toy V1 uses **future sensory evidence** as the cleanest provenance boundary 
 
 ## 7. Active inference turns ambiguity into an experiment
 
-Temporal escrow becomes more useful when actions are selected for information.
-
 Suppose two object hypotheses currently fit:
 
 \[
-H_1,quad H_2.
+H_1,\quad H_2.
 \]
 
 They predict similar present evidence, but different consequences under action \(a\):
 
 \[
 p(E_{t+1}\mid H_1,a)
-
-eq
+\neq
 p(E_{t+1}\mid H_2,a).
 \]
 
@@ -376,11 +371,11 @@ The system can choose an action maximizing disagreement:
 \[
 a^*
 =
-argmax_a
-Dleft(
+\arg\max_a
+D\left(
 p(E_{t+1}\mid H_1,a),
 p(E_{t+1}\mid H_2,a)
-ight),
+\right),
 \]
 
 or more generally maximizing expected information gain.
@@ -422,7 +417,7 @@ A newly observed identity can be allocated immediately:
 
 \[
 M_{K+1}\leftarrow
-{	ext{current prototypes and traces}}.
+\{\text{current prototypes and traces}\}.
 \]
 
 No global retraining is necessary just to create the identity.
@@ -438,22 +433,22 @@ A toy loss might be:
 \[
 \mathcal L_t
 =
-lambda_pmathcal L_{	ext{prediction}}
+\lambda_p\mathcal L_{\text{prediction}}
 +
-lambda_rmathcal L_{	ext{retrieval}}
+\lambda_r\mathcal L_{\text{retrieval}}
 +
-lambda_vmathcal L_{	ext{vigilance}}
+\lambda_v\mathcal L_{\text{vigilance}}
 +
-lambda_cmathcal L_{	ext{contrastive}}
+\lambda_c\mathcal L_{\text{contrastive}}
 +
-lambda_gmathcal L_{	ext{grouping}}
+\lambda_g\mathcal L_{\text{grouping}}
 +
-lambda_hmathcal L_{	ext{hierarchy}}.
+\lambda_h\mathcal L_{\text{hierarchy}}.
 \]
 
 All of these losses may backpropagate through overlapping shared parameters.
 
-So learning object (M_{1001}) does not mean:
+So learning object \(M_{1001}\) does not mean:
 
 > update the circuitry belonging to object 1001.
 
@@ -477,20 +472,20 @@ M_{17},M_{51},M_{983}.
 
 If future evidence confirms that none of them was correct, those are useful hard negatives.
 
-A contrastive loss can use the confirmed identity (M_+) against its confusing neighbors:
+A contrastive loss can use the confirmed identity \(M_+\) against its confusing neighbors:
 
 \[
-\mathcal L_{	ext{metric}}
+\mathcal L_{\text{metric}}
 =
 -\log
-rac{
-\exp(\operatorname{sim}(z,M_+)/	au)
+\frac{
+\exp(\operatorname{sim}(z,M_+)/\tau)
 }{
-\exp(\operatorname{sim}(z,M_+)/	au)
+\exp(\operatorname{sim}(z,M_+)/\tau)
 +
-sum_{kin C^-}
-\exp(\operatorname{sim}(z,M_k)/	au)
-\}.
+\sum_{k\in C^-}
+\exp(\operatorname{sim}(z,M_k)/\tau)
+}.
 \]
 
 This gives each new identity a **neighborhood learning radius**.
@@ -543,10 +538,10 @@ TERN does not require a literal mapping from these artificial components onto hi
 If object memories store embeddings,
 
 \[
-z=E_	heta(x),
+z=E_\theta(x),
 \]
 
-while (E_	heta) continues to learn, then old stored vectors eventually become stale.
+while \(E_\theta\) continues to learn, then old stored vectors eventually become stale.
 
 The coordinate system itself moves.
 
@@ -556,9 +551,9 @@ Three possible mechanisms are:
 
 1. **Store replayable sensory anchors** so important memories can be re-encoded later.
 2. Use a slowly moving target or EMA encoder for retrieval keys:
-\[
-   k=E_{ar	heta}(x).
-\]
+   \[
+   k=E_{\bar\theta}(x).
+   \]
 3. Periodically rebuild or partially refresh the ANN index during consolidation.
 
 This suggests separating the rapidly adapting perceptual representation from the more slowly moving content-addressable memory key.
@@ -575,8 +570,8 @@ Each patch instead produces sparse log evidence for retrieved identities:
 L_j(x_i)
 =
 \log
-rac{p(z_imid M_j)}
-     {p(z_imid U)}.
+\frac{p(z_i\mid M_j)}
+     {p(z_i\mid U)}.
 \]
 
 Those scores form a spatial evidence field for each candidate.
@@ -586,9 +581,9 @@ A local morphological operation in log space can encourage coherent regions with
 For example, a max-plus dilation can be written:
 
 \[
-(delta_B L_j)(x)
+(\delta_B L_j)(x)
 =
-\max_{uin B}
+\max_{u\in B}
 [L_j(x-u)+b(u)],
 \]
 
@@ -614,7 +609,7 @@ Imagine a robot encounters a blue stapler that it has never seen before.
 Fixed patches produce local representations:
 
 \[
-x_iightarrow E_	hetaightarrow z_i.
+x_i\rightarrow E_\theta\rightarrow z_i.
 \]
 
 ### Step 2: retrieve
@@ -635,7 +630,7 @@ None of the known candidates explains enough of the observation.
 A provisional identity is created:
 
 \[
-M_{	ext{new}}.
+M_{\text{new}}.
 \]
 
 The current observations may initialize its memory, but they are marked as **proposal evidence**.
@@ -649,7 +644,7 @@ Before another frame exists, the shared predictor uses the provisional memory an
 \[
 \hat z_{t+1}
 =
-P_	heta(z_t,M_{	ext{new}},a_t).
+P_\theta(z_t,M_{\text{new}},a_t).
 \]
 
 Known alternatives make their own predictions.
@@ -695,30 +690,30 @@ At the lowest level, nodes represent local sensory states.
 Higher levels may represent:
 
 \[
-	ext{features}
-ightarrow
-	ext{parts}
-ightarrow
-	ext{objects}
-ightarrow
-	ext{relations}
-ightarrow
-	ext{scenes}
-ightarrow
-	ext{affordances}
-ightarrow
-	ext{tasks}.
+\text{features}
+\rightarrow
+\text{parts}
+\rightarrow
+\text{objects}
+\rightarrow
+\text{relations}
+\rightarrow
+\text{scenes}
+\rightarrow
+\text{affordances}
+\rightarrow
+\text{tasks}.
 \]
 
 The architectural rule does not have to change.
 
-A higher-level model (H^{(ell+1)}) can be proposed from lower-level states:
+A higher-level model \(H^{(\ell+1)}\) can be proposed from lower-level states:
 
 \[
-H^{(ell+1)}
+H^{(\ell+1)}
 =
-G_{	heta_ell}
-(z_1^{(ell)},\ldots,z_n^{(ell)}).
+G_{\theta_\ell}
+(z_1^{(\ell)},\ldots,z_n^{(\ell)}).
 \]
 
 But those same child states cannot be counted again as independent validation.
@@ -726,10 +721,10 @@ But those same child states cannot be counted again as independent validation.
 The higher model must earn support by predicting something else:
 
 \[
-\hat z_{t+1}^{(ell)}
+\hat z_{t+1}^{(\ell)}
 =
-P_{	heta_ell}
-(H^{(ell+1)},z_t^{(ell)},a_t).
+P_{\theta_\ell}
+(H^{(\ell+1)},z_t^{(\ell)},a_t).
 \]
 
 If the prediction survives new evidence, resonance strengthens the abstraction.
@@ -737,8 +732,6 @@ If the prediction survives new evidence, resonance strengthens the abstraction.
 This gives a possible operational criterion for creating abstractions:
 
 > **A higher-level model earns persistence when it compresses existing structure and predicts held-out or future consequences that its constituent memories do not explain as well individually.**
-
-That is deliberately broader than object recognition.
 
 A reusable "door-opening" model, for example, might combine a handle, hinge, panel, grasp action, and predictable transition. It becomes a persistent higher-level model only if the composition consistently earns new predictive evidence.
 
@@ -870,11 +863,11 @@ The architecture can be compressed into one rule:
 Around that rule, two complementary memory systems emerge:
 
 \[
-oxed{
-	ext{fast open-ended identity memory}
+\boxed{
+\text{fast open-ended identity memory}
 +
-	ext{shared deep predictive learning}
-\}
+\text{shared deep predictive learning}
+}
 \]
 
 The first allows an embodied agent to remember a new thing immediately.
@@ -884,17 +877,17 @@ The second allows every new thing to improve the machinery used to understand ma
 Temporal escrow sits between them as an epistemic firewall:
 
 \[
-oxed{
-	ext{proposal}
-ightarrow
-	ext{committed prediction}
-ightarrow
-	ext{new evidence}
-ightarrow
-	ext{resonance/reset}
-ightarrow
-	ext{learning}
-\}
+\boxed{
+\text{proposal}
+\rightarrow
+\text{committed prediction}
+\rightarrow
+\text{new evidence}
+\rightarrow
+\text{resonance/reset}
+\rightarrow
+\text{learning}
+}
 \]
 
 If that rule can recurse through layers of learned models, then object identity may be only the first use case.
