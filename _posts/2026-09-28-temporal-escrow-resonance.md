@@ -37,7 +37,7 @@ TERN therefore tries to preserve several attractive properties at once:
 
 Two different transformation structures appear and should not be conflated.
 
-The **physical transformation group** describes lawful action and motion, for example \(SE(3)\) for rigid 3-D rotation and translation. Its action on the learned representation predicts how features should move when the camera, robot, or object moves.
+The **physical transformation group** describes lawful action and motion, for example \\(SE(3)\\) for rigid 3-D rotation and translation. Its action on the learned representation predicts how features should move when the camera, robot, or object moves.
 
 The **representation-migration group** describes a change of coordinates between encoder versions. A useful first approximation is an orthogonal transform in feature space. It need not be the same group as the physical motion model.
 
@@ -120,7 +120,7 @@ flowchart TD
     M --> ANN
 ~~~
 
-For patch \(\,i\,\) at time \(\,t\,\), the shared encoder produces a structured latent:
+For patch \\(\,i\,\\) at time \\(\,t\,\\), the shared encoder produces a structured latent:
 
 $
 z_{i,t}=E_\theta(x_{i,t-L:t}).
@@ -154,7 +154,7 @@ $
 r_\omega(z_{i,t},a_t,c_t).
 $
 
-The first term is the structured equivariant transition. The residual \(\,r_\omega\,\) is reserved for effects that are not well described by the chosen group: occlusion, deformation, contact changes, illumination changes, independent agents, or other non-rigid events.
+The first term is the structured equivariant transition. The residual \\(\,r_\omega\,\\) is reserved for effects that are not well described by the chosen group: occlusion, deformation, contact changes, illumination changes, independent agents, or other non-rigid events.
 
 A persistent object memory can contain both identity anchors and transformation history:
 
@@ -175,7 +175,7 @@ The object still does not get its own deep neural network. It supplies memory th
 
 A newly created identity can therefore immediately use action dynamics learned across many earlier objects.
 
-The architecture also adds an explicit rule for encoder evolution. If a candidate encoder \(\,E_{\theta'}\,\) changes the feature coordinates, TERN tries to explain old-state movement using a shared migration transform \(\,Q\,\):
+The architecture also adds an explicit rule for encoder evolution. If a candidate encoder \\(\,E_{\theta'}\,\\) changes the feature coordinates, TERN tries to explain old-state movement using a shared migration transform \\(\,Q\,\\):
 
 $
 E_{\theta'}(x)
@@ -191,7 +191,7 @@ Q=\exp(A),
 A^\top=-A.
 $
 
-The \(\,Q\,\) term carries forward old geometry; \(\,r_{\text{new}}\,\) provides plastic capacity for distinctions the previous representation could not express.
+The \\(\,Q\,\\) term carries forward old geometry; \\(\,r_{\text{new}}\,\\) provides plastic capacity for distinctions the previous representation could not express.
 
 This is the new division of labor:
 
@@ -221,7 +221,7 @@ $
 z_{i,t}=E_\theta(x_{i,t-L:t}).
 $
 
-The key distinction is that \(\,z_{i,t}\,\) is allowed to change predictably under motion. TERN should not throw away pose and transformation information merely to make re-identification easier.
+The key distinction is that \\(\,z_{i,t}\,\\) is allowed to change predictably under motion. TERN should not throw away pose and transformation information merely to make re-identification easier.
 
 A separate invariant or approximately invariant readout produces the retrieval key:
 
@@ -229,7 +229,7 @@ $
 k_{i,t}=I_\phi(z_{i,t}).
 $
 
-For a lawful transformation \(\,g\,\), the desired relationship is:
+For a lawful transformation \\(\,g\,\\), the desired relationship is:
 
 $
 E_\theta(g\cdot x)
@@ -565,7 +565,7 @@ $
 \rho(g_t)z_t.
 $
 
-For rigid 3-D motion, a natural candidate is the special Euclidean group \(\,SE(3)\,\) with Lie algebra \(\,\mathfrak{se}(3)\,\). A twist combines infinitesimal translation and rotation. Unit dual quaternions are one compact way to represent the corresponding finite rigid transforms.
+For rigid 3-D motion, a natural candidate is the special Euclidean group \\(\,SE(3)\,\\) with Lie algebra \\(\,\mathfrak{se}(3)\,\\). A twist combines infinitesimal translation and rotation. Unit dual quaternions are one compact way to represent the corresponding finite rigid transforms.
 
 The important architectural claim is not that every sensory transition is rigid-body motion. It is that the system should explain as much transition structure as possible through reusable, compositional transformations before spending unconstrained model capacity on residual dynamics.
 
@@ -619,7 +619,7 @@ $
 
 All of these losses may backpropagate through overlapping shared parameters.
 
-So learning object \(\,M_{1001}\,\) does not mean:
+So learning object \\(\,M_{1001}\,\\) does not mean:
 
 > update the circuitry belonging to object 1001.
 
@@ -734,13 +734,13 @@ $
 z=E_\theta(x),
 $
 
-while \(\,E_\theta\,\) continues to learn, old stored vectors eventually become stale.
+while \\(\,E_\theta\,\\) continues to learn, old stored vectors eventually become stale.
 
 The coordinate system itself moves.
 
 Rather than treating this only as a maintenance problem, TERN makes **migration compatibility part of the learning objective**.
 
-Let the frozen previous encoder be \(\,E_0\,\) and a candidate updated encoder be \(\,E_1\,\). TERN tries to decompose representational change into:
+Let the frozen previous encoder be \\(\,E_0\,\\) and a candidate updated encoder be \\(\,E_1\,\\). TERN tries to decompose representational change into:
 
 $
 E_1(x)
@@ -752,8 +752,8 @@ $
 
 Here:
 
-- \(\,Q\,\) is a shared, invertible coordinate migration that carries old knowledge forward;
-- \(\,r(x)\,\) is residual plasticity that can add distinctions the old representation could not express.
+- \\(\,Q\,\\) is a shared, invertible coordinate migration that carries old knowledge forward;
+- \\(\,r(x)\,\\) is residual plasticity that can add distinctions the old representation could not express.
 
 A simple first choice is an orthogonal migration:
 
@@ -781,7 +781,7 @@ the old identity geometry is preserved exactly inside the migrated subspace.
 
 ### Train SGD to prefer migratable updates
 
-During an escrowed encoder update, keep \(\,E_0\,\) frozen and jointly train \(\,E_1\,\) and the migration transform.
+During an escrowed encoder update, keep \\(\,E_0\,\\) frozen and jointly train \\(\,E_1\,\\) and the migration transform.
 
 A compatibility loss can be:
 
@@ -798,7 +798,7 @@ r(x)
 \right\|^2,
 $
 
-where \(\,\mathcal A\,\) is a set of historical anchors or replay examples.
+where \\(\,\mathcal A\,\\) is a set of historical anchors or replay examples.
 
 The goal is not to force every update to be a pure rotation. That would preserve old distances so perfectly that it could not repair an inadequate representation.
 
@@ -822,7 +822,7 @@ The old representation can then move coherently while the residual learns genuin
 After the candidate update, TERN evaluates at least four things:
 
 1. **old identity compatibility** — do historical objects still retrieve and resonate correctly?
-2. **migration residual** — how much old-state movement cannot be explained by \(\,Q\,\)?
+2. **migration residual** — how much old-state movement cannot be explained by \\(\,Q\,\\)?
 3. **old action dynamics** — do previously learned transformations still predict correctly?
 4. **new utility** — did the update actually improve the failure that triggered plasticity?
 
@@ -934,7 +934,7 @@ $
 \mathfrak{se}(3).
 $
 
-Its local effect on patch \(\,i\,\) can depend on depth, image position, orientation, object ownership, and other local context:
+Its local effect on patch \\(\,i\,\\) can depend on depth, image position, orientation, object ownership, and other local context:
 
 $
 \xi_i
@@ -950,7 +950,7 @@ $
 \rho_i(\exp(\xi_i\Delta t))z_{i,t}.
 $
 
-The matrices or learned operators \(\,J_i\,\) need not literally be analytic camera Jacobians in the first prototype. The important constraint is that local patch transitions should be **coordinated consequences of a shared cause**, not unrelated transforms invented independently by every patch.
+The matrices or learned operators \\(\,J_i\,\\) need not literally be analytic camera Jacobians in the first prototype. The important constraint is that local patch transitions should be **coordinated consequences of a shared cause**, not unrelated transforms invented independently by every patch.
 
 This suggests a useful grouping signal:
 
@@ -993,7 +993,7 @@ This keeps five questions separate:
 4. **grouping:** which nearby patches share a coherent current cause?
 5. **identity:** which persistent memory best survives future prediction?
 
-The anti-forgetting migration should be more global than the physical patch dynamics. TERN should not begin by allowing an arbitrary independent encoder-migration transform for every patch; that would make it too easy to preserve patches individually while destroying cross-patch geometry. A shared migration \(\,Q\,\) plus small constrained local residuals is the safer starting point.
+The anti-forgetting migration should be more global than the physical patch dynamics. TERN should not begin by allowing an arbitrary independent encoder-migration transform for every patch; that would make it too easy to preserve patches individually while destroying cross-patch geometry. A shared migration \\(\,Q\,\\) plus small constrained local residuals is the safer starting point.
 
 ## 13. A toy learning episode
 
@@ -1122,7 +1122,7 @@ Suppose this episode exposed a genuine weakness in the representation: blue and 
 
 TERN does not immediately replace the deployed encoder.
 
-It trains a candidate \(\,E_1\,\), fits a migration transform \(\,Q\,\), and asks whether old representations satisfy approximately:
+It trains a candidate \\(\,E_1\,\\), fits a migration transform \\(\,Q\,\\), and asks whether old representations satisfy approximately:
 
 $
 E_1(x_{\text{old}})
@@ -1205,7 +1205,7 @@ This architecture borrows ideas from several established traditions but should n
 - **Adaptive Resonance Theory** motivates vigilance, reset, resonance, and dynamic category creation.
 - **Metric and prototype learning** motivate separating a shared representation from an open-ended collection of identities.
 - **Group-equivariant representation learning** motivates representations whose changes under transformations are structured rather than arbitrary.
-- **Lie groups and Lie algebras in robotics** motivate representing continuous rigid motion through generators, exponential maps, twists, and compositional transformations such as \(\,SE(3)\,\).
+- **Lie groups and Lie algebras in robotics** motivate representing continuous rigid motion through generators, exponential maps, twists, and compositional transformations such as \\(\,SE(3)\,\\).
 - **Backward-compatible representation learning** motivates explicitly preserving interoperability between old stored embeddings and newer encoders.
 - **Belief propagation** motivates careful treatment of recurrent messages and the danger of double-counting in loops.
 - **Complementary Learning Systems** motivates separating rapid item memory from slower distributed structure learning.
@@ -1250,7 +1250,7 @@ Use:
 6. **UNKNOWN** as a legal candidate;
 7. provisional object memories with latent prototypes and orbit anchors;
 8. action-to-Lie-algebra mapping;
-9. a simple \(\,SE(2)\,\) or \(\,SE(3)\,\) latent group-action model;
+9. a simple \\(\,SE(2)\,\\) or \\(\,SE(3)\,\\) latent group-action model;
 10. optional residual dynamics for effects the group model cannot explain;
 11. one-step temporal escrow predictions;
 12. replay buffer;
@@ -1264,10 +1264,10 @@ The first prototype should prefer a low-dimensional known physical group over tr
 
 When a sustained prediction or re-identification failure triggers plasticity:
 
-1. freeze the deployed encoder \(\,E_0\,\);
-2. clone a candidate encoder \(\,E_1\,\);
+1. freeze the deployed encoder \\(\,E_0\,\\);
+2. clone a candidate encoder \\(\,E_1\,\\);
 3. train on current + replay data;
-4. jointly fit a migration transform \(\,Q\,\);
+4. jointly fit a migration transform \\(\,Q\,\\);
 5. measure migration residual on old anchors;
 6. test old identity retrieval after migration;
 7. test old action transitions after conjugating their latent operators;
@@ -1286,7 +1286,7 @@ Compare against:
 - migration-compatible learning without replay;
 - replay without migration-compatible learning;
 - full re-encoding of the historical gallery after every encoder update;
-- versioned \(\,Q\,)-based migration of stored representations.
+- versioned \\(\,Q\,)-based migration of stored representations.
 
 ### Main measurements
 
@@ -1350,7 +1350,7 @@ The residual model must be allowed to explain non-group effects without becoming
 
 ### Residual takeover
 
-If \(\,r_\omega\,\) is too expressive or weakly regularized, the system may ignore the structured group path and learn every transition in the residual.
+If \\(\,r_\omega\,\\) is too expressive or weakly regularized, the system may ignore the structured group path and learn every transition in the residual.
 
 The prototype should track the fraction of prediction improvement attributable to the equivariant path versus the residual.
 
@@ -1543,7 +1543,7 @@ The larger hypothesis is that an embodied intelligence could build an open-ended
 - Bronstein, M. M., Bruna, J., Cohen, T., & Veličković, P. (2021). [Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges](https://arxiv.org/abs/2104.13478).
 - Shen, Y. et al. (2020). [Towards Backward-Compatible Representation Learning](https://arxiv.org/abs/2003.11942).
 - Backward-compatible and orthogonal feature-alignment methods motivate the idea that an encoder revision can preserve an older feature geometry through an explicit transformation while allocating additional capacity for new information.
-- Lie-group state estimation and robotics provide the standard mathematical machinery for \(\,SO(3)\,\), \(\,SE(3)\,\), twists, exponential maps, adjoint transforms, and compositional rigid-body motion.
-- Unit dual quaternions provide a compact representation of rigid-body rotation and translation and are a possible implementation choice for the \(\,SE(3)\,\) action path; they are not required by TERN.
+- Lie-group state estimation and robotics provide the standard mathematical machinery for \\(\,SO(3)\,\\), \\(\,SE(3)\,\\), twists, exponential maps, adjoint transforms, and compositional rigid-body motion.
+- Unit dual quaternions provide a compact representation of rigid-body rotation and translation and are a possible implementation choice for the \\(\,SE(3)\,\\) action path; they are not required by TERN.
 - Active inference and epistemic action provide one family of approaches for choosing actions that reduce uncertainty; TERN uses that family of ideas only as a starting point for action selection.
 - Standard treatments of loopy belief propagation illustrate the double-counting problem when evidence circulates around cycles; TERN's first prototype avoids solving general message ancestry by restricting new evidence credit to temporally escrowed observations.
