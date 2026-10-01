@@ -2,7 +2,7 @@
 layout: post
 title: "Temporal Escrow Resonance: Continual Identity on an Equivariant Predictive Substrate"
 date: 2026-09-28 09:46:00 -0500
-last_modified_at: 2026-09-30
+last_modified_at: 2026-10-01
 permalink: /blog/temporal-escrow-resonance/
 description: "A working embodied-intelligence architecture combining open-ended identity memory, Lie-equivariant action dynamics, migratable shared representations, ART-like resonance, active experiments, and temporal escrow against self-confirming evidence."
 ---
