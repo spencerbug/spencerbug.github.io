@@ -289,12 +289,12 @@ The Markdown file must contain **two literal backslashes** before each parenthes
 Display math:
 
 \`\`\`text
-$
+$$
 AMAT = T_{L1} + MR_{L1} \left(T_{L2} + MR_{L2} T_{mem}\right)
-$
+$$
 \`\`\`
 
-Use \`$ ... $\` for display equations in Markdown source.
+Use \`$$ ... $$\` for display equations in Markdown source. This matches the site's MathJax \`displayMath\` configuration in \`_includes/head.html\` and the syntax used by existing rendered posts.
 
 **Do not use \`\[ ... \]\` as display delimiters in Markdown source.** Kramdown can strip those backslashes and emit literal square brackets around the TeX, leaving MathJax with nothing to process.
 
@@ -302,7 +302,7 @@ Guidelines:
 
 - Do not use single \`$...$\` delimiters for inline math; dollar signs commonly occur in ordinary prose and costs.
 - For inline math, always use doubled source delimiters: \`\\(\` and \`\\)\`.
-- For display math, always use \`$\` delimiters on their own lines.
+- For display math, always use \`$$\` delimiters on their own lines.
 - Do not use source \`\[\` / \`\]\` delimiters in posts or course Markdown.
 - Define every symbol near its first use.
 - Follow equations with a plain-language interpretation.
@@ -319,12 +319,12 @@ Do not treat correct-looking Markdown as sufficient verification.
 
 For a changed page containing math:
 
-1. Check the Markdown source uses \`\\(...\\)\` for inline math and \`$ ... $\` for display math.
+1. Check the Markdown source uses \`\\(...\\)\` for inline math and \`$$ ... $$\` for display math.
 2. Confirm the generated HTML still contains \`\(...\)\` for inline math.
 3. Confirm display equations are not emitted as literal \`[ ... ]\` text.
 4. When practical, verify the deployed page actually typesets at least one inline and one display equation.
 
-The repository check in \`scripts/check_inline_mathjax.py\` rejects unsafe single-backslash inline delimiters and unsafe \`\[\` / \`\]\` display delimiters outside fenced code blocks. Do not change delimiters inside fenced code examples unless the example itself is intended to demonstrate the source convention.
+The repository check in \`scripts/check_inline_mathjax.py\` rejects unsafe single-backslash inline delimiters, lone \`$\` display delimiters, and unsafe \`\[\` / \`\]\` display delimiters outside fenced code blocks. Do not change delimiters inside fenced code examples unless the example itself is intended to demonstrate the source convention.
 
 ## Labs and experiments
 
