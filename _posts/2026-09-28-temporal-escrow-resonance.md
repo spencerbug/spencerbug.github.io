@@ -1,15 +1,15 @@
 ---
 layout: post
-title: "Temporal Escrow Resonance: Continual Identity on an Equivariant Predictive Substrate"
+title: "MORPH: Model of Object Representation and Predictive Homomorphisms"
 date: 2026-09-28 09:46:00 -0500
-last_modified_at: 2026-10-01
-permalink: /blog/temporal-escrow-resonance/
+last_modified_at: 2026-10-03
+permalink: /blog/morph/
 description: "A working embodied-intelligence architecture combining open-ended identity memory, Lie-equivariant action dynamics, migratable shared representations, ART-like resonance, active experiments, and temporal escrow against self-confirming evidence."
 ---
 
 {% include ai-assisted-author-note.html %}
 
-**Working research note · architecture under active review.** Temporal Escrow Resonance Network (TERN) is an exploratory architecture, not an experimentally validated model. It grew out of a narrower question about object identity: how can an embodied learner continuously create new identities, learn from them aggressively, and still prevent its own recurrent hypotheses from returning as counterfeit evidence?
+**Working research note · architecture under active review.** MORPH — Model of Object Representation and Predictive Homomorphisms — is an exploratory architecture, not an experimentally validated model. It grew out of a narrower question about object identity: how can an embodied learner continuously create new identities, learn from them aggressively, and still prevent its own recurrent hypotheses from returning as counterfeit evidence?
 
 The proposal has now sharpened into three coupled problems:
 
@@ -23,11 +23,13 @@ The central proposal is:
 
 This separates three jobs:
 
-1. **Fast memory** creates and updates individual object hypotheses with little or no gradient descent.
+1. **Fast memory** creates and updates individual object hypotheses without gradient descent.
 2. **Fast equivariant dynamics** map actions into predictable transformations of patch representations.
-3. **Slow shared plasticity** updates the encoder, identity readout, group-action model, retrieval metric, vigilance machinery, grouping machinery, and later abstraction layers under anti-forgetting constraints.
+3. **Slow shared plasticity** updates the encoder, decoder, identity–pose factorizer, group-action model, retrieval metric, vigilance machinery, grouping machinery, and later abstraction layers under anti-forgetting constraints.
 
-TERN therefore tries to preserve several attractive properties at once:
+The decoder is part of the predictive substrate: it maps a predicted future embedding back into real sensor space so the prediction can be compared with what the robot actually sees or feels. MORPH's relationship to Homomorphism AutoEncoders is discussed in [section 15](#comparison-with-homomorphism-autoencoders).
+
+MORPH therefore tries to preserve several attractive properties at once:
 
 - one-shot or few-shot creation of a previously unknown identity;
 - broad gradient updates that improve general machinery across many identities;
@@ -79,220 +81,165 @@ That loses one of the major strengths of deep learning:
 
 > **A single prediction error can update a large shared parameter set simultaneously.**
 
-TERN therefore deliberately makes persistent identities mostly **memory**, while keeping most trainable machinery **shared**.
+MORPH therefore deliberately makes persistent identities mostly **memory**, while keeping most trainable machinery **shared**.
 
 ## 2. Architecture at a glance
 
-TERN now treats **identity and action dynamics as two readouts of the same shared representation**.
+MORPH uses a shared representation with an explicit **identity–pose factorization**. Here, identity means a persistent individual thing; pose latent means the current view or transformation state relative to learned anchors. It need not be a calibrated position and orientation in meters and radians.
 
 ~~~mermaid
 flowchart TD
-    X["fixed sensor patches"] --> E["shared equivariant encoder Eθ"]
-    E --> Z["equivariant patch latents zᵢ"]
-
-    A["motor / camera / object action aₜ"] --> XI["action → Lie algebra ξₜ"]
-    XI --> G["exp(ξₜ Δt) → group element gₜ"]
-    G --> D["local group action ρᵢ(gₜ)"]
-
-    Z --> I["invariant identity / retrieval readout Iφ"]
-    I --> ANN["ANN top-K candidate memories + UNKNOWN"]
-    ANN --> V["shared vigilance / resonance matcher"]
-    V --> H["provisional identity hypotheses"]
-
-    Z --> D
-    H --> D
-    D --> P["predicted next patch latents"]
-    P --> Q["commit prediction to temporal escrow"]
-    Q --> ACT["act / passage of time"]
-    ACT --> O["new sensory evidence"]
-    O --> EN["encode new evidence"]
-    EN --> S["score prediction + identity"]
-    S --> RR{"resonate or reset?"}
-    RR -->|resonate| M["update / promote persistent memory"]
-    RR -->|reset| ANN
-
-    S --> U["candidate shared SGD update"]
-    U --> MIG["fit / enforce migration transform Q"]
-    MIG --> REVIEW{"old identities + old dynamics still valid?"}
-    REVIEW -->|yes| COMMIT["commit encoder + migrate memories/dynamics"]
-    REVIEW -->|no| REJECT["reject / revise candidate update"]
-    COMMIT --> E
+    X["1. Sensor patch histories"] --> E["2. Shared equivariant encoder"]
+    E --> Z["3. Joint latent field"]
+    Z --> F["4. Joint grouping and identity–pose inference"]
+    F --> I["Identity descriptor and candidate memory"]
+    F --> P["Pose latent and ownership uncertainty"]
+    I --> ANN["5. ANN candidates plus UNKNOWN"]
+    ANN --> H["6. Competing instance hypotheses"]
+    P --> H
+    H --> D["7. Transform latent and decode predicted observation"]
+    D --> T["8. Freeze prediction, act, then score new evidence"]
+    T --> M["9. Update memory without gradients"]
     M --> ANN
+    T --> U["10. Train candidate shared model"]
+    U --> R["Review old identities, dynamics, and migration"]
+    R --> E
 ~~~
 
-For patch \\(\,i\,\\) at time \\(\,t\,\\), the shared encoder produces a structured latent:
+Stages 1–3 encode the observation before assigning object ownership. Stages 4–6 keep competing identity, grouping, and pose explanations. Stages 7–9 test those explanations against future observations. Stage 10 improves the shared machinery only after scoring, with a separate review before deployment.
+
+For patch \\(i\\) at time \\(t\\), the encoder produces:
 
 $$
 z_{i,t}=E_\theta(x_{i,t-L:t}).
 $$
 
-An identity/retrieval readout extracts information intended to remain stable across lawful transformations:
+The input is a history of length \\(L+1\\). The collection \\(Z_t=\{z_{i,t}\}_i\\) is a population code over patches. A factorizer \\(F_\eta\\), using that field and provisional ownership weights \\(w_{ij,t}\\), proposes:
 
 $$
-k_{i,t}=I_\phi(z_{i,t}).
+(u_{j,t},p_{j,t})=F_\eta(Z_t,w_{j,t}).
 $$
 
-The full latent is not forced to be invariant. Instead, action should move it predictably. A motor command and context are mapped into a Lie-algebra element:
+Here \\(u_j\\) is an approximately invariant identity descriptor and \\(p_j\\) is the pose latent for candidate instance \\(j\\). Ownership and factorization are refined together; neither is assumed known initially. A local retrieval head can still produce coarse patch keys \\(k_{i,t}=I_\phi(z_{i,t})\\), but those are candidate cues rather than complete invariant object identities.
+
+A composition function \\(C_\eta\\) combines identity and pose into an object latent. For group-modeled motion:
 
 $$
-\xi_t=f_\psi(a_t,c_t)\in\mathfrak g,
-$$
-
-then into a finite transformation:
-
-$$
-g_t=\exp(\xi_t\Delta t).
-$$
-
-A patch-specific representation of that group predicts the next local latent:
-
-$$
-\hat z_{i,t+1}
-=
-\rho_i(g_t)z_{i,t}
-+
-r_\omega(z_{i,t},a_t,c_t).
-$$
-
-The first term is the structured equivariant transition. The residual \\(\,r_\omega\,\\) is reserved for effects that are not well described by the chosen group: occlusion, deformation, contact changes, illumination changes, independent agents, or other non-rigid events.
-
-A persistent object memory can contain both identity anchors and transformation history:
-
-$$
-M_j=
-\{
-\text{latent prototypes},
-\text{identity keys},
-\text{orbit / transition anchors},
-\text{episodic traces},
-\text{model version},
-\text{uncertainty},
-\text{relations}
-\}.
-$$
-
-The object still does not get its own deep neural network. It supplies memory that shared functions interpret.
-
-A newly created identity can therefore immediately use action dynamics learned across many earlier objects.
-
-The architecture also adds an explicit rule for encoder evolution. If a candidate encoder \\(\,E_{\theta'}\,\\) changes the feature coordinates, TERN tries to explain old-state movement using a shared migration transform \\(\,Q\,\\):
-
-$$
-E_{\theta'}(x)
-\approx
-Q E_\theta(x)+r_{\text{new}}(x).
-$$
-
-For an orthogonal first implementation:
-
-$$
-Q=\exp(A),
+\hat p_{j,t+1}=\rho_p(g_{j,t})p_{j,t},
 \qquad
-A^\top=-A.
+\hat z^{\mathrm{group}}_{j,t+1}
+=C_\eta(u_{j,t},\hat p_{j,t+1}).
 $$
 
-The \\(\,Q\,\\) term carries forward old geometry; \\(\,r_{\text{new}}\,\\) provides plastic capacity for distinctions the previous representation could not express.
+The group element is \\(g_{j,t}=\exp(\xi_{j,t}\Delta t)\\), with generator \\(\xi_{j,t}=f_\psi(a_t,c_t,H_{j,t})\\). Context \\(c_t\\) includes available motion and sensor information; the hypothesis \\(H_{j,t}\\) specifies candidate ownership and relative state. A motor command does not directly specify every object's motion.
 
-This is the new division of labor:
+The composition is constrained to respect the group:
 
-~~~text
-same shared latent
-      │
-      ├── invariant readout → "what persistent thing is this?"
-      │
-      ├── equivariant dynamics → "how should this representation move?"
-      │
-      └── controlled migration → "how may this space itself change?"
-~~~
+$$
+C_\eta(u,\rho_p(g)p)\approx\rho_z(g)C_\eta(u,p).
+$$
+
+An additional shared dynamics residual \\(r_\omega\\) predicts effects outside that model:
+
+$$
+\hat z_{j,t+1}
+=\hat z^{\mathrm{group}}_{j,t+1}
++r_\omega(z_{j,t},a_t,c_t,H_{j,t}).
+$$
+
+A shared decoder \\(D_\delta\\) maps the predicted latent field \\(\hat Z_{t+1}\\), predicted ownership/visibility \\(\hat W_{t+1}\\), and sensor context back to real observation space:
+
+$$
+\hat x_{t+1}
+=D_\delta(\hat Z_{t+1},\hat W_{t+1},c_t).
+$$
+
+For vision, this means image intensities or a distribution over pixels; touch and other sensors need corresponding outputs. This is the sensor-space prediction, not another identity key. A spatial decoder must handle features moving between patches and visibility changes; the same fixed patch does not necessarily observe the same surface at the next time step. An object-centered decoder alone needs a projection/compositing step to predict the camera image.
+
+Persistent memory stores identity descriptors, view/orbit anchors, transition traces, encoder versions, relations, and uncertainty. It supplies data interpreted by shared functions, rather than a private deep network for each object.
+
+Encoder evolution has a separate compatibility transform:
+
+$$
+E_{\theta'}(x)\approx Q E_\theta(x)+u_{\mathrm{new}}(x).
+$$
+
+The transform \\(Q\\) carries old coordinates forward; \\(u_{\mathrm{new}}\\) denotes candidate new representational capacity. For a first migration model, \\(Q=\exp(A)\\) with \\(A^\top=-A\\). New capacity and the mismatch left after fitting \\(Q\\) are distinct from the dynamics residual.
 
 ## 3. Fixed sensor patches and sparse identity retrieval
 
-The first toy version assumes a visual field divided into fixed patches.
-
-Each patch observes a short local history:
+The first toy version divides the visual field into fixed patches. Each patch encodes a short history into a compact population code \\(z_{i,t}\\), then proposes sparse local matches:
 
 $$
-x_{i,t-L:t}.
+k_{i,t}=I_\phi(z_{i,t}),
+\qquad
+C_i=\operatorname{ANN}_K(k_{i,t}).
 $$
 
-The shared encoder produces a compact **equivariant** population code:
+For example, patch 17 might retrieve objects 42, 781, 19, and 103, plus **UNKNOWN**. The index searches stored local prototypes and maps each hit back to its parent identity. Different patches can retrieve different sets; a global list of every identity is unnecessary.
+
+### From a variant patch to an invariant identity
+
+An equivariant encoder does not automatically deliver a unique object ID. A small patch showing a uniform blue surface may belong to a stapler, a mug, or a wall. No transformation matrix can recover identity information that the observation does not contain.
+
+The desired relationships are:
 
 $$
-z_{i,t}=E_\theta(x_{i,t-L:t}).
+E(g\cdot x)\approx\rho(g)E(x),
+\qquad
+I_\phi(\rho(g)z)\approx I_\phi(z).
 $$
 
-The key distinction is that \\(\,z_{i,t}\,\\) is allowed to change predictably under motion. TERN should not throw away pose and transformation information merely to make re-identification easier.
+The first retains predictable transformation information. The second reads out information stable under the modeled transformations. A readout can learn that stability from reliably associated views without receiving the absolute pose at inference time. It can also marginalize over candidate transformations or compare multiple stored views. Invariance alone is insufficient: a constant output is invariant too, so reconstruction and discrimination constraints must preserve useful information.
 
-A separate invariant or approximately invariant readout produces the retrieval key:
+For realistic 3-D objects, rotation changes visibility and can move evidence across patch boundaries. A fixed crop is generally not closed under the object's rotation group. Consequently, the exact equations apply most cleanly to an object-centered latent or the whole latent field with correspondence, while local patch keys are only approximate, partial evidence.
 
-$$
-k_{i,t}=I_\phi(z_{i,t}).
-$$
+MORPH therefore proposes a bounded joint inference loop:
 
-For a lawful transformation \\(\,g\,\\), the desired relationship is:
+1. **Retrieve locally:** appearance, short-term continuity, and stored view anchors generate candidate identities without requiring a known pose.
+2. **Propose ownership:** neighboring patches and coherent motion support several possible instance groupings.
+3. **Infer pose per candidate:** compare the grouped evidence with candidate anchors, retaining alternative poses or axes when ambiguous.
+4. **Predict and challenge:** test each identity–ownership–pose explanation through future views or actions; only afterward update persistent memory.
 
-$$
-E_\theta(g\cdot x)
-\approx
-\rho(g)E_\theta(x),
-$$
+This resolves the execution-order circularity by keeping alternatives, rather than assuming identity must be settled before pose or grouping can be estimated. It does not guarantee a correct or efficient solution. The cost is limited by candidate counts and recurrence budgets, and ambiguous observations may remain unknown.
 
-while identity remains stable:
+A rotation is also defined relative to a frame and origin. Rotating about an unknown object center is not necessarily a rotation about the camera origin. A rigid transform must include the corresponding translation, and relative camera/object motion must be inferred or measured. The pose latent can encode those relationships without initially exposing metric coordinates. One shared motion hypothesis must coordinate the population code; arbitrary independent rotations of each feature vector would not enforce object coherence.
 
-$$
-I_\phi(\rho(g)z)
-\approx
-I_\phi(z).
-$$
+### Identity as an orbit, with pose along that orbit
 
-Rather than score every persistent identity, each patch queries an approximate-nearest-neighbor index:
+A persistent object can store multiple anchors:
 
 $$
-C_i
-=
-\operatorname{ANN}_K(k_{i,t}).
+M_j=\{p_{j1},\ldots,p_{jn_j}\}.
 $$
 
-For example:
+In the ideal group model, one consistent object's anchors lie on its transformation orbit:
+
+$$
+\mathcal O_j=\{\rho(g)p\mid p\in M_j,\ g\in G\}.
+$$
+
+**Identity is the equivalence class of lawful views; pose specifies a location along that orbit.** An orbit is a manifold under suitable regularity assumptions, not generally a ball with simple minimum and maximum embedding coordinates. A practical memory covers only sampled reachable views; noise and model error make the accepted region a tolerance around that coverage.
+
+A candidate can be evaluated by orbit distance:
+
+$$
+d_j(z)=\min_{p\in M_j,\ g\in G_{\mathrm{tested}}}
+\|z-\rho(g)p\|.
+$$
 
 ~~~text
-patch 17 retrieves:
-    object 42
-    object 781
-    object 19
-    object 103
-    UNKNOWN
+candidates = ANN(local_key, K)
+for identity in candidates:
+    propose compatible ownership and pose states
+    compare observed features with transformed memory anchors
+keep bounded alternatives and UNKNOWN
+freeze their action-conditioned predictions before observing the outcome
 ~~~
 
-Different patches may retrieve different candidate sets. Consensus does not require a globally enumerated ballot.
+ANN retrieves a shortlist of anchors or invariant descriptors; it does not solve general manifold membership. The minimization above is a subsequent constrained alignment or learned matching step. Visually indistinguishable instances may need trajectory history or interaction even when the orbit model is accurate.
 
-A stored object may contain many local prototypes, transformation-orbit anchors, or transition anchors rather than one global vector:
-
-$$
-M_j=
-\{p_{j1},p_{j2},\ldots,p_{jn_j}\}.
-$$
-
-The ANN index can therefore retrieve local evidence and map each hit back to a persistent parent identity.
-
-This changes the re-identification question. Instead of asking only whether a new vector is near one stored point, TERN can eventually ask whether an observation is compatible with a **reachable transformation orbit** of a known object:
-
-$$
-\mathcal O_j
-=
-\{
-\rho(g)p
-\mid
-p\in M_j,\;
-g\in G
-\}.
-$$
-
-In other words:
-
-> **Can this observation be explained as another lawful view or state of something I already know?**
-
-This resembles metric-learning approaches such as Prototypical Networks, where a neural network learns a representational space and classification can be performed by comparing an example with stored prototypes rather than by adding a fixed softmax output for every possible future class. TERN adds the stronger requirement that the representation should also retain enough transformation structure to predict how those prototypes move under action.
+Symmetric objects also have several equally valid poses. MORPH should maintain pose uncertainty or symmetry classes rather than enforce a globally unique canonical orientation. Learning useful orbit structure, ownership, and pose factorization together is a central research question.
 
 ## 4. ART-like vigilance is a challenge, not a verdict
 
@@ -322,7 +269,7 @@ $$
 
 This is inspired by Adaptive Resonance Theory (ART), where bottom-up evidence activates a candidate category, the category supplies a top-down expectation, and mismatch can reset the candidate and continue search. High vigilance produces finer categories; lower vigilance permits broader categories.
 
-TERN generalizes the interpretation:
+MORPH generalizes the interpretation:
 
 > **A candidate identity is allowed to propose an expectation. The expectation itself is not evidence. It must survive comparison with evidence outside the proposal.**
 
@@ -412,7 +359,7 @@ better fit is treated as confirmation
 hypothesis wins harder
 ~~~
 
-TERN requires the opposite ordering:
+MORPH requires the opposite ordering:
 
 ~~~text
 hypothesis proposed
@@ -438,7 +385,7 @@ A → B → C → D → A
 
 That creates a classic danger in loopy inference: evidence originating at A can eventually return to A through another path and appear independent.
 
-TERN does not initially try to solve arbitrary provenance bookkeeping.
+MORPH does not initially try to solve arbitrary provenance bookkeeping.
 
 Instead it imposes an evidence-conservation rule:
 
@@ -456,9 +403,23 @@ The recurrent network is free to ask:
 
 But confirmation requires a new observation, a held-out observation, or another explicitly independent evidence channel.
 
-The toy V1 uses **future sensory evidence** as the cleanest provenance boundary because time makes its independence easy to audit.
+The toy V1 uses **future sensory evidence** as an auditable causal boundary: it was unavailable when the prediction was frozen. Nearby frames can still be statistically correlated, so temporal separation alone does not guarantee independent evidence.
 
 ## 7. Active inference turns ambiguity into an experiment
+
+A hypothesis is a structured claim:
+
+> **This evidence belongs to identity \\(I_j\\), this is its current pose latent, and given action or transition \\(a_t\\), its latent representation and resulting observations should change in this particular way.**
+
+One possible record is:
+
+$$
+H_{j,t}=(I_j,w_{j,t},p_{j,t},\Sigma_{j,t},\theta_t),
+$$
+
+where \\(w_{j,t}\\) describes candidate patch ownership, \\(p_{j,t}\\) is the relative pose latent, \\(\Sigma_{j,t}\\) records uncertainty, and \\(\theta_t\\) identifies the shared model version used for prediction. The identity descriptor comes from the candidate memory. A hypothesis refers to a current instance and its evidence trail, rather than only naming an object or a category.
+
+The shared transition model uses this record and the action to produce a distribution over future latents and visible observations. Two hypotheses may name different identities, different poses of the same identity, or different ownership assignments. Their predictions can disagree even when their present appearance scores are similar.
 
 Suppose two object hypotheses currently fit:
 
@@ -517,7 +478,7 @@ The action is not merely motor output. It is an experiment.
 
 Temporal escrow would be too slow if every object learned only through its own private weights.
 
-TERN instead has three complementary update paths.
+MORPH instead has three complementary update paths.
 
 ### Fast path: persistent identity memory
 
@@ -531,7 +492,7 @@ M_{K+1}
 \}.
 $$
 
-No global retraining is necessary just to create the identity.
+Allocation and memory updates use no gradient descent. They store observations, update statistics, or revise associations. Gradient descent belongs to the separate shared-learning path.
 
 A provisional identity may be promoted, revised, merged, or deleted as future escrowed evidence accumulates.
 
@@ -602,10 +563,46 @@ $$
 +
 \lambda_m\mathcal L_{\text{migration}}
 +
-\lambda_h\mathcal L_{\text{hierarchy}}.
+\lambda_h\mathcal L_{\text{hierarchy}}
++
+\lambda_o\mathcal L_{\text{observation}}
++
+\lambda_a\mathcal L_{\text{reconstruction}}.
 $$
 
-The equivariance loss asks the new observation to agree with the action-conditioned transformation:
+The decoder provides two complementary losses. Reconstruction checks that the current representation retains enough information to reproduce the current observation. Future prediction checks the action-conditioned representation against the subsequent real observation:
+
+$$
+\tilde x_t=D_\delta(Z_t,W_t,c_t),
+\qquad
+\mathcal L_{\mathrm{reconstruction}}
+=\ell(\tilde x_t,x_t),
+$$
+
+$$
+\mathcal L_{\mathrm{observation}}
+=\ell\!\left(
+D_\delta(\hat Z_{t+1},\hat W_{t+1},c_t),x_{t+1}
+\right).
+$$
+
+Here \\(\ell\\) is an observation-space error or negative log-likelihood, for example image mean-squared error with a suitable visibility treatment. A probabilistic decoder can express uncertainty about occluded or unseen surfaces; it should not avoid errors by declaring every difficult pixel invisible. Reconstruction trains representation quality but cannot validate an identity using its own proposal data. The future prediction is frozen and scored before those future observations enter training.
+
+~~~text
+joint_latent = encoder(observation_history)
+identity, pose, ownership = factorize(joint_latent, candidate_memory)
+future_pose = action_group(action, context) * pose
+future_latent = compose(identity, future_pose) + dynamics_residual
+predicted_observation = decoder(future_latent, predicted_visibility)
+freeze prediction and model version
+act; acquire real future observation
+score sensor-space error and matched latent-space error
+only then train the candidate shared model
+~~~
+
+Latent prediction loss adds transformation consistency; it does not replace decoding and comparison in real sensor space. A decoder that ignores the transformed latent would likewise fail the action-conditioned prediction test.
+
+On matched observations where the chosen group model applies, the equivariance loss asks the next observation to agree with the action-conditioned transformation:
 
 $$
 \mathcal L_{\text{equivariance}}
@@ -617,7 +614,7 @@ E_\theta(x_{t+1})
 \right\|^2.
 $$
 
-All of these losses may backpropagate through overlapping shared parameters.
+These losses can update overlapping shared parameters during candidate training, with the staged residual schedule below controlling which branches receive gradients.
 
 So learning object \\(\,M_{1001}\,\\) does not mean:
 
@@ -627,25 +624,59 @@ It means:
 
 > use this encounter as another constraint on the general machinery for encoding, retrieving, predicting, transforming, distinguishing, grouping, and composing things.
 
-This is also why the same encoder can serve both identity and group dynamics. The equivariant latent retains transformation information; the invariant readout extracts persistent identity from that same latent.
+This is why one encoder can support both identity and dynamics, provided that the factorization and its losses are actually learned. The encoder supplies a joint latent; shared inference extracts an identity descriptor and a pose latent.
 
-~~~text
-observation
-    ↓
-shared equivariant encoder
-    ↓
-structured latent
-   /          \
-  /            \
-identity       action dynamics
-readout        ρ(exp(ξ))
-  |              |
-memory        predicted future latent
+~~~mermaid
+flowchart TD
+    X["Observation"] --> E["Equivariant encoder"]
+    E --> Z["Joint latent"]
+    Z --> F["Identity–pose factorization"]
+    F --> I["Invariant identity descriptor"]
+    F --> P["Pose latent"]
+    I --> M["Persistent memory"]
+    A["Action and context"] --> G["Group action ρp(exp ξ)"]
+    P --> G
+    G --> PP["Predicted pose latent"]
+    I --> C["Compose identity and predicted pose"]
+    PP --> C
+    C --> ZP["Predicted future latent"]
+    ZP --> O["Decoder: predicted real observation"]
+    O --> L["Compare with subsequent sensor observation"]
 ~~~
 
-The two objectives constrain each other. Features that remain stable across correctly predicted transformations are candidates for identity-bearing information. Features that change should change in a lawful way.
+The group acts on the pose factor while the identity descriptor remains stable. Composition reconstructs the joint latent; the decoder predicts the resulting observation. This is an intended factorization, not a guarantee that an arbitrary equivariant network exposes two clean coordinate blocks.
 
-That is the mechanism by which one embodied experience can simultaneously teach **what persists** and **how appearance changes**.
+Training uses reliably associated temporal views, multi-step action prediction, and reconstruction of observations. Same-instance views constrain identity stability, confirmed distinct instances provide separation, and composition constrains the pose factor to retain transformation information. Ownership remains provisional, so uncertain tracks should have reduced weight and be challenged before becoming training associations. A reconstruction or variance-preserving objective is necessary because equivariance loss alone admits collapsed codes. A learned factorization need not be globally identifiable; local charts and symmetry-aware pose uncertainty may be sufficient.
+
+### Training the dynamics residual separately
+
+The dynamics residual is a shared prediction head, not necessarily a separate encoder. First train the encoder, factorizer, composition/decoder, and group operator on matched, visible transitions where the chosen group model is appropriate. Do not force clean group equivariance on every occlusion or contact event.
+
+Next freeze that candidate group path and compute the prediction error for additional scored transitions:
+
+$$
+b_t=\operatorname{stopgrad}
+\left(E_{\theta^-}(x_{t+1})-\hat z^{\mathrm{group}}_{t+1}\right),
+$$
+
+$$
+\mathcal L_{\mathrm{dynres}}
+=\|r_\omega(\operatorname{stopgrad}(z_t),a_t,c_t,H_t)-b_t\|^2
++\lambda_{\mathrm{res}}\|r_\omega(\cdot)\|^2.
+$$
+
+The frozen target encoder \\(E_{\theta^-}\\) fixes the coordinate system during this fit. Stop-gradient means this residual-training phase updates \\(\omega\\), not the shared encoder or group operators. The penalty limits residual use; correspondence and visibility masks exclude comparisons of unrelated surfaces. Also apply the decoded future-observation loss through the frozen decoder: gradients can pass through its input into the residual head while the decoder's weights stay fixed. This tests whether a latent correction actually improves sensor-space prediction.
+
+~~~text
+score the frozen prediction against the new observation
+fit candidate group path on suitable matched transitions
+freeze candidate encoder, factorizer, and group path
+target = encoded_future - group_prediction
+fit residual_head to target with magnitude/capacity penalties
+test group-only and combined predictions on held-out episodes
+~~~
+
+This staged schedule is one practical way to separate the objectives. Later joint fine-tuning can be tested with a small residual, clean-transition group loss, and explicit gradient controls; unconstrained backpropagation through every branch risks residual takeover. A large residual may also signal bad correspondence or a wrong motion estimate, rather than genuine non-group dynamics.
 
 ## 9. Hard negatives turn local novelty into neighborhood learning
 
@@ -700,7 +731,7 @@ The exact sampling policy is an experiment.
 
 But replay is no longer the only anti-forgetting mechanism.
 
-TERN also asks whether the change between encoder versions can be explained by an explicit migration transform. A candidate update should preserve old knowledge either because replay keeps it stable or because old embeddings can be transported into the new coordinates with low distortion.
+MORPH also asks whether the change between encoder versions can be explained by an explicit migration transform. A candidate update should preserve old knowledge either because replay keeps it stable or because old embeddings can be transported into the new coordinates with low distortion.
 
 That gives four learning radii:
 
@@ -724,7 +755,7 @@ NEW EXPERIENCE
 
 This resembles the computational motivation behind Complementary Learning Systems: rapid storage of individual experiences alongside slower distributed learning that extracts shared structure through interleaved experience.
 
-TERN does not require a literal mapping from these artificial components onto hippocampus and neocortex. The relevant idea is computational: **fast memory, lawful state transformation, and broad overlapping representation learning solve different problems.**
+MORPH does not require a literal mapping from these artificial components onto hippocampus and neocortex. The relevant idea is computational: **fast memory, lawful state transformation, and broad overlapping representation learning solve different problems.**
 
 ## 11. Encoder drift becomes explicit representation migration
 
@@ -738,22 +769,22 @@ while \\(\,E_\theta\,\\) continues to learn, old stored vectors eventually becom
 
 The coordinate system itself moves.
 
-Rather than treating this only as a maintenance problem, TERN makes **migration compatibility part of the learning objective**.
+Rather than treating this only as a maintenance problem, MORPH makes **migration compatibility part of the learning objective**.
 
-Let the frozen previous encoder be \\(\,E_0\,\\) and a candidate updated encoder be \\(\,E_1\,\\). TERN tries to decompose representational change into:
+Let the frozen previous encoder be \\(\,E_0\,\\) and a candidate updated encoder be \\(\,E_1\,\\). MORPH tries to decompose representational change into:
 
 $$
 E_1(x)
 \approx
 Q E_0(x)
 +
-r(x).
+u_{\mathrm{new}}(x).
 $$
 
 Here:
 
 - \\(\,Q\,\\) is a shared, invertible coordinate migration that carries old knowledge forward;
-- \\(\,r(x)\,\\) is residual plasticity that can add distinctions the old representation could not express.
+- \\(\,u_{\mathrm{new}}(x)\,\\) is residual plasticity that can add distinctions the old representation could not express.
 
 A simple first choice is an orthogonal migration:
 
@@ -783,43 +814,40 @@ the old identity geometry is preserved exactly inside the migrated subspace.
 
 During an escrowed encoder update, keep \\(\,E_0\,\\) frozen and jointly train \\(\,E_1\,\\) and the migration transform.
 
-A compatibility loss can be:
+A protected-subspace compatibility loss can be:
 
 $$
-\mathcal L_{\text{migration}}
-=
-\sum_{x\in\mathcal A}
-\left\|
-E_1(x)
--
-Q E_0(x)
--
-r(x)
-\right\|^2,
+\mathcal L_{\mathrm{migration}}
+=\sum_{x\in\mathcal A}
+\|P_{\mathrm{old}}E_1(x)-QE_0(x)\|^2.
 $$
 
-where \\(\,\mathcal A\,\\) is a set of historical anchors or replay examples.
-
-The goal is not to force every update to be a pure rotation. That would preserve old distances so perfectly that it could not repair an inadequate representation.
-
-A more useful stability/plasticity split is:
+Here \\(\mathcal A\\) contains historical replay anchors and \\(P_{\mathrm{old}}\\) selects the capacity assigned to old knowledge. On held-out anchors, the vector
 
 $$
-E_1(x)
-=
+\epsilon_{\mathrm{mig}}(x)
+=P_{\mathrm{old}}E_1(x)-QE_0(x)
+$$
+
+measures migration mismatch. It is an error to audit, not an unrestricted learned term subtracted away to make compatibility look good.
+
+A useful stability/plasticity split is:
+
+$$
+E_1(x)\approx
 \begin{bmatrix}
-Q E_0(x)\\
-r(x)
-\end{bmatrix},
+QE_0(x)\\
+u_{\mathrm{new}}(x)
+\end{bmatrix}.
 $$
 
-or an equivalent architecture in which protected/migratable capacity coexists with new plastic capacity.
+New capacity can use reserved dimensions or an expanded latent, under explicit memory/compute budgets. The protected block can move coherently while the new block learns distinctions the old code lacked. An exact orthogonal transform cannot improve distances within the old block; improved discrimination must use added capacity or a separately tested relaxation.
 
-The old representation can then move coherently while the residual learns genuinely new distinctions.
+Old stored embeddings do not contain the new information. Their new block remains missing until a raw anchor is re-encoded or the object is revisited; a query matcher must handle partial/versioned representations. The square change-of-basis and conjugation equations below apply to the protected block. Expanded capacity needs its own learned dynamics and compatibility tests.
 
 ### Commit only after migration review
 
-After the candidate update, TERN evaluates at least four things:
+After the candidate update, MORPH evaluates at least four things:
 
 1. **old identity compatibility** — do historical objects still retrieve and resonate correctly?
 2. **migration residual** — how much old-state movement cannot be explained by \\(\,Q\,\\)?
@@ -878,7 +906,17 @@ $$
 
 This is a change of basis, not new physics.
 
-It gives TERN a strong anti-forgetting condition: an encoder update should preserve not only old object identities but also the **lawful transition structure** previously learned in the latent space.
+It gives MORPH a strong anti-forgetting condition: an encoder update should preserve not only old object identities but also the **lawful transition structure** previously learned in the latent space.
+
+The decoder and residual predictor must remain compatible too. On the protected block, an exact change of basis would require:
+
+$$
+D_1(Qz)\approx D_0(z),
+\qquad
+r_1(Qz,a,c)\approx Qr_0(z,a,c).
+$$
+
+These equations suppress unchanged sensor context and ownership arguments for readability. They are tested compatibility conditions; conjugating the group operator alone does not enforce them. Candidate updates must also check decoded historical observations, the identity–pose factorizer, and retrieval keys.
 
 ### Physical motion and encoder migration are different groups
 
@@ -906,7 +944,7 @@ The migration group says:
 
 > how should an old representation be transported because the encoder changed?
 
-TERN needs both.
+MORPH needs both.
 
 ## 12. Spatial grouping can exploit local transformation consistency
 
@@ -993,7 +1031,7 @@ This keeps five questions separate:
 4. **grouping:** which nearby patches share a coherent current cause?
 5. **identity:** which persistent memory best survives future prediction?
 
-The anti-forgetting migration should be more global than the physical patch dynamics. TERN should not begin by allowing an arbitrary independent encoder-migration transform for every patch; that would make it too easy to preserve patches individually while destroying cross-patch geometry. A shared migration \\(\,Q\,\\) plus small constrained local residuals is the safer starting point.
+The anti-forgetting migration should be more global than the physical patch dynamics. MORPH should not begin by allowing an arbitrary independent encoder-migration transform for every patch; that would make it too easy to preserve patches individually while destroying cross-patch geometry. A shared migration \\(\,Q\,\\) plus small constrained local residuals is the safer starting point.
 
 ## 13. A toy learning episode
 
@@ -1062,7 +1100,7 @@ g_t
 \exp(\xi_t\Delta t).
 $$
 
-Each visible patch receives a locally conditioned consequence of that shared motion:
+The candidate grouping and pose determine locally conditioned consequences of that shared motion. For corresponding visible evidence, a simplified latent prediction is:
 
 $$
 \hat z_{i,t+1}
@@ -1074,7 +1112,7 @@ $$
 
 The provisional blue-stapler identity and known alternatives can therefore make different predictions about **which patches should remain the same thing and how their representations should move**.
 
-These predictions are frozen in temporal escrow before the next image exists.
+The spatial decoder composes those predicted features into a future image, including where the stapler is expected to appear. That image prediction and its uncertainty are frozen in temporal escrow before the next image exists.
 
 ### Step 5: act
 
@@ -1090,11 +1128,11 @@ z_{i,t+1}
 E_\theta(x_{i,t+1}).
 $$
 
-The predictions were fixed before these pixels existed.
+The predictions were fixed before these pixels existed. Compare the decoded prediction directly with the acquired image, and also compare latent predictions where correspondence is valid.
 
 ### Step 7: resonance or reset
 
-If the provisional identity predicts the new patch transitions better than the alternatives, it gains evidence.
+If the provisional identity predicts the new sensor observations and corresponding patch transitions better than the alternatives, it gains evidence.
 
 If it fails badly, it can be revised, merged with a known identity, or reset.
 
@@ -1105,6 +1143,7 @@ Transformation coherence across several patches can also strengthen the grouping
 Only after scoring, gradient descent may improve:
 
 - the shared equivariant encoder;
+- the shared decoder and identity–pose composition/factorization;
 - the invariant identity/retrieval readout;
 - the action-to-Lie-algebra map;
 - the latent group representation;
@@ -1120,7 +1159,7 @@ Replay interleaves older experiences.
 
 Suppose this episode exposed a genuine weakness in the representation: blue and red staplers were too difficult to distinguish.
 
-TERN does not immediately replace the deployed encoder.
+MORPH does not immediately replace the deployed encoder.
 
 It trains a candidate \\(\,E_1\,\\), fits a migration transform \\(\,Q\,\\), and asks whether old representations satisfy approximately:
 
@@ -1146,7 +1185,7 @@ The new identity itself may have been created in one encounter, while its experi
 
 ## 14. Deep abstraction uses the same protocol recursively
 
-TERN is intended to be recursive.
+MORPH is intended to be recursive.
 
 At the lowest level, nodes represent local sensory states.
 
@@ -1198,7 +1237,8 @@ This gives a possible operational criterion for creating abstractions:
 
 A reusable "door-opening" model, for example, might combine a handle, hinge, panel, grasp action, and predictable transition. It becomes a persistent higher-level model only if the composition consistently earns new predictive evidence.
 
-## 15. What TERN is not claiming
+## 15. What MORPH is not claiming
+{: #15-what-tern-is-not-claiming}
 
 This architecture borrows ideas from several established traditions but should not be confused with any one of them.
 
@@ -1211,7 +1251,7 @@ This architecture borrows ideas from several established traditions but should n
 - **Complementary Learning Systems** motivates separating rapid item memory from slower distributed structure learning.
 - **Active inference and information-seeking control** motivate choosing actions that discriminate among competing hypotheses.
 
-TERN's specific combination is a working research proposal:
+MORPH's specific combination is a working research proposal:
 
 > **temporal evidence escrow + open-ended identity memory + a shared equivariant sensorimotor substrate + explicit representation migration under continual learning.**
 
@@ -1220,6 +1260,31 @@ The architecture does **not** assume that every sensory change is a Lie-group ac
 It also does not assume that the physical motion group and the encoder-migration group are the same object. They are deliberately separated.
 
 The proposal should be judged experimentally.
+
+### Comparison with unsupervised re-identification
+
+Representative unsupervised re-ID systems such as [Cluster Contrast](https://openaccess.thecvf.com/content/ACCV2022/html/Dai_Cluster_Contrast_for_Unsupervised_Person_Re-Identification_ACCV_2022_paper.html) alternate feature extraction, clustering into pseudo-identities, and contrastive encoder learning. Their memory dictionaries make clustering and feature learning mutually dependent. “Unsupervised” means no target identity labels; it does not automatically mean a learner starts without pretraining.
+
+MORPH shares the retrieval, prototype, and pseudo-association problem. Its proposed emphasis is a continuous embodied stream: allocate provisional identities immediately, predict action consequences, and test associations before they support persistent memory or candidate shared updates. Batch clustering can still be a useful consolidation step. The distinction is a lifecycle and validation protocol, not a claim that prior re-ID is only clustering or lacks temporal methods.
+
+| Question | Representative clustering-based re-ID | MORPH proposal |
+| --- | --- | --- |
+| How are associations proposed? | Cluster current embeddings into pseudo-labels | Sparse retrieval plus provisional temporal/grouping hypotheses |
+| What representation is useful? | Discriminative matching features | Matching features plus pose-bearing action dynamics |
+| How is ambiguity reduced? | Better features, clustering, and ranking | Those tools plus actions that discriminate competing predictions |
+| What happens when the encoder changes? | Update/recompute gallery or dictionary features | Review coordinate migration, dynamics, and any necessary backfill |
+
+These are experimental comparisons, not demonstrated advantages. Evaluate both on the same stream and report initialization, information access, latency, and identity errors.
+
+### Comparison with Homomorphism AutoEncoders
+
+[Keurti et al.'s Homomorphism AutoEncoder (HAE, ICML 2023)](https://proceedings.mlr.press/v202/keurti23a.html) is a direct precedent. It jointly learns observation encoding, decoding, and action matrices using reconstruction and multi-step latent prediction. The learned action maps seek to preserve composition: the matrix for a composed transition should agree with sequential matrix application.
+
+HAE also discusses separating object identity as an orbit from pose along that orbit. MORPH should credit that overlap explicitly. Learning group-structured dynamics or describing identity through transformation orbits is not a new contribution here.
+
+The proposed additions concern deployment over time: open-ended nonparametric identity memory, joint multi-object grouping, sparse retrieval, uncertain hypotheses challenged by later evidence, active disambiguation, and reviewed encoder migration. Both architectures include a decoder. MORPH explicitly decodes the transformed, recomposed embedding into sensor space and learns from real observation errors alongside latent consistency. The proposed distinction is continual memory and update governance, not decoder removal. An HAE-style model could supply MORPH's shared predictive substrate.
+
+HAE's setting assumes group-compatible transitions with informative action signals. That does not establish that arbitrary fixed patches under occlusion, independently moving objects, or contact obey one invertible group action. MORPH must test those extensions and use explicit uncertainty and residual modeling where the assumptions fail. This comparison is conceptual; no performance advantage has been demonstrated.
 
 ## 16. Minimal prototype
 
@@ -1243,8 +1308,8 @@ Requirements:
 Use:
 
 1. fixed image patches;
-2. one shared equivariant predictive encoder;
-3. an invariant identity/retrieval readout;
+2. one shared equivariant predictive encoder with identity–pose factorization and composition;
+3. a shared spatial decoder, sensor-space prediction/reconstruction losses, and an approximately invariant identity/retrieval readout;
 4. ANN index over persistent local prototypes;
 5. ART-like vigilance threshold;
 6. **UNKNOWN** as a legal candidate;
@@ -1258,9 +1323,21 @@ Use:
 14. candidate encoder updates trained with migration compatibility;
 15. versioned memory migration after accepted encoder changes.
 
+Add a fully unsupervised clustering/contrastive re-ID baseline and an HAE-style encoder/action predictor/decoder with a simple prototype gallery. Use the same input stream and pretraining policy, and record any extra segmentation or motion supervision. Compare joint grouping–pose inference against a diagnostic oracle-grouping condition to reveal whether failures originate in binding, dynamics, or retrieval.
+
 The first prototype should prefer a low-dimensional known physical group over trying to discover every symmetry from scratch. Once the control loop is working, the harder experiment is to learn some generators from sensorimotor trajectories.
 
 ### Encoder-update protocol
+
+Three quantities must be kept separate:
+
+| Quantity | Meaning | How it is handled |
+| --- | --- | --- |
+| Dynamics residual \\(r_\omega\\) | Predicts transition effects outside the selected group path | Train a penalized prediction head on future-observation errors after scoring |
+| New capacity \\(u_{\mathrm{new}}\\) | Adds representational distinctions during an encoder revision | Train within the candidate model, with capacity budgets and historical review |
+| Migration residual \\(\epsilon_{\mathrm{mig}}\\) | Old-block mismatch remaining after fitting \\(Q\\) | Measure on held-out historical anchors; reject, re-encode, or explicitly accept bounded degradation |
+
+The dynamics residual is not itself evidence of unmigratable memory. The migration residual measures the coordinate change's unexplained error, not a fraction of records that are permanently unmigratable. Some memories may require backfill even when average error is low. Both the residual predictor and its outputs must remain compatible with the accepted encoder coordinates, through retraining/distillation or validated transport.
 
 When a sustained prediction or re-identification failure triggers plasticity:
 
@@ -1268,11 +1345,11 @@ When a sustained prediction or re-identification failure triggers plasticity:
 2. clone a candidate encoder \\(\,E_1\,\\);
 3. train on current + replay data;
 4. jointly fit a migration transform \\(\,Q\,\\);
-5. measure migration residual on old anchors;
+5. measure migration residual on held-out old anchors, separate from the anchors used to fit the migration;
 6. test old identity retrieval after migration;
-7. test old action transitions after conjugating their latent operators;
+7. test old action transitions after conjugating protected-block operators, and validate the residual head and any new capacity separately;
 8. test the new failure case;
-9. commit only if the candidate improves the target problem without unacceptable historical degradation.
+9. commit only if the candidate improves the target problem without unacceptable historical degradation, with a backfill policy for memories lacking new features.
 
 ### Baselines
 
@@ -1286,7 +1363,7 @@ Compare against:
 - migration-compatible learning without replay;
 - replay without migration-compatible learning;
 - full re-encoding of the historical gallery after every encoder update;
-- versioned \\(\,Q\,)-based migration of stored representations.
+- versioned \\(\,Q\,\\)-based migration of stored representations.
 
 ### Main measurements
 
@@ -1297,7 +1374,7 @@ Measure:
 - false splits of one object into multiple identities;
 - re-identification after absence;
 - cross-view and cross-pose re-identification;
-- action-conditioned latent prediction accuracy;
+- action-conditioned latent and decoded sensor-space prediction accuracy;
 - group composition error;
 - inverse-consistency error where applicable;
 - residual-dynamics magnitude;
@@ -1311,6 +1388,8 @@ Measure:
 - ANN retrieval quality as the identity library grows;
 - calibration of resonance confidence;
 - performance when visually similar objects require action to disambiguate.
+
+Also measure grouping/correspondence quality, identity–pose leakage, pose uncertainty calibration, candidate-budget saturation, residual takeover, and identity stability under symmetric or partially occluded views. Test a rotating object crossing patch boundaries with its center hidden, two similar independently moving instances, and a deforming object. These expose assumptions that a centered single-object rotation demo would miss.
 
 Three ablations are especially important.
 
@@ -1328,7 +1407,7 @@ Third:
 
 ## 17. Failure modes to expect
 
-TERN has obvious ways to fail.
+MORPH has obvious ways to fail.
 
 ### Provisional identity explosion
 
@@ -1336,7 +1415,9 @@ If vigilance is too strict, normal viewpoint variation may create a new object e
 
 The system then repeats an old failure mode: representational novelty becomes ontological novelty.
 
-Equivariant orbit modeling should reduce this failure if viewpoint changes are explainable as lawful transformations of one identity.
+Equivariant orbit modeling may reduce this failure if viewpoint changes are explainable as lawful transformations of one identity.
+
+Candidate count, unresolved-association entropy, memory-allocation rate, and inference latency can trigger a budget response. The robot can pause new memory allocation, narrow attention, slow motion, seek a simpler viewpoint, or retreat to a previously observed scene. An illustrative policy enters this mode after several consecutive budget violations and exits below a lower threshold, avoiding oscillation. Adjusting vigilance or filtering thresholds trades false splits against false merges; it should not force acceptance of an identity merely to reduce load. Preserve UNKNOWN and log the trade-off.
 
 ### Identity collapse
 
@@ -1346,7 +1427,7 @@ If vigilance is too permissive, distinct similar objects merge.
 
 A rigid transformation model can be confidently wrong when the actual event involves deformation, articulation, occlusion, contact, illumination, or independent motion.
 
-The residual model must be allowed to explain non-group effects without becoming an unrestricted escape hatch.
+The residual model must be allowed to explain non-group effects without becoming an unrestricted escape hatch. The staged training procedure in [section 8](#training-the-dynamics-residual-separately) freezes the group path while fitting that residual, then evaluates both paths on held-out transitions. Persistent structured errors should trigger a different motion model or richer context, rather than unlimited residual growth.
 
 ### Residual takeover
 
@@ -1364,7 +1445,7 @@ The first implementation should therefore prefer a shared migration transform wi
 
 If the encoder update is required to be almost exactly a global orthogonal transform, the system cannot repair genuinely poor historical geometry.
 
-TERN needs a protected migratable subspace plus controlled new capacity, not perfect rigidity.
+MORPH needs a protected migratable subspace plus controlled new capacity, not perfect rigidity.
 
 ### Migration-chain accumulation
 
@@ -1402,7 +1483,7 @@ An information-seeking policy should therefore prefer actions that discriminate 
 
 A coordinate migration may preserve the algebra of old transformations while still damaging the invariant identity readout.
 
-TERN must test both. Neither is sufficient alone.
+MORPH must test both. Neither is sufficient alone.
 
 ### Deep abstraction explosion
 
@@ -1412,7 +1493,7 @@ Higher abstractions will need stronger persistence criteria than one successful 
 
 ## 18. Research principle
 
-TERN can now be compressed into three coupled rules.
+MORPH can now be compressed into three coupled rules.
 
 ### Rule 1: evidence cannot validate itself
 
@@ -1437,6 +1518,8 @@ $$
 ### Rule 2: actions should move representations lawfully
 
 A shared latent should preserve the distinction between identity and transformation.
+
+**Equivalence** groups views judged to represent the same thing under allowed transformations. **Invariance** means a readout stays unchanged under those transformations. **Equivariance** means the full code changes in the corresponding predictable way. A front and side view can be equivalent for identity, share an invariant retrieval descriptor, and still have different equivariant pose codes.
 
 The full representation is equivariant:
 
@@ -1479,7 +1562,7 @@ E_1(x)
 \approx
 Q E_0(x)
 +
-r(x).
+u_{\mathrm{new}}(x).
 $$
 
 The update remains in escrow until historical identities and historical action transitions survive the change.
@@ -1534,16 +1617,32 @@ If these rules can recurse through layers of learned models, object identity may
 
 The larger hypothesis is that an embodied intelligence could build an open-ended hierarchy of persistent models whose internal state is defined partly by **what it is** and partly by **how it can lawfully transform**, while retaining the aggressive distributed learning advantage of deep neural networks and without allowing recurrence or plasticity to erase its own history.
 
+## Future expansions
+
+These are directions to investigate after the identity, prediction, and migration loop works.
+
+- **Egomotion, allomotion, and proprioception:** separate the robot's own movement from independently moving objects, using joint encoders, IMU/odometry, and touch where available. Predict relative sensor–object motion while retaining uncertainty about its cause.
+- **Compositionality and articulation:** bind parts into objects and relations, allowing a hinge or joint to move while the parent identity persists. Multiple interacting objects and changing topology need richer models than one rigid orbit.
+- **Language integration:** attach words and descriptions to already grounded identities, relations, and affordances. Language can suggest hypotheses or tasks, while sensory evidence tests their physical implications.
+- **Continuous action-control manifolds:** learn how a continuous action parameter maps to local latent generators, then use predicted outcomes for control. Motor commands generally include constraints, delays, contact, and noninvertible effects; a Lie group models suitable transformation components rather than the entire controller.
+- **State estimation and mapping:** maintain relative frames, uncertainty, landmarks, and loop closure so a new view can be related to remembered objects during longer navigation episodes. Metric calibration may become necessary even if early pose representations are latent.
+- **Affordances and contact dynamics:** learn what an object permits the robot to do, including grasping, pushing, and manipulating. These transitions require embodiment-specific feedback and often piecewise or hybrid dynamics.
+- **Planning and resource allocation:** choose which hypotheses deserve experiments, how much recurrence to spend, and when to consolidate, backfill, forget, or suspend new identities. Task cost and physical feasibility must constrain information seeking.
+
+Each expansion introduces assumptions to test; none follows automatically from an equivariant encoder.
+
 ## References and conceptual precedents
 
 - Carpenter, G. A. & Grossberg, S. **Adaptive Resonance Theory**. See the [Scholarpedia overview](https://www.scholarpedia.org/article/Adaptive_resonance_theory).
 - McClelland, J. L., McNaughton, B. L., & O'Reilly, R. C. (1995). [Why there are complementary learning systems in the hippocampus and neocortex](https://pubmed.ncbi.nlm.nih.gov/7624455/).
 - Snell, J., Swersky, K., & Zemel, R. S. (2017). [Prototypical Networks for Few-shot Learning](https://arxiv.org/abs/1703.05175).
+- Dai, Z., Wang, G., Yuan, W., Zhu, S., & Tan, P. (2022). [Cluster Contrast for Unsupervised Person Re-Identification](https://openaccess.thecvf.com/content/ACCV2022/html/Dai_Cluster_Contrast_for_Unsupervised_Person_Re-Identification_ACCV_2022_paper.html).
+- Keurti, H., Pan, H.-R., Besserve, M., Grewe, B. F., & Schölkopf, B. (2023). [Homomorphism AutoEncoder — Learning Group Structured Representations from Observed Transitions](https://proceedings.mlr.press/v202/keurti23a.html). See also the [full paper](https://proceedings.mlr.press/v202/keurti23a/keurti23a.pdf) for identity/pose and orbit discussions.
 - Cohen, T. & Welling, M. (2016). [Group Equivariant Convolutional Networks](https://arxiv.org/abs/1602.07576).
 - Bronstein, M. M., Bruna, J., Cohen, T., & Veličković, P. (2021). [Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges](https://arxiv.org/abs/2104.13478).
 - Shen, Y. et al. (2020). [Towards Backward-Compatible Representation Learning](https://arxiv.org/abs/2003.11942).
 - Backward-compatible and orthogonal feature-alignment methods motivate the idea that an encoder revision can preserve an older feature geometry through an explicit transformation while allocating additional capacity for new information.
 - Lie-group state estimation and robotics provide the standard mathematical machinery for \\(\,SO(3)\,\\), \\(\,SE(3)\,\\), twists, exponential maps, adjoint transforms, and compositional rigid-body motion.
-- Unit dual quaternions provide a compact representation of rigid-body rotation and translation and are a possible implementation choice for the \\(\,SE(3)\,\\) action path; they are not required by TERN.
-- Active inference and epistemic action provide one family of approaches for choosing actions that reduce uncertainty; TERN uses that family of ideas only as a starting point for action selection.
-- Standard treatments of loopy belief propagation illustrate the double-counting problem when evidence circulates around cycles; TERN's first prototype avoids solving general message ancestry by restricting new evidence credit to temporally escrowed observations.
+- Unit dual quaternions provide a compact representation of rigid-body rotation and translation and are a possible implementation choice for the \\(\,SE(3)\,\\) action path; they are not required by MORPH.
+- Active inference and epistemic action provide one family of approaches for choosing actions that reduce uncertainty; MORPH uses that family of ideas only as a starting point for action selection.
+- Standard treatments of loopy belief propagation illustrate the double-counting problem when evidence circulates around cycles; MORPH's first prototype avoids solving general message ancestry by restricting new evidence credit to temporally escrowed observations.

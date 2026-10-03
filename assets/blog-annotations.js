@@ -18,11 +18,38 @@
   const commentTypes = ["Question", "Unclear", "Expand", "Diagram", "Example", "Correction", "Lab idea", "Note", "Report issue", "Theory", "Ideas"];
 
   let storageAvailable = true;
+  if (window.location.pathname === "/blog/morph/") {
+    migrateLegacyStorage(storageKey, "blog-annotations:v1:/blog/temporal-escrow-resonance/", true);
+    migrateLegacyStorage(draftStorageKey, "blog-annotation-drafts:v1:/blog/temporal-escrow-resonance/", false);
+  }
   let comments = loadJson(storageKey, []);
   let drafts = loadJson(draftStorageKey, {});
   let activeHeading = null;
   let activeCommentId = null;
   let lastSelection = { anchor: "", text: "" };
+
+  function migrateLegacyStorage(key, legacyKey, isList) {
+    try {
+      const raw = window.localStorage.getItem(legacyKey);
+      if (!raw) return;
+      const legacy = JSON.parse(raw);
+      const current = JSON.parse(window.localStorage.getItem(key) || (isList ? "[]" : "{}"));
+      let merged;
+      if (isList) {
+        if (!Array.isArray(legacy) || !Array.isArray(current)) return;
+        const ids = new Set(current.map(function (comment) { return comment.id; }));
+        merged = current.concat(legacy.filter(function (comment) { return !ids.has(comment.id); }));
+      } else {
+        if (!legacy || !current || typeof legacy !== "object" || typeof current !== "object" ||
+            Array.isArray(legacy) || Array.isArray(current)) return;
+        merged = Object.assign({}, legacy, current);
+      }
+      window.localStorage.setItem(key, JSON.stringify(merged));
+      window.localStorage.removeItem(legacyKey);
+    } catch (_) {
+      // Keep the legacy data intact if parsing or writing fails.
+    }
+  }
 
   function loadJson(key, fallback) {
     try {
@@ -145,6 +172,7 @@
       </label>
 
       <div class="annotation-form-actions">
+        <button type="button" class="annotation-button danger" data-delete-comment hidden>Delete comment</button>
         <button type="button" class="annotation-button danger" data-discard-draft>Discard draft</button>
         <button type="button" class="annotation-button secondary" data-dialog-close>Cancel</button>
         <button type="submit" class="annotation-button primary" data-save-comment>Save comment</button>
@@ -163,6 +191,7 @@
   const prevButton = dialog.querySelector("[data-comment-prev]");
   const nextButton = dialog.querySelector("[data-comment-next]");
   const discardButton = dialog.querySelector("[data-discard-draft]");
+  const deleteButton = dialog.querySelector("[data-delete-comment]");
   const saveButton = dialog.querySelector("[data-save-comment]");
 
   function headingComments() {
@@ -214,6 +243,7 @@
       quoteElement.textContent = comment.quote || "";
       positionElement.textContent = "Comment " + (currentIndex + 1) + " of " + sectionComments.length;
       discardButton.hidden = true;
+      deleteButton.hidden = false;
       saveButton.textContent = "Save changes";
       prevButton.disabled = currentIndex <= 0;
       nextButton.disabled = false;
@@ -228,6 +258,7 @@
       quoteElement.textContent = quote;
       positionElement.textContent = sectionComments.length ? "New comment · " + sectionComments.length + " existing" : "New comment";
       discardButton.hidden = false;
+      deleteButton.hidden = true;
       saveButton.textContent = "Save comment";
       prevButton.disabled = sectionComments.length === 0;
       nextButton.disabled = true;
@@ -275,6 +306,20 @@
     dialogType.value = "Question";
     lastSelection = { anchor: "", text: "" };
     renderDialogState(null);
+  });
+
+  deleteButton.addEventListener("click", function () {
+    if (!activeHeading || !activeCommentId) return;
+    const sectionComments = headingComments();
+    const index = sectionComments.findIndex(function (comment) { return comment.id === activeCommentId; });
+    if (index < 0) return;
+    comments = comments.filter(function (comment) { return comment.id !== activeCommentId; });
+    saveComments();
+    const remaining = headingComments();
+    const next = remaining[Math.min(index, remaining.length - 1)];
+    renderDialogState(next ? next.id : null);
+    render();
+    dialogText.focus();
   });
 
   dialog.addEventListener("cancel", saveActiveDraft);
