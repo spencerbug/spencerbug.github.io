@@ -114,7 +114,13 @@ $$
 z_{i,t}=E_\theta(x_{i,t-L:t}).
 $$
 
-The input is a history of length \\(L+1\\). The collection \\(Z_t=\{z_{i,t}\}_i\\) is a population code over patches. A factorizer \\(F_\eta\\), using that field and provisional ownership weights \\(w_{ij,t}\\), proposes:
+The input is a history of length \\(L+1\\). Its population code over patches is:
+
+$$
+Z_t=\{z_{i,t}\}_i.
+$$
+
+A factorizer \\(F_\eta\\), using that field and provisional ownership weights \\(w_{ij,t}\\), proposes:
 
 $$
 (u_{j,t},p_{j,t})=F_\eta(Z_t,w_{j,t}).
@@ -1237,8 +1243,7 @@ This gives a possible operational criterion for creating abstractions:
 
 A reusable "door-opening" model, for example, might combine a handle, hinge, panel, grasp action, and predictable transition. It becomes a persistent higher-level model only if the composition consistently earns new predictive evidence.
 
-## 15. What MORPH is not claiming
-{: #15-what-tern-is-not-claiming}
+<h2 id="15-what-tern-is-not-claiming">15. What MORPH is not claiming</h2>
 
 This architecture borrows ideas from several established traditions but should not be confused with any one of them.
 

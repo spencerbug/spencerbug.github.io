@@ -305,6 +305,7 @@ Guidelines:
 - For display math, always use \`$$\` delimiters on their own lines.
 - Do not use source \`\[\` / \`\]\` delimiters in posts or course Markdown.
 - Define every symbol near its first use.
+- Doubled inline delimiters protect the delimiters, not every TeX token inside them. Complex inline expressions with escaped braces and multiple underscores can still be split by Markdown emphasis. Prefer a display equation for these expressions, and check the generated DOM for unexpected emphasis nodes inside raw math.
 - Follow equations with a plain-language interpretation.
 - Prefer equations when they clarify a quantitative relationship, not merely to make a lesson look formal.
 - For derivations, show intermediate steps when they are pedagogically useful.
