@@ -2,12 +2,14 @@
 layout: post
 title: "MORPH: Model of Object Representation and Predictive Homomorphisms"
 date: 2026-09-28 09:46:00 -0500
-last_modified_at: 2026-10-03
+last_modified_at: 2026-10-08
 permalink: /blog/morph/
 description: "A working embodied-intelligence architecture combining open-ended identity memory, Lie-equivariant action dynamics, migratable shared representations, ART-like resonance, active experiments, and temporal escrow against self-confirming evidence."
 ---
 
 {% include ai-assisted-author-note.html %}
+
+**Experimental follow-up:** [MORPH, Part 2: Good Predictions, Inconsistent Coordinates](/blog/morph-part-2/) reports the completed O1 campaign and separates its measured findings from proposed recurrent and population-based extensions.
 
 **Working research note · architecture under active review.** MORPH — Model of Object Representation and Predictive Homomorphisms — is an exploratory architecture, not an experimentally validated model. It grew out of a narrower question about object identity: how can an embodied learner continuously create new identities, learn from them aggressively, and still prevent its own recurrent hypotheses from returning as counterfeit evidence?
 
