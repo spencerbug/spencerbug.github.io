@@ -1,0 +1,37 @@
+.sharing-demo { border: 1px solid #8a94a6; border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; color: inherit; }
+.sharing-demo .sharing-controls { display: grid; grid-template-columns: minmax(0,1fr); gap: .4rem; }
+.sharing-demo label { font-weight: 600; }
+.sharing-demo output { font-variant-numeric: tabular-nums; margin-left: .5rem; }
+.sharing-demo input[type="range"] { width: 100%; margin: .2rem 0 1rem; accent-color: #1d68bd; }
+.sharing-demo input:focus-visible { outline: 3px solid #1d68bd; outline-offset: 4px; }
+.sharing-demo .sharing-charts { display: grid; grid-template-columns: minmax(0,1fr); gap: 1rem; }
+.sharing-demo figure { min-width: 0; margin: 0; }
+.sharing-demo figcaption { font-weight: 600; margin-bottom: .3rem; }
+.sharing-demo svg { display: block; width: 100%; height: auto; overflow: visible; }
+.sharing-demo svg text { fill: currentColor; font: 18px system-ui, sans-serif; }
+.sharing-demo .sharing-axis { stroke: currentColor; opacity: .45; }
+.sharing-demo .sharing-grid { stroke: currentColor; opacity: .12; }
+.sharing-demo .sharing-shared { stroke: #155fad; stroke-width: 4; fill: none; }
+.sharing-demo .sharing-tied { stroke: #b94c05; stroke-width: 2.5; stroke-dasharray: 7 5; fill: none; }
+.sharing-demo .sharing-check { display: flex; align-items: flex-start; gap: .55rem; margin-top: 1rem; font-weight: 500; }
+.sharing-demo .sharing-check input { flex: 0 0 auto; margin-top: .35rem; }
+.sharing-demo .sharing-small { font-size: .9rem; line-height: 1.55; }
+.sharing-demo [role="status"] { padding: .75rem; border-left: 3px solid #64748b; font-variant-numeric: tabular-nums; }
+[data-theme="dark"] .sharing-demo .sharing-shared { stroke: #72b8ff; }
+[data-theme="dark"] .sharing-demo .sharing-tied { stroke: #ffb366; }
+[data-theme="dark"] .sharing-demo input { accent-color: #72b8ff; }
+@media (min-width: 760px) { .sharing-demo .sharing-charts { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+
+.sharing-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; margin: 1.5rem 0; }
+.sharing-cards > div { background: var(--surface); border: 1px solid var(--border); border-top: 4px solid var(--link); border-radius: 6px; padding: 1rem; }
+.sharing-cards strong { display: block; font-size: 1.1rem; }
+.sharing-cards p { margin: .6rem 0; }
+.sharing-cards span { display: block; font-size: .95rem; }
+@media (min-width: 760px) {
+  .sharing-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sharing-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.sharing-table { max-width: 100%; overflow-x: auto; margin: 1.5rem 0; }
+.sharing-table table { margin-bottom: 0; }
+.sharing-table:focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }

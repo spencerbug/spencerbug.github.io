@@ -26,10 +26,10 @@ I’m a senior embedded systems and Linux engineer working across production fir
 ## Current writing
 
 <div class="feature-card">
-  <div class="card-meta"><span class="topic-pill">Embodied AI</span><span class="topic-pill">Research architecture</span></div>
-  <h3><a href="{{ '/blog/predictive-control-factor-hierarchy/' | relative_url }}">Predictive Control Factor Hierarchy</a></h3>
-  <p>A four-part exploration of whether learned dynamical relationships can be composed into a hierarchy that supports both prediction and control.</p>
-  <p class="card-links"><a href="{{ '/blog/predictive-control-factor-hierarchy/' | relative_url }}">Part I</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/dynamics-control/' | relative_url }}">Part II</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/composition-scaling/' | relative_url }}">Part III</a> · <a href="{{ '/blog/predictive-control-factor-hierarchy/experiments/' | relative_url }}">Part IV</a></p>
+  <div class="card-meta"><span class="topic-pill">Embodied AI</span><span class="topic-pill">Recurrent memory</span></div>
+  <h3><a href="{{ '/blog/self-organizing-attractor-memory/' | relative_url }}">Self-Organizing Attractor Memory (SOAM)</a></h3>
+  <p>An ongoing research series exploring recurrent memory for embodied intelligence, from the architectural idea to controlled experiments on shared neurons, action-conditioned prediction, and memory.</p>
+  <p class="card-links"><a href="{{ '/blog/self-organizing-attractor-memory/' | relative_url }}">Introduction</a> · <a href="{{ '/blog/testing-shared-recurrent-memory/' | relative_url }}">Testing shared recurrence</a> · <a href="{{ '/research/soam-e1/' | relative_url }}">Protocol report</a></p>
 </div>
 
 ## Current coursework

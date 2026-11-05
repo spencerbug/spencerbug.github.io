@@ -1,0 +1,26 @@
+{
+  "snapshot_date": "2026-11-05",
+  "kind": "frozen_protocol_documents_not_experimental_results",
+  "source_repository": "https://github.com/spencerbug/soam",
+  "source_head": "ce29de0deb59a1804d4f9c883bb79029792c65cd",
+  "files": [
+    {
+      "source_path": "docs/SHARED_POPULATION_PROTOCOL.md",
+      "download": "shared-population-protocol-v1.txt",
+      "sha256": "98846328f3ad6803a7e85d910fc2be2f8075c5d44e75d19351ad311d9eae12bf",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "docs/RECURRENT_PLATFORM_CONTRACT.md",
+      "download": "recurrent-platform-contract-v1.txt",
+      "sha256": "4a30165d4399198cc42ca5d2cc82a295718109d511fb77e86bf5ede6116e9f61",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "docs/protocols/shared_population_v1.json",
+      "download": "shared_population_v1.json",
+      "sha256": "beda95e9aba660c4b912339dfe26f331363e8de7cbc715af132e95fd1821d83e",
+      "matches_source_commit": true
+    }
+  ]
+}

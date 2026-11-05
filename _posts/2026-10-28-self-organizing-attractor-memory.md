@@ -194,7 +194,7 @@ A memory that can be entered, traversed, revised, and composed might provide a u
 
 For now, Self-Organizing Attractor Memory is a set of architectural hypotheses and research questions. The next step is to make them precise enough to test—and to find out which of the appealing intuitions survive contact with experiments.
 
-**Next:** A follow-up post will examine the proposed recurrent populations, action-conditioned transitions, associative writing, self-organization rules, and the experiments needed to distinguish this idea from ordinary graph memory or existing world models.
+**Follow-up:** [Testing Shared Recurrent Memory](/blog/testing-shared-recurrent-memory/) examines the first controlled experiment and why shared neurons and tied weights can make identical predictions. It includes visual explanations and a companion protocol report; associative writing and self-organization remain later research questions.
 
 ---
 

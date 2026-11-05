@@ -213,7 +213,7 @@ mjx-container[jax="CHTML"][display="true"] {
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--text);
-  max-width: min(560px, calc(100vw - 2rem));
+  max-width: unquote("min(560px, calc(100vw - 2rem))");
   padding: 0;
   width: 100%;
 }

@@ -1,0 +1,459 @@
+{
+  "protocol_id": "soam-e1-shared",
+  "version": 1,
+  "status": "frozen_protocol_no_trials",
+  "owner_ticket": "SOAM-049",
+  "platform_contract": "docs/RECURRENT_PLATFORM_CONTRACT.md",
+  "protocol_document": "docs/SHARED_POPULATION_PROTOCOL.md",
+  "claims": {
+    "primary": "useful cross-function shared recurrence in the declared unit basis",
+    "not_claimed": [
+      "concurrent binding",
+      "online acquisition",
+      "H5 composition",
+      "full H6 belief recovery",
+      "global attractors",
+      "biological validation",
+      "prediction advantage uniquely caused by neuron overlap rather than tied parameters",
+      "unavoidable memory advantage over lazy tied-state execution"
+    ]
+  },
+  "numerics": {
+    "device": "cpu",
+    "model_dtype": "float32",
+    "metric_and_ridge_dtype": "float64",
+    "torch_threads": 1,
+    "deterministic_algorithms": true,
+    "energy_claim": false
+  },
+  "task": {
+    "latent_dim": 2,
+    "feature_dim": 12,
+    "action_dim": 3,
+    "cue_dim": 2,
+    "projection_seed": 1729,
+    "role_cues": {
+      "recall": [
+        1,
+        0
+      ],
+      "transition": [
+        0,
+        1
+      ]
+    },
+    "initial_radius": [
+      0.4,
+      0.8
+    ],
+    "phase_sectors": 8,
+    "train_phase_parity": 0,
+    "evaluation_phase_parity": 1,
+    "rotation_gain": 0.3,
+    "contraction": 0.98,
+    "translation_gain": 0.03,
+    "action_range": [
+      -1,
+      1
+    ],
+    "action_bins": 4,
+    "joint_binned_axes": [
+      0,
+      1
+    ],
+    "train_action_bin_sum_parity": 0,
+    "evaluation_action_bin_sum_parity": 1,
+    "initial_valid_features": 6,
+    "initial_observation_noise_sd": 0.01,
+    "later_observations": "clean_full_after_scoring",
+    "train_horizon": 8,
+    "primary_horizon": 8,
+    "secondary_horizon": 32,
+    "recall_steps": 10,
+    "no_free_rollout_sensing": true,
+    "simulator_dtype": "float64_with_float32_executed_commands_and_observations"
+  },
+  "models": [
+    {
+      "id": "S32",
+      "kind": "shared_rate",
+      "width_per_bank": 32,
+      "expected_trainable_scalars": 3868,
+      "state_floats_including_role": 34
+    },
+    {
+      "id": "D25",
+      "kind": "disjoint_rate",
+      "width_per_bank": 25,
+      "expected_trainable_scalars": 3849,
+      "state_floats_including_role": 52
+    },
+    {
+      "id": "D16",
+      "kind": "disjoint_rate",
+      "width_per_bank": 16,
+      "expected_trainable_scalars": 2040,
+      "state_floats_including_role": 34
+    },
+    {
+      "id": "G28",
+      "kind": "gru",
+      "width_per_bank": 28,
+      "expected_trainable_scalars": 3988,
+      "state_floats_including_role": 30
+    },
+    {
+      "id": "G32",
+      "kind": "gru",
+      "width_per_bank": 32,
+      "expected_trainable_scalars": 4940,
+      "state_floats_including_role": 34
+    },
+    {
+      "id": "L12",
+      "kind": "bilinear",
+      "width_per_bank": 12,
+      "expected_trainable_scalars": 924,
+      "state_floats_including_role": 14
+    },
+    {
+      "id": "SYM32",
+      "kind": "symmetric_rate",
+      "width_per_bank": 32,
+      "expected_trainable_scalars": 1884,
+      "state_floats_including_role": 34
+    }
+  ],
+  "dynamics": {
+    "rate_alpha": 0.5,
+    "initial_assimilation_gain": 1.0,
+    "later_assimilation_gain": 0.5,
+    "substeps_per_command": 1,
+    "role_flags_are_neurons": false,
+    "symmetry_storage": "packed_upper_including_diagonal",
+    "skew_storage": "packed_strict_upper_opposite_lower",
+    "shared_skew_components": 4,
+    "disjoint_cross_bank_edges": 0,
+    "readout": "affine_no_skip",
+    "online_writes": false
+  },
+  "initialization": {
+    "s_diagonal": 0.5,
+    "s_offdiagonal_sd_numerator": 0.1,
+    "a_upper_sd_numerator": 0.01,
+    "matrix_sd_denominator": "sqrt(width)",
+    "affine_weight_uniform_bound": "1/sqrt(input_width)",
+    "affine_bias": 0.0,
+    "role_vector": 0.0,
+    "gru": "pytorch_2_14_default_uniform"
+  },
+  "fit": {
+    "recall_only_updates": 100,
+    "joint_updates": 300,
+    "batch_size": 16,
+    "gradient_configs": [
+      {
+        "learning_rate": 0.001
+      },
+      {
+        "learning_rate": 0.003
+      }
+    ],
+    "ridge_configs": [
+      {
+        "lambda": 0.0001
+      },
+      {
+        "lambda": 0.01
+      }
+    ],
+    "adam_betas": [
+      0.9,
+      0.999
+    ],
+    "adam_epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "gradient_norm_clip": 1.0,
+    "joint_loss_weights": {
+      "recall": 1.0,
+      "free": 1.0,
+      "grounded": 0.3
+    },
+    "checkpoint_selection": "final_only",
+    "config_selection": "minimum_mean_development_free8_then_config_index",
+    "tie_tolerance": 1e-12,
+    "per_fit_cpu_seconds": 90,
+    "retries": 0,
+    "normal_equations": "XTX/N + lambda*I including bias",
+    "distinct_recall_records_per_fit": 6400,
+    "transition_episodes_per_fit": 4800,
+    "executed_training_transitions_per_fit": 38400
+  },
+  "streams": {
+    "development_roots": [
+      401,
+      409,
+      419
+    ],
+    "confirmation_roots": [
+      11,
+      23,
+      47,
+      71,
+      101,
+      131,
+      173,
+      211,
+      257,
+      307
+    ],
+    "repeat_root": 11,
+    "normalization_root": 1801,
+    "inference_root": 8675309,
+    "diagnostic_selection_root": 401,
+    "episodes_per_role_per_root": 20,
+    "normalization_records": 2048,
+    "normalization_split": "train",
+    "normalization_component": "normalization",
+    "derivation": "sha256(canonical_json([protocol_id,version,split,root,episode,component])) first 8 bytes unsigned big endian",
+    "canonical_json": "UTF-8 json.dumps(key,separators=(\",\",\":\"),ensure_ascii=True,allow_nan=False)",
+    "rng": "numpy.random.Generator(PCG64(derived_seed)) for task and bootstrap; dedicated Torch generator for initialization",
+    "data_paired_across_models_and_configs": true
+  },
+  "comparisons": {
+    "candidate": "S32",
+    "required_references": [
+      "D25",
+      "D16",
+      "G28",
+      "G32",
+      "L12"
+    ],
+    "fitted_mechanism_control": "SYM32",
+    "primary_reference_selection": "lowest_selected_development_mean_free8_then_id_order",
+    "id_order": [
+      "S32",
+      "D25",
+      "D16",
+      "G28",
+      "G32",
+      "L12",
+      "SYM32"
+    ],
+    "state_matched": [
+      "D16",
+      "G32"
+    ],
+    "parameter_matched": [
+      "D25",
+      "G28"
+    ],
+    "simultaneous_exact_resource_match_claim": false
+  },
+  "metrics": {
+    "normalization_floor": 1e-06,
+    "relative_gain_floor": 1e-06,
+    "floor_limited_if_any_required_reference_seed_error_le": 1e-06,
+    "gain_min": 0.1,
+    "gain_interval_width_max": 0.2,
+    "candidate_transition_nmse_max": 0.1,
+    "candidate_recall_nmse_max": 0.02,
+    "recall_degradation_upper_max": 0.005,
+    "recall_contrasts": [
+      "S32_final_minus_S32_pre",
+      "S32_final_minus_D25_final"
+    ],
+    "development_gru_transition_nmse_max": 0.15,
+    "development_gru_recall_nmse_max": 0.03,
+    "all_candidate_trajectories_finite": true
+  },
+  "inference": {
+    "bootstrap_replicates": 10000,
+    "resampling_unit": "paired_confirmation_root",
+    "quantile_method": "linear",
+    "family_alpha": 0.05,
+    "utility_family_contrasts": 7,
+    "utility_tail_probability": 0.0035714285714285718,
+    "causal_family_contrasts": 6,
+    "causal_tail_probability": 0.004166666666666667,
+    "ordinary_report_interval": 0.95,
+    "additional_seeds_after_results": 0
+  },
+  "interventions": {
+    "lesion_size": 4,
+    "selection": "rank_min_of_nonnegative_relative_recall_and_transition_singleton_increase_then_unit_id",
+    "random_lesion_sets": 4,
+    "full_clamp": "after_correction_before_readout_and_after_every_update",
+    "readout_clamp": "mask_readout_input_only_keep_recurrence_intact",
+    "disjoint_masks": [
+      "first_four_recall_bank",
+      "first_four_transition_bank"
+    ],
+    "opposite_bank_output_tolerance": 0.0,
+    "action_shuffle": "cyclic_shift_full_schedule_right_by_one",
+    "zero_asymmetric_components": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "targeted_role_error_increase_min": 0.005,
+    "recurrent_excess_over_readout_min": 0.002,
+    "direction_relative_error_increase_min": 0.1,
+    "causal_nmse_interval_width_max": 0.02,
+    "direction_interval_width_max": 0.2,
+    "cue_zero": "zero_initial_z_and_valid_keep_role",
+    "perturbation_rms": 0.1,
+    "perturb_role_flags": false,
+    "recovery_steps": 10,
+    "recovery_distance_ratio_max": 0.5,
+    "recovery_episode_fraction_min": 0.9,
+    "recovery_advantage_over_zero_S_min": 0.2,
+    "recovery_recall_nmse_max": 0.02,
+    "false_recovery_nmse_threshold": 0.05,
+    "false_recovery_fraction_max": 0.05,
+    "feature_variance_ratio_range": [
+      0.8,
+      1.2
+    ],
+    "recovery_is_gate_requirement": false
+  },
+  "inventory": {
+    "development_fits": 42,
+    "confirmation_fits": 70,
+    "repeat_fits": 7,
+    "total_fit_instances": 119,
+    "neural_fits": 102,
+    "ridge_fits": 17,
+    "base_scoring_cells": 7140,
+    "diagnostic_cells_per_confirmation_or_repeat_root": 1880,
+    "diagnostic_roots_including_repeat": 11,
+    "diagnostic_cells": 20680,
+    "total_scoring_cells": 27820,
+    "cell_definition": "one checkpoint/condition/episode; transition cell contains free32 and grounded32 and their free8 prefix metric",
+    "diagnostic_groups": [
+      {
+        "id": "selection_intact",
+        "model": "S32",
+        "split": "development_diagnostic",
+        "modes": 1,
+        "roles": 2,
+        "episodes": 20,
+        "cells_per_root": 40
+      },
+      {
+        "id": "selection_singletons",
+        "model": "S32",
+        "split": "development_diagnostic",
+        "modes": 32,
+        "roles": 2,
+        "episodes": 20,
+        "cells_per_root": 1280
+      },
+      {
+        "id": "overlap_full_readout_random",
+        "model": "S32",
+        "split": "confirmation",
+        "modes": 6,
+        "roles": 2,
+        "episodes": 20,
+        "cells_per_root": 240
+      },
+      {
+        "id": "disjoint_bank_masks",
+        "model": "D16",
+        "split": "confirmation",
+        "modes": 2,
+        "roles": 2,
+        "episodes": 20,
+        "cells_per_root": 80
+      },
+      {
+        "id": "action_shift_zero_A",
+        "model": "S32",
+        "split": "confirmation",
+        "modes": 2,
+        "roles": 1,
+        "episodes": 20,
+        "cells_per_root": 40
+      },
+      {
+        "id": "zero_cue",
+        "model": "S32",
+        "split": "confirmation",
+        "modes": 1,
+        "roles": 1,
+        "episodes": 20,
+        "cells_per_root": 20
+      },
+      {
+        "id": "recovery_additional_paths",
+        "model": "S32",
+        "split": "confirmation",
+        "modes": 3,
+        "roles": 1,
+        "episodes": 20,
+        "cells_per_root": 60
+      },
+      {
+        "id": "tied_state_intact_and_two_bank_masks",
+        "model": "T32",
+        "split": "confirmation",
+        "modes": 3,
+        "roles": 2,
+        "episodes": 20,
+        "cells_per_root": 120
+      }
+    ]
+  },
+  "budget": {
+    "total_cpu_seconds": 14400,
+    "total_wall_seconds": 28800,
+    "peak_rss_bytes": 2147483648,
+    "total_artifact_bytes": 8589934592,
+    "development_cpu_seconds": 4000,
+    "confirmation_cpu_seconds": 8000,
+    "repeat_cpu_seconds": 1200,
+    "overhead_cpu_seconds": 1200,
+    "preflight_cpu_seconds_within_overhead": 120,
+    "preflight_wall_seconds": 240,
+    "preflight_artifact_bytes": 268435456,
+    "timing_warmup_operations": 1,
+    "timing_measured_operations": 10,
+    "projection_safety_factor": 2.0,
+    "drop_conditions_to_fit_budget": false,
+    "runtime_measured": false
+  },
+  "outcome_precedence": [
+    "invalid_execution_or_comparison",
+    "incomplete_or_inconclusive_or_candidate_instability",
+    "recall_interference_or_failure",
+    "directional_failure",
+    "useful_sharing_supported",
+    "precise_no_practical_benefit",
+    "inconclusive_or_mechanism_unresolved"
+  ],
+  "implementation_gate": {
+    "required_tickets": [
+      "SOAM-048",
+      "SOAM-050"
+    ],
+    "feasibility_before_fitting": true,
+    "confirmation_after_development_screen": true,
+    "historical_protocols_unchanged": true,
+    "no_empirical_gate_passed": true
+  },
+  "diagnostic_adapters": [
+    {
+      "id": "T32",
+      "source_checkpoint": "S32_final",
+      "trainable_scalars_unique": 3868,
+      "state_floats_including_role": 66,
+      "refit": false,
+      "primary_superiority_reference": false,
+      "reason": "algebraically identical on reset single-role episodes",
+      "intact_output_tolerance": 0.0,
+      "opposite_bank_lesion_tolerance": 0.0
+    }
+  ]
+}
