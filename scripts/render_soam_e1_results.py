@@ -69,11 +69,13 @@ save(fig, "prediction")
 fig, ax = plt.subplots(figsize=(4.5, 3.9), layout="constrained")
 for key, label, color in [("distance_ratios_by_episode", "S32", ORANGE),
                            ("zero_S_distance_ratios_by_episode", "S = 0 control", BLUE)]:
-    rows = s["recovery_curves"][key]; x = np.arange(1, 11)
+    # Step zero is d(0)/d(0) = 1 by definition, not an additional observation.
+    rows = [{"mean": 1.0, "lower95": 1.0, "upper95": 1.0}] + s["recovery_curves"][key]
+    x = np.arange(0, 11)
     ax.plot(x, [r["mean"] for r in rows], marker="o", markersize=4, label=label, color=color)
     ax.fill_between(x, [r["lower95"] for r in rows], [r["upper95"] for r in rows], color=color, alpha=.18)
-ax.set(xlabel="Recovery step", ylabel="Hidden distance / initial distance", xlim=(1,10), ylim=(0,1))
-ax.set_xticks([1, 4, 7, 10]); ax.legend(frameon=False, fontsize=12); ax.grid(alpha=.15)
+ax.set(xlabel="Recovery step", ylabel="Hidden distance / initial distance", xlim=(0,10), ylim=(0,1.03))
+ax.set_xticks([0, 2, 4, 6, 8, 10]); ax.legend(frameon=False, fontsize=12); ax.grid(alpha=.15)
 save(fig, "contraction")
 
 fig, ax = plt.subplots(figsize=(4.5, 3.9), layout="constrained")

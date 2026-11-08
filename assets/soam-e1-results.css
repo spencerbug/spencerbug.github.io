@@ -4,6 +4,10 @@
 .e1-figure figcaption { color: var(--muted-text); font-size: .91rem; line-height: 1.55; margin-top: .65rem; }
 .e1-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .e1-pair .e1-figure { margin-top: .5rem; }
+.e1-task-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin: .5rem 0 1rem; }
+.e1-task-card > strong { display: block; margin-bottom: .65rem; }
+.e1-task-card p { margin-bottom: .65rem; }
+.e1-task-card p:last-child { margin-bottom: 0; }
 .e1-verdicts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.3rem 0; }
 .e1-verdict { background: var(--surface); border: 1px solid var(--border); border-top: 4px solid #b65540; border-radius: 8px; padding: .9rem; }
 .e1-verdict.unresolved { border-top-color: #a17613; }
