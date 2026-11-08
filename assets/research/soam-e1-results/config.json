@@ -1,0 +1,129 @@
+{
+  "budget": {
+    "confirmation_cpu_seconds": 8000,
+    "development_cpu_seconds": 4000,
+    "drop_conditions_to_fit_budget": false,
+    "overhead_cpu_seconds": 1200,
+    "peak_rss_bytes": 2147483648,
+    "preflight_artifact_bytes": 268435456,
+    "preflight_cpu_seconds_within_overhead": 120,
+    "preflight_wall_seconds": 240,
+    "projection_safety_factor": 2.0,
+    "repeat_cpu_seconds": 1200,
+    "runtime_measured": false,
+    "timing_measured_operations": 10,
+    "timing_warmup_operations": 1,
+    "total_artifact_bytes": 8589934592,
+    "total_cpu_seconds": 14400,
+    "total_wall_seconds": 28800
+  },
+  "fixture": false,
+  "inventory": {
+    "base_scoring_cells": 7140,
+    "cell_definition": "one checkpoint/condition/episode; transition cell contains free32 and grounded32 and their free8 prefix metric",
+    "confirmation_fits": 70,
+    "development_fits": 42,
+    "diagnostic_cells": 20680,
+    "diagnostic_cells_per_confirmation_or_repeat_root": 1880,
+    "diagnostic_groups": [
+      {
+        "cells_per_root": 40,
+        "episodes": 20,
+        "id": "selection_intact",
+        "model": "S32",
+        "modes": 1,
+        "roles": 2,
+        "split": "development_diagnostic"
+      },
+      {
+        "cells_per_root": 1280,
+        "episodes": 20,
+        "id": "selection_singletons",
+        "model": "S32",
+        "modes": 32,
+        "roles": 2,
+        "split": "development_diagnostic"
+      },
+      {
+        "cells_per_root": 240,
+        "episodes": 20,
+        "id": "overlap_full_readout_random",
+        "model": "S32",
+        "modes": 6,
+        "roles": 2,
+        "split": "confirmation"
+      },
+      {
+        "cells_per_root": 80,
+        "episodes": 20,
+        "id": "disjoint_bank_masks",
+        "model": "D16",
+        "modes": 2,
+        "roles": 2,
+        "split": "confirmation"
+      },
+      {
+        "cells_per_root": 40,
+        "episodes": 20,
+        "id": "action_shift_zero_A",
+        "model": "S32",
+        "modes": 2,
+        "roles": 1,
+        "split": "confirmation"
+      },
+      {
+        "cells_per_root": 20,
+        "episodes": 20,
+        "id": "zero_cue",
+        "model": "S32",
+        "modes": 1,
+        "roles": 1,
+        "split": "confirmation"
+      },
+      {
+        "cells_per_root": 60,
+        "episodes": 20,
+        "id": "recovery_additional_paths",
+        "model": "S32",
+        "modes": 3,
+        "roles": 1,
+        "split": "confirmation"
+      },
+      {
+        "cells_per_root": 120,
+        "episodes": 20,
+        "id": "tied_state_intact_and_two_bank_masks",
+        "model": "T32",
+        "modes": 3,
+        "roles": 2,
+        "split": "confirmation"
+      }
+    ],
+    "diagnostic_roots_including_repeat": 11,
+    "neural_fits": 102,
+    "repeat_fits": 7,
+    "ridge_fits": 17,
+    "total_fit_instances": 119,
+    "total_scoring_cells": 27820
+  },
+  "normalization": {
+    "sha256": "5f1040d79f87b6f0cc41d2519c805676bb8d06262065a8cd27a2d80edd112b03",
+    "stream_key_template": [
+      "soam-e1-shared",
+      1,
+      "train",
+      1801,
+      "index=0..2047",
+      "normalization/{radius,phase,action,mask,noise}"
+    ]
+  },
+  "selected_configs": {
+    "D16": 1,
+    "D25": 1,
+    "G28": 1,
+    "G32": 1,
+    "L12": 0,
+    "S32": 1,
+    "SYM32": 1
+  }
+}

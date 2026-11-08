@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="490" viewBox="0 0 560 490" role="img" aria-labelledby="title desc">
+<title id="title">Same predictions do not identify shared physical state</title>
+<desc id="desc">S32 reuses one 32-unit state for recall and transition. T32 has separate 32-unit recall and transition banks with identical tied parameters. With one role at a time and reset state, their predictions are exactly equal. This diagram illustrates the design, not measured neural anatomy.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#526574"/></marker></defs>
+<rect width="560" height="490" rx="10" fill="#fff"/>
+<g font-family="system-ui, sans-serif" fill="#233746" text-anchor="middle">
+<text x="280" y="34" font-size="20" font-weight="700">One role at a time · reset between episodes</text>
+<text x="143" y="78" font-size="21" font-weight="700">S32: shared state</text>
+<text x="418" y="78" font-size="21" font-weight="700">T32: tied weights</text>
+<rect x="26" y="105" width="235" height="48" rx="7" fill="#e7eff5" stroke="#176c91"/>
+<text x="143" y="135" font-size="18">Same fitted parameters</text>
+<rect x="300" y="105" width="235" height="48" rx="7" fill="#e7eff5" stroke="#176c91"/>
+<text x="418" y="135" font-size="18">Same fitted parameters</text>
+<g stroke="#526574" stroke-width="2" marker-end="url(#arrow)"><path d="M143 153V205"/><path d="M418 153V190H353V205" fill="none"/><path d="M418 190H480V205" fill="none"/></g>
+<rect x="55" y="215" width="178" height="105" rx="9" fill="#f8eae5" stroke="#b65540" stroke-width="2"/>
+<text x="144" y="245" font-size="19" font-weight="700">32 units</text>
+<text x="144" y="274" font-size="18">Recall OR</text><text x="144" y="299" font-size="18">transition</text>
+<rect x="292" y="215" width="122" height="105" rx="9" fill="#e7eff5" stroke="#176c91" stroke-width="2"/>
+<rect x="422" y="215" width="122" height="105" rx="9" fill="#eef1f3" stroke="#526574" stroke-width="2"/>
+<text x="353" y="248" font-size="19" font-weight="700">32 units</text><text x="353" y="283" font-size="18">Recall</text>
+<text x="483" y="248" font-size="19" font-weight="700">32 units</text><text x="483" y="283" font-size="17">Transition</text>
+<text x="280" y="357" font-size="18">T32 activates only the selected role’s bank.</text>
+<rect x="27" y="380" width="506" height="84" rx="9" fill="#edf3ef" stroke="#476852"/>
+<text x="280" y="411" font-size="21" font-weight="700">Predictions: exactly equal</text>
+<text x="280" y="440" font-size="17">Checked across 660 arrays; expected algebraically.</text>
+</g></svg>

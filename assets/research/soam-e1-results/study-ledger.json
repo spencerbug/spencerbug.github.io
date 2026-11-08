@@ -1,0 +1,25 @@
+{
+  "accounting": "runner carry + existing compact evidence + new evidence + report reserve; no earlier allocation removed",
+  "artifact_bytes": 680050154,
+  "audit_cpu_seconds": 321.40003400000023,
+  "audit_wall_seconds": 330.5775646670372,
+  "cpu_seconds": 2842.168314,
+  "development_cpu_seconds": 392.37282000000005,
+  "final_metadata_cpu_wall_reserve_seconds": 2.0,
+  "final_verification_cpu_seconds": 5.219893,
+  "final_verification_wall_seconds": 9.08415591699304,
+  "incomplete_reporting_attempt_charge_seconds": 221,
+  "measured_peak_rss_note": "scientific runner and successful audit measured; two incomplete reporting-only attempts have no separate RSS capture",
+  "overhead_cpu_seconds": 397.2795170000004,
+  "peak_rss_bytes": 853032960,
+  "phase_cpu_seconds": {
+    "confirmation": 1736.2352849999997,
+    "repeat": 316.2806919999998
+  },
+  "physical_reconciliation_bytes": 387,
+  "preexisting_compact_bytes": 3363244,
+  "render_cpu_seconds": 0.76873,
+  "render_wall_seconds": 0.9827553340001032,
+  "report_reserve_bytes": 2097152,
+  "wall_seconds": 2871.456851791998
+}

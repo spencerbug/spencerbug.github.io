@@ -13,6 +13,10 @@ I’m a senior embedded systems and Linux engineer working across production fir
     <strong>Writing</strong>
     <span>Technical essays, research notes, project retrospectives, and experiments.</span>
   </a>
+  <a class="landing-card" href="{{ '/research/' | relative_url }}">
+    <strong>Reports</strong>
+    <span>Research protocols, measured results, uncertainty, and the decisions they support.</span>
+  </a>
   <a class="landing-card" href="{{ '/courses/' | relative_url }}">
     <strong>Coursework</strong>
     <span>Living systems-engineering courses built around mental models, debugging, measurement, and labs.</span>
@@ -29,7 +33,8 @@ I’m a senior embedded systems and Linux engineer working across production fir
   <div class="card-meta"><span class="topic-pill">Embodied AI</span><span class="topic-pill">Recurrent memory</span></div>
   <h3><a href="{{ '/blog/self-organizing-attractor-memory/' | relative_url }}">Self-Organizing Attractor Memory (SOAM)</a></h3>
   <p>An ongoing research series exploring recurrent memory for embodied intelligence, from the architectural idea to controlled experiments on shared neurons, action-conditioned prediction, and memory.</p>
-  <p class="card-links"><a href="{{ '/blog/self-organizing-attractor-memory/' | relative_url }}">Introduction</a> · <a href="{{ '/blog/testing-shared-recurrent-memory/' | relative_url }}">Testing shared recurrence</a> · <a href="{{ '/research/soam-e1/' | relative_url }}">Protocol report</a></p>
+  <p>The first shared-population experiment is complete. Its negative gate separates prediction, intervention sensitivity, and useful recovery.</p>
+  <p class="card-links"><a href="{{ '/blog/a-memory-can-settle-and-still-be-wrong/' | relative_url }}">The visual results</a> · <a href="{{ '/research/soam-e1-results/' | relative_url }}">Full results report</a> · <a href="{{ '/research/' | relative_url }}">All reports</a></p>
 </div>
 
 ## Current coursework

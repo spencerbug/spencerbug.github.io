@@ -1,0 +1,402 @@
+{
+  "absolute_recall_mean": 0.077657343733467,
+  "absolute_transition_mean": 0.08682500295472197,
+  "all_77_training_fit_inputs_paired": true,
+  "base_evaluation_references_compared": 4620,
+  "bootstrap_adjusted_and_ordinary_bounds_exact": true,
+  "candidate_recall_min_max": [
+    0.05014291063069616,
+    0.1019366040596514
+  ],
+  "capture_wrapper_config_sha256": "e6bec42b26641ee42ccc5ddd4a0bc70eaab7e55c432d85078c5bc87394bc3399",
+  "causal": {
+    "lower": [
+      0.5134052115270209,
+      0.44019597380427183,
+      0.3745713625456238,
+      0.20542362058184635,
+      0.3240542102373904,
+      0.8204255305437962
+    ],
+    "mean": [
+      0.6154604679144161,
+      0.5010277412545127,
+      0.42969797862540615,
+      0.23344227965867176,
+      0.5803835880246253,
+      1.2360298476735774
+    ],
+    "ordinary_lower": [
+      0.5362948780318626,
+      0.4563907876116738,
+      0.3874006997057972,
+      0.21339872198557897,
+      0.38048949052489406,
+      0.9241434613992464
+    ],
+    "ordinary_upper": [
+      0.7039503916034879,
+      0.5443839259774687,
+      0.4745829112114715,
+      0.2506106212387383,
+      0.8149389245613089,
+      1.555274357110279
+    ],
+    "replicates": 10000,
+    "resampling_unit": "paired_confirmation_root",
+    "root_count": 10,
+    "seed": 7170790573829272725,
+    "upper": [
+      0.7376409804302242,
+      0.5575375815521971,
+      0.49002369141218727,
+      0.2542749843308776,
+      0.8984043869564571,
+      1.6622345383137873
+    ],
+    "width": [
+      0.2242357689032033,
+      0.11734160774792529,
+      0.11545232886656348,
+      0.048851363749031235,
+      0.5743501767190666,
+      0.8418090077699911
+    ]
+  },
+  "causal_pass": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "causal_precise_failure": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "cell_count": 25300,
+  "checked_compact_hashes": {
+    "reports/shared-population-study/confirmation/analysis.py": "1e740e7408dad5342b0a42444d5f9d2b72e9dba40d29adf9c8dda12163d31a89",
+    "reports/shared-population-study/confirmation/audit-attempts.json": "9ccd2f892b97245a250bfe52d8a96a2d2e30c5e20eea9ced553984c300e11876",
+    "reports/shared-population-study/confirmation/audit-final-timing.json": "95b5829eb3b0c0eb9d1fabe8f11d5469d6f97801b3e9c6e84b72ce7437bf9852",
+    "reports/shared-population-study/confirmation/audit-ledger.json": "d68832d1dc82c3025eb706d85a4fe1b33b0d5a5d3d095c36eb3feda5afbafcff",
+    "reports/shared-population-study/confirmation/audit.json": "c76adf63e83620a091ab4b6ee19d760f8c0aecfb4cc5284840c02f8fb5c8d93a",
+    "reports/shared-population-study/confirmation/config.json": "923ef38b9a103debd0caf078915ae46147bea01976fbfa723028277a3d39a591",
+    "reports/shared-population-study/confirmation/final-ledger.json": "fc2b0c8f2f20310526daf42b6f9ec740e88b8ea5fabd76ab58745e71b7dd894b",
+    "reports/shared-population-study/confirmation/final-verify.py": "d21419e4bf47605388f68b7f203b3edcce4e1dff96965096eefacd06bc12239d",
+    "reports/shared-population-study/confirmation/fit-records.json": "24249b5aa8e96158ff3609644701c20fc3efccaaba88f7f86346ee2711326f8e",
+    "reports/shared-population-study/confirmation/inventory.json": "4a65fba4e94d30e35f4c1e26a02355907ab8a8fdb93f87441647a15e58dc51ec",
+    "reports/shared-population-study/confirmation/numerical-sha256.json": "a49dfa1686c6ecdac1dc69a0554f43a92ba9ffd51cf2ff041afc2864a8858475",
+    "reports/shared-population-study/confirmation/primary-and-guardrails.png": "c9881827b77297f0084743ea2714740cda6885aaa7e0914cd90d01f0eb4174db",
+    "reports/shared-population-study/confirmation/primary-and-guardrails.svg": "375638cf641919b24cbd899d7a328b6094deedf789ea5d108e416272155cabe6",
+    "reports/shared-population-study/confirmation/provenance.json": "6c273510640cde464c5a090a2aa70ebd1ef863f0dc239653d113d494a7322ea0",
+    "reports/shared-population-study/confirmation/render.py": "ab33d1015f30493dcfd0569c91a1234cedc98d777e52b1be35e6e29238d1677f",
+    "reports/shared-population-study/confirmation/report-ledger.json": "c6ef20e848c894352f771d1de5fca1a75505bf6e299752eb493f4b5fa155a45e",
+    "reports/shared-population-study/confirmation/reproduction.json": "364a86eb225637edc565334bf526dfc932b3aba017d1751f01351b4461194fc8",
+    "reports/shared-population-study/confirmation/result.json": "32b2378b8df6f4b098c6aa21792ecd82f4760a84f7958e65aae068fbc19397b6",
+    "reports/shared-population-study/confirmation/root-condition-means.json": "77671a15f253ff86ad9802dc5b5b35a9f7ea09c3ec766e753e71e326cacc22f6",
+    "reports/shared-population-study/confirmation/root-model-means.json": "f26a27260dc0fc239849f45dbf8596035a2bb5e023a67298404676bd18cef1b8",
+    "reports/shared-population-study/confirmation/statistics.json": "492efa0aa4fc794acd6524023f11dde25649ed10407487fda4b83af6a0ab521c",
+    "reports/shared-population-study/confirmation/status.json": "aa377977b35236476487ce0180ee07ef0107ae90fceb0ced5cba532f01fcb095",
+    "reports/shared-population-study/confirmation/tables.md": "7bfa919cd18be09a206ee1d983705f2d68e07f5895695ad52aca85742df735bc",
+    "reports/shared-population-study/confirmation/verification.json": "bab05e14d40f071558b7751737352a35cc4e75c2f8caa8f02a03913cacb0d400",
+    "reports/shared-population-study/continuation/calibration/config.json": "968cf96c179e468a55c8f92ada44b7f3b9f021b73c0ad99f4a3eed695a254e5d",
+    "reports/shared-population-study/continuation/calibration/cost-ledger.json": "3d23c08a7a66e6a6c269e82242d9b59bbced2940257174459384c8493945f994",
+    "reports/shared-population-study/continuation/calibration/provenance.json": "0d792565d37e1718ed9e0ec87d1505929fbc80f0f57a3e08ab5d05c45b5c9869",
+    "reports/shared-population-study/continuation/calibration/result.json": "06b488414636d586b911cad9d4e0f83353899ee8c03dac944ceb6449b255df3f",
+    "reports/shared-population-study/continuation/calibration/status.json": "836ec0c7c6ba8e54400279e1a3a5a61ca2dbf23e5462f1fb53022bc351cde3cd",
+    "reports/shared-population-study/continuation/development-audit-command.txt": "b77e85a4bec14c22ee791e5a504428f167f835566ef92c0a84b9b3edac169b53",
+    "reports/shared-population-study/continuation/development-audit.json": "e1db04245bab1832b9e1295bd8ded6b9b85f87134c960b8e5daef5ff84fc0059",
+    "reports/shared-population-study/continuation/fixture-v1/config.json": "f069523726ebdd970f6214c69aaf02585aefe0c8ae67bdc7efb6df38ce55ebe3",
+    "reports/shared-population-study/continuation/fixture-v1/provenance.json": "12cff3f92b57a55281ea4e2b3a5035557cd5c2325bc38106aa6945da34a730cd",
+    "reports/shared-population-study/continuation/fixture-v1/result.json": "01eac117930a643919421a4c5948187ce6074736ca319c9a24c38c5e9043dc4d",
+    "reports/shared-population-study/continuation/fixture-v1/status.json": "c8ed7381e2dbe8411d935f70644e0b6078dfc22db20de05c82367bbddf8d882a",
+    "reports/shared-population-study/continuation/fixture-v2/config.json": "f069523726ebdd970f6214c69aaf02585aefe0c8ae67bdc7efb6df38ce55ebe3",
+    "reports/shared-population-study/continuation/fixture-v2/provenance.json": "aabb8489a873be41b20cb034a9b56894f30465d636544eb4adbde1652b64044f",
+    "reports/shared-population-study/continuation/fixture-v2/result.json": "01eac117930a643919421a4c5948187ce6074736ca319c9a24c38c5e9043dc4d",
+    "reports/shared-population-study/continuation/fixture-v2/status.json": "63343b74fdcce7725393b0b5dc71c8fc4af586e01e349a42f93ae803a5550b76",
+    "reports/shared-population-study/continuation/readiness/readiness.json": "d4e980d5fa33024f6af3e26f05a804ccf64e19c637d046176f2155fccb92d12b",
+    "reports/shared-population-study/continuation/readiness/status.json": "e003d91788579ed95088de90446cd1b098e0d92c68c7de8cdf0f14c9710b6b3c",
+    "reports/shared-population-study/continuation/verification.json": "0e1b914268ecfcfc9bee600a356b8feef8324d118531d30e6827e3135a098264",
+    "reports/shared-population-study/development/development-screen.json": "f4fa4ef93569e9d048703fde9814e9a24cc09f5a4eeff64263e1b4bafac62c06",
+    "reports/shared-population-study/development/fit-results.json": "725b994845c053174bbf1440c4f5a9e156f8ca5b1d8db6b19b7e684f4e281575",
+    "reports/shared-population-study/development/inventory.json": "a6a3c8edaae1d8f70e7f18fb0eacfc5d983ba4caaf8b4a0cb0dd0b5bc61c94a8",
+    "reports/shared-population-study/development/limits.json": "b7f7e3ababe1f47d2258f45161fa0bd9e76cf4d5ec3e4569eaf265018fbc361a",
+    "reports/shared-population-study/development/normalization.json": "d2cc9d7a58814ecdb14f5e0b66028f5e410559cc9f9e7432e4bad8937fd4b805",
+    "reports/shared-population-study/development/provenance.json": "a022cf75286788d65fb5d50c6a776e34542937d00131a817b66174e4409ea2ac",
+    "reports/shared-population-study/development/status.json": "d851c46b3cd1e650464772ab8c712a4b275e7cba396006aff78ed9515d152efa"
+  },
+  "confirmation_archive": {
+    "bytes": 538869653,
+    "files": 168426,
+    "sha256": "d8b3f8de2d1ec46f7e745a18ccf8df4c68fb36b1b8c5fb04df07ba0d91b44f68"
+  },
+  "conservative_cumulative_ledger": {
+    "artifact_bytes": 680181226,
+    "cpu_seconds": 2906.20941,
+    "gate_metadata_cpu_wall_reserve_seconds": 2,
+    "gate_report_storage_reserve_bytes": 131072,
+    "note": "Conservative decision-audit continuation only; no new fit allocation. SOAM-051 ledger remains unchanged. Prior incomplete reporting-attempt RSS remains unknown. Tests/local-worker review are engineering review, outside trial ledger as previously declared.",
+    "overhead_cpu_seconds": 461.3206130000004,
+    "peak_rss_bytes_measured": 853032960,
+    "wall_seconds": 2956.5934584579663
+  },
+  "date": "2026-11-08",
+  "development_archive": {
+    "bytes": 95228443,
+    "files": 48382,
+    "sha256": "3780bbb310ee7bc7d9b9ebf70afe58d0b39e0565a7234c704ea361f288d7c4fd"
+  },
+  "fit_count": 77,
+  "fit_cpu_max": 36.121810000000096,
+  "fit_cpu_sum": 1075.4223359999987,
+  "frozen_outcome": "recall_interference_or_failure",
+  "guardrail_pass": true,
+  "isolation_prediction_arrays_exact": {
+    "D16_opposite_bank": 660,
+    "T32_intact": 660,
+    "T32_opposite_bank": 660
+  },
+  "new_conditions": 0,
+  "new_fits": 0,
+  "new_observations": 0,
+  "preserved_configs": {
+    "D16": 1,
+    "D25": 1,
+    "G28": 1,
+    "G32": 1,
+    "L12": 0,
+    "S32": 1,
+    "SYM32": 1
+  },
+  "primary_reference": "G32",
+  "recovery": {
+    "claim_limit": "finite-horizon recovery toward unperturbed trajectories, not global attraction",
+    "intervals": {
+      "false_recovery_fraction": {
+        "lower": [
+          0.545
+        ],
+        "mean": [
+          0.62
+        ],
+        "ordinary_lower": [
+          0.545
+        ],
+        "ordinary_upper": [
+          0.69
+        ],
+        "replicates": 10000,
+        "resampling_unit": "paired_confirmation_root",
+        "root_count": 10,
+        "seed": 7170790573829272725,
+        "upper": [
+          0.69
+        ],
+        "width": [
+          0.1449999999999999
+        ]
+      },
+      "feature_variance_ratio": {
+        "lower": [
+          0.985684103341743
+        ],
+        "mean": [
+          1.0454110069570317
+        ],
+        "ordinary_lower": [
+          0.985684103341743
+        ],
+        "ordinary_upper": [
+          1.1055146926477442
+        ],
+        "replicates": 10000,
+        "resampling_unit": "paired_confirmation_root",
+        "root_count": 10,
+        "seed": 7170790573829272725,
+        "upper": [
+          1.1055146926477442
+        ],
+        "width": [
+          0.11983058930600121
+        ]
+      },
+      "halving_advantage": {
+        "lower": [
+          -0.040000000000000036
+        ],
+        "mean": [
+          -0.025000000000000022
+        ],
+        "ordinary_lower": [
+          -0.040000000000000036
+        ],
+        "ordinary_upper": [
+          -0.010000000000000009
+        ],
+        "replicates": 10000,
+        "resampling_unit": "paired_confirmation_root",
+        "root_count": 10,
+        "seed": 7170790573829272725,
+        "upper": [
+          -0.010000000000000009
+        ],
+        "width": [
+          0.030000000000000027
+        ]
+      },
+      "halving_fraction": {
+        "lower": [
+          0.9599999999999997
+        ],
+        "mean": [
+          0.975
+        ],
+        "ordinary_lower": [
+          0.9599999999999997
+        ],
+        "ordinary_upper": [
+          0.99
+        ],
+        "replicates": 10000,
+        "resampling_unit": "paired_confirmation_root",
+        "root_count": 10,
+        "seed": 7170790573829272725,
+        "upper": [
+          0.99
+        ],
+        "width": [
+          0.03000000000000025
+        ]
+      },
+      "perturbed_recall_nmse": {
+        "lower": [
+          0.09562808802709419
+        ],
+        "mean": [
+          0.1086415712769303
+        ],
+        "ordinary_lower": [
+          0.09562808802709419
+        ],
+        "ordinary_upper": [
+          0.12370283424088563
+        ],
+        "replicates": 10000,
+        "resampling_unit": "paired_confirmation_root",
+        "root_count": 10,
+        "seed": 7170790573829272725,
+        "upper": [
+          0.12370283424088563
+        ],
+        "width": [
+          0.02807474621379144
+        ]
+      }
+    },
+    "outcome": "diagnostic_criteria_not_met"
+  },
+  "reporting_limitations_retained": [
+    "Capture-wrapper hash is not resolved-study config hash",
+    "L12 generic loss fields are not gradient iterations",
+    "Two incomplete reporting attempts charged with conservative elapsed bounds; separate peak RSS unknown; first terminal diagnosis not retained"
+  ],
+  "reproduction": {
+    "exact_repeat": true,
+    "independent_confirmation_roots_added": 0,
+    "input_references_compared": 7280,
+    "numerical_arrays_compared": 11764,
+    "records_compared": 9603
+  },
+  "resolved_study_config_sha256": "b9f125d176844963db9aaadf8ec32f43da76e70aa5429dd77bd637fc221c3f80",
+  "review_base_commit": "8e46d78f0b4ee702f43ed7593cf2a360d365b80d",
+  "review_cpu_seconds": 62.041096,
+  "review_ticket": "SOAM-052",
+  "review_wall_seconds": 83.13660666596843,
+  "root_order": [
+    11,
+    23,
+    47,
+    71,
+    101,
+    131,
+    173,
+    211,
+    257,
+    307
+  ],
+  "scientific_source_commit": "7b3dea667cd65626af259a6ccbf0e17e0d8e96f6",
+  "selection_before_confirmation": true,
+  "source_files_verified": 76,
+  "source_sha256": "b52329efaa0a4927337691e60a5b610ed08984b884aef8dd5b7b12801f2408c9",
+  "training_references_compared": 53900,
+  "utility": {
+    "lower": [
+      0.09342789510669545,
+      0.1431270761239871,
+      -1.384366590314334,
+      -2.3334022073020706,
+      -0.22103386857273347,
+      -0.058496603255383535,
+      -0.018226974368804397
+    ],
+    "mean": [
+      0.20103752136447328,
+      0.211141327646501,
+      -0.9388437309240212,
+      -1.526395300760135,
+      -0.021141656861475344,
+      -0.03749217215002023,
+      -0.009422513885391354
+    ],
+    "ordinary_lower": [
+      0.12345816617848335,
+      0.1588034648647036,
+      -1.262954388192453,
+      -2.1155010653508963,
+      -0.15963131043673834,
+      -0.05400477440268934,
+      -0.016207288053372793
+    ],
+    "ordinary_upper": [
+      0.27993332805179466,
+      0.27281990304429954,
+      -0.6355453146409947,
+      -0.9993445024070932,
+      0.08111028857298387,
+      -0.017750646867345732,
+      -0.0020848311316304974
+    ],
+    "replicates": 10000,
+    "resampling_unit": "paired_confirmation_root",
+    "root_count": 10,
+    "seed": 7170790573829272725,
+    "upper": [
+      0.3101697384442428,
+      0.3001834983733436,
+      -0.5560926347105204,
+      -0.8661130708717376,
+      0.10331433366425578,
+      -0.008634545818203164,
+      0.0007256849456686449
+    ],
+    "width": [
+      0.2167418433375473,
+      0.15705642224935654,
+      0.8282739556038137,
+      1.4672891364303329,
+      0.32434820223698924,
+      0.04986205743718037,
+      0.01895265931447304
+    ]
+  },
+  "worker": {
+    "disposition": "Rejected: false missing-telemetry/config-explanation claims and no usable source citations. Primary direct audit used.",
+    "job": "560aa77ad2dc464f80ece38f35dde2b6"
+  }
+}

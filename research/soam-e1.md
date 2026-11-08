@@ -5,6 +5,9 @@ permalink: /research/soam-e1/
 description: "A protocol report on the first SOAM shared-recurrence pilot, its tied-state identifiability limit, controls, and reproducible evaluation plan."
 ---
 
+> **Results update — November 8, 2026:** E1 is complete. Read the [visual results article](/blog/a-memory-can-settle-and-still-be-wrong/) and [full results and gate report](/research/soam-e1-results/). The original pre-results account below is preserved.
+
+
 <link rel="stylesheet" href="{{ '/assets/soam-sharing-demo.css' | relative_url }}">
 
 **Version 1 · November 5, 2026 · protocol report, not an empirical results report.** This accompanies [Testing Shared Recurrent Memory]({{ '/blog/testing-shared-recurrent-memory/' | relative_url }}). The experiment was specified in project decision SOAM-049. No E1 fitting or confirmation trials had run when this protocol was frozen.

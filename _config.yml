@@ -29,6 +29,7 @@ defaults:
 # Explicit top-level navigation. Course content lives beneath /courses/.
 header_pages:
   - blog.md
+  - research/index.md
   - courses/index.md
   - issues/index.md
   - about.markdown

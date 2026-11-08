@@ -1,7 +1,12 @@
 (function () {
   "use strict";
 
-  if (!window.location.pathname.startsWith("/blog/") || window.location.pathname === "/blog/") return;
+  const path = window.location.pathname;
+  const isBlog = path.startsWith("/blog/") && path !== "/blog/";
+  const isReport = path === "/research/" || path.startsWith("/research/");
+  if (!isBlog && !isReport) return;
+  const pageKind = isReport ? "report" : "blog post";
+  const storagePrefix = isReport ? "report" : "blog";
 
   const article = document.querySelector(".post-content");
   if (!article) return;
@@ -12,8 +17,9 @@
   const introHeading = document.querySelector(".post-title");
   if (introHeading && !introHeading.id) introHeading.id = "article-introduction";
 
-  const storageKey = "blog-annotations:v1:" + window.location.pathname;
-  const draftStorageKey = "blog-annotation-drafts:v1:" + window.location.pathname;
+  // Keep existing blog keys unchanged; reports have their own URL-scoped notes.
+  const storageKey = storagePrefix + "-annotations:v1:" + path;
+  const draftStorageKey = storagePrefix + "-annotation-drafts:v1:" + path;
   const headingSelector = "h2, h3, h4";
   const commentTypes = ["Question", "Unclear", "Expand", "Diagram", "Example", "Correction", "Lab idea", "Note", "Report issue", "Theory", "Ideas"];
 
@@ -397,8 +403,10 @@
   function buildReport() {
     const active = unresolvedComments();
     const pageTitleElement = document.querySelector(".post-title") || document.querySelector("h1");
-    const pageTitle = pageTitleElement ? normalizeText(pageTitleElement.textContent) : document.title;
-    const lines = ["# Blog Review Report", "", "Page: " + pageTitle, "URL: " + window.location.pathname, "Unresolved comments: " + active.length, ""];
+    const titleCopy = pageTitleElement && pageTitleElement.cloneNode(true);
+    if (titleCopy) titleCopy.querySelectorAll(".annotation-add").forEach(function (button) { button.remove(); });
+    const pageTitle = titleCopy ? normalizeText(titleCopy.textContent) : document.title;
+    const lines = [isReport ? "# Research Report Review" : "# Blog Review Report", "", "Page: " + pageTitle, "URL: " + path, "Unresolved comments: " + active.length, ""];
     if (!active.length) {
       lines.push("No unresolved comments.");
       return lines.join("\n");
@@ -414,10 +422,10 @@
   function buildPromptAndReport() {
     return [
       "Please address every actionable comment in the review report below.",
-      "Update the relevant blog post in spencerbug/spencerbug.github.io.",
+      "Update the relevant " + pageKind + " in spencerbug/spencerbug.github.io.",
       "Preserve technical accuracy, useful existing content, and stable headings/anchors where practical.",
-      "Add requested explanations, notes, Mermaid diagrams, equations, examples, references, or experiments where they improve the post.",
-      "Keep the post coherent and readable, splitting sections only when necessary.",
+      "Add requested explanations, notes, diagrams, equations, examples, or references where they improve the page. Preserve frozen experimental evidence; propose any new experiment separately.",
+      "Keep the page coherent and readable, splitting sections only when necessary.",
       "",
       buildReport()
     ].join("\n");
@@ -476,6 +484,7 @@
 
     reviewPanel.innerHTML = `
       <div class="annotation-review-header"><div><h2 id="annotation-review-title">Review comments</h2><p>${active.length} unresolved${resolvedCount ? ` · ${resolvedCount} resolved` : ""}</p></div></div>
+      <p>Private notes saved in this browser for this page. They are not sent to the author or synced across devices. Use Copy report to share them.</p>
       ${storageAvailable ? "" : `<p class="annotation-storage-warning"><strong>Local storage is unavailable.</strong> Comments and drafts will only last for this page session.</p>`}
       <div class="annotation-list">${cards || `<p class="annotation-empty">No comments yet. Use the 💬 button beside a section heading to add one.</p>`}</div>
       <div class="annotation-report">
@@ -524,7 +533,7 @@
       return;
     }
     if (action === "clear-all") {
-      if (!window.confirm("Delete all review comments for this blog post?")) return;
+      if (!window.confirm("Delete all review comments for this " + pageKind + "?")) return;
       comments = [];
       saveComments();
       render();

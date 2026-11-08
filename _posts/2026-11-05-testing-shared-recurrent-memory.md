@@ -6,6 +6,9 @@ permalink: /blog/testing-shared-recurrent-memory/
 description: "Why shared neurons and tied weights can make identical predictions, and how SOAM separates useful behavior, causal participation, and recurrent recovery."
 ---
 
+> **Results update — November 8, 2026:** E1 is complete. Read the [visual results article](/blog/a-memory-can-settle-and-still-be-wrong/) and [full results and gate report](/research/soam-e1-results/). The original pre-results account below is preserved.
+
+
 {% include ai-assisted-author-note.html %}
 
 <link rel="stylesheet" href="{{ '/assets/soam-sharing-demo.css' | relative_url }}">

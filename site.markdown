@@ -10,7 +10,7 @@ It runs on Jekyll and GitHub Pages with a lightly customized Minima theme. Merma
 
 ## What are the comment buttons?
 
-On course lessons and technical articles, section headings can have a small 💬 control beside them. Those are **review annotations**, not public comments.
+On course lessons, technical articles, the [Reports index](/research/), and individual reports, section headings have a small 💬 control beside them. Those are **review annotations**, not public comments.
 
 I use them while reading my own material. A comment can be attached to an `h2`, `h3`, or `h4` section and categorized as a question, unclear explanation, expansion request, diagram request, example, correction, lab idea, or general note. If I select text before opening the comment control, that excerpt is captured with the note as additional context.
 
@@ -18,7 +18,7 @@ I use them while reading my own material. A comment can be attached to an `h2`, 
 
 They stay in the browser.
 
-Course annotations and writing annotations are stored in `localStorage`, scoped to the page URL. Draft comments are local as well. Nothing is posted to GitHub, sent to a server, or made visible to another visitor.
+Course, writing, and report annotations are stored in `localStorage`, scoped to the page URL. Draft comments are local as well. Nothing is posted to GitHub, sent to a server, or made visible to another visitor. Existing blog notes keep their original storage keys; reports have a separate namespace.
 
 That also means the annotations do **not** automatically follow me between browsers or devices. They are intentionally lightweight working notes rather than a synchronized comment account.
 

@@ -1,0 +1,102 @@
+{
+  "snapshot_date": "2026-11-08",
+  "kind": "completed_E1_v1_A1_confirmation_and_stop_gate",
+  "source_repository": "https://github.com/spencerbug/soam",
+  "source_head": "a4ddf9479fad06240a44030726ce6f99d2f25eb2",
+  "scientific_source_commit": "fe9925f796af0a835a509cbef3bded4be3783fa3",
+  "execution_commit": "7b3dea667cd65626af259a6ccbf0e17e0d8e96f6",
+  "scientific_source_sha256": "b52329efaa0a4927337691e60a5b610ed08984b884aef8dd5b7b12801f2408c9",
+  "scope": "Byte-identical compact evidence, not the full raw numerical archive. Figures only render archived statistics; no fitting, resampling, selection, or new observations. Site publication work is outside the closed scientific allocation.",
+  "files": [
+    {
+      "source_path": "reports/shared-population-study/confirmation/statistics.json",
+      "download": "statistics.json",
+      "sha256": "492efa0aa4fc794acd6524023f11dde25649ed10407487fda4b83af6a0ab521c",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/tables.md",
+      "download": "tables.md",
+      "sha256": "7bfa919cd18be09a206ee1d983705f2d68e07f5895695ad52aca85742df735bc",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/root-model-means.json",
+      "download": "root-model-means.json",
+      "sha256": "f26a27260dc0fc239849f45dbf8596035a2bb5e023a67298404676bd18cef1b8",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/reproduction.json",
+      "download": "reproduction.json",
+      "sha256": "364a86eb225637edc565334bf526dfc932b3aba017d1751f01351b4461194fc8",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/final-ledger.json",
+      "download": "study-ledger.json",
+      "sha256": "fc2b0c8f2f20310526daf42b6f9ec740e88b8ea5fabd76ab58745e71b7dd894b",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-gate/audit.json",
+      "download": "gate-audit.json",
+      "sha256": "1dddf3002aaa00dc3f3b2137fc5fe5a6a922a114b14c7ed33aba583571f617bf",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/config.json",
+      "download": "config.json",
+      "sha256": "923ef38b9a103debd0caf078915ae46147bea01976fbfa723028277a3d39a591",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/provenance.json",
+      "download": "execution-provenance.json",
+      "sha256": "6c273510640cde464c5a090a2aa70ebd1ef863f0dc239653d113d494a7322ea0",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/SHARED_POPULATION_STUDY.md",
+      "download": "study-report.txt",
+      "sha256": "47fc44eac88c05ae43a8b2c4e55ae9ca519c01cdca1879bd903e94b762d602ab",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/SHARED_POPULATION_GATE.md",
+      "download": "gate-decision.txt",
+      "sha256": "0d185a9e8441a1974e10f906db5f4169f12e4097f7f143aafce0cb932cbb25ed",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "docs/SHARED_POPULATION_PROTOCOL.md",
+      "download": "protocol-v1.txt",
+      "sha256": "98846328f3ad6803a7e85d910fc2be2f8075c5d44e75d19351ad311d9eae12bf",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "docs/protocols/shared_population_v1.json",
+      "download": "manifest-v1.json",
+      "sha256": "beda95e9aba660c4b912339dfe26f331363e8de7cbc715af132e95fd1821d83e",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "docs/E1_ARCHIVE_A1.md",
+      "download": "archive-a1.txt",
+      "sha256": "fed2ac44ecd1183ddc35e79c1ef0a25ba55e7cbe5f372e87e025d896a1156a13",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-study/confirmation/audit.json",
+      "download": "study-audit.json",
+      "sha256": "c76adf63e83620a091ab4b6ee19d760f8c0aecfb4cc5284840c02f8fb5c8d93a",
+      "matches_source_commit": true
+    },
+    {
+      "source_path": "reports/shared-population-gate/verification.json",
+      "download": "verification.json",
+      "sha256": "494af1a50cc422d047a84f5ac7f5a2b17f4c21dd620f9eddb08c4c461e4a80ee",
+      "matches_source_commit": true
+    }
+  ]
+}

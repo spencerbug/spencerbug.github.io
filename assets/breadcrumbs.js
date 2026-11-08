@@ -118,6 +118,11 @@
     }
   } else if (path === "/blog/") {
     addCurrent("Blog");
+  } else if (path === "/research/") {
+    addCurrent("Reports");
+  } else if (path.startsWith("/research/")) {
+    addLink("Reports", "/research/");
+    addCurrent(pageTitle());
   } else if (path === "/about/") {
     addCurrent("About");
   } else if (document.querySelector("article.post .post-meta")) {

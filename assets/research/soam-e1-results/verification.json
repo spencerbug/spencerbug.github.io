@@ -1,0 +1,31 @@
+{
+  "commands": {
+    "git diff --cached --check": "pass",
+    "git diff --check": "pass",
+    "uv run pytest": "190 passed in 15.80s",
+    "uv run python reports/shared-population-gate/audit.py": "passed; no new fitting, evaluation observations or conditions",
+    "uv run python scripts/check_tickets.py": "Validated 62 tickets, ordering/dependencies/links, and 2 GitHub templates."
+  },
+  "date": "2026-11-08",
+  "decision": "stop",
+  "empirical_report_preservation": "Only a dated review-status pointer was added after the title; all original report text remains unchanged.",
+  "follow_up_experiment_selected": false,
+  "frozen_source_files_unchanged": true,
+  "gate_report_artifacts_and_changed_prose_upper_bound_bytes": 98304,
+  "governing_frozen_outcome": "recall_interference_or_failure",
+  "new_fits": 0,
+  "next_eligible": "SOAM-059 routing; not started",
+  "prior_study_compact_evidence_unchanged": true,
+  "publication": false,
+  "repository_file_links_checked": 268,
+  "reviewed_artifacts": [
+    "reports/SHARED_POPULATION_STUDY.md",
+    "docs/SHARED_POPULATION_PROTOCOL.md",
+    "docs/protocols/shared_population_v1.json",
+    "docs/E1_ARCHIVE_A1.md",
+    "reports/shared-population-study/confirmation/sha256.json",
+    "reports/shared-population-study/confirmation/final-ledger.json"
+  ],
+  "scope_check": "No scientific source/protocol/config changes; SOAM-051 and SOAM-059 tickets unchanged; no child dependency changed.",
+  "ticket": "SOAM-052"
+}

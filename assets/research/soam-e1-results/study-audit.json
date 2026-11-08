@@ -1,0 +1,645 @@
+{
+  "all_reference_stream_boundaries_verified": true,
+  "bootstrap_intervals_verified": true,
+  "capture_wrapper_config_sha256": "e6bec42b26641ee42ccc5ddd4a0bc70eaab7e55c432d85078c5bc87394bc3399",
+  "completed_cells": 25300,
+  "completed_confirmation_fits": 70,
+  "completed_repeat_fits": 7,
+  "config_hash_note": "raw provenance config_sha256 hashes the capture wrapper; actual scientific config is separately archived and audited",
+  "evaluation_work": {
+    "confirmation/101": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/11": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/131": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/173": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/211": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/23": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/257": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/307": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/47": {
+      "evaluation_linear_macs": 438263040
+    },
+    "confirmation/71": {
+      "evaluation_linear_macs": 438263040
+    },
+    "repeat/11": {
+      "evaluation_linear_macs": 438263040
+    }
+  },
+  "failed_cells": 0,
+  "failed_fits": 0,
+  "finite_numerical_arrays_checked": 129404,
+  "fit_cpu_max": 36.121810000000096,
+  "fit_cpu_sum": 1075.4223359999987,
+  "full_study_cells": 27820,
+  "full_study_fits": 119,
+  "input_references": 80080,
+  "isolation": {
+    "D16_opposite_bank": {
+      "episode_pairs": 440,
+      "max_abs_difference": 0.0,
+      "prediction_arrays": 660
+    },
+    "T32_intact": {
+      "episode_pairs": 440,
+      "max_abs_difference": 0.0,
+      "prediction_arrays": 660
+    },
+    "T32_opposite_bank": {
+      "episode_pairs": 440,
+      "max_abs_difference": 0.0,
+      "prediction_arrays": 660
+    }
+  },
+  "manifest_sha256": "beda95e9aba660c4b912339dfe26f331363e8de7cbc715af132e95fd1821d83e",
+  "max_root_mean_regrouping_difference": 6.661338147750939e-16,
+  "metric_reductions_verified": true,
+  "normalization_variance": 0.03096017249093924,
+  "protocol_sha256": "98846328f3ad6803a7e85d910fc2be2f8075c5d44e75d19351ad311d9eae12bf",
+  "raw_archive": {
+    "bytes": 538869653,
+    "files": 168426,
+    "sha256": "d8b3f8de2d1ec46f7e745a18ccf8df4c68fb36b1b8c5fb04df07ba0d91b44f68"
+  },
+  "representative_resources": {
+    "D16": {
+      "active_neural_units": 16,
+      "available_neural_units": 32,
+      "parameters": 2040,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 8160,
+        "unique_storage_bytes": 8160
+      },
+      "returned_arrays": {
+        "logical_bytes": 2104,
+        "unique_storage_bytes": 2104
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 136,
+        "unique_storage_bytes": 136
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "D25": {
+      "active_neural_units": 25,
+      "available_neural_units": 50,
+      "parameters": 3849,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 15396,
+        "unique_storage_bytes": 15396
+      },
+      "returned_arrays": {
+        "logical_bytes": 2968,
+        "unique_storage_bytes": 2968
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 208,
+        "unique_storage_bytes": 208
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "G28": {
+      "active_neural_units": 28,
+      "available_neural_units": 28,
+      "parameters": 3988,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 15952,
+        "unique_storage_bytes": 15952
+      },
+      "returned_arrays": {
+        "logical_bytes": 1912,
+        "unique_storage_bytes": 1912
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 120,
+        "unique_storage_bytes": 120
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "G32": {
+      "active_neural_units": 32,
+      "available_neural_units": 32,
+      "parameters": 4940,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 19760,
+        "unique_storage_bytes": 19760
+      },
+      "returned_arrays": {
+        "logical_bytes": 2104,
+        "unique_storage_bytes": 2104
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 136,
+        "unique_storage_bytes": 136
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "L12": {
+      "active_neural_units": 12,
+      "available_neural_units": 12,
+      "parameters": 924,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 3696,
+        "unique_storage_bytes": 3696
+      },
+      "returned_arrays": {
+        "logical_bytes": 1144,
+        "unique_storage_bytes": 1144
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 56,
+        "unique_storage_bytes": 56
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "S32": {
+      "active_neural_units": 32,
+      "available_neural_units": 32,
+      "parameters": 3868,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 15472,
+        "unique_storage_bytes": 15472
+      },
+      "returned_arrays": {
+        "logical_bytes": 2104,
+        "unique_storage_bytes": 2104
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 136,
+        "unique_storage_bytes": 136
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    },
+    "SYM32": {
+      "active_neural_units": 32,
+      "available_neural_units": 32,
+      "parameters": 1884,
+      "peak_model_copies": 4,
+      "persistent": {
+        "logical_bytes": 7536,
+        "unique_storage_bytes": 7536
+      },
+      "returned_arrays": {
+        "logical_bytes": 2104,
+        "unique_storage_bytes": 2104
+      },
+      "role_flags": 2,
+      "state": {
+        "logical_bytes": 136,
+        "unique_storage_bytes": 136
+      },
+      "workspace_policy": "matrix expansion/copy/hash temporaries measured in process RSS separately"
+    }
+  },
+  "reproduction": {
+    "exact_repeat": true,
+    "independent_confirmation_roots_added": 0,
+    "input_references_compared": 7280,
+    "numerical_arrays_compared": 11764,
+    "records_compared": 9603
+  },
+  "resolved_config_file_sha256": "923ef38b9a103debd0caf078915ae46147bea01976fbfa723028277a3d39a591",
+  "resolved_study_config_sha256": "b9f125d176844963db9aaadf8ec32f43da76e70aa5429dd77bd637fc221c3f80",
+  "retries": 0,
+  "root_aggregation_verified": true,
+  "selection_freeze_precedes_confirmation_references": true,
+  "selection_records": [
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          0,
+          11,
+          14,
+          27
+        ],
+        [
+          1,
+          2,
+          15,
+          31
+        ],
+        [
+          8,
+          16,
+          18,
+          24
+        ],
+        [
+          6,
+          10,
+          25,
+          27
+        ]
+      ],
+      "random_seed": 17663439944851007055,
+      "root": 11,
+      "targeted": [
+        17,
+        9,
+        26,
+        14
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          3,
+          9,
+          10,
+          14
+        ],
+        [
+          4,
+          12,
+          16,
+          27
+        ],
+        [
+          3,
+          7,
+          10,
+          27
+        ],
+        [
+          13,
+          21,
+          22,
+          24
+        ]
+      ],
+      "random_seed": 3055327418091526652,
+      "root": 23,
+      "targeted": [
+        1,
+        10,
+        19,
+        20
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          8,
+          10,
+          17,
+          23
+        ],
+        [
+          0,
+          3,
+          24,
+          31
+        ],
+        [
+          2,
+          24,
+          26,
+          27
+        ],
+        [
+          6,
+          11,
+          22,
+          26
+        ]
+      ],
+      "random_seed": 1979285427699332355,
+      "root": 47,
+      "targeted": [
+        25,
+        10,
+        15,
+        21
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          4,
+          5,
+          7,
+          10
+        ],
+        [
+          16,
+          18,
+          23,
+          30
+        ],
+        [
+          0,
+          7,
+          15,
+          25
+        ],
+        [
+          3,
+          10,
+          14,
+          28
+        ]
+      ],
+      "random_seed": 14175472488256407621,
+      "root": 71,
+      "targeted": [
+        31,
+        29,
+        24,
+        4
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          13,
+          18,
+          26,
+          28
+        ],
+        [
+          4,
+          6,
+          14,
+          27
+        ],
+        [
+          2,
+          4,
+          7,
+          10
+        ],
+        [
+          10,
+          17,
+          30,
+          31
+        ]
+      ],
+      "random_seed": 9264437669439114691,
+      "root": 101,
+      "targeted": [
+        8,
+        15,
+        2,
+        11
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          1,
+          3,
+          20,
+          26
+        ],
+        [
+          2,
+          24,
+          26,
+          28
+        ],
+        [
+          0,
+          13,
+          15,
+          23
+        ],
+        [
+          3,
+          9,
+          19,
+          20
+        ]
+      ],
+      "random_seed": 17767650446327514459,
+      "root": 131,
+      "targeted": [
+        26,
+        2,
+        24,
+        25
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          12,
+          26,
+          28,
+          29
+        ],
+        [
+          13,
+          20,
+          23,
+          27
+        ],
+        [
+          16,
+          24,
+          27,
+          31
+        ],
+        [
+          1,
+          3,
+          27,
+          30
+        ]
+      ],
+      "random_seed": 7162553116586492818,
+      "root": 173,
+      "targeted": [
+        21,
+        25,
+        1,
+        8
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          0,
+          8,
+          26,
+          27
+        ],
+        [
+          10,
+          20,
+          23,
+          28
+        ],
+        [
+          2,
+          7,
+          14,
+          30
+        ],
+        [
+          2,
+          12,
+          25,
+          30
+        ]
+      ],
+      "random_seed": 17673269747907830944,
+      "root": 211,
+      "targeted": [
+        15,
+        7,
+        8,
+        2
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          11,
+          12,
+          21,
+          22
+        ],
+        [
+          2,
+          10,
+          24,
+          26
+        ],
+        [
+          1,
+          3,
+          17,
+          27
+        ],
+        [
+          6,
+          20,
+          25,
+          31
+        ]
+      ],
+      "random_seed": 18009751680505633331,
+      "root": 257,
+      "targeted": [
+        21,
+        5,
+        0,
+        28
+      ]
+    },
+    {
+      "phase": "confirmation",
+      "random": [
+        [
+          1,
+          4,
+          8,
+          19
+        ],
+        [
+          6,
+          13,
+          17,
+          19
+        ],
+        [
+          14,
+          26,
+          27,
+          30
+        ],
+        [
+          5,
+          10,
+          21,
+          26
+        ]
+      ],
+      "random_seed": 12769304032771362970,
+      "root": 307,
+      "targeted": [
+        15,
+        25,
+        28,
+        13
+      ]
+    },
+    {
+      "phase": "repeat",
+      "random": [
+        [
+          0,
+          11,
+          14,
+          27
+        ],
+        [
+          1,
+          2,
+          15,
+          31
+        ],
+        [
+          8,
+          16,
+          18,
+          24
+        ],
+        [
+          6,
+          10,
+          25,
+          27
+        ]
+      ],
+      "random_seed": 17663439944851007055,
+      "root": 11,
+      "targeted": [
+        17,
+        9,
+        26,
+        14
+      ]
+    }
+  ],
+  "source_commit": "7b3dea667cd65626af259a6ccbf0e17e0d8e96f6",
+  "source_sha256": "b52329efaa0a4927337691e60a5b610ed08984b884aef8dd5b7b12801f2408c9",
+  "unique_input_objects": 7440
+}

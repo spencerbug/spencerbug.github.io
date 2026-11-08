@@ -1,0 +1,23 @@
+/* E1 publication: measured figures on a neutral plate, readable in both themes. */
+.e1-figure { margin: 1.5rem 0 2rem; }
+.e1-figure img { display: block; width: 100%; height: auto; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.e1-figure figcaption { color: var(--muted-text); font-size: .91rem; line-height: 1.55; margin-top: .65rem; }
+.e1-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.e1-pair .e1-figure { margin-top: .5rem; }
+.e1-verdicts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin: 1.3rem 0; }
+.e1-verdict { background: var(--surface); border: 1px solid var(--border); border-top: 4px solid #b65540; border-radius: 8px; padding: .9rem; }
+.e1-verdict.unresolved { border-top-color: #a17613; }
+.e1-verdict strong, .e1-verdict span { display: block; }
+.e1-verdict span { font-size: .9rem; margin-top: .4rem; }
+.e1-status { border-left: 4px solid #b65540; padding: .8rem 1rem; background: var(--surface); }
+.e1-links { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; margin: 1rem 0; }
+.e1-links a { font-weight: 600; }
+.e1-table-scroll { overflow-x: auto; margin: 1.2rem 0; }
+.e1-table-scroll table { margin-bottom: 0; }
+.post-content table { display: block; max-width: 100%; overflow-x: auto; }
+.post-content :not(pre) > code { overflow-wrap: anywhere; white-space: normal; }
+.e1-toc { border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; margin: 1.2rem 0; }
+.e1-toc ul { margin-bottom: 0; }
+@media screen and (max-width: 600px) {
+  .e1-pair, .e1-verdicts { grid-template-columns: 1fr; }
+}
