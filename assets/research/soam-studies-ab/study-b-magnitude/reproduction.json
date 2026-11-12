@@ -1,0 +1,44 @@
+{
+  "AMN32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "FILTER2": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GA32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GMN32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GN32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "PC16": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "PC32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  }
+}

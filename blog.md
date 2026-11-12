@@ -6,6 +6,8 @@ permalink: /blog/
 
 Technical essays, research notes, project retrospectives, and experiments that sit outside the linear coursework.
 
+**Research series:** [SOAM Studies A–F]({{ '/research/soam-studies/' | relative_url }}) — focused investigations branching from E1, beginning with the completed studies of recurrent gates and sensory correction.
+
 {% if site.posts.size > 0 %}
 <div class="writing-list">
   {% for post in site.posts %}
@@ -16,6 +18,7 @@ Technical essays, research notes, project retrospectives, and experiments that s
     {% if post.pcfh_part == 4 %}{% assign summary = "Concrete experiments, ablations, scaling tests, and failure conditions intended to make the PCFH hypothesis falsifiable." %}{% endif %}
     <article class="writing-card">
       <div class="card-meta">
+        {% if post.soam_studies %}<span class="topic-pill">SOAM Studies {{ post.soam_studies }}</span>{% endif %}
         {% if post.pcfh_part %}<span class="topic-pill">Embodied AI</span><span class="topic-pill">PCFH</span>{% endif %}
         <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
       </div>

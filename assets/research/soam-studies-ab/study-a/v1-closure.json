@@ -1,0 +1,29 @@
+{
+  "status": "stopped_before_confirmation_for_development_competence",
+  "reason": "Selected R52 and R55 improved 33.28% and 55.64% from 600 to 800 updates, exceeding the prespecified 20% optimization-unresolved criterion. No confirmation observations generated.",
+  "scientific_outcome": "not_tested",
+  "next": "Study A v2: common 1600-update schedule and fixed cosine decay; no model-family or primary-contrast change",
+  "ledger": {
+    "artifact_bytes": 120917337,
+    "cpu_seconds": 123.031873,
+    "fit_attempts": 60,
+    "peak_rss_bytes": 602243072,
+    "phases": [
+      {
+        "cpu_seconds": 1.280906,
+        "fit_attempts": 12,
+        "phase": "fixture",
+        "status": "complete",
+        "wall_seconds": 0.3128651659935713
+      },
+      {
+        "cpu_seconds": 121.750967,
+        "fit_attempts": 48,
+        "phase": "development",
+        "status": "complete",
+        "wall_seconds": 121.05961595801637
+      }
+    ],
+    "wall_seconds": 121.37248112400994
+  }
+}

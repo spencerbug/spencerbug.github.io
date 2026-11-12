@@ -1,0 +1,30 @@
+{
+  "exact": true,
+  "fields": [
+    "checkpoint",
+    "optimizer",
+    "trace",
+    "input",
+    "evaluation_input",
+    "paths",
+    "diagnostics",
+    "metrics",
+    "diagnostic_metrics"
+  ],
+  "models": [
+    "G32",
+    "FU32",
+    "FU38",
+    "FR32",
+    "FB32",
+    "S32",
+    "GS32",
+    "R32",
+    "R52",
+    "R55",
+    "L12",
+    "L2"
+  ],
+  "root": 9301,
+  "timing_excluded": true
+}

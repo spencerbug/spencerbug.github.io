@@ -1,0 +1,162 @@
+{
+  "AM32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 13112,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "FILTER2": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 74,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 460,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 12,
+    "recurrent_state_floats": 6
+  },
+  "GA32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12960,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "GM32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12772,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "GMETA32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12964,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "GR32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12820,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "GS32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12948,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "L2": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 62,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 460,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 4,
+    "recurrent_state_floats": 2
+  },
+  "MIX16": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 104,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 5360,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 32,
+    "recurrent_state_floats": 16
+  },
+  "MIX32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12720,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "MIXC32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12720,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "PC16": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 104,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 5360,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 32,
+    "recurrent_state_floats": 16
+  },
+  "PC32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12720,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "REP32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12720,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  },
+  "RESET2": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 62,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 460,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 4,
+    "recurrent_state_floats": 2
+  },
+  "SET32": {
+    "current_evidence_values": 30,
+    "gain_values": 2,
+    "logical_state_and_input_workspace_slots": 152,
+    "note": "Masks occupy 12 of the evidence slots. Count excludes ephemeral affine intermediates, evaluator histories, training autograd/optimizer and solve workspace; peak RSS includes process allocations.",
+    "persistent_bytes_allocated": 12852,
+    "prediction_and_residual_values": 24,
+    "prior_and_previous_workspace_floats": 64,
+    "recurrent_state_floats": 32
+  }
+}

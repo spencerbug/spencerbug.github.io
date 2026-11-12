@@ -20,6 +20,8 @@ The first SOAM shared-population experiment is complete. The candidate, **S32**,
 
 <nav class="e1-links" aria-label="Companion reading"><a href="{{ '/research/soam-e1-results/' | relative_url }}">Full report + data</a><a href="{{ '/research/soam-e1/' | relative_url }}">Original protocol</a></nav>
 
+**Follow-up, November 11:** [Studies A and B]({{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}) now investigate recurrent gates and sensory correction in a separate [A–F series]({{ '/research/soam-studies/' | relative_url }}). The E1 results and historical next-step statements below retain their November 8 meaning; the negative E1 decision is unchanged.
+
 ## What the model sees and has to do
 
 The learning environment is a small simulated world: a point in two dimensions. A **fixed sensor encoding** converts its position into 12 feature values. The network sees those features, not the point's coordinates or the simulator's equations. The 12 values come from two underlying coordinates; they are not 12 independent facts.

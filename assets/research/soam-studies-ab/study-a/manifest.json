@@ -1,0 +1,151 @@
+{
+  "bootstrap": {
+    "family_size": 15,
+    "resamples": 20000,
+    "seed": 8675311
+  },
+  "configs": [
+    {
+      "decay_end": 1600,
+      "decay_start": 800,
+      "final_lr_ratio": 0.01,
+      "lr": 0.003,
+      "ridge": 0.0001
+    },
+    {
+      "decay_end": 1600,
+      "decay_start": 800,
+      "final_lr_ratio": 0.01,
+      "lr": 0.01,
+      "ridge": 0.01
+    }
+  ],
+  "confirmation_roots": [
+    9301,
+    9311,
+    9319,
+    9323,
+    9337,
+    9341,
+    9343,
+    9349,
+    9371,
+    9377
+  ],
+  "criteria": {
+    "absolute_free8": 0.1,
+    "absolute_recall": 0.03,
+    "development_control_j": 0.15,
+    "fit_cpu_ratio": 1.5,
+    "free32_margin": 0.01,
+    "free8_margin": 0.005,
+    "gain": 0.1,
+    "gain_width": 0.4,
+    "grounded32_margin": 0.005,
+    "late_improvement_limit": 0.2,
+    "mac_ratio": 1.1,
+    "parameter_ratio": 1.1,
+    "recall_margin": 0.005
+  },
+  "development_roots": [
+    8419,
+    8423
+  ],
+  "diagnostic_episodes": 20,
+  "diagnostic_horizon": 128,
+  "evaluation_episodes": 20,
+  "fit": {
+    "batch": 16,
+    "checkpoints": [
+      100,
+      400,
+      800,
+      1200,
+      1400,
+      1600
+    ],
+    "horizon": 8,
+    "joint_updates": 1500,
+    "recall_updates": 100
+  },
+  "fixture": {
+    "batch": 4,
+    "joint_updates": 4,
+    "recall_updates": 2,
+    "root": 8301
+  },
+  "limits": {
+    "artifact_bytes": 2147483648,
+    "cpu_seconds": 3600,
+    "fit_attempts": 252,
+    "reserve_cpu_seconds": 360,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 7200
+  },
+  "normalization_root": 8802,
+  "normalization_samples": 2048,
+  "numerics": {
+    "deterministic": true,
+    "device": "cpu",
+    "dtype": "float32",
+    "metric_dtype": "float64",
+    "simulator_dtype": "float64",
+    "threads": 1
+  },
+  "prior_execution": "runs/study-a-v1",
+  "prior_ledger_sha256": "4fa7d4812d3134cbb64005e38c4659a4ea8f4da31e7c140521f61424aa667904",
+  "probe_episodes": 64,
+  "protocol": "soam-study-a",
+  "repeat_root": 9301,
+  "variants": {
+    "FB32": [
+      "fixed_both",
+      32
+    ],
+    "FR32": [
+      "fixed_reset",
+      32
+    ],
+    "FU32": [
+      "fixed_update",
+      32
+    ],
+    "FU38": [
+      "fixed_update",
+      38
+    ],
+    "G32": [
+      "gru",
+      32
+    ],
+    "GS32": [
+      "gated_s32",
+      32
+    ],
+    "L12": [
+      "ridge",
+      12
+    ],
+    "L2": [
+      "pca_ridge",
+      2
+    ],
+    "R32": [
+      "rnn",
+      32
+    ],
+    "R52": [
+      "rnn",
+      52
+    ],
+    "R55": [
+      "rnn",
+      55
+    ],
+    "S32": [
+      "s32",
+      32
+    ]
+  },
+  "version": 2
+}

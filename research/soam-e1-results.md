@@ -15,6 +15,8 @@ description: "The complete E1 v1 + A1 result and SOAM-052 stop decision: validit
 
 This public report combines the completed study and its gate review. Values and tables are transcribed from the archived evidence; figures render those statistics without new fitting, selection, resampling, or observations. The original scientific record remains unchanged. This is exploratory research, not a peer-reviewed result.
 
+**Follow-up, November 11:** The separate [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) begins with a completed [A/B results report]({{ '/research/soam-studies-a-b/' | relative_url }}). Historical next-step statements here describe the November 8 decision; the E1 measurements and stop outcome remain unchanged.
+
 <nav class="e1-toc" aria-label="Report contents" markdown="1">
 **In this report**
 

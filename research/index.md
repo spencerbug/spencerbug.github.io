@@ -9,7 +9,15 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A and B are complete; C–F remain proposed directions.
+
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">Studies A + B</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-11">November 11, 2026</time></div>
+    <h3><a href="{{ '/research/soam-studies-a-b/' | relative_url }}">Recurrent gates and sensory correction</a></h3>
+    <p>Adaptive update benefit remains inconclusive. Separate sensory correction is retained; learned gain falls short of its practical target. Complete model comparisons, uncertainty, resources, and downloadable evidence.</p>
+    <p><a href="{{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}">Read the companion article →</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Series A–F →</a></p>
+  </article>
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">Results + gate review</span><span class="topic-pill">Decision: stop tested S32</span><time datetime="2026-11-08">November 8, 2026</time></div>
     <h3><a href="{{ '/research/soam-e1-results/' | relative_url }}">E1 results: prediction, sharing, and recovery</a></h3>

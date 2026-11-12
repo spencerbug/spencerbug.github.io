@@ -1,0 +1,114 @@
+{
+  "AM32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "FILTER2": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GA32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GM32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GMETA32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GR32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "GS32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "L2": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "MIX16": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "MIX32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "MIXC32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "PC16": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "PC32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "REP32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "RESET2": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  },
+  "SET32": {
+    "checkpoint_hash": true,
+    "diagnostics": true,
+    "input_hash": true,
+    "predictions": true,
+    "trace_hash": true
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "baseline_before_supplement": "233 passed in 15.35s",
+  "baseline_before_v1": "215 passed in 20.38s",
+  "date": "2026-11-11",
+  "diff_check": {
+    "command": "git diff --check",
+    "result": "passed"
+  },
+  "final_pytest": {
+    "command": "uv run pytest",
+    "passed": 238,
+    "seconds": 15.13
+  },
+  "independent_reduction": {
+    "all_match": true,
+    "supplement_values": 840,
+    "v1_values": 1920
+  },
+  "recovery_reporting": "Original preserved; pre-disruption-baseline post hoc repair in recovery-pre-disruption.json; no primary effect.",
+  "reporting_script_hashes": {
+    "scripts/audit_study_b.py": "1ebdf89509508a88f71b4e32ba4c0284c143e41040dde4a80b579def40f85412",
+    "scripts/finalize_study_b.py": "6fcd26e1f475f6f7ea10c1b8196a53ea841d96f47aa90b2ca1d67852f005b784",
+    "scripts/plot_study_b.py": "afc2195833f6681de1422f55ec422e1cafbfddba33af5736d4248278a08ca1ed"
+  },
+  "reproduction": {
+    "all_exact": true,
+    "supplement_checks": 28,
+    "v1_checks": 80
+  },
+  "ruff": {
+    "command": "uv run ruff check soam/temporal tests/test_temporal.py tests/test_temporal_magnitude.py scripts/audit_study_b.py scripts/finalize_study_b.py scripts/plot_study_b.py",
+    "result": "All checks passed"
+  },
+  "scope": "Engineering tests and review are separate from numerical phase timing. No new scientific fit after prescribed repeats.",
+  "tickets": {
+    "command": "uv run python scripts/check_tickets.py",
+    "count": 74,
+    "github_templates": 2,
+    "result": "passed"
+  },
+  "visual_review": [
+    "resource-frontier.png",
+    "settling-frontier.png",
+    "conditions.png",
+    "stress-responses.png",
+    "../study-b-magnitude/tradeoffs.png"
+  ]
+}

@@ -1,0 +1,1105 @@
+{
+  "audit_source_sha256": "0531c650e504e506cbfa415c5e3cb0d604239bb0733c637b8e27999846eb6b8f",
+  "checks": {
+    "all": true,
+    "amended_source_archive_matches": true,
+    "archived_source_matches": true,
+    "checkpoint_optimizer_and_trajectory_hashes": true,
+    "complete_v2_inventory": true,
+    "exact_scientific_repeat": true,
+    "finite_bounded_gate_values": true,
+    "frozen_receipt_hash": true,
+    "historical_e1_source_unchanged": true,
+    "metric_reductions": true,
+    "paired_training_and_evaluation": true,
+    "source_matches_snapshot": true,
+    "v1_confirmation_unexposed": true
+  },
+  "cpu_seconds_at_write": 1.298474,
+  "fixed_reset_folding_max_output_difference": 2.5331974029541016e-07,
+  "independently_reduced_metrics": 600,
+  "maximum_reduction_difference": 1.1102230246251565e-16,
+  "resources": [
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.347955,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9301,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.319412999999999,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9301,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.592407999999999,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9301,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.367162,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9301,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.450085999999999,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9301,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.058318999999997,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9301,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.412390000000002,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9301,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.031866000000001,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9301,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.2102649999999997,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9301,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.182500999999995,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9301,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.05113999999999663,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9301,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.028818999999998596,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9301,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.369810999999999,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9311,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.395121000000003,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9311,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.622468999999995,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9311,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.414503999999994,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9311,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.405580999999998,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9311,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.038176000000007,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9311,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.415077999999994,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9311,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.001109999999997,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9311,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.2025249999999943,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9311,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.203696000000008,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9311,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.04742999999999142,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9311,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.028088999999994257,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9311,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.385381999999993,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9319,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.397422000000006,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9319,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.638284999999996,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9319,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.448527999999982,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9319,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.385947000000016,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9319,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.00502800000001,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9319,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.331394999999986,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9319,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.005358000000001,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9319,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.2132900000000006,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9319,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2090279999999893,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9319,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.047376000000014074,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9319,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.027138000000007878,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9319,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.3816559999999924,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9323,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.423341999999991,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9323,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.654671999999977,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9323,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.785334000000006,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9323,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.4943079999999895,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9323,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.081398000000007,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9323,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.304363000000023,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9323,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.0297940000000096,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9323,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.211256999999989,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9323,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.213290999999998,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9323,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.053629000000000815,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9323,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.030062000000015132,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9323,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.409248000000019,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9337,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.670871000000034,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9337,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.623543999999981,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9337,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.454540000000009,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9337,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.393384999999967,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9337,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.233181000000002,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9337,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.305598999999972,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9337,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.0231129999999666,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9337,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.1499150000000213,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9337,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2180740000000014,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9337,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.04845100000000002,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9337,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.0443520000000035,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9337,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.379264000000035,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9341,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.432219000000032,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9341,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.633662000000015,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9341,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.4873079999999845,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9341,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.3604159999999865,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9341,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.209206999999992,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9341,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.545566000000008,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9341,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.034874000000002,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9341,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.163267000000019,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9341,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2308830000000057,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9341,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.049408000000028096,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9341,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.03202300000003788,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9341,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.39878699999997,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9343,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.415376999999978,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9343,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.6569149999999695,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9343,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.472373000000005,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9343,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.403969999999958,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9343,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.665973000000008,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9343,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.26363600000002,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9343,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.0198499999999626,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9343,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.177976000000001,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9343,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2416389999999637,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9343,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.050454000000002,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9343,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.0348409999999717,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9343,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.398903000000018,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9349,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.558625000000006,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9349,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.596220000000017,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9349,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.476955999999973,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9349,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.396733999999981,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9349,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.024763000000007,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9349,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.286995999999988,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9349,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.0052880000000073,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9349,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.189157000000023,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9349,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2486579999999776,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9349,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.050971000000004096,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9349,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.029876000000001568,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9349,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.382199000000014,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9371,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.447773999999981,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9371,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.598054999999931,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9371,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.549352999999996,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9371,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.516202000000021,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9371,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.329263999999966,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9371,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.286074999999983,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9371,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.039602000000059,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9371,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.171583999999939,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9371,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.2548269999999775,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9371,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.047598999999991065,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9371,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.030157000000031076,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9371,
+      "trained_parameters": 110
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 6.396964000000025,
+      "model": "G32",
+      "optimizer_tensor_bytes": 39584,
+      "persistent_tensor_bytes": 19760,
+      "root": 9377,
+      "trained_parameters": 4940
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.431532000000061,
+      "model": "FU32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9377,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 12864,
+      "fit_cpu_seconds": 5.678377999999952,
+      "model": "FU38",
+      "optimizer_tensor_bytes": 39060,
+      "persistent_tensor_bytes": 19504,
+      "root": 9377,
+      "trained_parameters": 4876
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 5.501133999999979,
+      "model": "FR32",
+      "optimizer_tensor_bytes": 29844,
+      "persistent_tensor_bytes": 14896,
+      "root": 9377,
+      "trained_parameters": 3724
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 4.4102249999999685,
+      "model": "FB32",
+      "optimizer_tensor_bytes": 20104,
+      "persistent_tensor_bytes": 10032,
+      "root": 9377,
+      "trained_parameters": 2508
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 10.107391000000007,
+      "model": "S32",
+      "optimizer_tensor_bytes": 30980,
+      "persistent_tensor_bytes": 15472,
+      "root": 9377,
+      "trained_parameters": 3868
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 11.476611000000048,
+      "model": "GS32",
+      "optimizer_tensor_bytes": 40716,
+      "persistent_tensor_bytes": 20336,
+      "root": 9377,
+      "trained_parameters": 5084
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 11040,
+      "fit_cpu_seconds": 3.0082259999999224,
+      "model": "R32",
+      "optimizer_tensor_bytes": 19320,
+      "persistent_tensor_bytes": 9648,
+      "root": 9377,
+      "trained_parameters": 2412
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 17120,
+      "fit_cpu_seconds": 3.295093999999949,
+      "model": "R52",
+      "optimizer_tensor_bytes": 39640,
+      "persistent_tensor_bytes": 19808,
+      "root": 9377,
+      "trained_parameters": 4952
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 18032,
+      "fit_cpu_seconds": 3.253027999999972,
+      "model": "R55",
+      "optimizer_tensor_bytes": 43240,
+      "persistent_tensor_bytes": 21608,
+      "root": 9377,
+      "trained_parameters": 5402
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 4960,
+      "fit_cpu_seconds": 0.0502240000000711,
+      "model": "L12",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 3696,
+      "root": 9377,
+      "trained_parameters": 924
+    },
+    {
+      "diagnostic_probe_tensor_bytes": 1920,
+      "fit_cpu_seconds": 0.029615000000035252,
+      "model": "L2",
+      "optimizer_tensor_bytes": 0,
+      "persistent_tensor_bytes": 440,
+      "root": 9377,
+      "trained_parameters": 110
+    }
+  ],
+  "scientific_source": "6e05f7437dc1f37527da85cf0c4231fd0dcba082ec5747f8b4f141e534c43959"
+}

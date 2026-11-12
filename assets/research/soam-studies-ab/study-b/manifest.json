@@ -1,0 +1,123 @@
+{
+  "artifact_bytes": 2147483648,
+  "batch": 8,
+  "benefit": 0.1,
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 12203,
+  "candidates": [
+    "MIX16",
+    "MIX32",
+    "PC16",
+    "PC32",
+    "SET32",
+    "REP32",
+    "MIXC32",
+    "GM32",
+    "GR32",
+    "GS32",
+    "GA32",
+    "GMETA32",
+    "AM32",
+    "L2",
+    "FILTER2",
+    "RESET2"
+  ],
+  "checkpoints": [
+    300,
+    600,
+    900,
+    1050,
+    1200
+  ],
+  "competence": 0.15,
+  "conditions": [
+    "clean",
+    "partial",
+    "missing",
+    "noise",
+    "corrupt",
+    "contradict",
+    "change",
+    "motion",
+    "gap"
+  ],
+  "confirmation_roots": [
+    12007,
+    12011,
+    12037,
+    12041,
+    12043,
+    12049,
+    12071,
+    12073,
+    12097,
+    12101
+  ],
+  "cpu_seconds": 7200,
+  "decay_start": 600,
+  "development_roots": [
+    11003,
+    11027
+  ],
+  "device": "cpu",
+  "eval_batch": 20,
+  "eval_horizon": 64,
+  "event_threshold": 0.01,
+  "features": 12,
+  "final_lr_ratio": 0.01,
+  "finish_reserve": 0.1,
+  "fixture_root": 10903,
+  "guard_margin": 0.01,
+  "halting_threshold": 0.5,
+  "learning_rates": [
+    0.003,
+    0.01
+  ],
+  "max_fit_attempts": 272,
+  "max_settle": 4,
+  "namespace": "soam-study-b",
+  "normalization_root": 10909,
+  "precision_width": 0.4,
+  "primary_candidate": "GA32",
+  "primary_conditions": [
+    "partial",
+    "missing",
+    "noise"
+  ],
+  "primary_controls": [
+    "PC32",
+    "MIX32"
+  ],
+  "primary_schedules": [
+    "every2",
+    "every4",
+    "every8",
+    "irregular"
+  ],
+  "projection_seed": 1729,
+  "repeat_root": 12007,
+  "ridge_penalties": [
+    0.0001,
+    0.01
+  ],
+  "rss_bytes": 2147483648,
+  "schedules": [
+    "every1",
+    "every2",
+    "every4",
+    "every8",
+    "irregular",
+    "initial"
+  ],
+  "settling_durations": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "threads": 1,
+  "train_horizon": 16,
+  "updates": 1200,
+  "version": 1,
+  "wall_seconds": 14400
+}

@@ -1,0 +1,149 @@
+{
+  "artifact_bytes": 554836761,
+  "artifact_cap": 2147483648,
+  "cpu_cap": 7200,
+  "cpu_seconds": 1422.59646,
+  "execution_wall_seconds": 1422.7223284146748,
+  "failed_fits": 0,
+  "fits": 368,
+  "ledger": [
+    {
+      "cpu_seconds": 1.1720129999999997,
+      "cumulative_artifact_bytes": 1384984,
+      "error": null,
+      "peak_rss_bytes": 300531712,
+      "phase": "fixture",
+      "status": "complete",
+      "wall_seconds": 1.1756469999672845
+    },
+    {
+      "cpu_seconds": 250.524517,
+      "cumulative_artifact_bytes": 8479106,
+      "error": null,
+      "peak_rss_bytes": 458440704,
+      "phase": "development",
+      "status": "complete",
+      "wall_seconds": 250.446782666957
+    },
+    {
+      "cpu_seconds": 0.04550799999999999,
+      "cumulative_artifact_bytes": 8482573,
+      "error": null,
+      "peak_rss_bytes": 281755648,
+      "phase": "freeze",
+      "status": "complete",
+      "wall_seconds": 0.07189979101531208
+    },
+    {
+      "cpu_seconds": 711.1400170000001,
+      "cumulative_artifact_bytes": 392232561,
+      "error": null,
+      "peak_rss_bytes": 500187136,
+      "phase": "confirmation",
+      "status": "complete",
+      "wall_seconds": 711.0903709999984
+    },
+    {
+      "cpu_seconds": 70.769471,
+      "cumulative_artifact_bytes": 430606593,
+      "error": null,
+      "peak_rss_bytes": 491274240,
+      "phase": "repeat",
+      "status": "complete",
+      "wall_seconds": 70.78798679099418
+    },
+    {
+      "cpu_seconds": 9.240105,
+      "cumulative_artifact_bytes": 432686452,
+      "error": null,
+      "peak_rss_bytes": 882196480,
+      "phase": "report",
+      "status": "complete",
+      "wall_seconds": 9.28220383299049
+    },
+    {
+      "cpu_seconds": 19.495440000000002,
+      "cumulative_artifact_bytes": 435566917,
+      "error": null,
+      "peak_rss_bytes": 722075648,
+      "phase": "post-report-audit",
+      "status": "complete",
+      "wall_seconds": 19.532496290979907
+    },
+    {
+      "cpu_seconds": 0.45461000000000007,
+      "cumulative_artifact_bytes": 1035844,
+      "error": null,
+      "peak_rss_bytes": 297517056,
+      "phase": "magnitude-fixture",
+      "status": "complete",
+      "wall_seconds": 0.46841074991971254
+    },
+    {
+      "cpu_seconds": 90.536867,
+      "cumulative_artifact_bytes": 4304822,
+      "error": null,
+      "peak_rss_bytes": 445186048,
+      "phase": "magnitude-development",
+      "status": "complete",
+      "wall_seconds": 90.5537660419941
+    },
+    {
+      "cpu_seconds": 0.028966000000000047,
+      "cumulative_artifact_bytes": 4306867,
+      "error": null,
+      "peak_rss_bytes": 282099712,
+      "phase": "magnitude-freeze",
+      "status": "complete",
+      "wall_seconds": 0.05538254196289927
+    },
+    {
+      "cpu_seconds": 235.346428,
+      "cumulative_artifact_bytes": 108210150,
+      "error": null,
+      "peak_rss_bytes": 468762624,
+      "phase": "magnitude-confirmation",
+      "status": "complete",
+      "wall_seconds": 235.35307583294343
+    },
+    {
+      "cpu_seconds": 23.63929,
+      "cumulative_artifact_bytes": 118601439,
+      "error": null,
+      "peak_rss_bytes": 425738240,
+      "phase": "magnitude-repeat",
+      "status": "complete",
+      "wall_seconds": 23.664022875018418
+    },
+    {
+      "cpu_seconds": 0.911648,
+      "cumulative_artifact_bytes": 118601749,
+      "error": null,
+      "peak_rss_bytes": 338018304,
+      "phase": "magnitude-report",
+      "status": "complete",
+      "wall_seconds": 0.9118823750177398
+    },
+    {
+      "cpu_seconds": 8.851335,
+      "error": null,
+      "peak_rss_bytes": 250494976,
+      "phase": "final-audit",
+      "status": "complete",
+      "wall_seconds": 8.88641912501771
+    },
+    {
+      "cpu_seconds": 0.440245,
+      "error": null,
+      "phase": "final-presentation",
+      "status": "complete",
+      "wall_seconds": 0.4419814998982474
+    }
+  ],
+  "notes": "Counts v1 once via the carried ledger. Tests/local language-model work are engineering outside scientific compute. Process import/source-copy setup precedes phase timing. Reported bytes include raw and compact result duplicates.",
+  "peak_rss_bytes": 882196480,
+  "rss_cap": 2147483648,
+  "supplement_fits": 112,
+  "v1_fits": 256,
+  "wall_cap": 14400
+}

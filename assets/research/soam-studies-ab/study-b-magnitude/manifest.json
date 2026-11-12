@@ -1,0 +1,116 @@
+{
+  "artifact_bytes": 1711916488,
+  "batch": 8,
+  "benefit": 0.1,
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 15307,
+  "candidates": [
+    "PC16",
+    "PC32",
+    "GA32",
+    "GN32",
+    "GMN32",
+    "AMN32",
+    "FILTER2"
+  ],
+  "carried_artifact_bytes": 435567160,
+  "carry_allocation": "runs/study-b-v1/ledger.json",
+  "checkpoints": [
+    300,
+    600,
+    900,
+    1050,
+    1200
+  ],
+  "competence": 0.15,
+  "conditions": [
+    "clean",
+    "partial",
+    "missing",
+    "noise",
+    "corrupt",
+    "contradict",
+    "change",
+    "motion",
+    "gap"
+  ],
+  "confirmation_roots": [
+    14207,
+    14221,
+    14243,
+    14249,
+    14251,
+    14281,
+    14293,
+    14303,
+    14321,
+    14323
+  ],
+  "cpu_seconds": 7200,
+  "decay_start": 600,
+  "development_roots": [
+    13103,
+    13109
+  ],
+  "device": "cpu",
+  "eval_batch": 20,
+  "eval_horizon": 64,
+  "event_threshold": 0.01,
+  "features": 12,
+  "final_lr_ratio": 0.01,
+  "finish_reserve": 0.1,
+  "fixture_root": 13003,
+  "guard_margin": 0.01,
+  "halting_threshold": 0.5,
+  "learning_rates": [
+    0.003,
+    0.01
+  ],
+  "max_fit_attempts": 112,
+  "max_settle": 4,
+  "namespace": "soam-study-b-magnitude",
+  "normalization_root": 10909,
+  "precision_width": 0.4,
+  "primary_candidate": "GN32",
+  "primary_conditions": [
+    "partial",
+    "missing",
+    "noise"
+  ],
+  "primary_controls": [
+    "PC32",
+    "GA32"
+  ],
+  "primary_schedules": [
+    "every2",
+    "every4",
+    "every8",
+    "irregular"
+  ],
+  "projection_seed": 1729,
+  "repeat_root": 14207,
+  "ridge_penalties": [
+    0.0001,
+    0.01
+  ],
+  "rss_bytes": 2147483648,
+  "schedules": [
+    "every1",
+    "every2",
+    "every4",
+    "every8",
+    "irregular",
+    "initial"
+  ],
+  "settling_durations": [
+    0,
+    1,
+    2,
+    4
+  ],
+  "threads": 1,
+  "train_horizon": 16,
+  "updates": 1200,
+  "version": 1,
+  "wall_seconds": 14400
+}

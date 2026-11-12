@@ -1,0 +1,45 @@
+{
+  "artifact_bytes_upper_bound": 1522075328,
+  "artifact_scope": "Raw execution directories and compact reports, including duplicate compact copies. Source and ordinary repository checkout/Git machinery are not run artifacts.",
+  "checks": {
+    "artifacts": true,
+    "cpu": true,
+    "fit_attempts": true,
+    "rss": true,
+    "wall": true
+  },
+  "compact_report_bytes_excluding_resource_and_checksum_files": 6968537,
+  "cpu_seconds": 1067.703175,
+  "fit_attempts": 252,
+  "fit_exclusions": 0,
+  "fit_failures": 0,
+  "fit_replacements": 0,
+  "inventory_summary": {
+    "study-a-v1": {
+      "complete": 60,
+      "unexecuted": 132
+    },
+    "study-a-v2": {
+      "complete": 192
+    }
+  },
+  "limits": {
+    "artifact_bytes": 2147483648,
+    "cpu_seconds": 3600,
+    "fit_attempts": 252,
+    "reserve_cpu_seconds": 360,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 7200
+  },
+  "peak_rss_bytes": 1288273920,
+  "preconfirmation_orchestration_failures": 1,
+  "raw_artifact_bytes_at_packaging": 1515041255,
+  "receipt_file_sha256": "8b0af3e98d970320acd8b7bd95173b17602d68e20557490b2030bc0f7a62ee20",
+  "receipt_structured_content_sha256": "e51ce6c25e0f4dd56864672ac8fe64f1d488bba7ee726d9ee0706d7ec1acefc8",
+  "recorded_at_utc": "2026-11-11T07:52:36.057129+00:00",
+  "recorded_phase_wall_seconds": 1067.0430754169356,
+  "resource_and_checksum_metadata_allowance_bytes": 65536,
+  "scope": "Cumulative numerical trial CPU and recorded phase wall, including both versions, fixtures, failed freeze, development, confirmation, repeat, analysis, figures, audit and final packaging. Wall is summed executed-phase time, not elapsed chat time. Repository tests and language-model assistance are separate engineering work under the frozen protocol.",
+  "status": "complete_within_all_limits",
+  "trial_timestamp_limit": "See execution-index.json: status-file modification times only; no separate absolute start/end timestamps were recorded."
+}

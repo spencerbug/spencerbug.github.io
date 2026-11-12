@@ -1,0 +1,122 @@
+{
+  "confirmation_roots": [
+    12007,
+    12011,
+    12037,
+    12041,
+    12043,
+    12049,
+    12071,
+    12073,
+    12097,
+    12101
+  ],
+  "normalization": 0.03104808757969554,
+  "optimization_unresolved": [],
+  "projected_remaining_cpu": 1126.4729355000002,
+  "projection_pass": true,
+  "protocol": "6a3933f98abbf08a252ac71ca22ccb66ae95d13fef9c750552c664f995bf6ddd",
+  "remaining_cpu": 6948.273127,
+  "review": "Fixed primary GA32 contrasts, 10-contrast family, fresh streams, no source change, preserved negative gates; deterministic fit reproduction required.",
+  "selection": {
+    "AM32": {
+      "development_J": 0.06375793429127666,
+      "k": 0,
+      "late_improvement": 0.01009249889581487,
+      "setting": 0.01
+    },
+    "FILTER2": {
+      "development_J": 0.043666631494584406,
+      "k": 0,
+      "late_improvement": 0.0,
+      "setting": 0.0001
+    },
+    "GA32": {
+      "development_J": 0.06878376564522684,
+      "k": 0,
+      "late_improvement": -0.022824804054613665,
+      "setting": 0.003
+    },
+    "GM32": {
+      "development_J": 0.06922693491198366,
+      "k": 0,
+      "late_improvement": -0.0238932558341402,
+      "setting": 0.003
+    },
+    "GMETA32": {
+      "development_J": 0.0687574695771628,
+      "k": 0,
+      "late_improvement": -0.022821750262208874,
+      "setting": 0.003
+    },
+    "GR32": {
+      "development_J": 0.06921381249716352,
+      "k": 0,
+      "late_improvement": -0.023721354840963077,
+      "setting": 0.003
+    },
+    "GS32": {
+      "development_J": 0.06877731885189653,
+      "k": 0,
+      "late_improvement": -0.02275931100133725,
+      "setting": 0.003
+    },
+    "L2": {
+      "development_J": 0.07562294487875307,
+      "k": 0,
+      "late_improvement": 0.0,
+      "setting": 0.0001
+    },
+    "MIX16": {
+      "development_J": 0.0935352233141529,
+      "k": 0,
+      "late_improvement": 0.03927018879952409,
+      "setting": 0.01
+    },
+    "MIX32": {
+      "development_J": 0.10341316432201408,
+      "k": 0,
+      "late_improvement": -0.0010334332196299336,
+      "setting": 0.01
+    },
+    "MIXC32": {
+      "development_J": 0.09164186393485424,
+      "k": 4,
+      "late_improvement": 0.049409005231046216,
+      "setting": 0.01
+    },
+    "PC16": {
+      "development_J": 0.06754026780374098,
+      "k": 0,
+      "late_improvement": -0.013148758796535018,
+      "setting": 0.01
+    },
+    "PC32": {
+      "development_J": 0.06919518408161668,
+      "k": 0,
+      "late_improvement": -0.01360568179067435,
+      "setting": 0.01
+    },
+    "REP32": {
+      "development_J": 0.07056408571800175,
+      "k": 2,
+      "late_improvement": 0.11801418289662625,
+      "setting": 0.01
+    },
+    "RESET2": {
+      "development_J": 0.04593137263840294,
+      "k": 0,
+      "late_improvement": 0.0,
+      "setting": 0.0001
+    },
+    "SET32": {
+      "development_J": 0.06791553187543045,
+      "k": 1,
+      "late_improvement": -0.022961981291313865,
+      "setting": 0.003
+    }
+  },
+  "sha256": "ea64dceeda1dd283e8fda8af11e434e0a63159561822f762cf40a395429b701d",
+  "source": "ae6754ce8e177d17ad5ee4590814e5176190bb3e301907a81603c996acb06602",
+  "spent_cpu": 251.72687299999998
+}

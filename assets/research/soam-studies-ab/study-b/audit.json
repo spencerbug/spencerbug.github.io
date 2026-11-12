@@ -1,0 +1,1122 @@
+[
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.09816703549883954,
+    "reported_J": 0.09816703554554651,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.09528995497083342,
+    "reported_J": 0.09528995498785749,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.08599264349007761,
+    "reported_J": 0.08599264351509527,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.08091567420241598,
+    "reported_J": 0.08091567417873231,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.07347815163746436,
+    "reported_J": 0.07347815165577491,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.0983385130292993,
+    "reported_J": 0.09833851302899733,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.10192847248823823,
+    "reported_J": 0.10192847253002296,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.09465778541054111,
+    "reported_J": 0.09465778546728272,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.07437740921386957,
+    "reported_J": 0.07437740919103708,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "MIX16",
+    "reduced_J": 0.08672934288824036,
+    "reported_J": 0.08672934283202986,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.09045633987018864,
+    "reported_J": 0.09045633993195162,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.10063771554514744,
+    "reported_J": 0.10063771554858776,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.10654633845837698,
+    "reported_J": 0.10654633844646405,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.07937232419207897,
+    "reported_J": 0.07937232415940283,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.09850123587109827,
+    "reported_J": 0.0985012358726955,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.08660356643648798,
+    "reported_J": 0.0866035663745179,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.0943604984753068,
+    "reported_J": 0.09436049840689205,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.09667818144629052,
+    "reported_J": 0.09667818143628894,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.08578187828847816,
+    "reported_J": 0.08578187827538947,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "MIX32",
+    "reduced_J": 0.09940603957937029,
+    "reported_J": 0.099406039641468,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.06050095367455673,
+    "reported_J": 0.060500953644285316,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.061856702139081676,
+    "reported_J": 0.061856702153483704,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.07106312833655294,
+    "reported_J": 0.07106312835019012,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.05847629793088487,
+    "reported_J": 0.05847629791412951,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.05832739725828257,
+    "reported_J": 0.058327397300458474,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.0638444514074564,
+    "reported_J": 0.06384445137842953,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.0679175995531646,
+    "reported_J": 0.06791759950958186,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.0635990341946704,
+    "reported_J": 0.06359903420691727,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.06142736727135633,
+    "reported_J": 0.061427367257668807,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "PC16",
+    "reduced_J": 0.05722615080067186,
+    "reported_J": 0.057226150809956605,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.05952604520619622,
+    "reported_J": 0.05952604521795097,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.0673510843583756,
+    "reported_J": 0.06735108438086793,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.07362134339901967,
+    "reported_J": 0.07362134340567134,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.054409740160728144,
+    "reported_J": 0.054409740162087765,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.05786899567285767,
+    "reported_J": 0.057868995643677174,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.06610315057171644,
+    "reported_J": 0.06610315055766432,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.06910572614156531,
+    "reported_J": 0.0691057261490379,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.05803240762371118,
+    "reported_J": 0.058032407650195246,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.06300523843408594,
+    "reported_J": 0.06300523844146151,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "PC32",
+    "reduced_J": 0.06315668486469074,
+    "reported_J": 0.06315668485458252,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.060060877802541775,
+    "reported_J": 0.060060877783363144,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.06191152266455618,
+    "reported_J": 0.06191152269337966,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.07002368752272807,
+    "reported_J": 0.07002368756702203,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.055093891598839186,
+    "reported_J": 0.055093891645098404,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.054629293662700695,
+    "reported_J": 0.054629293632005436,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.06591600360668319,
+    "reported_J": 0.06591600351544359,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.07374076405026432,
+    "reported_J": 0.07374076401108577,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.05682230401508832,
+    "reported_J": 0.05682230401246177,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.06171378698102691,
+    "reported_J": 0.061713786980616754,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "SET32",
+    "reduced_J": 0.05641553015089282,
+    "reported_J": 0.05641553016056994,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.0663529258221447,
+    "reported_J": 0.06635292580818077,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.061019250839042395,
+    "reported_J": 0.06101925082001086,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.0687949092998854,
+    "reported_J": 0.06879490929053045,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.059460853935153095,
+    "reported_J": 0.05946085397593564,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.06831528937982369,
+    "reported_J": 0.06831528939209448,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.056008109884443276,
+    "reported_J": 0.05600810991339306,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.07083870229919688,
+    "reported_J": 0.07083870233260252,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.05979743921017119,
+    "reported_J": 0.05979743918253164,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.07227289114525301,
+    "reported_J": 0.07227289116666624,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "REP32",
+    "reduced_J": 0.0634667000984057,
+    "reported_J": 0.06346670013611072,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.0832941212675332,
+    "reported_J": 0.08329412123444875,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.09631481154919684,
+    "reported_J": 0.09631481153850781,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.09934773757089926,
+    "reported_J": 0.09934773763017507,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.07618980308983013,
+    "reported_J": 0.07618980308404864,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.08376348285594708,
+    "reported_J": 0.083763482921278,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.08794459744092814,
+    "reported_J": 0.08794459744864448,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.093510295786173,
+    "reported_J": 0.09351029570585571,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.0920690176961178,
+    "reported_J": 0.09206901764757701,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.08843225963449632,
+    "reported_J": 0.08843225963228461,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "MIXC32",
+    "reduced_J": 0.0836855033681052,
+    "reported_J": 0.08368550336770102,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.06137415019699214,
+    "reported_J": 0.06137415019805004,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.059736079514792095,
+    "reported_J": 0.05973607951961177,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.07135270937482878,
+    "reported_J": 0.07135270937282474,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.053525375728061896,
+    "reported_J": 0.053525375675397245,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.05241703084356572,
+    "reported_J": 0.05241703087291688,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.06860199715898148,
+    "reported_J": 0.0686019971309224,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.07087701629401645,
+    "reported_J": 0.0708770163055748,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.057773653420509656,
+    "reported_J": 0.057773653427676874,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.058682386616756795,
+    "reported_J": 0.05868238662558231,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "GM32",
+    "reduced_J": 0.05703016711824679,
+    "reported_J": 0.05703016708909839,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.06138520662467215,
+    "reported_J": 0.061385206595690106,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.05976936428767015,
+    "reported_J": 0.05976936425059798,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.07133509883635346,
+    "reported_J": 0.07133509882248451,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.053525084284621015,
+    "reported_J": 0.05352508426473304,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.05245027370525576,
+    "reported_J": 0.0524502736819229,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.06858543989814715,
+    "reported_J": 0.06858543988684213,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.0708904586662707,
+    "reported_J": 0.07089045865474937,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.0577800582511486,
+    "reported_J": 0.05778005826248306,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.05856805145255587,
+    "reported_J": 0.05856805145787112,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "GR32",
+    "reduced_J": 0.057079424901439774,
+    "reported_J": 0.057079424848551726,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.061140308711631515,
+    "reported_J": 0.061140308658211844,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.059953749562326665,
+    "reported_J": 0.05995374957693139,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.0713043171530065,
+    "reported_J": 0.071304317106919,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.05372984832274502,
+    "reported_J": 0.053729848344732246,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.052847167794344806,
+    "reported_J": 0.05284716779969423,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.06779383166844657,
+    "reported_J": 0.06779383161115683,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.07084165050036215,
+    "reported_J": 0.07084165053535203,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.05737943138239435,
+    "reported_J": 0.05737943137804596,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.05855846600739956,
+    "reported_J": 0.05855846595484367,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "GS32",
+    "reduced_J": 0.056959282643933296,
+    "reported_J": 0.0569592826580132,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.061166794915195055,
+    "reported_J": 0.061166794905275185,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.05994959044273667,
+    "reported_J": 0.05994959044431534,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.07124992056178787,
+    "reported_J": 0.0712499205628389,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.05372924336483417,
+    "reported_J": 0.05372924337701163,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.052836343907254474,
+    "reported_J": 0.05283634389174081,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.06779049941269856,
+    "reported_J": 0.06779049945986187,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.07083589169533581,
+    "reported_J": 0.07083589173425202,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.05736669771245697,
+    "reported_J": 0.0573666976652323,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.058517414409978125,
+    "reported_J": 0.058517414395284816,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "GA32",
+    "reduced_J": 0.05695017109752504,
+    "reported_J": 0.05695017111784544,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.061120435855909254,
+    "reported_J": 0.061120435839424135,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.05992047586077262,
+    "reported_J": 0.05992047585528241,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.07124327653653306,
+    "reported_J": 0.07124327650659082,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.05369312859713868,
+    "reported_J": 0.053693128621453694,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.052824238743031056,
+    "reported_J": 0.05282423877268342,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.06776804304084294,
+    "reported_J": 0.06776804305784997,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.07081049610520344,
+    "reported_J": 0.07081049614516523,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.057354561541008785,
+    "reported_J": 0.05735456152801895,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.05848070966938745,
+    "reported_J": 0.05848070962505675,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "GMETA32",
+    "reduced_J": 0.05692483103411519,
+    "reported_J": 0.05692483104752754,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.05422605725504089,
+    "reported_J": 0.05422605728421274,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.06765424626070929,
+    "reported_J": 0.06765424626285259,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.07062526663024875,
+    "reported_J": 0.07062526659659184,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.05514781477005903,
+    "reported_J": 0.05514781476427468,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.056986975531813755,
+    "reported_J": 0.05698697550956024,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.06188257863820657,
+    "reported_J": 0.061882578647703544,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.06932448827618742,
+    "reported_J": 0.06932448833233011,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.06185680779918315,
+    "reported_J": 0.06185680777272757,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.05838363810477248,
+    "reported_J": 0.058383638053395324,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "AM32",
+    "reduced_J": 0.059359214743167854,
+    "reported_J": 0.059359214766953515,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.07166561045396887,
+    "reported_J": 0.07166561041946175,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.07343172046037306,
+    "reported_J": 0.07343172042122546,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.08332301217042092,
+    "reported_J": 0.0833230121764812,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.06666132414366122,
+    "reported_J": 0.0666613240260328,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.06358923506179356,
+    "reported_J": 0.0635892351199955,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.07886519023616703,
+    "reported_J": 0.07886519027082134,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.07436889441703227,
+    "reported_J": 0.074368894362946,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.067977044742961,
+    "reported_J": 0.067977044701665,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.0701686282136579,
+    "reported_J": 0.07016862813522255,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "L2",
+    "reduced_J": 0.06936826385173589,
+    "reported_J": 0.06936826386870489,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.0440255519268625,
+    "reported_J": 0.044025551821163654,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.044471994289151995,
+    "reported_J": 0.04447199427975193,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.04411129714543721,
+    "reported_J": 0.04411129712290771,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.03910582250894926,
+    "reported_J": 0.039105822566699124,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.046552293400627394,
+    "reported_J": 0.0465522934378334,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.03846094601989037,
+    "reported_J": 0.038460946027958326,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.03902788813233297,
+    "reported_J": 0.03902788815609951,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.042428847344901426,
+    "reported_J": 0.042428847374431165,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.039762376296329595,
+    "reported_J": 0.039762376281033046,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "FILTER2",
+    "reduced_J": 0.040049023284369316,
+    "reported_J": 0.04004902329706723,
+    "root": 12101
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04614697061645451,
+    "reported_J": 0.046146970643210966,
+    "root": 12007
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.0468376103169957,
+    "reported_J": 0.046837610328162006,
+    "root": 12011
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04633427237825918,
+    "reported_J": 0.04633427231211199,
+    "root": 12037
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04100042889925639,
+    "reported_J": 0.04100042896380262,
+    "root": 12041
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.049336930531622435,
+    "reported_J": 0.0493369306229482,
+    "root": 12043
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04036836337385254,
+    "reported_J": 0.04036836326905572,
+    "root": 12049
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04129152249060589,
+    "reported_J": 0.041291522456062914,
+    "root": 12071
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04444769433558233,
+    "reported_J": 0.044447694196695246,
+    "root": 12073
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.04184502185156439,
+    "reported_J": 0.04184502184550962,
+    "root": 12097
+  },
+  {
+    "matches": true,
+    "name": "RESET2",
+    "reduced_J": 0.042037269883915096,
+    "reported_J": 0.0420372699841658,
+    "root": 12101
+  }
+]

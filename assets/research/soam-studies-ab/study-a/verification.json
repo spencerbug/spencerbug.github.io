@@ -1,0 +1,90 @@
+{
+  "checked_at_utc": "2026-11-11T07:52:35.419699+00:00",
+  "checks": [
+    {
+      "command": "UV_CACHE_DIR=/tmp/soam-uv-cache uv run --offline python scripts/check_tickets.py",
+      "exit_code": 0,
+      "name": "tickets",
+      "seconds": 0.043549333000555634,
+      "stderr": "",
+      "stdout": "Validated 66 tickets, ordering/dependencies/links, and 2 GitHub templates.\n"
+    },
+    {
+      "command": "UV_CACHE_DIR=/tmp/soam-uv-cache uv run --offline ruff check soam/gating tests/test_gating.py reports/study-a/*.py",
+      "exit_code": 0,
+      "name": "ruff",
+      "seconds": 0.02419970801565796,
+      "stderr": "",
+      "stdout": "All checks passed!\n"
+    },
+    {
+      "command": "git diff HEAD --check",
+      "exit_code": 0,
+      "name": "whitespace",
+      "seconds": 0.028276875033043325,
+      "stderr": "",
+      "stdout": ""
+    }
+  ],
+  "frozen_source": {
+    "checked_files": 59,
+    "commit": "44824b7884965bb4ad49166143427bdd43e87452",
+    "mismatches": [],
+    "sha256": "6e05f7437dc1f37527da85cf0c4231fd0dcba082ec5747f8b4f141e534c43959"
+  },
+  "historical_e1_source": {
+    "checked_files": 76,
+    "mismatches": []
+  },
+  "links": {
+    "anchors_checked": false,
+    "broken": [],
+    "checked_documents": [
+      "README.md",
+      "PRIORITIES.md",
+      "docs/HYPOTHESES.md",
+      "docs/RESEARCH_PATHS.md",
+      "docs/ROADMAP.md",
+      "tickets/README.md",
+      "docs/STUDY_A_PROTOCOL.md",
+      "docs/STUDY_A_PROTOCOL_V2.md",
+      "reports/STUDY_A.md",
+      "reports/STUDY_A_IMPLEMENTATION.md",
+      "reports/STUDY_A_DECISION.md",
+      "tickets/SOAM-063-study-a-harness.md",
+      "tickets/SOAM-065-study-a-decision.md",
+      "tickets/SOAM-062-study-a-protocol.md",
+      "tickets/SOAM-064-study-a-experiment.md",
+      "reports/study-a/tables.md",
+      "reports/study-a/root-results.md"
+    ],
+    "local_targets": 378
+  },
+  "notes": [
+    "Initial final ticket validation found a not-yet-written verification link; validation repeated after evidence packaging.",
+    "A no-match stale-status rg search returned exit 1; git diff --check itself passed.",
+    "Staged-file checking subsequently caught Matplotlib SVG trailing whitespace. Compact SVG copies were whitespace-normalized; raw generated originals are preserved, and final HEAD-to-worktree checking covers every new staged artifact."
+  ],
+  "pytest": {
+    "command": "UV_CACHE_DIR=/tmp/soam-uv-cache uv run --offline pytest",
+    "note": "Completed before report/metadata-only changes; frozen source checked again below.",
+    "passed": 215,
+    "seconds": 24.83,
+    "source_commit": "44824b7884965bb4ad49166143427bdd43e87452"
+  },
+  "status": "passed",
+  "study_a_tests": {
+    "passed": 25,
+    "seconds": 1.45
+  },
+  "visual_review": [
+    "endpoint-comparisons",
+    "gate-trajectories",
+    "historical-drift",
+    "mechanism-comparison",
+    "reset-trajectories",
+    "state-geometry",
+    "perturbation-recovery",
+    "long-horizon"
+  ]
+}

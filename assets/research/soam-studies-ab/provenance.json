@@ -1,0 +1,320 @@
+{
+  "publication_date": "2026-11-11",
+  "source_repository": "https://github.com/spencerbug/soam",
+  "source_commit": "bdb3bdcbb47c7a2a24301e044ebaaac6b50a18cd",
+  "scope": "Byte-identical compact evidence snapshot. Raw runs/checkpoints are not included. Original report relative links and chronology retain their source meaning. Figures are publication renderings of archived estimates, without new inference.",
+  "files": [
+    {
+      "source": "reports/STUDY_A.md",
+      "download": "STUDY_A.txt",
+      "bytes": 19987,
+      "sha256": "03ceb5f30d14970ab978f1f40c9e749de21195b31a6b96a369ba968a65d25a7e"
+    },
+    {
+      "source": "reports/STUDY_A_DECISION.md",
+      "download": "STUDY_A_DECISION.txt",
+      "bytes": 7577,
+      "sha256": "7ee9c6ad8fd10cdfd07c7675fdeb97ad65f69fbfd0dda7535fdd279fb2a86f3a"
+    },
+    {
+      "source": "reports/STUDY_A_IMPLEMENTATION.md",
+      "download": "STUDY_A_IMPLEMENTATION.txt",
+      "bytes": 7049,
+      "sha256": "ab1d680b8cb07e182d35f31a1c80a562127662d53e42b967a7dc2ceca13d9917"
+    },
+    {
+      "source": "reports/STUDY_B.md",
+      "download": "STUDY_B.txt",
+      "bytes": 21917,
+      "sha256": "fb804887c8a3775ae7ab370a7176c600b6729010b60d2ae26767d58072edcbf3"
+    },
+    {
+      "source": "reports/STUDY_B_DECISION.md",
+      "download": "STUDY_B_DECISION.txt",
+      "bytes": 6705,
+      "sha256": "e3c066977d8c26fce0756dbb2d6af5a0c7c46ff22ea1efade47859317db72d06"
+    },
+    {
+      "source": "reports/STUDY_B_V1_DECISION.md",
+      "download": "STUDY_B_V1_DECISION.txt",
+      "bytes": 2203,
+      "sha256": "9557409635c24ebe11e808169d66c9093828696e17310cb75d2eeb196db6f11c"
+    },
+    {
+      "source": "reports/STUDY_B_IMPLEMENTATION.md",
+      "download": "STUDY_B_IMPLEMENTATION.txt",
+      "bytes": 6810,
+      "sha256": "52e3094173c7c37035302cc743ee6fc54761cf917ed5afabdea49132654a7aa5"
+    },
+    {
+      "source": "docs/STUDY_A_PROTOCOL.md",
+      "download": "STUDY_A_PROTOCOL.txt",
+      "bytes": 12276,
+      "sha256": "e0688b35edbd03faf7a3f97c4954e9e479ed76f49a5cb5313b9b772f651ec932"
+    },
+    {
+      "source": "docs/STUDY_A_PROTOCOL_V2.md",
+      "download": "STUDY_A_PROTOCOL_V2.txt",
+      "bytes": 13912,
+      "sha256": "a81cf57f3f5510d983ccd15816e187e4b40b46b368f7a2274075f9785fa66ffa"
+    },
+    {
+      "source": "docs/STUDY_B_PROTOCOL.md",
+      "download": "STUDY_B_PROTOCOL.txt",
+      "bytes": 15593,
+      "sha256": "4a50516fe235e114286100b35cd7fdebd8f10d38418d48533bbc7dcb7d288246"
+    },
+    {
+      "source": "docs/STUDY_B_MAGNITUDE_PROTOCOL.md",
+      "download": "STUDY_B_MAGNITUDE_PROTOCOL.txt",
+      "bytes": 6217,
+      "sha256": "29110323930f45131e951cd47a18a76c021d5050b6cc3f8a92efdb0111640d6d"
+    },
+    {
+      "source": "reports/study-a/statistics.json",
+      "download": "study-a/statistics.json",
+      "bytes": 436073,
+      "sha256": "36a45c72a7627a16458c2fc7be55d04f2820f2a0a0f16b12ee6dd2888e3a049d"
+    },
+    {
+      "source": "reports/study-a/root-results.json",
+      "download": "study-a/root-results.json",
+      "bytes": 932795,
+      "sha256": "140edbe8d693f5b836e449a4928fd337f0e2877de67ed5d5c1a2eefac5a4f58a"
+    },
+    {
+      "source": "reports/study-a/tables.md",
+      "download": "study-a/tables.txt",
+      "bytes": 6328,
+      "sha256": "ce1c0d5a39df099ae6c1c9a62798a5c6b26f6d61a01deee3d184bdc93f4d54a3"
+    },
+    {
+      "source": "reports/study-a/manifest.json",
+      "download": "study-a/manifest.json",
+      "bytes": 2549,
+      "sha256": "de437d7b5f509b2130a14e4d28c31c4ab7435e7839868c43cdafd209899b605a"
+    },
+    {
+      "source": "reports/study-a/confirmation-receipt.json",
+      "download": "study-a/confirmation-receipt.json",
+      "bytes": 17071,
+      "sha256": "8b0af3e98d970320acd8b7bd95173b17602d68e20557490b2030bc0f7a62ee20"
+    },
+    {
+      "source": "reports/study-a/reproduction.json",
+      "download": "study-a/reproduction.json",
+      "bytes": 393,
+      "sha256": "d98489cfa2694b274f503f4dc8d1d3afcd8d51ab71d835b76f14724277418dc6"
+    },
+    {
+      "source": "reports/study-a/audit.json",
+      "download": "study-a/audit.json",
+      "bytes": 31712,
+      "sha256": "9d7bb685fe89c46b523dd73816897151468ab30cc57016669aedc75fde6014c5"
+    },
+    {
+      "source": "reports/study-a/resource-final.json",
+      "download": "study-a/resource-final.json",
+      "bytes": 1937,
+      "sha256": "81431cde4d5e86936af32c53958a1284c8ba1965005506a9c76af91af7fc6d6d"
+    },
+    {
+      "source": "reports/study-a/verification.json",
+      "download": "study-a/verification.json",
+      "bytes": 2955,
+      "sha256": "d57f188a7efe906de778b4b468048e82eb7189af12d677186a708b575eec1e1a"
+    },
+    {
+      "source": "reports/study-b/statistics.json",
+      "download": "study-b/statistics.json",
+      "bytes": 39207,
+      "sha256": "2651a9f607261940f0bcc4ef6f030065b3ba457d6b5800ef8b96b1a9656feb31"
+    },
+    {
+      "source": "reports/study-b/root-results.json",
+      "download": "study-b/root-results.json",
+      "bytes": 83705,
+      "sha256": "56fe3e3c56a7ac311ad77fef2c1f7783b52bc0180ef4358b88e7c4b235de1def"
+    },
+    {
+      "source": "reports/study-b/tables.md",
+      "download": "study-b/tables.txt",
+      "bytes": 1785,
+      "sha256": "55833f8e6157969a6da2df1b3f708bb9b265c6a2f6332b79b96eec5ed3a4ae0c"
+    },
+    {
+      "source": "reports/study-b/manifest.json",
+      "download": "study-b/manifest.json",
+      "bytes": 1883,
+      "sha256": "a6b9ba57fcb3c8326056cd350d4b73ff67eac3427946d08ab8a3e9fc34dd2e07"
+    },
+    {
+      "source": "reports/study-b/confirmation-receipt.json",
+      "download": "study-b/confirmation-receipt.json",
+      "bytes": 3145,
+      "sha256": "1ba7f7a0cb768cb15bea835b9932c9c2f94bfa668e1ecb5606f7c9e70ba7bd0f"
+    },
+    {
+      "source": "reports/study-b/reproduction.json",
+      "download": "study-b/reproduction.json",
+      "bytes": 2303,
+      "sha256": "59487f701f649afac96c26f79deb107a87481e40d2e4479a9b2dbe60587dfed9"
+    },
+    {
+      "source": "reports/study-b/audit.json",
+      "download": "study-b/audit.json",
+      "bytes": 23343,
+      "sha256": "3423e0db205e5aa56421a8b822f886d9227baee1b94e3a6389438489c5eb7eff"
+    },
+    {
+      "source": "reports/study-b/resource-final.json",
+      "download": "study-b/resource-final.json",
+      "bytes": 4212,
+      "sha256": "59a8ee46149b2d14cf6336561a160acafcdbb6058b0e8233f5b30a47a4bbaad1"
+    },
+    {
+      "source": "reports/study-b/primary-decision.json",
+      "download": "study-b/primary-decision.json",
+      "bytes": 1931,
+      "sha256": "69a32c82208313d7833d58fa8579feea0a601f1ff4de1723a0b64208fd609f3a"
+    },
+    {
+      "source": "reports/study-b/source.json",
+      "download": "study-b/source.json",
+      "bytes": 8430,
+      "sha256": "a5002d5dd2df420ae6ae92c243644bb709b07917b11381a063f2aebb871c61b1"
+    },
+    {
+      "source": "reports/study-b/resources.json",
+      "download": "study-b/resources.json",
+      "bytes": 11845,
+      "sha256": "22c4b5af35d00402c395587715280c0493bf4b1a011b942dee126f755e40e2c8"
+    },
+    {
+      "source": "reports/study-b/independent-reduction.json",
+      "download": "study-b/independent-reduction.json",
+      "bytes": 284972,
+      "sha256": "8714c11506e30908a93d4bf1bbf4caf13788f982d6c2cf5592019096b4fe18ee"
+    },
+    {
+      "source": "reports/study-b/verification.json",
+      "download": "study-b/verification.json",
+      "bytes": 1677,
+      "sha256": "ed12b996b4e3d32bf14778468e176b35541dd8aa41ce5667861e6f71963ba663"
+    },
+    {
+      "source": "reports/study-b-magnitude/statistics.json",
+      "download": "study-b-magnitude/statistics.json",
+      "bytes": 17190,
+      "sha256": "63533a8e4f337979238e5ca3af4ccbbb9211f662f2d995ce04b93834edfd4538"
+    },
+    {
+      "source": "reports/study-b-magnitude/root-results.json",
+      "download": "study-b-magnitude/root-results.json",
+      "bytes": 36738,
+      "sha256": "c3d2056c67ed50e6fbbe773f6857abba0a108e4d50db6b3b6f4bc1a31fa2c11d"
+    },
+    {
+      "source": "reports/study-b-magnitude/tables.md",
+      "download": "study-b-magnitude/tables.txt",
+      "bytes": 811,
+      "sha256": "6fa4ff29cdaec08f82b56bd571e9de681590d14a73114d48376ac2e1ed21c16d"
+    },
+    {
+      "source": "reports/study-b-magnitude/manifest.json",
+      "download": "study-b-magnitude/manifest.json",
+      "bytes": 1869,
+      "sha256": "e8e6004122e1855911926d9bdce0174d41cab55537b6766c56d3d1afbf76ca49"
+    },
+    {
+      "source": "reports/study-b-magnitude/confirmation-receipt.json",
+      "download": "study-b-magnitude/confirmation-receipt.json",
+      "bytes": 1733,
+      "sha256": "055141d5ba53572a1dabc91ac897e86106d9254faf473aae38a015410794765e"
+    },
+    {
+      "source": "reports/study-b-magnitude/reproduction.json",
+      "download": "study-b-magnitude/reproduction.json",
+      "bytes": 834,
+      "sha256": "35b9a957807c24e653963a625b12d7b8640b057e4b2c3387c66afce85d9a53e3"
+    },
+    {
+      "source": "reports/study-b-magnitude/audit.json",
+      "download": "study-b-magnitude/audit.json",
+      "bytes": 6792,
+      "sha256": "51dd30bbc64c3750517791d7af8f12953f8c25aedc2c67043d6dd581eecd3726"
+    },
+    {
+      "source": "reports/study-b-magnitude/primary-decision.json",
+      "download": "study-b-magnitude/primary-decision.json",
+      "bytes": 1995,
+      "sha256": "7f892dd2fb03938afb77e8ac0e2638fbff0b67aa20f9f3d8f3532115f218c873"
+    },
+    {
+      "source": "reports/study-b-magnitude/source.json",
+      "download": "study-b-magnitude/source.json",
+      "bytes": 8866,
+      "sha256": "8e4ae2cf5c96d6f55e33f0e189324386d26cc1bc84d0d272e200791258b811a9"
+    },
+    {
+      "source": "reports/study-b-magnitude/resources.json",
+      "download": "study-b-magnitude/resources.json",
+      "bytes": 3725,
+      "sha256": "671c78a26711b62bbdb4324c9d7a8b414291027234b33e1e12778cfeea7c405d"
+    },
+    {
+      "source": "reports/study-b-magnitude/independent-reduction.json",
+      "download": "study-b-magnitude/independent-reduction.json",
+      "bytes": 122276,
+      "sha256": "ff659d3b5e8cc10288eb15c1a876651f52efc7fc74e3e5613dd3d42d819003ff"
+    },
+    {
+      "source": "reports/study-b/settling-statistics.json",
+      "download": "study-b/settling-statistics.json",
+      "bytes": 39731,
+      "sha256": "4bbca013873e84b684a21951c374e9d4e008578f388963f2f4c437c2ae78a0e9"
+    },
+    {
+      "source": "reports/study-b/recovery-pre-disruption.json",
+      "download": "study-b/recovery-pre-disruption.json",
+      "bytes": 228333,
+      "sha256": "a2edd5e8f41909394d43bd267b5f59f947111b04e797297563e8960c0851e52b"
+    },
+    {
+      "source": "reports/study-b/secondary-comparisons.json",
+      "download": "study-b/secondary-comparisons.json",
+      "bytes": 5827,
+      "sha256": "558ea3602ce62251bc20c4d66980eefe322bee62908ff237cd13ca31c5dc5d85"
+    },
+    {
+      "source": "reports/study-b/active-state-accounting.json",
+      "download": "study-b/active-state-accounting.json",
+      "bytes": 7983,
+      "sha256": "5adace2121615a6648844381a4a987589fed3d88cad977d61632617bf32ed8ef"
+    },
+    {
+      "source": "reports/study-b/filter-calibration.json",
+      "download": "study-b/filter-calibration.json",
+      "bytes": 298608,
+      "sha256": "77c7fcae609d79c69e2144f458f17f4c5e67cf089be49590cf47f44c8bfffa48"
+    },
+    {
+      "source": "reports/study-b-magnitude/secondary-comparisons.json",
+      "download": "study-b-magnitude/secondary-comparisons.json",
+      "bytes": 3002,
+      "sha256": "a07049e0e011b31c29efa85a103095bdf0d4f51c317320a4da2322f932155bab"
+    },
+    {
+      "source": "reports/study-a/source-amendment.json",
+      "download": "study-a/source-amendment.json",
+      "bytes": 7412,
+      "sha256": "da7d33e8c557c8484051f511ae2c57873c76f59b402df15fcf126a6c6e089dfd"
+    },
+    {
+      "source": "reports/study-a/v1-closure.json",
+      "download": "study-a/v1-closure.json",
+      "bytes": 990,
+      "sha256": "4785526b11a7706900115848233f7f981329c2b47109342b8758be4c4c499692"
+    }
+  ]
+}
