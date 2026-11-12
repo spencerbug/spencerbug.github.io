@@ -1,0 +1,50 @@
+{
+  "ADAPT1": {
+    "cell": "sustained/irregular",
+    "episode": 12,
+    "episode_mean_nmse": 1.1674411527618882,
+    "root": 15349
+  },
+  "CHANNEL2": {
+    "cell": "isolated/every8",
+    "episode": 18,
+    "episode_mean_nmse": 2.2511681111937096,
+    "root": 15377
+  },
+  "FILTER2": {
+    "cell": "isolated/every8",
+    "episode": 11,
+    "episode_mean_nmse": 4.439748664256264,
+    "root": 15319
+  },
+  "NIS99": {
+    "cell": "sustained/irregular",
+    "episode": 18,
+    "episode_mean_nmse": 0.7671728289881803,
+    "root": 15331
+  },
+  "NISEMP": {
+    "cell": "sustained/irregular",
+    "episode": 2,
+    "episode_mean_nmse": 1.1709554889924603,
+    "root": 15329
+  },
+  "PC16": {
+    "cell": "sustained/irregular",
+    "episode": 12,
+    "episode_mean_nmse": 1.0910815618958294,
+    "root": 15349
+  },
+  "R100": {
+    "cell": "isolated/every8",
+    "episode": 11,
+    "episode_mean_nmse": 1.363328229816205,
+    "root": 15319
+  },
+  "STABLE": {
+    "cell": "isolated/every8",
+    "episode": 11,
+    "episode_mean_nmse": 4.439748110071633,
+    "root": 15319
+  }
+}

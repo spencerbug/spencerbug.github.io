@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "6": 8797,
+    "12": 3202
+  },
+  "quantile": 0.99,
+  "selection": "All pre-gating nominal innovations, not accepted-only",
+  "thresholds": {
+    "6": 1128.6601137988878,
+    "12": 22.553438381412715
+  }
+}

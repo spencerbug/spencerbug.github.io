@@ -1,0 +1,165 @@
+{
+  "publication_date": "2026-11-12",
+  "research_base_commit": "bdb3bdcbb47c7a2a24301e044ebaaac6b50a18cd",
+  "source_fingerprint": "28d72614c9f2d61b0e48cdd4d2ebc896cff1d37bb7324a2d5c735a29cb69e1cd",
+  "confirmation_receipt_sha256": "5ad04a769c8f62f4dceefa72043a7e5d98467546d2e4c16ccb4f037f5039d1a7",
+  "scope": "Byte-identical compact evidence from completed local B2. New B2 implementation was an uncommitted source snapshot on this base commit; the base commit alone is not the B2 source. Full raw arrays/checkpoints and frozen source snapshots remain in local runs/study-b2-v1. Publication only; no new inference, fitting, selection or experimental budget. Original .md files are served as .txt, retaining historical chronology and source-relative links.",
+  "files": [
+    {
+      "source_path": "reports/study-b2/statistics.json",
+      "download": "statistics.json",
+      "bytes": 45632,
+      "sha256": "f63c925795cca5d8c2dd6bd861d9ec19ae8ab8e115bddf6297d6e5efbed94871"
+    },
+    {
+      "source_path": "reports/study-b2/root-results.json",
+      "download": "root-results.json",
+      "bytes": 65031,
+      "sha256": "669f72df65fd0d8e639860243f5ddc545f00fd78d0509a3c0f2c27156a58eb52"
+    },
+    {
+      "source_path": "reports/study-b2/condition-statistics.json",
+      "download": "condition-statistics.json",
+      "bytes": 554135,
+      "sha256": "31fbcbae2176ea38e6b66b2303a8d2245ce9dd4b7bdb0b842d47e9f705e45e09"
+    },
+    {
+      "source_path": "reports/study-b2/resources.json",
+      "download": "resources.json",
+      "bytes": 21585,
+      "sha256": "ddb1a1de4fd3b3dda6ab8f122b785ad5c7688f8212c452586f279871d39c06e8"
+    },
+    {
+      "source_path": "reports/study-b2/effective-gain.json",
+      "download": "effective-gain.json",
+      "bytes": 183853,
+      "sha256": "f67256d2ec19162429ed4617517f8b66f03e2551f6388d06cf416a3933a67145"
+    },
+    {
+      "source_path": "reports/study-b2/development-candidates.json",
+      "download": "development-candidates.json",
+      "bytes": 82810,
+      "sha256": "6ac0e39f48b0d9e29c2c413128e0b1072d4446719036ee5a9ef6b1c34b1a03f4"
+    },
+    {
+      "source_path": "reports/study-b2/development-phase1.json",
+      "download": "development-phase1.json",
+      "bytes": 5829,
+      "sha256": "97201ee2bc6132bb66a1f17b84f275326daaf2e6a12be9a56ac1124003e0a8ae"
+    },
+    {
+      "source_path": "reports/study-b2/development-phase2.json",
+      "download": "development-phase2.json",
+      "bytes": 3088,
+      "sha256": "1706865a0197eb7a224459c78983d45eb54c24bde420a8e80cf93e863bc85432"
+    },
+    {
+      "source_path": "reports/study-b2/development-hybrid.json",
+      "download": "development-hybrid.json",
+      "bytes": 778,
+      "sha256": "808854fcb039c1cacfe2dd977990dd708ab201c5e96703890dda9a49e4862164"
+    },
+    {
+      "source_path": "reports/study-b2/baseline-audit.json",
+      "download": "baseline-audit.json",
+      "bytes": 10086,
+      "sha256": "b0f19717f2a5ba10b83148d1a1da605de38e3a4f9b856c8ff78d479519a544bd"
+    },
+    {
+      "source_path": "reports/study-b2/confirmation-receipt.json",
+      "download": "confirmation-receipt.json",
+      "bytes": 12952,
+      "sha256": "61ebab1d8ac793b84e46a278760e92f63f809161f11d345b402c48242130b894"
+    },
+    {
+      "source_path": "reports/study-b2/independent-reduction.json",
+      "download": "independent-reduction.json",
+      "bytes": 141,
+      "sha256": "276a83959d7146eec7739aa89b68eff6c5a6051ec818e41bde19b69eac50d9a1"
+    },
+    {
+      "source_path": "reports/study-b2/reproduction.json",
+      "download": "reproduction.json",
+      "bytes": 795,
+      "sha256": "a208008827c85c129ea06d90bdfe9a53af8cadbf58d897dba2744cd98fc5dc04"
+    },
+    {
+      "source_path": "reports/study-b2/verification.json",
+      "download": "verification.json",
+      "bytes": 2111,
+      "sha256": "bf368f90130108794c2107a4c5b7d1619901aeef52eaced0c629cff7b9b24ced"
+    },
+    {
+      "source_path": "reports/study-b2/resource-final.json",
+      "download": "resource-final.json",
+      "bytes": 5750,
+      "sha256": "f087c804cd75f0458b96e43cd9690c693c7570c27f17e6196c10a8b327210b62"
+    },
+    {
+      "source_path": "reports/study-b2/identifiability.json",
+      "download": "identifiability.json",
+      "bytes": 1673,
+      "sha256": "28d50ea8da3d33234696c65c4844615b36300bd8a1054009ee5b3d007fdeee25"
+    },
+    {
+      "source_path": "reports/study-b2/influence.json",
+      "download": "influence.json",
+      "bytes": 261265,
+      "sha256": "2efea0190d0287b45b290aa651bf0ad664999c28e185ec1e8e3f2e220e6f7c19"
+    },
+    {
+      "source_path": "reports/study-b2/worst-cases.json",
+      "download": "worst-cases.json",
+      "bytes": 1069,
+      "sha256": "7ecc4449f859fc6ef9a8899464d2254e9252a4c3001a820909fe8803df2eba4e"
+    },
+    {
+      "source_path": "reports/study-b2/nis-calibration.json",
+      "download": "nis-calibration.json",
+      "bytes": 225,
+      "sha256": "09184b4d13a9589ed42eb400a59d078fb78df3b9579d46e1d9a65d2a97d03a05"
+    },
+    {
+      "source_path": "reports/STUDY_B2.md",
+      "download": "STUDY_B2.txt",
+      "bytes": 20219,
+      "sha256": "ae1b87a7540d9e6d56ca246e53e7f27286c880e2035205a1f8fae540161f6eba"
+    },
+    {
+      "source_path": "reports/STUDY_B2_FILTER_AUDIT.md",
+      "download": "STUDY_B2_FILTER_AUDIT.txt",
+      "bytes": 6712,
+      "sha256": "8a62345a6ee13dcd9dd7514cc1687f4e586b2be8a8ded42eb9854b60059cb123"
+    },
+    {
+      "source_path": "reports/STUDY_B2_DEVELOPMENT.md",
+      "download": "STUDY_B2_DEVELOPMENT.txt",
+      "bytes": 5827,
+      "sha256": "bcf6404715a449cb56e3922b23364b1171223841ccec72c70293bcb9b1cdf76e"
+    },
+    {
+      "source_path": "reports/STUDY_B2_DECISION.md",
+      "download": "STUDY_B2_DECISION.txt",
+      "bytes": 6723,
+      "sha256": "f2967b998d035617c91592a0a4ca69d374a5a45ddb3551b2ab195d40478f275a"
+    },
+    {
+      "source_path": "docs/STUDY_B2_PROTOCOL.md",
+      "download": "STUDY_B2_PROTOCOL.txt",
+      "bytes": 12282,
+      "sha256": "cedd372833ce1919aa5fcbd1c5e32cfd0b14487eec2adc940aad03240a71d334"
+    },
+    {
+      "source_path": "docs/STUDY_B2_LITERATURE.md",
+      "download": "STUDY_B2_LITERATURE.txt",
+      "bytes": 5288,
+      "sha256": "72eb5c6415385fcc1ac7c3853ae5656074ef94cd4b90355b55be8115e9a5ebdf"
+    },
+    {
+      "source_path": "docs/protocols/study_b2_v1.json",
+      "download": "manifest.json",
+      "bytes": 896,
+      "sha256": "7f037dfaf232d12a6ea3f12c309f11f557149027189bfe921de1ca28b33dd724"
+    }
+  ]
+}

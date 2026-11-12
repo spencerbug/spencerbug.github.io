@@ -1,0 +1,48 @@
+{
+  "ADAPT1": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  },
+  "CHANNEL2": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  },
+  "FILTER2": {
+    "arrays": true,
+    "checkpoint_hash": true,
+    "headline": true,
+    "input_hash": true,
+    "inputs": true,
+    "trace_hash": true
+  },
+  "NIS99": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  },
+  "NISEMP": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  },
+  "PC16": {
+    "arrays": true,
+    "checkpoint_hash": true,
+    "headline": true,
+    "input_hash": true,
+    "inputs": true,
+    "trace_hash": true
+  },
+  "R100": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  },
+  "STABLE": {
+    "arrays": true,
+    "headline": true,
+    "inputs": true
+  }
+}

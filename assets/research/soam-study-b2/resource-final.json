@@ -1,0 +1,195 @@
+{
+  "checkpoint_artifact_bytes": 476584355,
+  "compact_report_artifact_bytes": 3883699,
+  "cpu_seconds": 352.024783,
+  "excluded_engineering_overhead": "Tests, source/literature review and unsuccessful local-worker assistance; total CPU not instrumented",
+  "execution_wall_seconds": 352.62572220677976,
+  "fits_including_historical_audit": 29,
+  "gpu_seconds": 0,
+  "ledger": [
+    {
+      "cpu_seconds": 1.166092,
+      "cumulative_artifact_bytes": 827841,
+      "error": null,
+      "peak_rss_bytes": 413843456,
+      "phase": "audit",
+      "status": "complete",
+      "wall_seconds": 1.2089173750719056
+    },
+    {
+      "cpu_seconds": 19.637923,
+      "cumulative_artifact_bytes": 1671183,
+      "error": null,
+      "peak_rss_bytes": 303611904,
+      "phase": "fixture",
+      "status": "complete",
+      "wall_seconds": 19.719062665943056
+    },
+    {
+      "cpu_seconds": 4.429888,
+      "cumulative_artifact_bytes": 2489661,
+      "error": "AssertionError()",
+      "peak_rss_bytes": 446873600,
+      "phase": "fixture-storage-correction",
+      "status": "failed",
+      "wall_seconds": 4.479173040948808
+    },
+    {
+      "cpu_seconds": 3.450212,
+      "cumulative_artifact_bytes": 3311692,
+      "error": null,
+      "peak_rss_bytes": 345014272,
+      "phase": "fixture-storage-a1",
+      "status": "complete",
+      "wall_seconds": 3.5404304169351235
+    },
+    {
+      "cpu_seconds": 49.394203999999995,
+      "cumulative_artifact_bytes": 83180675,
+      "error": null,
+      "peak_rss_bytes": 442613760,
+      "phase": "screen1",
+      "status": "complete",
+      "wall_seconds": 49.468080791062675
+    },
+    {
+      "cpu_seconds": 14.370279,
+      "cumulative_artifact_bytes": 104921072,
+      "error": null,
+      "peak_rss_bytes": 319684608,
+      "phase": "screen2",
+      "status": "complete",
+      "wall_seconds": 14.411393083981238
+    },
+    {
+      "cpu_seconds": 4.252214,
+      "cumulative_artifact_bytes": 111064072,
+      "error": null,
+      "peak_rss_bytes": 321601536,
+      "phase": "hybrid",
+      "status": "complete",
+      "wall_seconds": 4.289078208035789
+    },
+    {
+      "cpu_seconds": 1.342147,
+      "cumulative_artifact_bytes": 111067022,
+      "error": null,
+      "peak_rss_bytes": 532938752,
+      "phase": "pre-freeze-smoke",
+      "status": "complete",
+      "wall_seconds": 1.344746790942736
+    },
+    {
+      "cpu_seconds": 0.05412399999999995,
+      "cumulative_artifact_bytes": 111927314,
+      "error": null,
+      "peak_rss_bytes": 280428544,
+      "phase": "freeze",
+      "status": "complete",
+      "wall_seconds": 0.0919234590837732
+    },
+    {
+      "cpu_seconds": 156.711091,
+      "cumulative_artifact_bytes": 431759630,
+      "error": null,
+      "peak_rss_bytes": 775749632,
+      "phase": "confirmation",
+      "status": "complete",
+      "wall_seconds": 156.71053224999923
+    },
+    {
+      "cpu_seconds": 15.921572999999999,
+      "cumulative_artifact_bytes": 475090632,
+      "error": null,
+      "peak_rss_bytes": 470925312,
+      "phase": "repeat",
+      "status": "complete",
+      "wall_seconds": 15.954035083996132
+    },
+    {
+      "cpu_seconds": 0.8052499999999999,
+      "cumulative_artifact_bytes": 476048820,
+      "error": null,
+      "peak_rss_bytes": 297910272,
+      "phase": "report",
+      "status": "complete",
+      "wall_seconds": 0.8408174589276314
+    },
+    {
+      "cpu_seconds": 10.994723,
+      "cumulative_artifact_bytes": 476313614,
+      "error": null,
+      "peak_rss_bytes": 299876352,
+      "phase": "diagnostics",
+      "status": "complete",
+      "wall_seconds": 10.997361374902539
+    },
+    {
+      "cpu_seconds": 4.0863700000000005,
+      "cumulative_artifact_bytes": 476313842,
+      "error": null,
+      "peak_rss_bytes": 447053824,
+      "phase": "report",
+      "status": "complete",
+      "wall_seconds": 4.096674915985204
+    },
+    {
+      "cpu_seconds": 19.423392,
+      "cumulative_artifact_bytes": 476397171,
+      "error": null,
+      "peak_rss_bytes": 710361088,
+      "phase": "screen-cost-audit",
+      "status": "complete",
+      "wall_seconds": 19.42778620799072
+    },
+    {
+      "cpu_seconds": 2.646463,
+      "cumulative_artifact_bytes": 476397404,
+      "error": null,
+      "peak_rss_bytes": 421920768,
+      "phase": "plot-review",
+      "status": "complete",
+      "wall_seconds": 2.6491347500123084
+    },
+    {
+      "cpu_seconds": 39.832373000000004,
+      "cumulative_artifact_bytes": 476581484,
+      "error": null,
+      "peak_rss_bytes": 296009728,
+      "phase": "effective-gain-audit",
+      "status": "complete",
+      "wall_seconds": 39.840158333070576
+    },
+    {
+      "cpu_seconds": 0.08126500000000003,
+      "cumulative_artifact_bytes": 476581730,
+      "error": "KeyError('min_eigenvalue')",
+      "peak_rss_bytes": 202866688,
+      "phase": "final-verification",
+      "status": "failed",
+      "wall_seconds": 0.0968507919460535
+    },
+    {
+      "cpu_seconds": 3.4252000000000002,
+      "cumulative_artifact_bytes": 476584108,
+      "error": null,
+      "peak_rss_bytes": 280543232,
+      "phase": "final-verification-v2",
+      "status": "complete",
+      "wall_seconds": 3.4595652079442516
+    }
+  ],
+  "ledger_sha256": "f4ebdcb05c3c052c78a1694fe65ef0f37e3fb014e95c2afbde5761f322997e75",
+  "limits": {
+    "artifact_bytes": 1073741824,
+    "cpu_seconds": 1800,
+    "max_fit_attempts": 32,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 3600
+  },
+  "peak_rss_bytes": 775749632,
+  "scope": "B2 numerical phases only, including preserved failed storage projection, profiling, diagnostics, rendering and final verification; no GPU use",
+  "script_sha256": "70489ef28890cf014a20eb9e0e792df6f6ab725d374224d1f42e670cf8c2270e",
+  "total_artifact_bytes": 480468054,
+  "within_all_limits": true
+}

@@ -1,0 +1,785 @@
+{
+  "ADAPT1": {
+    "additional_history_scalars": 1,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "adaptive",
+      "name": "ADAPT1",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 16.46400200000003,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 106.376296875,
+        "mean_us_per_step": 102.77604296874999,
+        "p95_us_per_step": 106.24084765625
+      },
+      "20": {
+        "max_us_per_step": 5.9919921875,
+        "mean_us_per_step": 5.815919609374999,
+        "p95_us_per_step": 5.95110953125
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp": 16,
+        "aten::clamp_min": 48
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 149.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 3.198615999999999,
+    "state_scalars": 7,
+    "transient_state_and_covariance_bytes": 56
+  },
+  "CHANNEL2": {
+    "additional_history_scalars": 0,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "channel",
+      "name": "CHANNEL2",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 2
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 16.52821199999999,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 107.92578125,
+        "mean_us_per_step": 102.3914390625,
+        "p95_us_per_step": 106.9343375
+      },
+      "20": {
+        "max_us_per_step": 6.116634375,
+        "mean_us_per_step": 5.795528945312499,
+        "p95_us_per_step": 5.9868131640625
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 155.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 2.9891129999999997,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 48
+  },
+  "FILTER2": {
+    "additional_history_scalars": 0,
+    "config": {
+      "name": "FILTER2"
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 16.573861999999995,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 69.78840625,
+        "mean_us_per_step": 68.1980140625,
+        "p95_us_per_step": 69.71604296874999
+      },
+      "20": {
+        "max_us_per_step": 4.3387046875,
+        "mean_us_per_step": 4.0189371875,
+        "p95_us_per_step": 4.1763200000000005
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {},
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 85.875,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ]
+          ],
+          "operator": "aten::linalg_inv"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 460,
+    "persistent_used_bytes": 260,
+    "screen_eval_cpu_seconds": 3.215883,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 24
+  },
+  "NIS99": {
+    "additional_history_scalars": 0,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "nis",
+      "name": "NIS99",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 13.090252999999983,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 91.028640625,
+        "mean_us_per_step": 87.95882109375,
+        "p95_us_per_step": 89.57643203125001
+      },
+      "20": {
+        "max_us_per_step": 5.13994140625,
+        "mean_us_per_step": 4.880030859375001,
+        "p95_us_per_step": 5.0223046875
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 2.3864669999999997,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 48
+  },
+  "NISEMP": {
+    "additional_history_scalars": 0,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 22.553438381412715,
+      "empirical6": 1128.6601137988878,
+      "gain": 1.0,
+      "mode": "nis_emp",
+      "name": "NISEMP",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 13.280051000000014,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 93.234375,
+        "mean_us_per_step": 89.16650390625,
+        "p95_us_per_step": 91.06470859375
+      },
+      "20": {
+        "max_us_per_step": 5.11793671875,
+        "mean_us_per_step": 5.003020859375,
+        "p95_us_per_step": 5.083115507812501
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 2.414743999999999,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 48
+  },
+  "PC16": {
+    "additional_history_scalars": 0,
+    "config": {
+      "name": "PC16"
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 3.6776670000000244,
+    "covariance_scalars": 0,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 1200,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 1340,
+    "latency": {
+      "1": {
+        "max_us_per_step": 30.248046875,
+        "mean_us_per_step": 28.72786484375,
+        "p95_us_per_step": 29.390211718750002
+      },
+      "20": {
+        "max_us_per_step": 2.0863929687500002,
+        "mean_us_per_step": 1.9633528515624998,
+        "p95_us_per_step": 1.9936507031250001
+      }
+    },
+    "mean_base_fit_cpu_seconds": 2.860413500000002,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::tanh": 81
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 678.0,
+      "schedule": "every4",
+      "solves_and_eigen_operations": []
+    },
+    "persistent_allocated_bytes": 5360,
+    "persistent_used_bytes": 5360,
+    "screen_eval_cpu_seconds": 0.5716480000000006,
+    "state_scalars": 16,
+    "transient_state_and_covariance_bytes": 64
+  },
+  "R100": {
+    "additional_history_scalars": 0,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "R100",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 100,
+      "threshold": 1.0
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 13.155431999999996,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 96.942703125,
+        "mean_us_per_step": 89.11298671875001,
+        "p95_us_per_step": 93.3096953125
+      },
+      "20": {
+        "max_us_per_step": 5.6145828125,
+        "mean_us_per_step": 5.225032539062499,
+        "p95_us_per_step": 5.603512343749999
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 2.3668080000000007,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 48
+  },
+  "STABLE": {
+    "additional_history_scalars": 0,
+    "config": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "STABLE",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "confirmation_evaluation_with_diagnostics_cpu_seconds": 12.975971,
+    "covariance_scalars": 4,
+    "exposure_per_root": {
+      "clean_supervisory_observations": 163200,
+      "episodes": 9600,
+      "feature_values": 394146,
+      "offline_updates": 0,
+      "replay": 0,
+      "sensory_events": 58473
+    },
+    "fitted_scalars": 64,
+    "latency": {
+      "1": {
+        "max_us_per_step": 88.533203125,
+        "mean_us_per_step": 86.76481015625,
+        "p95_us_per_step": 88.32107109374999
+      },
+      "20": {
+        "max_us_per_step": 5.09361953125,
+        "mean_us_per_step": 4.857794570312499,
+        "p95_us_per_step": 5.000135078125
+      }
+    },
+    "mean_base_fit_cpu_seconds": 0.05167600000000121,
+    "note": "Shared FILTER2 fits counted once across correctors. Controller constants are explicit config; sizeof Python config objects excluded from numerical tensor storage. Float64 robust versus float32 original/neural. Latency is minimal serial loop every4; diagnostics excluded.",
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "persistent_allocated_bytes": 920,
+    "persistent_used_bytes": 520,
+    "screen_eval_cpu_seconds": 2.4199889999999993,
+    "state_scalars": 6,
+    "transient_state_and_covariance_bytes": 48
+  }
+}

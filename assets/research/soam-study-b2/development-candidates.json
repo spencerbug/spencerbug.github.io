@@ -1,0 +1,2950 @@
+{
+  "ADAPT05": {
+    "configuration": {
+      "alpha": 0.5,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "adaptive",
+      "name": "ADAPT05",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.11246186370772823,
+        "J": 0.0190101910927435,
+        "ambiguous": 1.0559545554210852,
+        "biased": 0.037235909165060144,
+        "change": 0.061590854967565445,
+        "channels": 0.007176971436718185,
+        "clean": 0.0011172384024583165,
+        "coherent": 0.16662513793046102,
+        "contradict": 0.2861967709293295,
+        "corrupt": 0.014971829283154398,
+        "dynamics": 0.02240362586422678,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006690915854682754,
+        "heavy": 0.023485604517016655,
+        "isolated": 0.013118305248859466,
+        "missing": 0.002520590974929782,
+        "motion": 0.0025597209863802237,
+        "noise": 0.04787133222316347,
+        "partial": 0.0019950091917389705,
+        "sustained": 0.5246192883728277
+      },
+      {
+        "C": 0.09934965043628315,
+        "J": 0.018335282082483393,
+        "ambiguous": 0.9191561809744945,
+        "biased": 0.02613780038261352,
+        "change": 0.04300063503201555,
+        "channels": 0.014714578994908209,
+        "clean": 0.001133616946040947,
+        "coherent": 0.13159725145534695,
+        "contradict": 0.25033046741588716,
+        "corrupt": 0.023689194696161132,
+        "dynamics": 0.01768114912984529,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007655852936980438,
+        "heavy": 0.026677361372138265,
+        "isolated": 0.007571711497411059,
+        "missing": 0.002530758494321384,
+        "motion": 0.00258375348669002,
+        "noise": 0.04536508875666652,
+        "partial": 0.001822370495108592,
+        "sustained": 0.46505965465540283
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 100.842453125,
+        "mean_us_per_step": 99.60039140625,
+        "p95_us_per_step": 100.63153828125
+      },
+      "20": {
+        "max_us_per_step": 5.816861718749999,
+        "mean_us_per_step": 5.7209846875000006,
+        "p95_us_per_step": 5.788627421875
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp": 16,
+        "aten::clamp_min": 48
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 149.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen2",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 7
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.1955319999999996
+  },
+  "ADAPT1": {
+    "configuration": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "adaptive",
+      "name": "ADAPT1",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.11009351951377432,
+        "J": 0.020759328769534464,
+        "ambiguous": 1.0558826669816013,
+        "biased": 0.03410234549624164,
+        "change": 0.0615945047748568,
+        "channels": 0.004724504659840075,
+        "clean": 0.0011172335444725888,
+        "coherent": 0.16661173618721814,
+        "contradict": 0.28618581641412366,
+        "corrupt": 0.009579406618838474,
+        "dynamics": 0.022402767401041884,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006690768167777442,
+        "heavy": 0.026049135945705515,
+        "isolated": 0.005015059698122738,
+        "missing": 0.002519027400362784,
+        "motion": 0.002559066670918424,
+        "noise": 0.05391743864179066,
+        "partial": 0.0019944880814516423,
+        "sustained": 0.5245724479904534
+      },
+      {
+        "C": 0.0959535939837957,
+        "J": 0.01977392177547942,
+        "ambiguous": 0.9188313088782398,
+        "biased": 0.02623195664410384,
+        "change": 0.043046814094029565,
+        "channels": 0.007858049413006494,
+        "clean": 0.0011334967232790763,
+        "coherent": 0.13122655088830018,
+        "contradict": 0.2500442765223489,
+        "corrupt": 0.009976333624556294,
+        "dynamics": 0.01767848580713884,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007649615640800624,
+        "heavy": 0.02835739641341781,
+        "isolated": 0.0033063281204562533,
+        "missing": 0.0025280468795411846,
+        "motion": 0.0025791790722119743,
+        "noise": 0.05080743915798334,
+        "partial": 0.0018180394213483321,
+        "sustained": 0.46471854278272906
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 102.084640625,
+        "mean_us_per_step": 100.7587546875,
+        "p95_us_per_step": 101.6046828125
+      },
+      "20": {
+        "max_us_per_step": 5.7194664062500005,
+        "mean_us_per_step": 5.6767187109375,
+        "p95_us_per_step": 5.713931171875
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp": 16,
+        "aten::clamp_min": 48
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 149.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen2",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 7
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.198615999999999
+  },
+  "CHANNEL2": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "channel",
+      "name": "CHANNEL2",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 2
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.157166259166965,
+        "J": 0.03677930082101725,
+        "ambiguous": 1.0481496506495744,
+        "biased": 0.08593204248102662,
+        "change": 0.06244005079850514,
+        "channels": 0.016416313022837272,
+        "clean": 0.0011185078867038266,
+        "coherent": 0.15913626675444986,
+        "contradict": 0.27808064664190923,
+        "corrupt": 0.14749846610053502,
+        "dynamics": 0.02241886108058333,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.043561287520091856,
+        "isolated": 0.13062611809625185,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576623308363295,
+        "noise": 0.10099053819182771,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.5169933201935626
+      },
+      {
+        "C": 0.15980241593826874,
+        "J": 0.03434587534418363,
+        "ambiguous": 0.9130667253875014,
+        "biased": 0.08075788502621259,
+        "change": 0.04403700928401591,
+        "channels": 0.04370724974492025,
+        "clean": 0.0011348067051874865,
+        "coherent": 0.12611469276775827,
+        "contradict": 0.24403245791100314,
+        "corrupt": 0.2416204847380711,
+        "dynamics": 0.017696873722345532,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007666819281324638,
+        "heavy": 0.04677574110470152,
+        "isolated": 0.12046978206410397,
+        "missing": 0.002544883606357407,
+        "motion": 0.002606485838585949,
+        "noise": 0.09356034566341866,
+        "partial": 0.0018450931780671913,
+        "sustained": 0.4591710761221135
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 114.300125,
+        "mean_us_per_step": 107.22929765625,
+        "p95_us_per_step": 112.32838515625001
+      },
+      "20": {
+        "max_us_per_step": 6.408756250000001,
+        "mean_us_per_step": 6.1128825390625,
+        "p95_us_per_step": 6.3286623437500005
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 155.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.9891129999999997
+  },
+  "CHANNEL4": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "channel",
+      "name": "CHANNEL4",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 4
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.1717254006479337,
+        "J": 0.04458992512882842,
+        "ambiguous": 1.054271632019581,
+        "biased": 0.09839014312352892,
+        "change": 0.06183490741018567,
+        "channels": 0.033711409777065465,
+        "clean": 0.0011185260275648364,
+        "coherent": 0.16487385947337552,
+        "contradict": 0.28388597758866513,
+        "corrupt": 0.17419590149219605,
+        "dynamics": 0.022418797833052194,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.052962183124753766,
+        "isolated": 0.15502913444311647,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576623308363295,
+        "noise": 0.12425117407549532,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.5229151731014999
+      },
+      {
+        "C": 0.1796800575305133,
+        "J": 0.03935603324196135,
+        "ambiguous": 0.9182404884164693,
+        "biased": 0.08905507711337449,
+        "change": 0.043260625639819486,
+        "channels": 0.08087380397432745,
+        "clean": 0.0011348322074842892,
+        "coherent": 0.13074569816091802,
+        "contradict": 0.24893465003560675,
+        "corrupt": 0.29107076518073866,
+        "dynamics": 0.017695736292015395,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.06000581860189849,
+        "isolated": 0.14186025674777014,
+        "missing": 0.0025451265697503615,
+        "motion": 0.0026067576760784553,
+        "noise": 0.10922085009604851,
+        "partial": 0.001845339153789117,
+        "sustained": 0.4641489829345657
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 103.044265625,
+        "mean_us_per_step": 99.80800937500001,
+        "p95_us_per_step": 101.1776640625
+      },
+      "20": {
+        "max_us_per_step": 5.68688125,
+        "mean_us_per_step": 5.6605402343749995,
+        "p95_us_per_step": 5.6835102343749995
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 155.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.0085240000000013
+  },
+  "GAIN25": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 0.25,
+      "mode": "plain",
+      "name": "GAIN25",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.056002814621961994,
+        "J": 0.014896600050652508,
+        "ambiguous": 0.524643584693245,
+        "biased": 0.025009831455083655,
+        "change": 0.21030232025043163,
+        "channels": 0.018184663154861856,
+        "clean": 0.003770821460058092,
+        "coherent": 0.03599312832794249,
+        "contradict": 0.10288493034848276,
+        "corrupt": 0.048379374797495336,
+        "dynamics": 0.05705485880736507,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.01202556208669626,
+        "heavy": 0.010305191476777664,
+        "isolated": 0.04204457520477211,
+        "missing": 0.005234043908643088,
+        "motion": 0.003171723188215513,
+        "noise": 0.03202998471005126,
+        "partial": 0.0038871856633033433,
+        "sustained": 0.21210293793680082
+      },
+      {
+        "C": 0.056144433147159604,
+        "J": 0.015621829966885872,
+        "ambiguous": 0.46654460028316863,
+        "biased": 0.01943409617600733,
+        "change": 0.16869430968014848,
+        "channels": 0.025007419511986654,
+        "clean": 0.0037335230780740315,
+        "coherent": 0.03112053484900971,
+        "contradict": 0.0980695216875502,
+        "corrupt": 0.07416900623456325,
+        "dynamics": 0.043700326137081455,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.012210496606107856,
+        "heavy": 0.01194258531242866,
+        "isolated": 0.033611122428605776,
+        "missing": 0.00577223119287633,
+        "motion": 0.004581372845567809,
+        "noise": 0.03249065663254775,
+        "partial": 0.00401739430485607,
+        "sustained": 0.19772626751751587
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 95.986328125,
+        "mean_us_per_step": 88.185971875,
+        "p95_us_per_step": 93.72265625
+      },
+      "20": {
+        "max_us_per_step": 5.14977265625,
+        "mean_us_per_step": 4.924627304687499,
+        "p95_us_per_step": 5.0394338671875
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.449684999999999
+  },
+  "GAIN50": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 0.5,
+      "mode": "plain",
+      "name": "GAIN50",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.10373296313747112,
+        "J": 0.019486200625908855,
+        "ambiguous": 0.8006742162013307,
+        "biased": 0.045992499067852896,
+        "change": 0.10672572552147183,
+        "channels": 0.039532339595059814,
+        "clean": 0.0016447106906650765,
+        "coherent": 0.06278080094172551,
+        "contradict": 0.16527856503494529,
+        "corrupt": 0.11631717383151222,
+        "dynamics": 0.033361576390965805,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.008649782135254348,
+        "heavy": 0.02007669648196405,
+        "isolated": 0.10012769111737453,
+        "missing": 0.0027628308018970054,
+        "motion": 0.002357683302715847,
+        "noise": 0.052648867332075855,
+        "partial": 0.0019131123282043981,
+        "sustained": 0.3413035409268088
+      },
+      {
+        "C": 0.10629566887236244,
+        "J": 0.018461994178621793,
+        "ambiguous": 0.7058069814332251,
+        "biased": 0.03918007557887743,
+        "change": 0.08100520137699349,
+        "channels": 0.06186101629840952,
+        "clean": 0.0016169913305923776,
+        "coherent": 0.05117127355338684,
+        "contradict": 0.15379834390672653,
+        "corrupt": 0.17351501953774354,
+        "dynamics": 0.025613140692721865,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.009128150245147723,
+        "heavy": 0.024781885007876772,
+        "isolated": 0.07971148893655018,
+        "missing": 0.003152255260756408,
+        "motion": 0.00278277887766338,
+        "noise": 0.04801572743181408,
+        "partial": 0.0019453281933162394,
+        "sustained": 0.3138489231936928
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 91.546875,
+        "mean_us_per_step": 89.40696562499998,
+        "p95_us_per_step": 91.32732109375
+      },
+      "20": {
+        "max_us_per_step": 5.1882484374999995,
+        "mean_us_per_step": 5.036764257812499,
+        "p95_us_per_step": 5.1048139453125
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.404240999999999
+  },
+  "HUBER99": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "huber",
+      "name": "HUBER99",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.17957171333085084,
+        "J": 0.0428496519579524,
+        "ambiguous": 1.0528339234396409,
+        "biased": 0.09239152364427618,
+        "change": 0.062014536543140916,
+        "channels": 0.07360013977474121,
+        "clean": 0.0011185263048136475,
+        "coherent": 0.16357410189491553,
+        "contradict": 0.2823533396800314,
+        "corrupt": 0.16699742894190023,
+        "dynamics": 0.022418662820918978,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693697869139476,
+        "heavy": 0.053657075857449374,
+        "isolated": 0.18527956037683374,
+        "missing": 0.0025394771041638824,
+        "motion": 0.00257661980715671,
+        "noise": 0.1183210724615622,
+        "partial": 0.0020136862310762417,
+        "sustained": 0.5215021628258398
+      },
+      {
+        "C": 0.18389987805071376,
+        "J": 0.03667667257462104,
+        "ambiguous": 0.9169501530113203,
+        "biased": 0.07723317417873846,
+        "change": 0.043462562390535475,
+        "channels": 0.13255016896736388,
+        "clean": 0.0011348294907918995,
+        "coherent": 0.1296240079059076,
+        "contradict": 0.24759588635193136,
+        "corrupt": 0.2832712431719289,
+        "dynamics": 0.017695703705531383,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.06605831729621074,
+        "isolated": 0.1356674364966377,
+        "missing": 0.002545114117978778,
+        "motion": 0.002606735116118597,
+        "noise": 0.10053223242815715,
+        "partial": 0.0018453151343825601,
+        "sustained": 0.46289479833820896
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 102.295578125,
+        "mean_us_per_step": 98.46569140624999,
+        "p95_us_per_step": 101.05612500000001
+      },
+      "20": {
+        "max_us_per_step": 5.83655625,
+        "mean_us_per_step": 5.646718789062499,
+        "p95_us_per_step": 5.828206640625
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64,
+        "aten::minimum": 16,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 137.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.791599999999999
+  },
+  "HYBRID": {
+    "configuration": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "hybrid",
+      "name": "HYBRID",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.07771304198377628,
+        "J": 0.020860005144775914,
+        "ambiguous": 0.8889097293486541,
+        "biased": 0.033074857840308475,
+        "change": 0.19944091351343035,
+        "channels": 0.0046597340891045905,
+        "clean": 0.0011172335444725888,
+        "coherent": 0.002317391688942198,
+        "contradict": 0.20284125989475657,
+        "corrupt": 0.0033404133318201018,
+        "dynamics": 0.02731020120661902,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006690768167777442,
+        "heavy": 0.02589842007968675,
+        "isolated": 0.0033209516910372877,
+        "missing": 0.002519027400362784,
+        "motion": 0.002559066670918424,
+        "noise": 0.05354316631991522,
+        "partial": 0.0019944880814516423,
+        "sustained": 0.4713795251655345
+      },
+      {
+        "C": 0.0723854572891192,
+        "J": 0.01979710454442011,
+        "ambiguous": 0.7906755880171893,
+        "biased": 0.02623195664410384,
+        "change": 0.1515656244581334,
+        "channels": 0.007518556237649276,
+        "clean": 0.0011334967232790763,
+        "coherent": 0.006641489770056045,
+        "contradict": 0.19758167019544692,
+        "corrupt": 0.0041959268271232015,
+        "dynamics": 0.020617634322260797,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007649615640800624,
+        "heavy": 0.02811446388473464,
+        "isolated": 0.0027457744123508252,
+        "missing": 0.0025280468795411846,
+        "motion": 0.0025791790722119743,
+        "noise": 0.05081689662664983,
+        "partial": 0.0018180394213483321,
+        "sustained": 0.43125003324781663
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 124.470703125,
+        "mean_us_per_step": 122.7188140625,
+        "p95_us_per_step": 124.01796875
+      },
+      "20": {
+        "max_us_per_step": 6.927409375000001,
+        "mean_us_per_step": 6.84782546875,
+        "p95_us_per_step": 6.8956489453125
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp": 16,
+        "aten::clamp_min": 64
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 153.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "hybrid",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 11
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.8137309999999998
+  },
+  "NIS99": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "nis",
+      "name": "NIS99",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.0222994153525333,
+        "J": 0.023948913455701697,
+        "ambiguous": 0.5335579298419625,
+        "biased": 0.00477097238681284,
+        "change": 0.5500092320656513,
+        "channels": 0.002488949132179572,
+        "clean": 0.0011208938489635349,
+        "coherent": 0.0023327596865656284,
+        "contradict": 0.008109321722993657,
+        "corrupt": 0.002359401404780897,
+        "dynamics": 0.027328084037846447,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006707426774720979,
+        "heavy": 0.023148949247807152,
+        "isolated": 0.0023327596865656284,
+        "missing": 0.0025400291112486753,
+        "motion": 0.0025767973834076013,
+        "noise": 0.06693708499896238,
+        "partial": 0.002013904115279284,
+        "sustained": 0.11866211592302141
+      },
+      {
+        "C": 0.037022785023555424,
+        "J": 0.02670552565520834,
+        "ambiguous": 0.5650124011491906,
+        "biased": 0.004829070638462312,
+        "change": 0.38446931019083336,
+        "channels": 0.0022710978453571607,
+        "clean": 0.0011436177610727055,
+        "coherent": 0.008793825418501156,
+        "contradict": 0.020266857287525936,
+        "corrupt": 0.002112011652146757,
+        "dynamics": 0.020620013247241175,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.02205707174488018,
+        "isolated": 0.002153226970773642,
+        "missing": 0.002535007910992434,
+        "motion": 0.002595826062891579,
+        "noise": 0.07536301241374069,
+        "partial": 0.0018371738062640548,
+        "sustained": 0.2169431908947667
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 95.221359375,
+        "mean_us_per_step": 90.10882265625,
+        "p95_us_per_step": 94.7469828125
+      },
+      "20": {
+        "max_us_per_step": 5.329296875,
+        "mean_us_per_step": 5.011339570312501,
+        "p95_us_per_step": 5.2328125
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.3864669999999997
+  },
+  "NISEMP": {
+    "configuration": {
+      "empirical12": 22.553438381412715,
+      "empirical6": 1128.6601137988878,
+      "gain": 1.0,
+      "mode": "nis_emp",
+      "name": "NISEMP",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.1330317662646099,
+        "J": 0.04938487287835536,
+        "ambiguous": 1.0571595006364136,
+        "biased": 0.08812121790642992,
+        "change": 0.061582044843882765,
+        "channels": 0.012459317228692389,
+        "clean": 0.0011218890866878564,
+        "coherent": 0.16760191997412255,
+        "contradict": 0.2872304964427026,
+        "corrupt": 0.031321693216230476,
+        "dynamics": 0.02241844726315008,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.056386548955755574,
+        "isolated": 0.049602359795109435,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576623308363295,
+        "noise": 0.1418405432680096,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.5257293067759291
+      },
+      {
+        "C": 0.12175060514510352,
+        "J": 0.0412382517218277,
+        "ambiguous": 0.9206233546178614,
+        "biased": 0.08169920373586312,
+        "change": 0.04291708098956189,
+        "channels": 0.049475157535421886,
+        "clean": 0.0011453605041984055,
+        "coherent": 0.1328783966067345,
+        "contradict": 0.25172039210577174,
+        "corrupt": 0.016679038425486088,
+        "dynamics": 0.017695736952697546,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.06583728936741436,
+        "isolated": 0.0392074931230957,
+        "missing": 0.0025451265697503615,
+        "motion": 0.0026067576760784553,
+        "noise": 0.11757318716846424,
+        "partial": 0.001845339153789117,
+        "sustained": 0.4664776572217089
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 94.41015625,
+        "mean_us_per_step": 90.24397734375,
+        "p95_us_per_step": 93.90855624999999
+      },
+      "20": {
+        "max_us_per_step": 5.1291664062499995,
+        "mean_us_per_step": 5.0291748828125,
+        "p95_us_per_step": 5.099200585937499
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.414743999999999
+  },
+  "Q01": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "Q01",
+      "q": 0.1,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.19108425843183824,
+        "J": 0.03711259762233087,
+        "ambiguous": 1.0213719634187743,
+        "biased": 0.08669011362882803,
+        "change": 0.06395483375806651,
+        "channels": 0.0894078342847208,
+        "clean": 0.0010765800247641106,
+        "coherent": 0.14187914024125814,
+        "contradict": 0.2582687837480438,
+        "corrupt": 0.24408049629729148,
+        "dynamics": 0.022853694131253353,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006766897087351617,
+        "heavy": 0.04504913477727106,
+        "isolated": 0.23661727226983814,
+        "missing": 0.002204048990476487,
+        "motion": 0.0022653326447007764,
+        "noise": 0.10051242629935668,
+        "partial": 0.0016451816618644325,
+        "sustained": 0.4938658175236601
+      },
+      {
+        "C": 0.1945233808484434,
+        "J": 0.03187593588928137,
+        "ambiguous": 0.8860885725113473,
+        "biased": 0.07186454840692105,
+        "change": 0.04623025290235629,
+        "channels": 0.14793853822238448,
+        "clean": 0.0010865164068339739,
+        "coherent": 0.10965531580091242,
+        "contradict": 0.22625674364409099,
+        "corrupt": 0.3586433846212964,
+        "dynamics": 0.01788732579476096,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.00755317373155309,
+        "heavy": 0.05766139769357211,
+        "isolated": 0.1789277097412413,
+        "missing": 0.0023157222284946816,
+        "motion": 0.0023176096516933373,
+        "noise": 0.08542728624337795,
+        "partial": 0.001545646234995022,
+        "sustained": 0.4369727714527761
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 94.310546875,
+        "mean_us_per_step": 89.51266406250001,
+        "p95_us_per_step": 93.9765625
+      },
+      "20": {
+        "max_us_per_step": 5.1151687500000005,
+        "mean_us_per_step": 5.052770195312499,
+        "p95_us_per_step": 5.1089225
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.3892729999999975
+  },
+  "Q10": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "Q10",
+      "q": 10,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.24476769938679135,
+        "J": 0.05175085638226371,
+        "ambiguous": 1.0615986794987264,
+        "biased": 0.11483701410947796,
+        "change": 0.061600336293137034,
+        "channels": 0.1283791745097633,
+        "clean": 0.0011256278881768445,
+        "coherent": 0.1715204110743709,
+        "contradict": 0.29134983729902897,
+        "corrupt": 0.3879869827187882,
+        "dynamics": 0.02245585437760249,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006713647597313592,
+        "heavy": 0.06415686058940621,
+        "isolated": 0.3165550877594617,
+        "missing": 0.0026245345004748287,
+        "motion": 0.0026626333462618566,
+        "noise": 0.15167758876802134,
+        "partial": 0.0021079621436971064,
+        "sustained": 0.5299383649462712
+      },
+      {
+        "C": 0.2554537708379358,
+        "J": 0.04457166639682786,
+        "ambiguous": 0.9252519567973485,
+        "biased": 0.09921776215339463,
+        "change": 0.042861161974921486,
+        "channels": 0.2024378526873691,
+        "clean": 0.0011426738682961365,
+        "coherent": 0.13680420022116363,
+        "contradict": 0.2558260853617885,
+        "corrupt": 0.5416398309851009,
+        "dynamics": 0.01773493442033878,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0077126019849785964,
+        "heavy": 0.08420670872975033,
+        "isolated": 0.25314325594430404,
+        "missing": 0.0026077018535692505,
+        "motion": 0.002688706572117302,
+        "noise": 0.1303724744006872,
+        "partial": 0.0019272459600537882,
+        "sustained": 0.4707267851444678
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 92.133453125,
+        "mean_us_per_step": 88.25654453125,
+        "p95_us_per_step": 91.0857515625
+      },
+      "20": {
+        "max_us_per_step": 5.4073890625,
+        "mean_us_per_step": 4.9875716015625,
+        "p95_us_per_step": 5.1703841015625
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.3652939999999987
+  },
+  "R10": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "R10",
+      "q": 1.0,
+      "r": 10,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.19106441886307943,
+        "J": 0.037051152969767236,
+        "ambiguous": 1.0213709019621462,
+        "biased": 0.08668901992153255,
+        "change": 0.06395357618121005,
+        "channels": 0.08940673821274289,
+        "clean": 0.0010763906053750146,
+        "coherent": 0.14187807765881227,
+        "contradict": 0.2582675911440657,
+        "corrupt": 0.2440792971411579,
+        "dynamics": 0.022852597971259894,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.00676578721970557,
+        "heavy": 0.044916865576318,
+        "isolated": 0.23661617754919526,
+        "missing": 0.0022027350972369207,
+        "motion": 0.002264112402066064,
+        "noise": 0.10033267878018007,
+        "partial": 0.0016439618047267054,
+        "sustained": 0.4938647559817969
+      },
+      {
+        "C": 0.1944737099503452,
+        "J": 0.031840047126785086,
+        "ambiguous": 0.8860891583029228,
+        "biased": 0.07186509175031605,
+        "change": 0.04623081081283305,
+        "channels": 0.1479389669018114,
+        "clean": 0.001086559982542782,
+        "coherent": 0.10965590262420434,
+        "contradict": 0.22625744309378915,
+        "corrupt": 0.3586440533592611,
+        "dynamics": 0.01788787523533402,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007554287513958559,
+        "heavy": 0.057310512223396115,
+        "isolated": 0.17892808532880755,
+        "missing": 0.002314797782379945,
+        "motion": 0.0023182875265057093,
+        "noise": 0.08533528572561935,
+        "partial": 0.0015463196506520023,
+        "sustained": 0.4369733574646199
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 94.995453125,
+        "mean_us_per_step": 88.36962890625,
+        "p95_us_per_step": 94.244596875
+      },
+      "20": {
+        "max_us_per_step": 5.169400781249999,
+        "mean_us_per_step": 4.9215478125,
+        "p95_us_per_step": 5.058135000000001
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.3985030000000034
+  },
+  "R100": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "R100",
+      "q": 1.0,
+      "r": 100,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.10710364993220829,
+        "J": 0.017909148975763706,
+        "ambiguous": 0.8534733843280196,
+        "biased": 0.04255464494166199,
+        "change": 0.09939139588673852,
+        "channels": 0.0392465695004493,
+        "clean": 0.0011661419246723334,
+        "coherent": 0.08010859531991667,
+        "contradict": 0.16915623692858106,
+        "corrupt": 0.09175065054524616,
+        "dynamics": 0.03132434225304773,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.008276053036823796,
+        "heavy": 0.017750536604816017,
+        "isolated": 0.10361976223784233,
+        "missing": 0.0024100919019044023,
+        "motion": 0.002341163682369935,
+        "noise": 0.044753872772366574,
+        "partial": 0.0017385349116776426,
+        "sustained": 0.37469479037552555
+      },
+      {
+        "C": 0.10664311865860003,
+        "J": 0.017231887060556127,
+        "ambiguous": 0.7349138183556484,
+        "biased": 0.03342752575114882,
+        "change": 0.08058762400454676,
+        "channels": 0.0645697572005417,
+        "clean": 0.001160262560748459,
+        "coherent": 0.05993401175131878,
+        "contradict": 0.15534598896971244,
+        "corrupt": 0.16036750855080623,
+        "dynamics": 0.023655075414505143,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.008528753493804286,
+        "heavy": 0.022790733389933485,
+        "isolated": 0.07293525856413015,
+        "missing": 0.0027539152978753845,
+        "motion": 0.0025771738093505405,
+        "noise": 0.04204279498548255,
+        "partial": 0.0017895286749541664,
+        "sustained": 0.33247703540232104
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 87.915375,
+        "mean_us_per_step": 85.54153515624999,
+        "p95_us_per_step": 87.72610234375
+      },
+      "20": {
+        "max_us_per_step": 5.43225859375,
+        "mean_us_per_step": 4.9651496484375,
+        "p95_us_per_step": 5.390975156250001
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.3668080000000007
+  },
+  "RAW05": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "raw",
+      "name": "RAW05",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 0.05
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.1943857566587933,
+        "J": 0.04594284874467806,
+        "ambiguous": 1.0402411404102871,
+        "biased": 0.09998371890470793,
+        "change": 0.06299137570631232,
+        "channels": 0.0924906644025839,
+        "clean": 0.0011185260275648364,
+        "coherent": 0.1517225318713241,
+        "contradict": 0.27195471626862217,
+        "corrupt": 0.22650856752342516,
+        "dynamics": 0.02242865154484114,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.058004215113873145,
+        "isolated": 0.22254574925120205,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576616638831234,
+        "noise": 0.12924087333369602,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.509444849544437
+      },
+      {
+        "C": 0.20007891593412588,
+        "J": 0.039430765553007466,
+        "ambiguous": 0.906756491297618,
+        "biased": 0.08628885722040362,
+        "change": 0.0444623562759245,
+        "channels": 0.15438060778282167,
+        "clean": 0.0011348322074842892,
+        "coherent": 0.12008234825097165,
+        "contradict": 0.23945437829423882,
+        "corrupt": 0.33742105332686495,
+        "dynamics": 0.017707271318488343,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.007666987445745105,
+        "heavy": 0.07344841489819705,
+        "isolated": 0.17581311930265378,
+        "missing": 0.0025451265697503615,
+        "motion": 0.0026066835246905556,
+        "noise": 0.1102406920933949,
+        "partial": 0.001845339153789117,
+        "sustained": 0.45311801075696834
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 107.643234375,
+        "mean_us_per_step": 100.87503124999999,
+        "p95_us_per_step": 106.696321875
+      },
+      "20": {
+        "max_us_per_step": 5.82701875,
+        "mean_us_per_step": 5.562939453125,
+        "p95_us_per_step": 5.7825491015625
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 80,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 137.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.873439000000001
+  },
+  "RAW10": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "raw",
+      "name": "RAW10",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 0.1
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.2128708679876656,
+        "J": 0.048510940554257524,
+        "ambiguous": 1.050201060049691,
+        "biased": 0.10654431275334364,
+        "change": 0.0619986805804771,
+        "channels": 0.10608475940528939,
+        "clean": 0.0011185260275648364,
+        "coherent": 0.16099663581295565,
+        "contradict": 0.28069196585080813,
+        "corrupt": 0.2761839505308735,
+        "dynamics": 0.022417928507000542,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.060508509641349205,
+        "isolated": 0.2608399055903333,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576623308363295,
+        "noise": 0.13869452345640584,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.5189380021795145
+      },
+      {
+        "C": 0.2201235862913608,
+        "J": 0.04167651938681819,
+        "ambiguous": 0.9150435007437067,
+        "biased": 0.09196547160797296,
+        "change": 0.04339305550757059,
+        "channels": 0.17426434433367455,
+        "clean": 0.0011348322074842892,
+        "coherent": 0.12764897370333328,
+        "contradict": 0.24657789529208837,
+        "corrupt": 0.4012868323455292,
+        "dynamics": 0.017696954263379003,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.0778822561785719,
+        "isolated": 0.2068023945606478,
+        "missing": 0.0025451265697503615,
+        "motion": 0.0026067576760784553,
+        "noise": 0.11857335050005575,
+        "partial": 0.001845339153789117,
+        "sustained": 0.46101483130979587
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 105.4453125,
+        "mean_us_per_step": 100.63649140625,
+        "p95_us_per_step": 103.18967109375001
+      },
+      "20": {
+        "max_us_per_step": 6.21565703125,
+        "mean_us_per_step": 5.74096671875,
+        "p95_us_per_step": 6.081847304687501
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 80,
+        "aten::sqrt": 16
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 137.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 33,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 32,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.876560000000005
+  },
+  "STABLE": {
+    "configuration": {
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "plain",
+      "name": "STABLE",
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.23617802801764426,
+        "J": 0.04939964271935491,
+        "ambiguous": 1.0571595006364136,
+        "biased": 0.11063498926189505,
+        "change": 0.061582044843882765,
+        "channels": 0.12219723945631139,
+        "clean": 0.0011185260275648364,
+        "coherent": 0.16760191997412255,
+        "contradict": 0.2872304964427026,
+        "corrupt": 0.36054707825080107,
+        "dynamics": 0.02241844726315008,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006693700856417011,
+        "heavy": 0.06116588659083713,
+        "isolated": 0.30536977581361374,
+        "missing": 0.0025394822252571133,
+        "motion": 0.002576623308363295,
+        "noise": 0.1419782243556959,
+        "partial": 0.0020136897087630655,
+        "sustained": 0.5257293067759291
+      },
+      {
+        "C": 0.24536037688024329,
+        "J": 0.0424854969463167,
+        "ambiguous": 0.9206233546178614,
+        "biased": 0.09487678451954817,
+        "change": 0.04291708098956189,
+        "channels": 0.19406774329261783,
+        "clean": 0.0011348322074842892,
+        "coherent": 0.1328783966067345,
+        "contradict": 0.25172039210577174,
+        "corrupt": 0.5076050231786559,
+        "dynamics": 0.017695736952697546,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.07990891518786619,
+        "isolated": 0.24170811815457155,
+        "missing": 0.0025451265697503615,
+        "motion": 0.0026067576760784553,
+        "noise": 0.12165001479830187,
+        "partial": 0.001845339153789117,
+        "sustained": 0.4664776572217089
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 99.4889375,
+        "mean_us_per_step": 88.7771140625,
+        "p95_us_per_step": 96.73171093750001
+      },
+      "20": {
+        "max_us_per_step": 5.842253125,
+        "mean_us_per_step": 5.242840156250001,
+        "p95_us_per_step": 5.606453476562501
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 32
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 125.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 1,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen1",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 6
+    },
+    "screening_cpu_seconds_with_diagnostics": 2.4199889999999993
+  },
+  "TEMP2": {
+    "configuration": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "temporal",
+      "name": "TEMP2",
+      "persistence": 2,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.07283508000457573,
+        "J": 0.023948913455701697,
+        "ambiguous": 0.8896693162621384,
+        "biased": 0.005249194894059963,
+        "change": 0.19950853051241663,
+        "channels": 0.002488949132179572,
+        "clean": 0.0011208938489635349,
+        "coherent": 0.0023327596865656284,
+        "contradict": 0.2034418172076567,
+        "corrupt": 0.002359401404780897,
+        "dynamics": 0.027328084037846447,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006707426774720979,
+        "heavy": 0.02290543017442439,
+        "isolated": 0.0023327596865656284,
+        "missing": 0.0025400291112486753,
+        "motion": 0.0025767973834076013,
+        "noise": 0.06693708499896238,
+        "partial": 0.002013904115279284,
+        "sustained": 0.47217706505345397
+      },
+      {
+        "C": 0.06761057727627354,
+        "J": 0.02670552565520834,
+        "ambiguous": 0.7909664561407568,
+        "biased": 0.004829070638462312,
+        "change": 0.15158628791327847,
+        "channels": 0.0022710978453571607,
+        "clean": 0.0011436177610727055,
+        "coherent": 0.008793825418501156,
+        "contradict": 0.19959461843978615,
+        "corrupt": 0.002112011652146757,
+        "dynamics": 0.020620013247241175,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.02080869508244658,
+        "isolated": 0.002153226970773642,
+        "missing": 0.002535007910992434,
+        "motion": 0.002595826062891579,
+        "noise": 0.07524504156693178,
+        "partial": 0.0018371738062640548,
+        "sustained": 0.4323061133262271
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 129.235671875,
+        "mean_us_per_step": 119.61878203124999,
+        "p95_us_per_step": 123.95686328125
+      },
+      "20": {
+        "max_us_per_step": 7.13606796875,
+        "mean_us_per_step": 6.7710954296875006,
+        "p95_us_per_step": 6.959828867187501
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 153.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen2",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 10
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.613276000000001
+  },
+  "TEMP3": {
+    "configuration": {
+      "alpha": 1.0,
+      "empirical12": 26.216967,
+      "empirical6": 16.811894,
+      "gain": 1.0,
+      "mode": "temporal",
+      "name": "TEMP3",
+      "persistence": 3,
+      "q": 1.0,
+      "r": 1.0,
+      "threshold": 1.0
+    },
+    "development_root_headlines": [
+      {
+        "C": 0.0531840144203219,
+        "J": 0.023948913455701697,
+        "ambiguous": 0.7528848979577252,
+        "biased": 0.00477097238681284,
+        "change": 0.30836290628110397,
+        "channels": 0.002488949132179572,
+        "clean": 0.0011208938489635349,
+        "coherent": 0.0023327596865656284,
+        "contradict": 0.12318485985436638,
+        "corrupt": 0.002359401404780897,
+        "dynamics": 0.027328084037846447,
+        "free32": 0.01203983813601593,
+        "free8": 0.002365711604298648,
+        "gap": 0.006707426774720979,
+        "heavy": 0.02277416636960417,
+        "isolated": 0.0023327596865656284,
+        "missing": 0.0025400291112486753,
+        "motion": 0.0025767973834076013,
+        "noise": 0.06693708499896238,
+        "partial": 0.002013904115279284,
+        "sustained": 0.33522909227574454
+      },
+      {
+        "C": 0.05703081732242138,
+        "J": 0.02670552565520834,
+        "ambiguous": 0.7009970898598227,
+        "biased": 0.004829070638462312,
+        "change": 0.22600336276672167,
+        "channels": 0.0022710978453571607,
+        "clean": 0.0011436177610727055,
+        "coherent": 0.008793825418501156,
+        "contradict": 0.14082625039933566,
+        "corrupt": 0.002112011652146757,
+        "dynamics": 0.020620013247241175,
+        "free32": 0.012583571965786397,
+        "free8": 0.004606579300109851,
+        "gap": 0.0076669877872434355,
+        "heavy": 0.02168635933758573,
+        "isolated": 0.002153226970773642,
+        "missing": 0.002535007910992434,
+        "motion": 0.002595826062891579,
+        "noise": 0.07536301241374069,
+        "partial": 0.0018371738062640548,
+        "sustained": 0.3573701293941229
+      }
+    ],
+    "latency": {
+      "1": {
+        "max_us_per_step": 123.79621875,
+        "mean_us_per_step": 118.78502656249998,
+        "p95_us_per_step": 122.8901265625
+      },
+      "20": {
+        "max_us_per_step": 7.12275390625,
+        "mean_us_per_step": 6.756471249999999,
+        "p95_us_per_step": 6.9634619140625
+      }
+    },
+    "operations": {
+      "batch": 1,
+      "horizon": 64,
+      "nonlinear_operator_calls": {
+        "aten::clamp_min": 64
+      },
+      "note": "Torch profiled mm/bmm/addmm/mv/addmv FLOPs divided by2; omits elementwise ops and internal solve/eigen flops; includes initialization and prior readout; no timing claim from MACs.",
+      "profiled_linear_macs_per_step": 153.375,
+      "schedule": "every4",
+      "solves_and_eigen_operations": [
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              1
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 17,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            []
+          ],
+          "operator": "aten::linalg_eigvalsh"
+        },
+        {
+          "count": 16,
+          "input_shapes": [
+            [
+              1,
+              2,
+              2
+            ],
+            [
+              1,
+              2,
+              14
+            ],
+            []
+          ],
+          "operator": "aten::linalg_solve"
+        }
+      ]
+    },
+    "phase": "screen2",
+    "primary_fit_shared_with": "FILTER2; no added fitting",
+    "resources": {
+      "correct_macs": 90,
+      "fitted_scalars": 64,
+      "halting_macs": 0,
+      "initial_macs": 72,
+      "nonlinear_note": "Joseph covariance and diagnostic NIS; 2x2 solves; robust modes add a second gain solve; MAC proxy inherited only, not equal-compute claim",
+      "persistent_bytes": 920,
+      "predict_macs": 80,
+      "prior_workspace_floats": 6,
+      "readout_macs": 24,
+      "settle_macs": 0,
+      "state_floats": 10
+    },
+    "screening_cpu_seconds_with_diagnostics": 3.509488000000001
+  }
+}

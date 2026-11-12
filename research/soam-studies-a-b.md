@@ -8,6 +8,8 @@ description: "Methods, complete model comparisons, uncertainty, decisions, resou
 <link rel="stylesheet" href="{{ '/assets/soam-e1-results.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+<p class="e1-status"><strong>Follow-up, November 12:</strong> <a href="{{ '/research/soam-study-b2/' | relative_url }}">Study B2 adds robust Kalman correction results</a>. Its fresh evidence does not alter the frozen A/B records below.</p>
+
 **Completed November 11, 2026.** Study A leaves the declared practical adaptive-update advantage **inconclusive**. Study B v1 finds an accuracy/robustness **tradeoff**; its fresh magnitude supplement yields **negative practical-advantage evidence** against the declared 10% gain. The retained interface separates prediction, sensory correction, and optional internal settling, with PC16 as the small robust neural reference and FILTER2 as the strong accuracy/resource reference.
 
 This is the detailed companion to the [A/B article]({{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}) and the first results installment of [Studies A–F]({{ '/research/soam-studies/' | relative_url }}). These user-requested studies branch from E1 under new protocols. Historical E1/SOAM-052 remains **stop for its tested useful-sharing claim**. No next experiment is selected here.

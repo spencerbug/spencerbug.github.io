@@ -1,0 +1,63 @@
+{
+  "all_saved_example_predictions_identical": {
+    "ADAPT1": true,
+    "CHANNEL2": true,
+    "FILTER2": true,
+    "NIS99": true,
+    "NISEMP": true,
+    "PC16": true,
+    "R100": true,
+    "STABLE": true
+  },
+  "paired_lower_bound": {
+    "family": 1,
+    "hi": 0.30264966653969777,
+    "lo": 0.27456436461884043,
+    "mean": 0.28911218664285887,
+    "n": 10,
+    "width": 0.028085301920857342
+  },
+  "roots": {
+    "15307": {
+      "equal_prior_pair_minimum_nmse": 0.26941470425202696,
+      "evidence_identical": true
+    },
+    "15313": {
+      "equal_prior_pair_minimum_nmse": 0.30252850514924345,
+      "evidence_identical": true
+    },
+    "15319": {
+      "equal_prior_pair_minimum_nmse": 0.2460628769396449,
+      "evidence_identical": true
+    },
+    "15329": {
+      "equal_prior_pair_minimum_nmse": 0.28726203275848594,
+      "evidence_identical": true
+    },
+    "15331": {
+      "equal_prior_pair_minimum_nmse": 0.29024899082268374,
+      "evidence_identical": true
+    },
+    "15349": {
+      "equal_prior_pair_minimum_nmse": 0.32330665771874345,
+      "evidence_identical": true
+    },
+    "15359": {
+      "equal_prior_pair_minimum_nmse": 0.29664401172872057,
+      "evidence_identical": true
+    },
+    "15361": {
+      "equal_prior_pair_minimum_nmse": 0.26265670161895416,
+      "evidence_identical": true
+    },
+    "15373": {
+      "equal_prior_pair_minimum_nmse": 0.29776682604451515,
+      "evidence_identical": true
+    },
+    "15377": {
+      "equal_prior_pair_minimum_nmse": 0.3152305593955699,
+      "evidence_identical": true
+    }
+  },
+  "scope": "Identical evidence, different truths. Excluded from gate; equal-prior midpoint lower bound."
+}

@@ -1,0 +1,17 @@
+{
+  "namespace": "soam-study-b2", "version": 1,
+  "fixture_root": 15001, "normalization_root": 15007,
+  "development_roots": [15101, 15107],
+  "confirmation_roots": [15307, 15313, 15319, 15329, 15331, 15349, 15359, 15361, 15373, 15377],
+  "repeat_root": 15307, "updates": 1200, "train_batch": 8, "train_horizon": 16,
+  "development_batch": 12, "eval_batch": 20, "eval_horizon": 64,
+  "filter_penalty": 0.0001, "pc16_learning_rate": 0.01,
+  "bootstrap_resamples": 20000, "bootstrap_seed": 15203,
+  "benefit": 0.30, "precision_width": 0.40, "guard_margin": 0.01,
+  "J_max": 0.05, "corrupt_max": 0.15, "change_max": 0.07,
+  "max_challengers": 3, "max_extensions": 2, "max_extension_settings": 2,
+  "max_hybrids": 1, "max_fit_attempts": 32,
+  "cpu_seconds": 1800, "wall_seconds": 3600,
+  "rss_bytes": 2147483648, "artifact_bytes": 1073741824,
+  "threads": 1, "device": "cpu", "finish_reserve": 0.1
+}

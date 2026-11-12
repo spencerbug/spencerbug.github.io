@@ -10,6 +10,8 @@ soam_studies: "A–B"
 <link rel="stylesheet" href="{{ '/assets/soam-e1-results.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+<p class="e1-status"><strong>Follow-up, November 12:</strong> <a href="{{ '/blog/soam-study-b2-robust-correction/' | relative_url }}">Study B2 tests robust correction for the fitted filter</a>, with a new protocol and fresh confirmation. The A/B results and decisions below are preserved.</p>
+
 SOAM's first experiment left a useful problem: an ordinary gated recurrent network predicted more accurately than the proposed shared-memory candidate. **Studies A and B investigate what to retain from that result.** A asks what the gates contribute. B asks how a recurrent estimate should change when new sensory evidence arrives.
 
 The outcome favors a simpler starting point than a mandatory gated-memory architecture. Adaptive gates improve some errors, but Study A does not establish its declared practical update-gate benefit. Study B supports separating prediction from sensory correction, while finding that learned sensory gain adds little practical advantage over a fixed correction in this task. A tiny fitted filter is more accurate and cheaper on the primary prediction measure, yet much more vulnerable to corrupted observations.

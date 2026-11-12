@@ -1,0 +1,40 @@
+{
+  "artifact_index_sha256": "23b6d30c1ce52dee59d212fc25e07564c25ff23bf446195a98ac40b2ac26e709",
+  "completed_confirmation_and_repeat_evaluations": 88,
+  "completed_new_base_fits": 28,
+  "confirmation_receipt": "5ad04a769c8f62f4dceefa72043a7e5d98467546d2e4c16ccb4f037f5039d1a7",
+  "divergent_episodes_nmse_gt100": 0,
+  "exact_repeat_candidates": 8,
+  "finite_saved_arrays": 80666,
+  "frozen_source_files_verified": 72,
+  "historical_dependency_files_verified": 79,
+  "historical_fitted_tensors_exact": true,
+  "historical_prediction_arrays_exact": 216,
+  "historical_tracked_artifacts_and_decisions_unchanged": true,
+  "independent_reduction": {
+    "checked_values": 1040,
+    "independent_implementation": true,
+    "maximum_absolute_error": 1.1102230246251565e-16,
+    "tolerance": 1e-12
+  },
+  "indexed_immutable_artifact_files": 1317,
+  "maximum_covariance_asymmetry": 2.9453076422214508e-08,
+  "minimum_positive_posterior_covariance_eigenvalue": 9.749213442711036e-05,
+  "nonfinite_records": 0,
+  "post_freeze_reporting_scripts": {
+    "scripts/diagnose_study_b2.py": "ae66f860d810143a1ba5887e473cf68afdf810c5108c88bcb30c7fffcb553311",
+    "scripts/finalize_study_b2.py": "70489ef28890cf014a20eb9e0e792df6f6ab725d374224d1f42e670cf8c2270e",
+    "scripts/gain_audit_study_b2.py": "bfd44c2a9d5c5ac02e61626f29ace7255bfa7f3c9fa45c48d56d82f218348e58",
+    "scripts/report_study_b2.py": "32410c02433a7d24bf7dc82c8a7815f20ece0997b025459f38b4e8598f8921dd",
+    "scripts/resources_study_b2.py": "50515486bc9cc0c62a6fa62dd23abae28ecaf991cf0abd6e117c6cd2998d8ce8"
+  },
+  "selection_or_threshold_changed": false,
+  "total_fits_including_historical_audit": 29,
+  "validation": {
+    "baseline_pytest": "238 passed in 16.94s before changes",
+    "broad_lint_limitation": "16 existing errors in historical reports/shared-population-gate/audit.py and reports/shared-population-study/confirmation/{analysis,final-verify,render}.py; unchanged",
+    "final_pytest": "266 passed in 15.65s",
+    "lint_scope": "soam tests scripts; frozen historical report scripts excluded",
+    "robust_invariants": "28 passed in 1.49s"
+  }
+}

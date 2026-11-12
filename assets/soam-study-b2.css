@@ -1,0 +1,27 @@
+/* B2: responsive mechanism and measurement cards, inheriting the site's themes. */
+.b2-flow, .b2-designs, .b2-metrics, .b2-costs { display: grid; gap: .8rem; margin: 1.3rem 0; }
+.b2-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); counter-reset: step; }
+.b2-flow > div, .b2-designs > div, .b2-metric, .b2-cost { border: 1px solid var(--border); border-radius: 8px; padding: .9rem; background: var(--surface); }
+.b2-flow b, .b2-flow span { display: block; }
+.b2-flow span { margin-top: .4rem; font-size: .94rem; }
+.b2-designs, .b2-costs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.b2-designs > div { border-top: 3px solid #8a9399; }
+.b2-designs > .b2-selected { border-top-color: #168070; }
+.b2-designs strong { display: block; font-size: 1.02rem; margin-bottom: .5rem; }
+.b2-designs p { font-size: .94rem; line-height: 1.55; margin: 0; }
+.b2-metrics { grid-template-columns: 1fr; }
+.b2-metric > strong, .b2-cost > strong { display: block; margin-bottom: .65rem; }
+.b2-bar-row { display: grid; grid-template-columns: 10rem minmax(0, 1fr) 4.6rem; align-items: center; gap: .65rem; margin: .55rem 0; }
+.b2-bar-row > span:first-child { font-size: .92rem; }
+.b2-track { display: block; background: var(--border); border-radius: 3px; height: .75rem; }
+.b2-fill { display: block; height: 100%; border-radius: 3px; background: #b65540; }
+.b2-fill.adaptive { background: #168070; }
+.b2-fill.neural { background: #176c91; }
+.b2-bar-row b { font-size: .9rem; font-variant-numeric: tabular-nums; text-align: right; }
+.b2-cost .b2-bar-row { grid-template-columns: 7.3rem minmax(0, 1fr) 4.3rem; }
+.b2-caption { font-size: .9rem; color: var(--muted-text); line-height: 1.55; }
+.b2-metric p, .b2-cost p { margin: .5rem 0 0; }
+@media screen and (max-width: 650px) {
+  .b2-flow, .b2-designs, .b2-costs { grid-template-columns: 1fr; }
+  .b2-bar-row { grid-template-columns: 7.6rem minmax(0, 1fr) 4.3rem; gap: .45rem; }
+}

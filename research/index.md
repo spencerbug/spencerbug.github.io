@@ -9,9 +9,15 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
-The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A and B are complete; C–F remain proposed directions.
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B and the inserted B2 correction study are complete; C–F remain future directions.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">Study B2</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-12">November 12, 2026</time></div>
+    <h3><a href="{{ '/research/soam-study-b2/' | relative_url }}">Robust Kalman correction</a></h3>
+    <p>Channel disagreement improves a tiny filter's accuracy and corruption resistance while preserving genuine-change response. Eight correction designs, coherent-evidence limits, and measured runtime costs.</p>
+    <p><a href="{{ '/blog/soam-study-b2-robust-correction/' | relative_url }}">Read the visual article →</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Series A–F →</a></p>
+  </article>
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">Studies A + B</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-11">November 11, 2026</time></div>
     <h3><a href="{{ '/research/soam-studies-a-b/' | relative_url }}">Recurrent gates and sensory correction</a></h3>
