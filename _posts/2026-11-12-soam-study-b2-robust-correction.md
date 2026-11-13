@@ -53,6 +53,8 @@ The adaptive-variance filter asks whether the observed channels fit *any* displa
 
 The selected rule uses the current snapshot, without a history window, and carries one variance scalar for sparse-observation fallback. That estimate drives both the state correction and its uncertainty update. This depends on the fixed, redundant observation model; it is not a generally calibrated Bayesian posterior.
 
+**Beyond this environment:** richer sensory features and dynamics may require nonlinear prediction and correction models. The causal ordering stays the same: **predict → score before seeing the new observation → correct**. ADAPT1's linear channel-disagreement rule is specific to this benchmark; its transfer is untested. Future designs must distinguish sensor unreliability from an inadequate model, and earn their robustness on richer environments rather than inherit it from B2.
+
 ## Better accuracy without freezing the state
 
 {% include soam-b2-headline.html %}

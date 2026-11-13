@@ -30,6 +30,8 @@ All filter variants inherit the same fitted two-dimensional observation and acti
 
 A rejected observation retains prior mean and covariance. Missing observations still allow process uncertainty to propagate. No correction changes persistent parameters. Adaptive variance is a bounded plug-in estimate, not an exact Bayesian posterior; fixed observation structure, redundancy and noise assumptions matter.
 
+**Scope clarification, November 13:** richer environments may require nonlinear prediction, observation and correction models while retaining **predict → score before current evidence → correct**. B2 supports that interface within its tested setting; it does not validate ADAPT1's variance rule beyond redundant linear features. An unexplained residual may indicate model mismatch or genuine novelty rather than sensor noise. Carry forward the interface as a design principle, and test the estimator and reliability mechanism afresh instead of specializing the broader architecture to this environment.
+
 ## Bounded search and fresh confirmation
 
 Development used two fitted roots and twelve paired episodes per cell. Phase 1 screened fourteen filter configurations plus original FILTER2 and PC16. Besides the confirmed controls, these included process-noise scaling, fixed gain attenuation, raw innovation weighting, normalized whole-vector Huber weighting and a second channel threshold.
