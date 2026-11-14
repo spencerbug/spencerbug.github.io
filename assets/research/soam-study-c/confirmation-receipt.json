@@ -1,0 +1,360 @@
+{
+  "budget_before_confirmation": [
+    {
+      "cpu_seconds": 5.900456,
+      "cumulative_artifact_bytes": 9804200,
+      "error": null,
+      "peak_rss_bytes": 319619072,
+      "phase": "fixture",
+      "status": "complete",
+      "wall_seconds": 5.944201083038934
+    },
+    {
+      "cpu_seconds": 396.66583799999995,
+      "cumulative_artifact_bytes": 12990620,
+      "error": null,
+      "peak_rss_bytes": 941932544,
+      "phase": "development",
+      "status": "complete",
+      "wall_seconds": 396.65359975001775
+    },
+    {
+      "cpu_seconds": 13.897708,
+      "cumulative_artifact_bytes": 14075831,
+      "error": null,
+      "peak_rss_bytes": 296960000,
+      "phase": "calibrate",
+      "status": "complete",
+      "wall_seconds": 13.93219850002788
+    }
+  ],
+  "development_sha256": "bbff5579a3e85a334bad6ca1fff9598ccd961e3739523e1973ba1cb9b5a36073",
+  "manifest": {
+    "bootstrap_draws": 20000,
+    "bootstrap_seed": 26501,
+    "confirmation_roots": [
+      26303,
+      26309,
+      26317,
+      26321,
+      26339,
+      26347,
+      26357,
+      26371,
+      26387,
+      26399
+    ],
+    "development_roots": [
+      26101,
+      26107
+    ],
+    "effect_min": 0.01,
+    "eval_pairs": 16,
+    "family_size": 16,
+    "fixture_root": 26003,
+    "fixture_updates": 40,
+    "guards": {
+      "ambiguity_confidence_upper": 0.05,
+      "ambiguous_brier_absolute": 0.26,
+      "ambiguous_brier_difference": 0.01,
+      "late_brier_absolute": 0.15,
+      "prior_nmse_absolute": 0.25,
+      "prior_nmse_difference": 0.02,
+      "recovery_difference": 4,
+      "reference_late_brier": 0.18,
+      "reference_prior_nmse": 0.3
+    },
+    "hazard": 0.01,
+    "horizon": 48,
+    "interval_width_max": 0.04,
+    "learning_rates": [
+      0.003,
+      0.01
+    ],
+    "limits": {
+      "artifact_bytes": 2147483648,
+      "cpu_seconds": 7200,
+      "fits": 70,
+      "rss_bytes": 2147483648,
+      "wall_seconds": 14400
+    },
+    "multi_width": 16,
+    "namespace": "soam-study-c",
+    "neural_training_variance": 0.0025,
+    "normalization_root": 26017,
+    "primary_conditions": [
+      "later",
+      "ambiguous",
+      "uninformative",
+      "diagnostic",
+      "misleading",
+      "delayed"
+    ],
+    "reserve_fraction": 0.1,
+    "ridge": 0.0001,
+    "score_clip": 6,
+    "secondary_conditions": [
+      "sensor",
+      "change",
+      "coherent",
+      "unknown"
+    ],
+    "single_widths": [
+      16,
+      32,
+      40
+    ],
+    "study": "study-c",
+    "temperatures": [
+      1,
+      4,
+      16,
+      64
+    ],
+    "train_batch": 8,
+    "train_updates": 1200,
+    "training_conditions": [
+      "later",
+      "ambiguous",
+      "uninformative",
+      "diagnostic",
+      "misleading",
+      "delayed",
+      "sensor",
+      "change"
+    ],
+    "variance_floor": 0.0001,
+    "version": 1
+  },
+  "normalization": 0.03817612653279456,
+  "review": "C-H1 only; all mandatory controls retained; no post-confirmation tuning",
+  "selection": {
+    "adequacy_thresholds": {
+      "ADAPT1-C": 3.2572216165594416,
+      "ADAPT1-M": 2.7891625629099526,
+      "FILTER2-C": 3.372094900329212,
+      "FILTER2-M": 3.0224812416249978,
+      "NISEMP-C": 3.592541212762613,
+      "NISEMP-M": 3.017067147382038,
+      "PC16": 7.537829051017766,
+      "PC32": 7.21871372699744,
+      "TWO16": 3.6841292023659156
+    },
+    "convergence": {
+      "PC16": {
+        "early": [
+          0.20877954964025622,
+          0.2355729903267875
+        ],
+        "late": [
+          0.20128313956388078,
+          0.20698426205765055
+        ],
+        "relative_late_improvement": 0.08120835395289681
+      },
+      "PC32": {
+        "early": [
+          0.2188365966584257,
+          0.2533263738852461
+        ],
+        "late": [
+          0.20675797895847647,
+          0.19868461251233738
+        ],
+        "relative_late_improvement": 0.14130794500050015
+      },
+      "PC40": {
+        "early": [
+          0.22977754099123573,
+          0.2419706514718046
+        ],
+        "late": [
+          0.20915327305852896,
+          0.20699842003969923
+        ],
+        "relative_late_improvement": 0.11785206653265114
+      },
+      "TWO16": {
+        "early": [
+          0.1839966360279266,
+          0.18419301140887834
+        ],
+        "late": [
+          0.18380866714103813,
+          0.1839742015582979
+        ],
+        "relative_late_improvement": 0.0011048076454639553
+      }
+    },
+    "inventory": [
+      "PC16",
+      "PC32",
+      "TWO16",
+      "ADAPT1-C",
+      "ADAPT1-M",
+      "FILTER2-C",
+      "FILTER2-M",
+      "NISEMP-C",
+      "NISEMP-M"
+    ],
+    "learning_rates": {
+      "PC16": 0.003,
+      "PC32": 0.003,
+      "PC40": 0.003,
+      "TWO16": 0.01
+    },
+    "r2": "PC32",
+    "temperatures": {
+      "ADAPT1-C": 1,
+      "ADAPT1-M": 4,
+      "FILTER2-C": 1,
+      "FILTER2-M": 4,
+      "NISEMP-C": 1,
+      "NISEMP-M": 4,
+      "PC16": 4,
+      "PC32": 4,
+      "PC40": 4,
+      "TWO16": 4
+    },
+    "thresholds": {
+      "NISEMP-C": [
+        20.232569401975272,
+        26.216967
+      ],
+      "NISEMP-M": [
+        18.134895614667823,
+        26.216967
+      ]
+    }
+  },
+  "sha256": "0251d88a7fd866be18c1edce61e42edf3948422abaa59eb31c9c91c7abee8bc7",
+  "source": {
+    "aggregate": "18caccec2e5e72657d48559bff6782416b7ad373ccfc486e8932dc14aa0870b2",
+    "commit": "a552034b3badeee2d242c40103cb4e1243f4be30",
+    "deterministic": true,
+    "dirty": [
+      " M PRIORITIES.md",
+      " M README.md",
+      " M docs/HYPOTHESES.md",
+      " M docs/RESEARCH_PATHS.md",
+      " M docs/ROADMAP.md",
+      "?? docs/STUDY_C_PROTOCOL.md",
+      "?? docs/protocols/study_c_v1.json",
+      "?? docs/requests/study_c_2026_11_14.md",
+      "?? reports/STUDY_C_DEVELOPMENT.md",
+      "?? reports/study-c/",
+      "?? soam/ambiguity/",
+      "?? tests/test_ambiguity.py",
+      "?? tickets/SOAM-078-study-c-protocol.md",
+      "?? tickets/SOAM-079-study-c-harness.md",
+      "?? tickets/SOAM-080-study-c-experiment.md",
+      "?? tickets/SOAM-081-study-c-decision.md"
+    ],
+    "hashes": {
+      "docs/STUDY_C_PROTOCOL.md": "0f6c3412a774cd96a6db128214b2d810ca51f98d0119a7ef56557302bfbef111",
+      "docs/protocols/study_c_v1.json": "65004288551f65e7c2ca7b82bab501c8442e01870a8225b67cf3cd4516bc4345",
+      "pyproject.toml": "680595241f66bf9162eb0d65daef3cd0f9ab71a6e529b9246b40613c9eb149bc",
+      "soam/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "soam/ambiguity/__init__.py": "daa8eacc595dcae29077a031738daea1a3b77e18c808132b667988bc62f33f04",
+      "soam/ambiguity/data.py": "50930a320ab6e1e2aac031ea73f3e2bf9b5f1b983747d73e2a2cc014e237039f",
+      "soam/ambiguity/engine.py": "879f1c3444995c259ee28a11dd60c9f2a47894772a120513234f4440f0f73e26",
+      "soam/ambiguity/models.py": "13db156a9871dbfac52a362bdeb2689be5e17e9d9443bd37fd4666480dce77f9",
+      "soam/ambiguity/report.py": "6e69fa94a013219a142ded763885a83a51eca3980ca7cd715eaa6231a56ecc46",
+      "soam/ambiguity/runner.py": "f3bcb2bb3ccbf7d834e1e58bab984d16d3629430182a835fe6c3af5f797fa92e",
+      "soam/config.py": "3195fa16b109009fd20a1c4530f03f5a570fb1f1ec6298c64979d7ea8dbe0fa9",
+      "soam/encoders/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "soam/encoders/projection.py": "e2fa9cfe3db1c54978b26433c2d39c79663e4698afab18e5cb674653ad8ebdc5",
+      "soam/environments/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "soam/environments/dynamics.py": "d5ac252f58d1af880122fbcf1f8a588888baf85ab64afb7fda618953b6de290f",
+      "soam/evaluation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "soam/evaluation/compare.py": "ea3f6d6a5979b784298fc533f2aa5157183341b781bd65978c822d32e77514de",
+      "soam/evaluation/controls.py": "aebfef34e10dad71d14e962421e5c7e582e867618263c414b6eb9c8504497492",
+      "soam/evaluation/metrics.py": "486db9dbf5d354762c63d0de863699a76a054a96a7517e127b14375d8993c8a7",
+      "soam/evaluation/plots.py": "32e1804d4c52f21c863e6b66b65e4a5ce63680bb3d442a10e4d0661ef3d4700d",
+      "soam/evaluation/provenance.py": "f6cd4d33f4aea5c6618607d68bf737e30e99035c8e19b0e9edf38e20ffd64398",
+      "soam/evaluation/runner.py": "bf15f706ba445b21e32a49d683223de57fd165f98cf0b5a992ed35f08b9c8368",
+      "soam/gating/__init__.py": "a8274fec37ef9c47d7dcfaf0467afac0271dd9fe57ffa10f053c8701a67edf24",
+      "soam/gating/data.py": "ab8d09337928daae43dbe0f7308d80d7f756358a9c19a6f08dddbdea1a952bae",
+      "soam/gating/diagnostics.py": "2eece0bc61af5276960930df2d9230cd12bffb4a7f0646af8c9aa80a6169b5fc",
+      "soam/gating/engine.py": "f4b4df719ee64b0ee1e5f3a154ad556b3fdf91561d9cd0bdeb642db28bff624f",
+      "soam/gating/models.py": "b0f1c1fe1d4756e9a11aa1099a55674e0c43a7c6040d4fc8e59f20187832c5e3",
+      "soam/gating/render.py": "627ef487b5ae2b3cc9073081f0b257ef68216ed7cee6b9b9500fb141d6ee5788",
+      "soam/gating/runner.py": "e86aed3ca8d4c80e1230148c1dec232e4b913c472b9ce02ba687272eed1ad82b",
+      "soam/gating/statistics.py": "988033299088ae49e323a32e39e78a1ae7f69e9d73c625f0200b1d3ad9815f66",
+      "soam/handover/__init__.py": "d1e44d34f59d806fe2a4c36a8b961a97b6a82b8d5f8213a2bb6f6cefe554a3a6",
+      "soam/handover/data.py": "770b2bb65d1f833cb67bff61b9636019e5cb8fa54c117576065f9d6ddadba8ca",
+      "soam/handover/evaluation.py": "3b2e769ceef459a541dd4d34838325d3bf192feb310be976db218b80fdd7156d",
+      "soam/handover/models.py": "ff2bc0413c8f508bf1999915c1faf1920efa5837b5daea49be4750c3aed88484",
+      "soam/handover/probes.py": "5891ff3141ad6ecc5d80d7de403e77475b027cfbe6e709bc4232edb2a1ab93d2",
+      "soam/handover/protocol.py": "6b35888b7d09674ac4f9f23ed8fe1df12f89bbbf0c1387eb5117a35050af4f41",
+      "soam/handover/runner.py": "878cf4dd3bc211c8fb512408451e50a2bf5eea6a88811dc26c78dd4eca8c25c7",
+      "soam/handover/training.py": "2eb33b1df118952b56f34702292159272e5d9a953ddcb024083e448b713c2884",
+      "soam/plasticity/__init__.py": "34a95a1e2d1c0aec1dc4a9839465ef144d32150b5372704f2d889ef1c385713d",
+      "soam/plasticity/memory.py": "ee66f656458bf79007771e0a47b21221c347975f9175c1c86738ec1439d4c11e",
+      "soam/plasticity/rules.py": "25ed007b208377ded80beacfc1f379d6a2fc0dabfccad1d9b4fed2f4231903c2",
+      "soam/platform/__init__.py": "4bec17439bf5479d3cda8dba16db50d21db3f5b86ee63a8a4b46f88d56346fa2",
+      "soam/platform/core.py": "c9656117c37415f80ef0cbc70ca46155d499cf61b19c2e95e50e7e09fc5c9336",
+      "soam/platform/evaluation.py": "969c260e91733d770e86e98935291ea5d984c4c8407a1ed9a155ae6190382096",
+      "soam/platform/runner.py": "a596196fae03b6bd3c25a4bd6d3a769cec2b772aecb613e11c3c3e63e56f6bd9",
+      "soam/platform/tasks.py": "fe30eac9cb007b24e87fd76433dd0dbe6896e0f08642e17e13ac4fee8ce670ee",
+      "soam/recurrent/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "soam/recurrent/models.py": "5955d574139bfccec77ffd5aa10e31190e2a580d107eb57588fb8f78c912de4f",
+      "soam/robust/__init__.py": "a6ca363139ccb654562470e0241cd47126e5287d5f6979167f0c1296af236190",
+      "soam/robust/data.py": "a1042331fe83a6ef9113b182239997c80dd8a720020de484134c3d9944996757",
+      "soam/robust/engine.py": "ebc3a55b92f36d6a88c096edf54e3263a09343396272c2879f67cb36875a663f",
+      "soam/robust/models.py": "c79b6413f4773973ad5c48c718bcb1d577cac1320a994a7c7990171f8ac84f22",
+      "soam/robust/runner.py": "665989b5f6c8d211ee2f87fd718ee5fce05030be3c5591914ff1b81694fa05d3",
+      "soam/robust/statistics.py": "eb35e3efd8057741c45f7c13bcb4c698270c7c04bb1a75ba074821f1f242b44a",
+      "soam/shared/__init__.py": "edf18631585db9e467642573b1d7886fded6c0790bdd43cbe537b0081850c364",
+      "soam/shared/archive.py": "ff1b6fec8f2af0e3fb6a836407ef8141e7bedc98a264914bc742c69ef962d272",
+      "soam/shared/continuation.py": "bcd2c6e4801d77536b13331489493f86c2139c15603c772cf3ac99197f61de03",
+      "soam/shared/data.py": "08e7b9cbff3665eb001363e6a49e127626e7ad3010a8fd9a6dd9fd3396636624",
+      "soam/shared/evaluation.py": "227bfb1a1df79686a6af69bc1cf52f2e2b1a020b9efdd9c70b6c3142fdf54054",
+      "soam/shared/execution.py": "036d40815eec675a33c19bf7e5fdab8c1d246f87c8efb2a68d747d2dc2ec3c10",
+      "soam/shared/fitting.py": "34c7446295005846fd775b70ab2f8737d51b0cd698dbbc87d684e47c580da2ce",
+      "soam/shared/inference.py": "b0ed0b495fee42c89087d3098c492a9cce2f2d5b0c9561c1e81b5908fa54cc22",
+      "soam/shared/models.py": "f5f5dc634515f34871f3a27d1474f63d7e109ff59e22e26c914fe1e1a7a65987",
+      "soam/shared/preflight.py": "474091c722f8ab8e647d76eff684b5817b976e94e9d0ea4df579ef758c12ff8e",
+      "soam/shared/runner.py": "e90e62af1801a7afdeb6daeda987975286605273c0d50b604d6f3f9b8202062f",
+      "soam/shared/study.py": "3ed8b8eca508455f8a12f4cf0d11dbe64494ce69151bf4b3f06e3f01dffe50ef",
+      "soam/shared/study_summary.py": "17b4c6d4ed5eb16c95694303eb2498dd4b9d5113c0f9feb0c9c4b284f300822e",
+      "soam/temporal/__init__.py": "59828288e1c3dca4f6c5c31f93e4a1eb2ee589ce197aa4099d7023ef81aedef8",
+      "soam/temporal/data.py": "79b7c6684168bd4eb9070970d85baf7d2937a3b7ab2c707c539fb9fb9a2abba6",
+      "soam/temporal/engine.py": "fe8ceff43978c00512ecf994872f83a0f643d7bbcbc850aa23d4a18954b3240f",
+      "soam/temporal/magnitude.py": "5d09e86e614db1ca55eaa59ffb96a2c6773ae8b41a118c3defa34a8ca70ab04e",
+      "soam/temporal/models.py": "4f6bf13db337279682d99cae27e05237ca553f1a1836a3699372b99653e9c279",
+      "soam/temporal/render.py": "cba6df9af00419fc34ee6508812a4596148da582d9f07289536e92d1aeec9b18",
+      "soam/temporal/runner.py": "c16034bb6f6e7c6b95a13c88cc7539a8f5f809259764536c006d45e73af0c3e5",
+      "soam/temporal/statistics.py": "faa3cebe2de82485f1847d4f23ef01774eabfd7fca62294e8cd78e5690025acd",
+      "tests/test_ambiguity.py": "99ba179b551d76f22fe0b5f91932a18b8b9e230c835bf6c8f876981c3637545a",
+      "tests/test_controls.py": "4b25d749c4338f4b062236c699624aec39af35ced6a3f4edb76bdc226d7ac8ef",
+      "tests/test_evaluation.py": "55d3172561d7e7efcba45baaac338154f1355012e616d8552d9eb239179adc4e",
+      "tests/test_gating.py": "1949d76f3d65492a77a9ed749b96f31563cf3da4c05d143c634b987a5c0c812d",
+      "tests/test_handover.py": "517096c13d809dc028a1ddb73380690c52079022db1ce019e77f0516ec44214c",
+      "tests/test_invariants.py": "d4c846e81582a14f7602567d348c29da06203d6a66927504d22e1970818aeef9",
+      "tests/test_plasticity.py": "8adda1c9ab7e46e8856cdf1467b363fbd73a020b4c74c90cf8152ac2b2557a2a",
+      "tests/test_platform.py": "4704067f9ae92b0873c0cb2b454b6e5c52f9924557ba10f40352b9761e9b91c1",
+      "tests/test_robust.py": "06e4bb452e64d230c740cc785e4642801d39d8529d0dcf076ee6c31ad3721583",
+      "tests/test_shared_archive.py": "378acb2c9967a02404afc87beb3ef6de39f52c6a6724717c24577be2b9ee40db",
+      "tests/test_shared_continuation.py": "6c6cc0d6906b066513adba97b6f555cf214855016ceb72600ef308b7100ead64",
+      "tests/test_shared_data_fitting.py": "1b2c3f399cb7733365dd09b4605fd9f06bed7e2ad4609f1bda10dcc93b7de0e8",
+      "tests/test_shared_evaluation.py": "ef7ce58cad3ebbfff67b37556ab3165bbf5f6172a98ea3038c96a8fd76542aea",
+      "tests/test_shared_inference.py": "2dca9eacc5b8de3ab2b7e7bda02c51df4974eb45e82e7f3036e69c337f82cc05",
+      "tests/test_shared_models.py": "a40359e0cc74494a0a6dcd127823b3555cb5f8b587288d2b76c45e3a1d7c5abe",
+      "tests/test_shared_runner.py": "b256d9b41a8aeddc7f81c91c76c217d9b069b9002a91ba3e480279403a2134cd",
+      "tests/test_shared_study.py": "5e11570577e238883ab06080b39982dedfc86947d8ea72d3d194b2233778db65",
+      "tests/test_temporal.py": "3a0a1ec74185b25c0357780b40462be4552ecff54035f4929c87f94e4fc84af6",
+      "tests/test_temporal_magnitude.py": "406a096af6cef62ba4033cc48de8f9c631b5cacd409a0a035963039ba5b4fe47",
+      "uv.lock": "ed4f2149ca93c83f55d0fc9fc9b9a1ec94afd5b6fcbd890203356a6a9d31f3a4"
+    },
+    "machine": "arm64",
+    "numerics": "CPU only; float32 neural/FILTER2; float64 simulation/robust algebra/reductions",
+    "numpy": "2.5.4",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13 (main, May  4 2026, 21:02:19) [Clang 22.1.3 ]",
+    "threads": 1,
+    "torch": "2.14.1",
+    "torch_build": "PyTorch built with:\n  - GCC 4.2\n  - C++ Version: 202002\n  - clang 21.0.0\n  - OpenMP 202011\n  - LAPACK is enabled (usually provided by MKL)\n  - NNPACK is enabled\n  - CPU capability usage: DEFAULT\n  - Build settings: BLAS_INFO=accelerate, BUILD_TYPE=Release, COMMIT_SHA=5c4886908584029761b579af026dcfb627c84070, CUDA_FLAGS= -DLIBCUDACXX_ENABLE_SIMPLIFIED_COMPLEX_OPERATIONS -Xfatbin -compress-all  -Wno-deprecated-gpu-targets --expt-extended-lambda -DCUB_WRAPPED_NAMESPACE=at_cuda_detail -DDISABLE_CUSPARSE_DEPRECATED -DCUDA_HAS_FP16=1 -D__CUDA_NO_HALF_OPERATORS__ -D__CUDA_NO_HALF_CONVERSIONS__ -D__CUDA_NO_HALF2_OPERATORS__ -D__CUDA_NO_BFLOAT16_CONVERSIONS__ -DC10_NODEPRECATED, CXX_COMPILER=/usr/bin/c++, CXX_FLAGS= -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -DNDEBUG -DUSE_KINETO -DUSE_PYTORCH_QNNPACK -DAT_BUILD_ARM_VEC256_WITH_SLEEF -DUSE_PYTORCH_METAL_EXPORT -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DUSE_COREML_DELEGATE -O2 -fPIC -DC10_NODEPRECATED -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Werror=braced-scalar-init -Werror=range-loop-construct -Werror=bool-operation -Wnarrowing -Wno-missing-field-initializers -Wno-unknown-pragmas -Wno-unused-parameter -Wno-strict-overflow -Wno-strict-aliasing -Wvla-extension -Wsuggest-override -Wnewline-eof -Winconsistent-missing-override -Winconsistent-missing-destructor-override -Wno-pass-failed -Wno-error=old-style-cast -Wconstant-conversion -Qunused-arguments -faligned-new -fno-math-errno -fno-trapping-math -Werror=format -fclang-abi-compat=17 -DUSE_MPS -Wno-missing-braces, LAPACK_INFO=accelerate, TORCH_VERSION=2.14.1, USE_CUDA=OFF, USE_CUDNN=OFF, USE_CUSPARSELT=OFF, USE_EIGEN_FOR_BLAS=ON, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_GLOO=ON, USE_HIPSPARSELT=OFF, USE_MKL=OFF, USE_MKLDNN=OFF, USE_MPI=OFF, USE_NCCL=OFF, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, USE_ROCM_KERNEL_ASSERT=OFF, USE_XCCL=OFF, USE_XPU=OFF, \n"
+  }
+}

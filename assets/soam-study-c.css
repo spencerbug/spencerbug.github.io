@@ -1,0 +1,21 @@
+/* Study C: compact evidence cards and responsive, accessible explanations. */
+.c-summary, .c-history { display: grid; gap: .8rem; margin: 1.4rem 0; }
+.c-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.c-history { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.c-summary > div, .c-history > div { border: 1px solid var(--border); border-radius: 8px; padding: 1rem; background: var(--surface); }
+.c-summary > div { border-top: 4px solid #176c91; }
+.c-summary > div:last-child { border-top-color: #b65540; }
+.c-summary strong, .c-history strong { display: block; margin-bottom: .5rem; }
+.c-summary p, .c-history p { margin: 0; font-size: .94rem; line-height: 1.6; }
+.c-key { border-left: 4px solid #168070; padding: .9rem 1rem; background: var(--surface); margin: 1.4rem 0; }
+.c-note { color: var(--muted-text); font-size: .91rem; line-height: 1.6; }
+.c-timeline { display: flex; margin: 1.2rem 0; gap: .25rem; }
+.c-timeline > div { flex: 1; border: 1px solid var(--border); border-radius: 6px; padding: .8rem; background: var(--surface); }
+.c-timeline b, .c-timeline span { display: block; }
+.c-timeline span { margin-top: .4rem; font-size: .9rem; }
+@media screen and (max-width: 650px) {
+  .c-summary, .c-history { grid-template-columns: 1fr; }
+  .c-timeline { flex-direction: column; }
+  .post-content .mermaid { overflow-x: auto; }
+  .post-content .mermaid svg { min-width: 640px; }
+}

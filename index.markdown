@@ -33,8 +33,8 @@ I’m a senior embedded systems and Linux engineer working across production fir
   <div class="card-meta"><span class="topic-pill">Embodied AI</span><span class="topic-pill">Recurrent memory</span></div>
   <h3><a href="{{ '/blog/self-organizing-attractor-memory/' | relative_url }}">Self-Organizing Attractor Memory (SOAM)</a></h3>
   <p>An ongoing research series exploring recurrent memory for embodied intelligence, from the architectural idea to controlled experiments on shared neurons, action-conditioned prediction, and memory.</p>
-  <p>Studies A and B now examine recurrent gates and sensory correction, beginning a six-study series branching from E1. The results retain simpler references and make accuracy, robustness, and computation tradeoffs explicit.</p>
-  <p class="card-links"><a href="{{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}">Latest article</a> · <a href="{{ '/research/soam-studies-a-b/' | relative_url }}">A + B report</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Studies A–F</a> · <a href="{{ '/research/soam-e1-results/' | relative_url }}">E1 results</a></p>
+  <p>Studies A, B, B2 and C-H1 now cover recurrent gates, sensory correction, robust filtering and hypothesis preservation. The results retain simpler references and make uncertainty, accuracy and computation tradeoffs explicit.</p>
+  <p class="card-links"><a href="{{ '/blog/soam-study-c-hypothesis-preservation/' | relative_url }}">Latest article</a> · <a href="{{ '/research/soam-study-c/' | relative_url }}">Study C report</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Studies A–F</a> · <a href="{{ '/research/soam-e1-results/' | relative_url }}">E1 results</a></p>
 </div>
 
 ## Current coursework

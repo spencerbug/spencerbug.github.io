@@ -1,0 +1,58 @@
+{
+  "ADAPT1-C-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "ADAPT1-M-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "BASE": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "trace_hash": true
+  },
+  "FILTER2-C-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "FILTER2-M-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "NISEMP-C-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "NISEMP-M-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "PC16": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "trace_hash": true
+  },
+  "PC16-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "PC32": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "trace_hash": true
+  },
+  "PC32-arrays": {
+    "arrays": 170,
+    "exact": true
+  },
+  "TWO16": {
+    "checkpoint_hash": true,
+    "input_hash": true,
+    "trace_hash": true
+  },
+  "TWO16-arrays": {
+    "arrays": 170,
+    "exact": true
+  }
+}

@@ -1,0 +1,920 @@
+{
+  "ADAPT1-C": [
+    {
+      "bin": 0,
+      "count": 16660,
+      "frequency": 0.07472989195678272,
+      "frequency_interval": [
+        0.07269865464119775,
+        0.0766001988553162
+      ],
+      "mean_probability": 0.02711607687958908
+    },
+    {
+      "bin": 1,
+      "count": 2925,
+      "frequency": 0.009914529914529915,
+      "frequency_interval": [
+        0.0014034718763259357,
+        0.02037351443123939
+      ],
+      "mean_probability": 0.14865422928496697
+    },
+    {
+      "bin": 2,
+      "count": 1532,
+      "frequency": 0.007832898172323759,
+      "frequency_interval": [
+        0.0,
+        0.01675257731958763
+      ],
+      "mean_probability": 0.2286937546096966
+    },
+    {
+      "bin": 3,
+      "count": 25,
+      "frequency": 0.36,
+      "frequency_interval": [
+        0.125,
+        0.5
+      ],
+      "mean_probability": 0.34214106079456125
+    },
+    {
+      "bin": 4,
+      "count": 16,
+      "frequency": 0.5625,
+      "frequency_interval": [
+        0.5,
+        1.0
+      ],
+      "mean_probability": 0.42490131613534765
+    },
+    {
+      "bin": 5,
+      "count": 49935,
+      "frequency": 0.500030039050766,
+      "frequency_interval": [
+        0.5,
+        0.5000901207618208
+      ],
+      "mean_probability": 0.5000136530330643
+    },
+    {
+      "bin": 6,
+      "count": 76,
+      "frequency": 0.8026315789473685,
+      "frequency_interval": [
+        0.5238095238095238,
+        1.0
+      ],
+      "mean_probability": 0.6457242280488641
+    },
+    {
+      "bin": 7,
+      "count": 1572,
+      "frequency": 0.9936386768447837,
+      "frequency_interval": [
+        0.986784140969163,
+        0.9993342210386151
+      ],
+      "mean_probability": 0.7708306700027823
+    },
+    {
+      "bin": 8,
+      "count": 2969,
+      "frequency": 0.9851801953519703,
+      "frequency_interval": [
+        0.9770534603643362,
+        0.9927272727272727
+      ],
+      "mean_probability": 0.8515455011439026
+    },
+    {
+      "bin": 9,
+      "count": 16450,
+      "frequency": 0.9275987841945289,
+      "frequency_interval": [
+        0.9251634270455287,
+        0.9303821009159566
+      ],
+      "mean_probability": 0.9728950321014685
+    }
+  ],
+  "ADAPT1-M": [
+    {
+      "bin": 0,
+      "count": 16559,
+      "frequency": 0.05851802645087264,
+      "frequency_interval": [
+        0.05606113007825948,
+        0.060987426782326944
+      ],
+      "mean_probability": 0.04211935785647714
+    },
+    {
+      "bin": 1,
+      "count": 2798,
+      "frequency": 0.06647605432451752,
+      "frequency_interval": [
+        0.05806676824892519,
+        0.07404771008560536
+      ],
+      "mean_probability": 0.1500568653619262
+    },
+    {
+      "bin": 2,
+      "count": 1635,
+      "frequency": 0.044648318042813454,
+      "frequency_interval": [
+        0.0209880619837696,
+        0.07034883720930232
+      ],
+      "mean_probability": 0.22717886550930672
+    },
+    {
+      "bin": 3,
+      "count": 106,
+      "frequency": 0.42452830188679247,
+      "frequency_interval": [
+        0.3448275862068966,
+        0.4642857142857143
+      ],
+      "mean_probability": 0.34567265825499105
+    },
+    {
+      "bin": 4,
+      "count": 9532,
+      "frequency": 0.5001049097775913,
+      "frequency_interval": [
+        0.5,
+        0.5003192848020435
+      ],
+      "mean_probability": 0.4997141966790047
+    },
+    {
+      "bin": 5,
+      "count": 40527,
+      "frequency": 0.5001357119944728,
+      "frequency_interval": [
+        0.5000244364348664,
+        0.5002385358447693
+      ],
+      "mean_probability": 0.5000968004310423
+    },
+    {
+      "bin": 6,
+      "count": 91,
+      "frequency": 0.6043956043956044,
+      "frequency_interval": [
+        0.5434782608695652,
+        0.6633709632645504
+      ],
+      "mean_probability": 0.639794332021888
+    },
+    {
+      "bin": 7,
+      "count": 1708,
+      "frequency": 0.9385245901639344,
+      "frequency_interval": [
+        0.9188888888888889,
+        0.9595522981644502
+      ],
+      "mean_probability": 0.7706174748292931
+    },
+    {
+      "bin": 8,
+      "count": 2691,
+      "frequency": 0.9516908212560387,
+      "frequency_interval": [
+        0.9401087272095758,
+        0.9635876066273249
+      ],
+      "mean_probability": 0.8501298636537842
+    },
+    {
+      "bin": 9,
+      "count": 16513,
+      "frequency": 0.941803427602495,
+      "frequency_interval": [
+        0.9388307190209452,
+        0.9446710147949168
+      ],
+      "mean_probability": 0.9582524261890979
+    }
+  ],
+  "FILTER2-C": [
+    {
+      "bin": 0,
+      "count": 16721,
+      "frequency": 0.0751151246934992,
+      "frequency_interval": [
+        0.0731721579945962,
+        0.07694625212786672
+      ],
+      "mean_probability": 0.026437893026961142
+    },
+    {
+      "bin": 1,
+      "count": 2896,
+      "frequency": 0.008977900552486187,
+      "frequency_interval": [
+        0.00104675505931612,
+        0.018855804518384804
+      ],
+      "mean_probability": 0.14905066313016233
+    },
+    {
+      "bin": 2,
+      "count": 1501,
+      "frequency": 0.001998667554963358,
+      "frequency_interval": [
+        0.0,
+        0.005928853754940711
+      ],
+      "mean_probability": 0.22826858316557475
+    },
+    {
+      "bin": 3,
+      "count": 30,
+      "frequency": 0.43333333333333335,
+      "frequency_interval": [
+        0.3181818181818182,
+        0.5
+      ],
+      "mean_probability": 0.34007593293984734
+    },
+    {
+      "bin": 4,
+      "count": 10,
+      "frequency": 0.6,
+      "frequency_interval": [
+        0.5,
+        1.0
+      ],
+      "mean_probability": 0.435754331946373
+    },
+    {
+      "bin": 5,
+      "count": 49946,
+      "frequency": 0.5000600648700597,
+      "frequency_interval": [
+        0.5,
+        0.500180194610179
+      ],
+      "mean_probability": 0.5000272285917737
+    },
+    {
+      "bin": 6,
+      "count": 72,
+      "frequency": 0.8333333333333334,
+      "frequency_interval": [
+        0.6,
+        1.0
+      ],
+      "mean_probability": 0.6496627744701173
+    },
+    {
+      "bin": 7,
+      "count": 1526,
+      "frequency": 0.9993446920052425,
+      "frequency_interval": [
+        0.9980106100795756,
+        1.0
+      ],
+      "mean_probability": 0.7715571581301808
+    },
+    {
+      "bin": 8,
+      "count": 2932,
+      "frequency": 0.990450204638472,
+      "frequency_interval": [
+        0.9840993157680851,
+        0.9965289829920166
+      ],
+      "mean_probability": 0.8513056828372313
+    },
+    {
+      "bin": 9,
+      "count": 16526,
+      "frequency": 0.9264794868691758,
+      "frequency_interval": [
+        0.9243777615474015,
+        0.9290624235804338
+      ],
+      "mean_probability": 0.9734344469942626
+    }
+  ],
+  "FILTER2-M": [
+    {
+      "bin": 0,
+      "count": 16747,
+      "frequency": 0.062220099122230844,
+      "frequency_interval": [
+        0.060120087057718305,
+        0.06417401459026935
+      ],
+      "mean_probability": 0.04138771154203422
+    },
+    {
+      "bin": 1,
+      "count": 2735,
+      "frequency": 0.061791590493601466,
+      "frequency_interval": [
+        0.05439642324888227,
+        0.06858564321250889
+      ],
+      "mean_probability": 0.1506138879785372
+    },
+    {
+      "bin": 2,
+      "count": 1556,
+      "frequency": 0.02249357326478149,
+      "frequency_interval": [
+        0.011132940406024885,
+        0.03452605147520402
+      ],
+      "mean_probability": 0.22657233623160494
+    },
+    {
+      "bin": 3,
+      "count": 72,
+      "frequency": 0.4583333333333333,
+      "frequency_interval": [
+        0.35714285714285715,
+        0.5119120209059227
+      ],
+      "mean_probability": 0.34250994357797837
+    },
+    {
+      "bin": 4,
+      "count": 21158,
+      "frequency": 0.5000472634464506,
+      "frequency_interval": [
+        0.5,
+        0.5001454499632115
+      ],
+      "mean_probability": 0.49990403947707146
+    },
+    {
+      "bin": 5,
+      "count": 28876,
+      "frequency": 0.5001038925058873,
+      "frequency_interval": [
+        0.49996437972634744,
+        0.5002552979016677
+      ],
+      "mean_probability": 0.5001022790707385
+    },
+    {
+      "bin": 6,
+      "count": 82,
+      "frequency": 0.6097560975609756,
+      "frequency_interval": [
+        0.5555555555555556,
+        0.6716417910447762
+      ],
+      "mean_probability": 0.6625024843506697
+    },
+    {
+      "bin": 7,
+      "count": 1614,
+      "frequency": 0.9634448574969021,
+      "frequency_interval": [
+        0.949336347542017,
+        0.979007967223616
+      ],
+      "mean_probability": 0.7713071041390799
+    },
+    {
+      "bin": 8,
+      "count": 2683,
+      "frequency": 0.9493104733507268,
+      "frequency_interval": [
+        0.9410050716362279,
+        0.9587087087087087
+      ],
+      "mean_probability": 0.8507780464691677
+    },
+    {
+      "bin": 9,
+      "count": 16637,
+      "frequency": 0.9393520466430246,
+      "frequency_interval": [
+        0.9366453488876104,
+        0.9423437594530825
+      ],
+      "mean_probability": 0.9589325176657066
+    }
+  ],
+  "NISEMP-C": [
+    {
+      "bin": 0,
+      "count": 16503,
+      "frequency": 0.0761073744167727,
+      "frequency_interval": [
+        0.07413268411442483,
+        0.07803398058252427
+      ],
+      "mean_probability": 0.026164187778420177
+    },
+    {
+      "bin": 1,
+      "count": 3107,
+      "frequency": 0.008368200836820083,
+      "frequency_interval": [
+        0.0009615230621396541,
+        0.017668008875010258
+      ],
+      "mean_probability": 0.14757857940589603
+    },
+    {
+      "bin": 2,
+      "count": 1508,
+      "frequency": 0.001989389920424403,
+      "frequency_interval": [
+        0.0,
+        0.005913272010512484
+      ],
+      "mean_probability": 0.22822715367379498
+    },
+    {
+      "bin": 3,
+      "count": 30,
+      "frequency": 0.43333333333333335,
+      "frequency_interval": [
+        0.3181818181818182,
+        0.5
+      ],
+      "mean_probability": 0.34007239842219217
+    },
+    {
+      "bin": 4,
+      "count": 10,
+      "frequency": 0.6,
+      "frequency_interval": [
+        0.5,
+        1.0
+      ],
+      "mean_probability": 0.4357525559778451
+    },
+    {
+      "bin": 5,
+      "count": 49946,
+      "frequency": 0.5000600648700597,
+      "frequency_interval": [
+        0.5,
+        0.500180194610179
+      ],
+      "mean_probability": 0.500027226935034
+    },
+    {
+      "bin": 6,
+      "count": 66,
+      "frequency": 0.8181818181818182,
+      "frequency_interval": [
+        0.5,
+        1.0
+      ],
+      "mean_probability": 0.650932658080902
+    },
+    {
+      "bin": 7,
+      "count": 1527,
+      "frequency": 0.9993451211525868,
+      "frequency_interval": [
+        0.9980106100795756,
+        1.0
+      ],
+      "mean_probability": 0.7717110933736777
+    },
+    {
+      "bin": 8,
+      "count": 3144,
+      "frequency": 0.9910941475826972,
+      "frequency_interval": [
+        0.9850884310447573,
+        0.9967793880837359
+      ],
+      "mean_probability": 0.8523454158471907
+    },
+    {
+      "bin": 9,
+      "count": 16319,
+      "frequency": 0.925546908511551,
+      "frequency_interval": [
+        0.9233725708087196,
+        0.9281995036087021
+      ],
+      "mean_probability": 0.9736953412963777
+    }
+  ],
+  "NISEMP-M": [
+    {
+      "bin": 0,
+      "count": 15217,
+      "frequency": 0.0684760465269107,
+      "frequency_interval": [
+        0.06580487029588657,
+        0.07094174304188695
+      ],
+      "mean_probability": 0.04322087121347279
+    },
+    {
+      "bin": 1,
+      "count": 3534,
+      "frequency": 0.04782116581777023,
+      "frequency_interval": [
+        0.04154540162502366,
+        0.05384615384615385
+      ],
+      "mean_probability": 0.15124565422736597
+    },
+    {
+      "bin": 2,
+      "count": 2012,
+      "frequency": 0.01739562624254473,
+      "frequency_interval": [
+        0.008803500916111807,
+        0.026405867970660146
+      ],
+      "mean_probability": 0.22919651194652596
+    },
+    {
+      "bin": 3,
+      "count": 204,
+      "frequency": 0.22058823529411764,
+      "frequency_interval": [
+        0.13368983957219252,
+        0.2872340425531915
+      ],
+      "mean_probability": 0.33751391460323227
+    },
+    {
+      "bin": 4,
+      "count": 9247,
+      "frequency": 0.49778306477776574,
+      "frequency_interval": [
+        0.4951178557027579,
+        0.5008931214753789
+      ],
+      "mean_probability": 0.49896770849619937
+    },
+    {
+      "bin": 5,
+      "count": 41066,
+      "frequency": 0.5006818292504749,
+      "frequency_interval": [
+        0.500012218665233,
+        0.5013348449132409
+      ],
+      "mean_probability": 0.5002561934445107
+    },
+    {
+      "bin": 6,
+      "count": 230,
+      "frequency": 0.808695652173913,
+      "frequency_interval": [
+        0.7333333333333333,
+        0.8910916739342326
+      ],
+      "mean_probability": 0.6559318476381693
+    },
+    {
+      "bin": 7,
+      "count": 2104,
+      "frequency": 0.9686311787072244,
+      "frequency_interval": [
+        0.9576995788594652,
+        0.9805503826430599
+      ],
+      "mean_probability": 0.7683424671859896
+    },
+    {
+      "bin": 8,
+      "count": 3451,
+      "frequency": 0.9605911330049262,
+      "frequency_interval": [
+        0.954674201024679,
+        0.9671832405801893
+      ],
+      "mean_probability": 0.8495951441527242
+    },
+    {
+      "bin": 9,
+      "count": 15095,
+      "frequency": 0.9331566743954952,
+      "frequency_interval": [
+        0.9302417235943248,
+        0.9363873834908334
+      ],
+      "mean_probability": 0.9570939248250565
+    }
+  ],
+  "PC16": [
+    {
+      "bin": 0,
+      "count": 3874,
+      "frequency": 0.024522457408363448,
+      "frequency_interval": [
+        0.006316579777631557,
+        0.04449048974497566
+      ],
+      "mean_probability": 0.0672382919680232
+    },
+    {
+      "bin": 1,
+      "count": 5955,
+      "frequency": 0.07439126784214946,
+      "frequency_interval": [
+        0.044415191813964264,
+        0.09927476602971559
+      ],
+      "mean_probability": 0.1506074038325589
+    },
+    {
+      "bin": 2,
+      "count": 6214,
+      "frequency": 0.18715803025426456,
+      "frequency_interval": [
+        0.13405181966451746,
+        0.2287381496691383
+      ],
+      "mean_probability": 0.24999603945168414
+    },
+    {
+      "bin": 3,
+      "count": 8030,
+      "frequency": 0.34881693648816936,
+      "frequency_interval": [
+        0.29852397413079695,
+        0.3884087301763566
+      ],
+      "mean_probability": 0.35444778372831687
+    },
+    {
+      "bin": 4,
+      "count": 21192,
+      "frequency": 0.4746130615326538,
+      "frequency_interval": [
+        0.4596250289072384,
+        0.4880519890554023
+      ],
+      "mean_probability": 0.4608494696829984
+    },
+    {
+      "bin": 5,
+      "count": 25014,
+      "frequency": 0.5222675301830975,
+      "frequency_interval": [
+        0.5125482934205899,
+        0.5332779755329713
+      ],
+      "mean_probability": 0.5314468603616636
+    },
+    {
+      "bin": 6,
+      "count": 7274,
+      "frequency": 0.7081385757492439,
+      "frequency_interval": [
+        0.6590564733555541,
+        0.7632781717888101
+      ],
+      "mean_probability": 0.6483458778770999
+    },
+    {
+      "bin": 7,
+      "count": 5284,
+      "frequency": 0.8397047691143074,
+      "frequency_interval": [
+        0.7888007068125086,
+        0.8978611152234943
+      ],
+      "mean_probability": 0.7458346437248292
+    },
+    {
+      "bin": 8,
+      "count": 5289,
+      "frequency": 0.9311779164303271,
+      "frequency_interval": [
+        0.8885199191448248,
+        0.9715506337427038
+      ],
+      "mean_probability": 0.8528774949345342
+    },
+    {
+      "bin": 9,
+      "count": 4034,
+      "frequency": 0.9774417451660883,
+      "frequency_interval": [
+        0.9603335268605587,
+        1.0
+      ],
+      "mean_probability": 0.9358166700314932
+    }
+  ],
+  "PC32": [
+    {
+      "bin": 0,
+      "count": 9825,
+      "frequency": 0.05424936386768448,
+      "frequency_interval": [
+        0.03659750181339937,
+        0.06838695830943035
+      ],
+      "mean_probability": 0.05293712669333002
+    },
+    {
+      "bin": 1,
+      "count": 5424,
+      "frequency": 0.17975663716814158,
+      "frequency_interval": [
+        0.1501809017400078,
+        0.21066302066940945
+      ],
+      "mean_probability": 0.14741665339317161
+    },
+    {
+      "bin": 2,
+      "count": 5181,
+      "frequency": 0.25323296660876277,
+      "frequency_interval": [
+        0.2137047277749309,
+        0.29352851818384174
+      ],
+      "mean_probability": 0.25027627488851684
+    },
+    {
+      "bin": 3,
+      "count": 6054,
+      "frequency": 0.40634291377601583,
+      "frequency_interval": [
+        0.371350186165001,
+        0.43945916020549786
+      ],
+      "mean_probability": 0.35416855268995084
+    },
+    {
+      "bin": 4,
+      "count": 17050,
+      "frequency": 0.48838709677419356,
+      "frequency_interval": [
+        0.4748435275904467,
+        0.5027250926686696
+      ],
+      "mean_probability": 0.46043447407634375
+    },
+    {
+      "bin": 5,
+      "count": 21676,
+      "frequency": 0.5086731869348589,
+      "frequency_interval": [
+        0.497901860371626,
+        0.5213740197119432
+      ],
+      "mean_probability": 0.5328502814050178
+    },
+    {
+      "bin": 6,
+      "count": 7102,
+      "frequency": 0.587721768515911,
+      "frequency_interval": [
+        0.5517898265608365,
+        0.6243809717777131
+      ],
+      "mean_probability": 0.6432664400421375
+    },
+    {
+      "bin": 7,
+      "count": 4739,
+      "frequency": 0.7307448828866849,
+      "frequency_interval": [
+        0.6798022637958708,
+        0.7828818192539962
+      ],
+      "mean_probability": 0.7490459116206035
+    },
+    {
+      "bin": 8,
+      "count": 5216,
+      "frequency": 0.8418328220858896,
+      "frequency_interval": [
+        0.793275081627197,
+        0.8913714142948619
+      ],
+      "mean_probability": 0.8533673035609393
+    },
+    {
+      "bin": 9,
+      "count": 9893,
+      "frequency": 0.9520873344789245,
+      "frequency_interval": [
+        0.9213720975117308,
+        0.9827108652085175
+      ],
+      "mean_probability": 0.9477205447958801
+    }
+  ],
+  "TWO16": [
+    {
+      "bin": 0,
+      "count": 14684,
+      "frequency": 0.04406156360664669,
+      "frequency_interval": [
+        0.042898900486889324,
+        0.045382019037360916
+      ],
+      "mean_probability": 0.02717559520206559
+    },
+    {
+      "bin": 1,
+      "count": 2495,
+      "frequency": 0.024448897795591184,
+      "frequency_interval": [
+        0.013681592039800995,
+        0.03449659452310625
+      ],
+      "mean_probability": 0.1517530455647824
+    },
+    {
+      "bin": 2,
+      "count": 2418,
+      "frequency": 0.06451612903225806,
+      "frequency_interval": [
+        0.050365077969491225,
+        0.07877134388427982
+      ],
+      "mean_probability": 0.24212479212986132
+    },
+    {
+      "bin": 3,
+      "count": 976,
+      "frequency": 0.2346311475409836,
+      "frequency_interval": [
+        0.19141881961633664,
+        0.2811160952824172
+      ],
+      "mean_probability": 0.349505487310349
+    },
+    {
+      "bin": 4,
+      "count": 18343,
+      "frequency": 0.497355939595486,
+      "frequency_interval": [
+        0.4960672973544063,
+        0.4984577005817921
+      ],
+      "mean_probability": 0.49856024561528584
+    },
+    {
+      "bin": 5,
+      "count": 32884,
+      "frequency": 0.5017029558447877,
+      "frequency_interval": [
+        0.5003659833064892,
+        0.5033389423687742
+      ],
+      "mean_probability": 0.5011426906358905
+    },
+    {
+      "bin": 6,
+      "count": 818,
+      "frequency": 0.7652811735941321,
+      "frequency_interval": [
+        0.7022053801028608,
+        0.8306012524896583
+      ],
+      "mean_probability": 0.658398805737204
+    },
+    {
+      "bin": 7,
+      "count": 2361,
+      "frequency": 0.9487505294366794,
+      "frequency_interval": [
+        0.9346196953514347,
+        0.9632225738810835
+      ],
+      "mean_probability": 0.758766876873653
+    },
+    {
+      "bin": 8,
+      "count": 2340,
+      "frequency": 0.9739316239316239,
+      "frequency_interval": [
+        0.9611646385463133,
+        0.9860078705728028
+      ],
+      "mean_probability": 0.8475914678512475
+    },
+    {
+      "bin": 9,
+      "count": 14841,
+      "frequency": 0.9582238393639243,
+      "frequency_interval": [
+        0.9571821212270076,
+        0.9595286281876699
+      ],
+      "mean_probability": 0.973169308789584
+    }
+  ]
+}

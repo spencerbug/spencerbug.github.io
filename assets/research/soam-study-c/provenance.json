@@ -1,0 +1,199 @@
+{
+  "publication_date": "2026-11-14",
+  "scope": "Compact evidence and figures; raw checkpoints, trajectories and frozen source archive are not included. No new training or inference for publication.",
+  "source_base_commit": "a552034b3badeee2d242c40103cb4e1243f4be30",
+  "source_fingerprint": "18caccec2e5e72657d48559bff6782416b7ad373ccfc486e8932dc14aa0870b2",
+  "source_status": "Study C executed from the frozen dirty-tree snapshot; the base commit alone does not contain Study C.",
+  "files": [
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/statistics.json",
+      "download": "statistics.json",
+      "bytes": 318822,
+      "sha256": "597425ef8ca93a78ef4ed7a27789834464d3427b3eff624ce4cc9932e070dd3d"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/runtime.json",
+      "download": "runtime.json",
+      "bytes": 269963,
+      "sha256": "2b741db68e705fd9edd13e7131a9d3354057c1174eb71056c61be9cfdba1c59d"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/root-results.json",
+      "download": "root-results.json",
+      "bytes": 2483105,
+      "sha256": "86d6cc2d7a7b128ff305b0042711a371a6356a1cafa81905432a40c63ec6205c"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/confirmation-receipt.json",
+      "download": "confirmation-receipt.json",
+      "bytes": 17945,
+      "sha256": "938726d7d69f64016bdabf40473a55e7957f3d08044199ccf9229c13649dfc89"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/development-selection.json",
+      "download": "development-selection.json",
+      "bytes": 1958,
+      "sha256": "714490863ef974b80622fb537ff955224a7a6889a768a4780320820921b91679"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/development-settings.json",
+      "download": "development-settings.json",
+      "bytes": 35153,
+      "sha256": "bbff5579a3e85a334bad6ca1fff9598ccd961e3739523e1973ba1cb9b5a36073"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/reproduction.json",
+      "download": "reproduction.json",
+      "bytes": 952,
+      "sha256": "8b29a62d422c68c229dbef2af5efeed9b888bc1f7c6424f803ff361b368ab174"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/verification.json",
+      "download": "verification.json",
+      "bytes": 2576,
+      "sha256": "f758f50f8fd3d2a85397f9154b89f806361768cbc4c75c53f3e224fa4423ecc4"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/final-verification.json",
+      "download": "final-verification.json",
+      "bytes": 4472,
+      "sha256": "c93e6c88de6027675d472fc083bc8f664be90ebaa079129af7e43584c476acaf"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/resource-final.json",
+      "download": "resource-final.json",
+      "bytes": 3298,
+      "sha256": "6e6c418bfe2df94cae5a1b88ad6ae87cca1bfbfa20f912742b336ef9c8e4c7aa"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/observability.json",
+      "download": "observability.json",
+      "bytes": 1254,
+      "sha256": "2a47c0adb2936f75eae23b52bc26820143f2cc409a077c34efaa3e9172f0bb06"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/ambiguity-limits.json",
+      "download": "ambiguity-limits.json",
+      "bytes": 6909,
+      "sha256": "9efb723fe8c452125c1b1c9100f8cf52eded31fcbc3c2c0ac35b9a7471cf4f0c"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/calibration.json",
+      "download": "calibration.json",
+      "bytes": 20372,
+      "sha256": "9d4eedcc5ab9a504ec52f0ba8a5f5f2acfdeb110bd904eb33f29c8c170f4c7e6"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/adequacy.json",
+      "download": "adequacy.json",
+      "bytes": 16174,
+      "sha256": "94cc0fb2bf9013a4e7e715e0731658edbfaf64024ad825d3c3613bac742eb27f"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/delayed-resolution.json",
+      "download": "delayed-resolution.json",
+      "bytes": 3984,
+      "sha256": "fe851ff7217660bd08333879bbbe1d29b9be0684bea85dc0c942f89e84aea5d0"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/secondary-family-comparisons.json",
+      "download": "secondary-family-comparisons.json",
+      "bytes": 1915,
+      "sha256": "b628bb6150dd2ff74bb903ce2ea7cf9981499b7778b9b031ff2f6affedd508d7"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/hardware.json",
+      "download": "hardware.json",
+      "bytes": 240,
+      "sha256": "92dcb32b0a8375d8f856d0e2fb863dca057e7c245874ab47ec593e4c47fba512"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/artifact-sha256.json",
+      "download": "artifact-sha256.json",
+      "bytes": 269555,
+      "sha256": "a97052af8874d64d6f6c3f8e4f423fdce9eec3d7137a4cbe1ea7f53644705aff"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/belief-trajectories.svg",
+      "download": "belief-trajectories.svg",
+      "bytes": 96913,
+      "sha256": "81b5bd105d2c2243a6083405a5708e8a4d12f85ff048a0f384d63b18b7676893"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/candidate-trajectories.svg",
+      "download": "candidate-trajectories.svg",
+      "bytes": 61740,
+      "sha256": "4f553e3b15d3532355e044ca319d1814bb6351a3cfa51a9d2c29da657a9498b8"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/calibration.svg",
+      "download": "calibration.svg",
+      "bytes": 47581,
+      "sha256": "8278b35393b4950e9d5df7ef42a9ae80ca0b0ddd9d7b0effa47b3a46a5983637"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/study-c/accuracy-cost.svg",
+      "download": "accuracy-cost.svg",
+      "bytes": 62425,
+      "sha256": "ca36bdbc884cb6afbd8b1b94eb443e1be3333f81879b15147c8c8b772c8e3b73"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/STUDY_C.md",
+      "download": "STUDY_C.txt",
+      "bytes": 19851,
+      "sha256": "954d326d879f9937ed5a28ab29e9396f57edf5cfcfb28e4a27006eb5ddae5abf"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/STUDY_C_DECISION.md",
+      "download": "STUDY_C_DECISION.txt",
+      "bytes": 7410,
+      "sha256": "2ba14d65cbc6fa635a6115e099795fdc2d25e8e25fce5a67e21388edf910f700"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "reports/STUDY_C_DEVELOPMENT.md",
+      "download": "STUDY_C_DEVELOPMENT.txt",
+      "bytes": 3565,
+      "sha256": "d809763d13e40fba122d3182f3ada8a5b8064c68fc95285d64546432d764c933"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "docs/STUDY_C_PROTOCOL.md",
+      "download": "STUDY_C_PROTOCOL.txt",
+      "bytes": 19012,
+      "sha256": "0f6c3412a774cd96a6db128214b2d810ca51f98d0119a7ef56557302bfbef111"
+    },
+    {
+      "source_repository": "soam",
+      "source_path": "docs/protocols/study_c_v1.json",
+      "download": "manifest.json",
+      "bytes": 1741,
+      "sha256": "65004288551f65e7c2ca7b82bab501c8442e01870a8225b67cf3cd4516bc4345"
+    }
+  ],
+  "chronology": "Original text downloads preserve study-completion statements, including no publication at that time. Source-relative links in those downloads are unchanged."
+}

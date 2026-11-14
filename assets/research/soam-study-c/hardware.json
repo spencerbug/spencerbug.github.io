@@ -1,0 +1,9 @@
+{
+  "cpu": "Apple M3 Max",
+  "model": "Mac15,10",
+  "physical_memory_bytes": 38654705664,
+  "source": "sysctl -n machdep.cpu.brand_string hw.model hw.memsize",
+  "verified_date": "2026-11-14",
+  "inference_threads": 1,
+  "gpu_seconds": 0
+}

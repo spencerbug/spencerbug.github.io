@@ -11,6 +11,8 @@ soam_studies: "B2"
 <link rel="stylesheet" href="{{ '/assets/soam-study-b2.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+**Series update, November 14:** [Study C-H1 is now complete]({{ '/research/soam-study-c/' | relative_url }}). The B2 conclusions and handoff below retain their original chronology; selective scheduling and later C stages remain conditional.
+
 [Study B]({{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}) left an awkward winner. A fitted two-state filter predicted more accurately than the neural alternatives, using very few parameters. It also trusted corrupted observations enough to damage its own estimate.
 
 Before moving on to competing hypotheses, I inserted **B2 into the [A–F series]({{ '/research/soam-studies/' | relative_url }})**: could a better correction rule fix that weakness? The best tested answer uses a statistical estimate of sensor reliability. It improves ordinary accuracy and reduces much of the damage from outliers, while retaining rapid response to real changes. The remaining failures explain where that answer stops.

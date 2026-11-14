@@ -9,6 +9,8 @@ description: "Correction designs, frozen confirmation, limits, measured costs, a
 <link rel="stylesheet" href="{{ '/assets/soam-study-b2.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+**Series update, November 14:** [Study C-H1 is now complete]({{ '/research/soam-study-c/' | relative_url }}). The B2 conclusions and handoff below retain their original chronology; selective scheduling and later C stages remain conditional.
+
 **Completed November 12, 2026.** B2 supports a bounded robust-correction benefit. The recommended **adaptive-variance filter** estimates measurement reliability from disagreement among observed channels. A **development-calibrated hard gate** is the simpler retained control. Both pass the frozen benefit and accuracy checks. Coherent false evidence remains unresolved; measured inference latency favors the neural reference.
 
 Read the [visual article]({{ '/blog/soam-study-b2-robust-correction/' | relative_url }}) for the narrative. This report records the comparison and provides byte-identical evidence. B2 sits between completed B and conditional C in [Studies A–F]({{ '/research/soam-studies/' | relative_url }}); historical A/B and E1 decisions remain unchanged.

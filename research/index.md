@@ -9,9 +9,15 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
-The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B and the inserted B2 correction study are complete; C–F remain future directions.
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study and C-H1 hypothesis preservation are complete. Selective scheduling within C and Studies D–F remain future directions.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">Study C · C-H1</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-14">November 14, 2026</time></div>
+    <h3><a href="{{ '/research/soam-study-c/' | relative_url }}">Preserving hypotheses under ambiguity</a></h3>
+    <p>Two recurrent states beat single-state neural controls, while a compact conventional estimator remains competitive. Designs, all nine comparisons, uncertainty limits, and measured costs.</p>
+    <p><a href="{{ '/blog/soam-study-c-hypothesis-preservation/' | relative_url }}">Read the visual article →</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Series A–F →</a></p>
+  </article>
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">Study B2</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-12">November 12, 2026</time></div>
     <h3><a href="{{ '/research/soam-study-b2/' | relative_url }}">Robust Kalman correction</a></h3>

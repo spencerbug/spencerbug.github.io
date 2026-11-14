@@ -1,0 +1,11 @@
+{
+  "scope": "Publication figures and table derived from existing estimates; no new scientific observations, fitting, inference, or selection",
+  "inputs_manifest_sha256": "3d5358855c8fdd0dd33bc4e219e89691fa8caa0e51cf8c51a1a62446fecfda51",
+  "generated": {
+    "assets/research/soam-study-c/primary-effects.svg": "271147ae2a69b6e4a87207492fb4606fd0b1d2ba1ef39d9e1b6e5e97d64ca057",
+    "assets/research/soam-study-c/cause-ambiguity.svg": "e20bf3f5f794be735a15da3c1c9889b1623e016043d6a3dddbdb771983ef488d",
+    "assets/research/soam-study-c/delayed-cues.svg": "0505586f61ee85bf8b944a06be7e9bbda615f236a79b32516b2cfb4cf06d25b7",
+    "_includes/soam-c-confirmation-table.html": "034051dc7a65a6c524d0ae2db77f16d837b9da8d42efa6e8bfff2ce5da12c883",
+    "scripts/render_soam_study_c.py": "e60c4b0656c812ac6f20c5c9fcf381ef18a063255b8c887191a162c121fb4654"
+  }
+}

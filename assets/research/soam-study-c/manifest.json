@@ -1,0 +1,97 @@
+{
+  "study": "study-c",
+  "version": 1,
+  "namespace": "soam-study-c",
+  "development_roots": [
+    26101,
+    26107
+  ],
+  "confirmation_roots": [
+    26303,
+    26309,
+    26317,
+    26321,
+    26339,
+    26347,
+    26357,
+    26371,
+    26387,
+    26399
+  ],
+  "fixture_root": 26003,
+  "normalization_root": 26017,
+  "bootstrap_seed": 26501,
+  "bootstrap_draws": 20000,
+  "family_size": 16,
+  "horizon": 48,
+  "train_updates": 1200,
+  "train_batch": 8,
+  "eval_pairs": 16,
+  "fixture_updates": 40,
+  "learning_rates": [
+    0.003,
+    0.01
+  ],
+  "single_widths": [
+    16,
+    32,
+    40
+  ],
+  "multi_width": 16,
+  "temperatures": [
+    1,
+    4,
+    16,
+    64
+  ],
+  "hazard": 0.01,
+  "score_clip": 6,
+  "neural_training_variance": 0.0025,
+  "variance_floor": 0.0001,
+  "ridge": 0.0001,
+  "primary_conditions": [
+    "later",
+    "ambiguous",
+    "uninformative",
+    "diagnostic",
+    "misleading",
+    "delayed"
+  ],
+  "secondary_conditions": [
+    "sensor",
+    "change",
+    "coherent",
+    "unknown"
+  ],
+  "training_conditions": [
+    "later",
+    "ambiguous",
+    "uninformative",
+    "diagnostic",
+    "misleading",
+    "delayed",
+    "sensor",
+    "change"
+  ],
+  "limits": {
+    "cpu_seconds": 7200,
+    "wall_seconds": 14400,
+    "rss_bytes": 2147483648,
+    "artifact_bytes": 2147483648,
+    "fits": 70
+  },
+  "reserve_fraction": 0.1,
+  "effect_min": 0.01,
+  "interval_width_max": 0.04,
+  "guards": {
+    "prior_nmse_difference": 0.02,
+    "ambiguous_brier_difference": 0.01,
+    "recovery_difference": 4,
+    "ambiguous_brier_absolute": 0.26,
+    "late_brier_absolute": 0.15,
+    "prior_nmse_absolute": 0.25,
+    "ambiguity_confidence_upper": 0.05,
+    "reference_late_brier": 0.18,
+    "reference_prior_nmse": 0.3
+  }
+}

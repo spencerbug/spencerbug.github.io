@@ -1,0 +1,42 @@
+{
+  "ambiguous": {
+    "identical_observations_before_reveal": true,
+    "identical_all_actions": true,
+    "identical_all_masks": true,
+    "minimum_visible_rank": 2,
+    "first_reveal": null,
+    "minimum_reveal_feature_separation": null
+  },
+  "uninformative": {
+    "identical_observations_before_reveal": true,
+    "identical_all_actions": true,
+    "identical_all_masks": true,
+    "minimum_visible_rank": 2,
+    "first_reveal": null,
+    "minimum_reveal_feature_separation": null
+  },
+  "later": {
+    "identical_observations_before_reveal": true,
+    "identical_all_actions": true,
+    "identical_all_masks": true,
+    "minimum_visible_rank": 2,
+    "first_reveal": 12,
+    "minimum_reveal_feature_separation": 0.0329539030790329
+  },
+  "diagnostic": {
+    "identical_observations_before_reveal": true,
+    "identical_all_actions": true,
+    "identical_all_masks": true,
+    "minimum_visible_rank": 2,
+    "first_reveal": 12,
+    "minimum_reveal_feature_separation": 0.0329539030790329
+  },
+  "delayed": {
+    "identical_observations_before_reveal": true,
+    "identical_all_actions": true,
+    "identical_all_masks": true,
+    "minimum_visible_rank": 2,
+    "first_reveal": 28,
+    "minimum_reveal_feature_separation": 0.23179136216640472
+  }
+}

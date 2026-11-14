@@ -1,0 +1,119 @@
+{
+  "accounting": "Instrumented phases only; imports, tests and editorial work excluded",
+  "artifact_accounting": "Raw archives, compact reports and three Study C Markdown reports at audit close",
+  "artifact_bytes": 674572475,
+  "cpu_seconds": 1350.4077029999999,
+  "fits": 67,
+  "gpu_seconds": 0,
+  "limits": {
+    "artifact_bytes": 2147483648,
+    "cpu_seconds": 7200,
+    "fits": 70,
+    "rss_bytes": 2147483648,
+    "wall_seconds": 14400
+  },
+  "peak_rss_bytes": 941932544,
+  "phases": [
+    {
+      "cpu_seconds": 5.900456,
+      "cumulative_artifact_bytes": 9804200,
+      "error": null,
+      "peak_rss_bytes": 319619072,
+      "phase": "fixture",
+      "status": "complete",
+      "wall_seconds": 5.944201083038934
+    },
+    {
+      "cpu_seconds": 396.66583799999995,
+      "cumulative_artifact_bytes": 12990620,
+      "error": null,
+      "peak_rss_bytes": 941932544,
+      "phase": "development",
+      "status": "complete",
+      "wall_seconds": 396.65359975001775
+    },
+    {
+      "cpu_seconds": 13.897708,
+      "cumulative_artifact_bytes": 14075831,
+      "error": null,
+      "peak_rss_bytes": 296960000,
+      "phase": "calibrate",
+      "status": "complete",
+      "wall_seconds": 13.93219850002788
+    },
+    {
+      "cpu_seconds": 0.058338,
+      "cumulative_artifact_bytes": 15141905,
+      "error": null,
+      "peak_rss_bytes": 281346048,
+      "phase": "freeze",
+      "status": "complete",
+      "wall_seconds": 0.11483750003390014
+    },
+    {
+      "cpu_seconds": 788.4710839999999,
+      "cumulative_artifact_bytes": 608270898,
+      "error": null,
+      "peak_rss_bytes": 900628480,
+      "phase": "confirmation",
+      "status": "complete",
+      "wall_seconds": 788.695110749919
+    },
+    {
+      "cpu_seconds": 80.09263600000001,
+      "cumulative_artifact_bytes": 668548674,
+      "error": null,
+      "peak_rss_bytes": 883638272,
+      "phase": "repeat",
+      "status": "complete",
+      "wall_seconds": 80.09162995801307
+    },
+    {
+      "cpu_seconds": 63.586119999999994,
+      "cumulative_artifact_bytes": 669596809,
+      "error": null,
+      "peak_rss_bytes": 367247360,
+      "phase": "report",
+      "status": "complete",
+      "wall_seconds": 73.9636262919521
+    },
+    {
+      "cpu_seconds": 0.4381719999999999,
+      "cumulative_artifact_bytes": 669597475,
+      "error": null,
+      "peak_rss_bytes": 307200000,
+      "phase": "secondary-audit",
+      "status": "complete",
+      "wall_seconds": 0.44012720801401883
+    },
+    {
+      "cpu_seconds": 0.462859,
+      "cumulative_artifact_bytes": 669948868,
+      "error": null,
+      "peak_rss_bytes": 255000576,
+      "phase": "render-repair",
+      "status": "complete",
+      "wall_seconds": 0.4647549579385668
+    },
+    {
+      "cpu_seconds": 0.774586,
+      "cumulative_artifact_bytes": 670210535,
+      "error": null,
+      "peak_rss_bytes": 209387520,
+      "phase": "final-audit",
+      "status": "complete",
+      "wall_seconds": 0.7864824159769341
+    },
+    {
+      "cpu_seconds": 0.05990599999999996,
+      "cumulative_artifact_bytes": 670217952,
+      "error": null,
+      "peak_rss_bytes": 202391552,
+      "phase": "resource-export",
+      "status": "complete",
+      "wall_seconds": 0.05993979191407561
+    }
+  ],
+  "wall_seconds": 1361.1465082068462,
+  "within_limits": true
+}

@@ -1,0 +1,263 @@
+{
+  "ADAPT1-C": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.709375,
+      "lo": 0.677375,
+      "mean": 0.6940000000000001,
+      "n": 10,
+      "width": 0.03200000000000003
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.4513053809766223,
+      "lo": 0.44789516212079794,
+      "mean": 0.4496114859618987,
+      "n": 10,
+      "width": 0.0034102188558243762
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.8550049802704098,
+      "lo": 1.8047368367866843,
+      "mean": 1.8292339346549897,
+      "n": 10,
+      "width": 0.05026814348372555
+    }
+  },
+  "ADAPT1-M": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.684875,
+      "lo": 0.650375,
+      "mean": 0.667875,
+      "n": 10,
+      "width": 0.034499999999999975
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.45053270997669165,
+      "lo": 0.44824884603231857,
+      "mean": 0.4494019353028783,
+      "n": 10,
+      "width": 0.002283863944373077
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.6036558369835738,
+      "lo": 1.5843110555044033,
+      "mean": 1.5945444316373696,
+      "n": 10,
+      "width": 0.019344781479170514
+    }
+  },
+  "FILTER2-C": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.711625,
+      "lo": 0.688875,
+      "mean": 0.7,
+      "n": 10,
+      "width": 0.022749999999999937
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.45220774235214767,
+      "lo": 0.4490080582397396,
+      "mean": 0.45062317024711296,
+      "n": 10,
+      "width": 0.0031996841124080633
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.8842866572704504,
+      "lo": 1.8348363265566456,
+      "mean": 1.8581983958964532,
+      "n": 10,
+      "width": 0.04945033071380478
+    }
+  },
+  "FILTER2-M": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.701125,
+      "lo": 0.67,
+      "mean": 0.68625,
+      "n": 10,
+      "width": 0.031124999999999958
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.44963849854823595,
+      "lo": 0.44769033648503803,
+      "mean": 0.44867998478926674,
+      "n": 10,
+      "width": 0.0019481620631979224
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.6088204190845279,
+      "lo": 1.5935051926042205,
+      "mean": 1.6014669569910516,
+      "n": 10,
+      "width": 0.015315226480307365
+    }
+  },
+  "NISEMP-C": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.716,
+      "lo": 0.6877500000000001,
+      "mean": 0.7015,
+      "n": 10,
+      "width": 0.028249999999999886
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.45304002101990115,
+      "lo": 0.44957714165918644,
+      "mean": 0.4512922500701556,
+      "n": 10,
+      "width": 0.00346287936071471
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.9384846622992769,
+      "lo": 1.8819052108834533,
+      "mean": 1.9093047592513384,
+      "n": 10,
+      "width": 0.056579451415823545
+    }
+  },
+  "NISEMP-M": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.690375,
+      "lo": 0.6609999999999999,
+      "mean": 0.676125,
+      "n": 10,
+      "width": 0.02937500000000004
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.4494391618000143,
+      "lo": 0.4474618364326748,
+      "mean": 0.44849431554317676,
+      "n": 10,
+      "width": 0.001977325367339522
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.6019424904393458,
+      "lo": 1.5874884352696816,
+      "mean": 1.5951874845206628,
+      "n": 10,
+      "width": 0.014454055169664137
+    }
+  },
+  "PC16": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.006,
+      "lo": 0.000625,
+      "mean": 0.003,
+      "n": 10,
+      "width": 0.0053750000000000004
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.2928789150574805,
+      "lo": 0.28066566503402396,
+      "mean": 0.28629529772510387,
+      "n": 10,
+      "width": 0.012213250023456523
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 0.8067421457644318,
+      "lo": 0.7681585160388312,
+      "mean": 0.7857608308084605,
+      "n": 10,
+      "width": 0.03858362972560059
+    }
+  },
+  "PC32": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.0465,
+      "lo": 0.018875000000000003,
+      "mean": 0.032125,
+      "n": 10,
+      "width": 0.027624999999999997
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.3213482860825542,
+      "lo": 0.30705763216901655,
+      "mean": 0.3140901480306632,
+      "n": 10,
+      "width": 0.014290653913537676
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 0.9153894297291888,
+      "lo": 0.8577214234283825,
+      "mean": 0.8858599696863061,
+      "n": 10,
+      "width": 0.05766800630080626
+    }
+  },
+  "TWO16": {
+    "brier_floor": 0.25,
+    "confident_fraction_post24": {
+      "family": 1,
+      "hi": 0.7222500000000001,
+      "lo": 0.659875,
+      "mean": 0.6910000000000001,
+      "n": 10,
+      "width": 0.06237500000000007
+    },
+    "label": "equal-prior constructed cause pair; descriptive stress, not a new primary gate",
+    "nll_floor": 0.6931471805599453,
+    "paired_brier_post24": {
+      "family": 1,
+      "hi": 0.4483527768825012,
+      "lo": 0.44126715391536303,
+      "mean": 0.4448096698759202,
+      "n": 10,
+      "width": 0.007085622967138161
+    },
+    "paired_nll_post24": {
+      "family": 1,
+      "hi": 1.794393646121871,
+      "lo": 1.7098569908957502,
+      "mean": 1.7528941490554852,
+      "n": 10,
+      "width": 0.08453665522612086
+    }
+  }
+}
