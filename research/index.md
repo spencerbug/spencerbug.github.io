@@ -9,9 +9,15 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
-The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study and C-H1 hypothesis preservation are complete. Selective scheduling within C and Studies D–F remain future directions.
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. A recurrent-retrieval pilot is selected for protocol design; D3/D4, selective scheduling, E and F remain future work.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">Study D · D0–D2</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-17">November 17, 2026</time></div>
+    <h3><a href="{{ '/research/soam-study-d/' | relative_url }}">Persistent acquisition and sequential retention</a></h3>
+    <p>All three writers learn isolated objects; only KV passes acquisition and retention together. Mechanism limits, adjusted uncertainty, storage differences and reproducibility checks.</p>
+    <p><a href="{{ '/blog/soam-study-d-acquisition-and-retention/' | relative_url }}">Read the visual article →</a> · <a href="{{ '/research/soam-studies/' | relative_url }}">Series A–F →</a></p>
+  </article>
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">Study C · C-H1</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-14">November 14, 2026</time></div>
     <h3><a href="{{ '/research/soam-study-c/' | relative_url }}">Preserving hypotheses under ambiguity</a></h3>
