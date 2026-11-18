@@ -1,5 +1,6 @@
 /* Study D: acquisition, persistent storage and retrieval. */
 .post-content { overflow-wrap: anywhere; }
+.post-content table { overflow-wrap: normal; }
 .post-content code { white-space: normal; }
 .d-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: .8rem; margin: 1.5rem 0 .6rem; }
 .d-cards > div { padding: 1rem; border: 1px solid var(--border); border-top: 4px solid #0072b2; border-radius: 8px; background: var(--surface); }
