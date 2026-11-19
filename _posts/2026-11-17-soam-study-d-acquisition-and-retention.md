@@ -11,6 +11,8 @@ soam_studies: "D"
 <link rel="stylesheet" href="{{ '/assets/soam-study-d.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+**November 19 follow-up:** The subsequently selected D-R1 and D-R2 studies are now complete. [Read their joint article]({{ '/blog/soam-retrieval-and-decoding/' | relative_url }}) or [technical report]({{ '/research/soam-retrieval-and-decoding/' | relative_url }}). The original Study D account below remains a record of its November 17 evidence and decision.
+
 ## A memory has to survive the next thing it learns
 
 Suppose a system learns something about an unfamiliar object from a few observations. We clear its working state, show it an incomplete cue, and ask it to predict what the object will look like after an action. If it succeeds, something useful survived in persistent memory.

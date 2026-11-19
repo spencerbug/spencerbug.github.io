@@ -9,9 +9,16 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
-The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. A recurrent-retrieval pilot is selected for protocol design; D3/D4, selective scheduling, E and F remain future work.
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. D-R1 recurrent retrieval and D-R2 exact-code decoding are also complete, preserving a negative practical-settling result and an inconclusive precision-limited diagnosis. D3/D4, selective scheduling, E and F remain future work.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">D-R1 + D-R2</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-19">November 19, 2026</time></div>
+    <h3><a href="{{ '/research/soam-retrieval-and-decoding/' | relative_url }}">Recurrent retrieval and exact-code decoding</a></h3>
+    <p>Stored codes remain usable while ordinary recall makes errors. Small settling benefit falls below its practical target; the fresh decoding diagnostic remains inconclusive under its precision rule.</p>
+    <p><a href="{{ '/blog/soam-retrieval-and-decoding/' | relative_url }}">Read the joint article →</a></p>
+  </article>
+
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">Study D · D0–D2</span><span class="topic-pill">Results + decision</span><time datetime="2026-11-17">November 17, 2026</time></div>
     <h3><a href="{{ '/research/soam-study-d/' | relative_url }}">Persistent acquisition and sequential retention</a></h3>

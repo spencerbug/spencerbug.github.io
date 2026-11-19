@@ -9,6 +9,8 @@ description: "D0–D2 methods, all four memory controls, adjusted uncertainty, i
 <link rel="stylesheet" href="{{ '/assets/soam-study-d.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+**November 19 follow-up:** The subsequently selected D-R1 and D-R2 studies are now complete. [Read their joint article]({{ '/blog/soam-retrieval-and-decoding/' | relative_url }}) or [technical report]({{ '/research/soam-retrieval-and-decoding/' | relative_url }}). The original Study D account below remains a record of its November 17 evidence and decision.
+
 ## Outcome and scope
 
 **Completed November 17, 2026.** Explicit KV memory passes the frozen persistent-acquisition and sequential-retention conjunction, including the separate one-shot conjunction. REG and FAST acquire isolated objects but fail the retention guard. FAST's practical advantage is precisely negative against both conventional controls.
