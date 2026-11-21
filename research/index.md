@@ -9,9 +9,16 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
-The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. D-R1 recurrent retrieval and D-R2 exact-code decoding are also complete, preserving a negative practical-settling result and an inconclusive precision-limited diagnosis. D3/D4, selective scheduling, E and F remain future work.
+The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. D-R1 recurrent retrieval and D-R2 exact-code decoding are also complete, preserving a negative practical-settling result and an inconclusive precision-limited diagnosis. E0 and E0-HOLD now test a single navigable population: longer stationary training improves drift but fails the declared joint fix. D3/D4, selective scheduling, broader Study E work and F remain conditional.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">E0 + E0-HOLD</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-21">November 21, 2026</time></div>
+    <h3><a href="{{ '/research/soam-stationary-memory-and-navigation/' | relative_url }}">Stationary retention, action navigation and local recovery</a></h3>
+    <p>Longer stationary training roughly halves drift, but residual error and an unresolved recovery safeguard prevent the declared fix. Full paired results, controls, uncertainty and costs.</p>
+    <p><a href="{{ '/blog/soam-stationary-memory-and-navigation/' | relative_url }}">Read the joint article →</a></p>
+  </article>
+
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">D-R1 + D-R2</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-19">November 19, 2026</time></div>
     <h3><a href="{{ '/research/soam-retrieval-and-decoding/' | relative_url }}">Recurrent retrieval and exact-code decoding</a></h3>

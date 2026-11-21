@@ -10,6 +10,8 @@ soam_studies: "D-R1 + D-R2"
 <link rel="stylesheet" href="{{ '/assets/soam-study-d.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+**November 21 update:** The separately selected E0 and E0-HOLD studies now examine stationary retention, action navigation and local recovery in one recurrent population. [Read the joint article]({{ '/blog/soam-stationary-memory-and-navigation/' | relative_url }}) or [report]({{ '/research/soam-stationary-memory-and-navigation/' | relative_url }}). They do not resolve the retrieval/decoding diagnosis below, which remains a record of its November 19 evidence and decision.
+
 ## Scope and decisions
 
 This joint report covers D-R1, completed November 18, 2026, and its independently selected D-R2 follow-up, completed November 19. [Companion article]({{ '/blog/soam-retrieval-and-decoding/' | relative_url }}). These names refer to the recurrent-retrieval studies; the preceding Study D's D1 isolated-acquisition and D2 retention stages are separate labels.
