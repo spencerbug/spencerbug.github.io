@@ -14,17 +14,19 @@ soam_studies: "E0 + E0-HOLD"
 
 Completed November 21, 2026. [Companion article]({{ '/blog/soam-stationary-memory-and-navigation/' | relative_url }}). E0 is the bounded single-population navigable-state pilot under Study E; it is distinct from the earlier shared-population experiment named E1. E0-HOLD is its separately frozen stationary-training follow-up.
 
-**E0:** NAV32 passes six of seven criteria, but its joint result is **inconclusive**. Stationary error is unfavorable and its adjusted interval exceeds the precision cap. No model passes the complete operational geometry claim.
+**E0:** NAV32 passes six of seven criteria, but its joint result is **inconclusive**. Zero-action drift is unfavorable and its adjusted interval exceeds the precision cap. No model passes the complete operational geometry claim.
 
-**E0-HOLD:** NAV32 improves stationary error by 6.635° [5.017, 8.805], but residual error is 5.698° [5.259, 6.183], precisely above the five-degree target. Transverse-recovery noninferiority is unresolved. Eleven of thirteen criteria pass; the outcome is **negative for the declared joint fix**. Improvement does not erase the absolute failure.
+**E0-HOLD:** NAV32 improves zero-action drift by 6.635° [5.017, 8.805], but residual error is 5.698° [5.259, 6.183], precisely above the five-degree target. Transverse-recovery noninferiority is unresolved. Eleven of thirteen criteria pass; the outcome is **negative for the declared joint fix**. Improvement does not erase the absolute failure.
 
 Both executions are valid, with no failed fits, excluded roots, unavailable geometry, confirmation tuning or budget extension. SOAM-097 and SOAM-101 accept the scoped evidence; their “proceed” status is evidence acceptance, not a passed geometry gate. The historical E1 stop, D-R1 negative result and D-R2 inconclusive diagnosis remain unchanged. This publication selects no successor experiment.
+
+**Terminology clarified November 22, 2026:** “Blindfolded action prediction” supplies actions but no new sensory observations after the initial cue. “Zero-action drift” supplies zero action and no new observations. “Blindfolded action NMSE (64 steps)” is the 64-step mean sensory prediction error; the zero-action endpoint is absolute pose error after 128 steps, including initialization error, in degrees. The archived identifiers `free_nmse`, `free_horizon` and `stationary_deg` are unchanged. Only reader-facing labels and figure titles were revised; all measurements, thresholds and decisions are unchanged.
 
 ## Task, supervision and information boundaries
 
 One orientation evolves by adding a scalar angular action each physical step, modulo a full turn. There is no radial decay. The unchanged seed-1729 orthonormal 2-to-12 projection maps the unit-circle coordinates into twelve overlapping sensory features. The sensor is rank two; this known low-dimensional task is supplied scaffolding.
 
-Inference receives noisy masked features, the mask and the action. A cue exposes six or twelve channels with noise standard deviation .01. The true angle and inverse sensory projection are evaluator-only. Offline fitting supplies complete clean sensory targets to every learner. Evaluation freezes parameters and buffers; free rollouts receive no correct future observations or hidden world state. There is no online memory insertion, learned encoder comparison, routing, coupling, hierarchy or action selection.
+Inference receives noisy masked features, the mask and the action. A cue exposes six or twelve channels with noise standard deviation .01. The true angle and inverse sensory projection are evaluator-only. Offline fitting supplies complete clean sensory targets to every learner. Evaluation freezes parameters and buffers; blindfolded action rollouts receive no correct future observations or hidden world state. There is no online memory insertion, learned encoder comparison, routing, coupling, hierarchy or action selection.
 
 The interface separates initialization, action prediction, sensory correction and readout. Prediction advances time once. Correction advances no time; absent evidence is an exact no-op. Neural initialization applies a learned tanh map to masked features and the mask. A linear readout predicts twelve features. When evidence exists, correction adds half a tanh-transformed map of the masked sensory residual and mask to the prior state.
 
@@ -47,7 +49,7 @@ The symmetric zero-action matrix is S = (W + Wᵀ)/2; the skew action matrix is 
 
 **PCA2** fits a two-dimensional basis and mean to training sensory targets. It regresses state change on the features a·h, a²·h and a³·h with ridge 1e−6, then uses fitted dynamics and Kalman correction. Rank two, polynomial action features and exact zero-action stationarity are supplied. It receives no true angle, projection inverse, exact rotation operator or radius normalization. Covariance and fitting costs are counted.
 
-Neural loss is mean prior sensory NMSE plus .5 times mean posterior NMSE, normalized by the known feature power 1/12. Adam uses gradient clipping at one, batch size 32 and 600 fixed updates; the learning rate cosine-decays to 1% of its initial value. There is no geometry loss, restart or checkpoint selection. E0's complete tuning domain is initial rates {.001, .003}, selected by development free-64 error; all neural families select .003. PCA2 makes two deterministic passes over the same prefix data.
+Neural loss is mean prior sensory NMSE plus .5 times mean posterior NMSE, normalized by the known feature power 1/12. Adam uses gradient clipping at one, batch size 32 and 600 fixed updates; the learning rate cosine-decays to 1% of its initial value. There is no geometry loss, restart or checkpoint selection. E0's complete tuning domain is initial rates {.001, .003}, selected by development blindfolded action error over 64 steps; all neural families select .003. PCA2 makes two deterministic passes over the same prefix data.
 
 ## Evaluation and geometry definitions
 
@@ -69,9 +71,9 @@ Intervals use 20,000 root bootstrap resamples, seed 12203, with a Bonferroni fam
 
 | Endpoint | Required adjusted interval | Maximum width |
 | --- | --- | --- |
-| Free-64 NMSE | Upper ≤ .05 | .04 |
+| Blindfolded action NMSE (64 steps) | Upper ≤ .05 | .04 |
 | Grounded one-step NMSE | Upper ≤ .05 | .04 |
-| Stationary pose error at 128 | Upper ≤ 5° | 4° |
+| Zero-action drift at 128 (absolute pose error) | Upper ≤ 5° | 4° |
 | Transverse ratio at 16 | Upper ≤ .5 | .4 |
 | Perturbation-induced pose error | Upper ≤ 3° | 3° |
 | Tangent retention | Contained in [.8, 1.2] | .4 |
@@ -81,21 +83,21 @@ All seven adequately precise passes are required for the bounded joint claim. An
 
 | Endpoint | NAV32 | GRU32 | SYM32 | PCA2 |
 | --- | --- | --- | --- | --- |
-| Free-64 NMSE; upper ≤ .05 | .03336 [.02891, .03869] | .06778 [.06106, .07446] | .29979 [.25114, .35166] | .000568 [.000499, .000651] |
+| Blindfolded action NMSE (64 steps); upper ≤ .05 | .03336 [.02891, .03869] | .06778 [.06106, .07446] | .29979 [.25114, .35166] | .000568 [.000499, .000651] |
 | Grounded one-step NMSE; upper ≤ .05 | .00917 [.00554, .01437] | .00744 [.00622, .00909] | .03219 [.02799, .03676] | .0000479 [.0000384, .0000649] |
-| Zero-action pose error at 128; upper ≤ 5° | 13.861 [12.119, 16.278] | 15.163 [12.241, 18.296] | 18.790 [15.590, 22.650] | .00000162 [.00000149, .00000176] |
+| Zero-action drift at 128 (absolute pose error); upper ≤ 5° | 13.861 [12.119, 16.278] | 15.163 [12.241, 18.296] | 18.790 [15.590, 22.650] | .00000162 [.00000149, .00000176] |
 | Transverse separation ratio at 16; upper ≤ .5 | .1412 [.1083, .1687] | .1201 [.1094, .1342] | .2328 [.2061, .2616] | 1.000 [1.000, 1.000] |
 | Perturbation-induced pose error; upper ≤ 3° | .2183 [.1948, .2433] | .9806 [.8890, 1.0872] | .9412 [.7988, 1.0587] | .00000751 [.00000673, .00000840] |
 | Tangent retention; interval within [.8,1.2] | .9880 [.9790, .9955] | .9995 [.9976, 1.0016] | .9922 [.9832, 1.0020] | 1.000 [1.000, 1.000] |
 | Final returning-cue NMSE; upper ≤ .05 | .003950 [.003552, .004303] | .007333 [.006189, .009157] | .013321 [.011305, .015318] | .0000425 [.0000367, .0000520] |
 
-**NAV32 is inconclusive:** six criteria pass, but its stationary interval width is 4.159°, above four degrees. **SYM32 is inconclusive:** its unfavorable action and stationary intervals exceed their width caps. **GRU32 has negative configured-model evidence:** free-64 error precisely exceeds .05; the stationary result is also unfavorable but imprecise. **PCA2 is negative for the joint attraction claim:** its transverse ratio is one. It passes the other six criteria and remains the strongest prediction/state-size reference for this scaffold. This does not make it an unsuccessful filter.
+**NAV32 is inconclusive:** six criteria pass, but its zero-action interval width is 4.159°, above four degrees. **SYM32 is inconclusive:** its unfavorable action and zero-action intervals exceed their width caps. **GRU32 has negative configured-model evidence:** blindfolded action error over 64 steps precisely exceeds .05; the stationary result is also unfavorable but imprecise. **PCA2 is negative for the joint attraction claim:** its transverse ratio is one. It passes the other six criteria and remains the strongest prediction/state-size reference for this scaffold. This does not make it an unsuccessful filter.
 
-NAV32 stationary error grows from .818° initially to 2.743° at step 24, 8.194° at 64 and 13.861° at 128. Every root's final mean exceeds 11°; mean displacement from its own initialized pose is 13.813°. This is accumulated drift, not just initial cue error. All three neural families show local transverse contraction, so that observation is not unique to the Hopfield-inspired core.
+NAV32 zero-action drift grows from .818° initially to 2.743° at step 24, 8.194° at 64 and 13.861° at 128. Every root's final mean exceeds 11°; mean displacement from its own initialized pose is 13.813°. This is accumulated drift, not just initial cue error. All three neural families show local transverse contraction, so that observation is not unique to the Hopfield-inspired core.
 
 <figure>
-  <a href="{{ '/assets/research/soam-e0/pilot.png' | relative_url }}"><img src="{{ '/assets/research/soam-e0/pilot.png' | relative_url }}" alt="E0 descriptive mean trajectories for stationary error, action prediction, transverse separation and cue return." loading="lazy"></a>
-  <figcaption>Unchanged archived E0 figure, ten roots. Curves have no confidence bands; endpoint inference uses the adjusted table above.</figcaption>
+  <a href="{{ '/assets/research/soam-e0/pilot-blindfolded.png' | relative_url }}"><img src="{{ '/assets/research/soam-e0/pilot-blindfolded.png' | relative_url }}" alt="E0 descriptive mean trajectories for zero-action drift, action prediction, transverse separation and cue return." loading="lazy"></a>
+  <figcaption>E0 figure with clarified labels, ten roots. Curves have no confidence bands; endpoint inference uses the adjusted table above.</figcaption>
 </figure>
 
 ## E0-HOLD intervention and confirmation
@@ -116,34 +118,34 @@ All thirteen must pass for a joint fix. A precise degradation beyond its margin 
 
 | Quantity | Mean [adjusted interval] | Width | Requirement | Status |
 | --- | --- | --- | --- | --- |
-| LONG free-64 NMSE | 0.0365065 [0.032524, 0.0404439] | 0.00791993 | upper ≤ 0.05; width ≤ 0.04 | pass |
+| LONG blindfolded action NMSE (64 steps) | 0.0365065 [0.032524, 0.0404439] | 0.00791993 | upper ≤ 0.05; width ≤ 0.04 | pass |
 | LONG grounded NMSE | 0.00805349 [0.00710608, 0.00927468] | 0.00216861 | upper ≤ 0.05; width ≤ 0.04 | pass |
-| LONG stationary error, ° | 5.69773 [5.25935, 6.18261] | 0.923261 | upper ≤ 5.0; width ≤ 4.0 | Precise failure |
+| LONG zero-action drift, ° | 5.69773 [5.25935, 6.18261] | 0.923261 | upper ≤ 5.0; width ≤ 4.0 | Precise failure |
 | LONG transverse ratio | 0.139958 [0.113728, 0.163648] | 0.0499208 | upper ≤ 0.5; width ≤ 0.4 | pass |
 | LONG induced pose error, ° | 0.221384 [0.196532, 0.244105] | 0.0475733 | upper ≤ 3.0; width ≤ 3.0 | pass |
 | LONG tangent retention | 0.982743 [0.977872, 0.987488] | 0.00961568 | lower ≥ 0.8 and upper ≤ 1.2; width ≤ 0.4 | pass |
 | LONG returning-cue NMSE | 0.00530636 [0.00490805, 0.00574642] | 0.00083837 | upper ≤ 0.05; width ≤ 0.04 | pass |
 | Stationary gain, SHORT − LONG, ° | 6.63463 [5.01706, 8.80467] | 3.78762 | lower ≥ 5.0; width ≤ 4.0 | pass |
-| Free-64 degradation | 0.00360598 [-0.0010272, 0.00673195] | 0.00775915 | upper ≤ 0.01; width ≤ 0.02 | pass |
+| Blindfolded action degradation (64 steps) | 0.00360598 [-0.0010272, 0.00673195] | 0.00775915 | upper ≤ 0.01; width ≤ 0.02 | pass |
 | Grounded degradation | 0.00115804 [-0.00104343, 0.00267876] | 0.00372218 | upper ≤ 0.01; width ≤ 0.02 | pass |
 | Returning-cue degradation | 0.00128296 [0.000913756, 0.00163179] | 0.000718033 | upper ≤ 0.01; width ≤ 0.02 | pass |
 | Transverse-ratio degradation | 0.0331174 [0.00731248, 0.0621835] | 0.0548711 | upper ≤ 0.05; width ≤ 0.1 | unresolved |
 | Induced-pose degradation, ° | 0.035141 [0.0103173, 0.0590619] | 0.0487446 | upper ≤ 0.5; width ≤ 1.0 | pass |
 
-The gain passes, but residual stationary error is precisely unacceptable: width .923°, interval wholly above five degrees. The transverse proxy is weaker in the paired comparison, with an entirely positive increase interval crossing +.05. It establishes neither noninferiority within that margin nor harm definitively beyond it. Its absolute criterion still passes. The formal result is **negative declared joint fix**, with eleven of thirteen passes.
+The gain passes, but residual zero-action drift is precisely unacceptable: width .923°, interval wholly above five degrees. The transverse proxy is weaker in the paired comparison, with an entirely positive increase interval crossing +.05. It establishes neither noninferiority within that margin nor harm definitively beyond it. Its absolute criterion still passes. The formal result is **negative declared joint fix**, with eleven of thirteen passes.
 
 The paired comparison is **12.332° → 5.698°**, not the historical pilot's 13.861° versus the new long arm. The roughly 54% reduction is a descriptive ratio of means; the confirmatory effect is the paired degree difference and its interval.
 
 Mixed-action prediction passes its degradation guard, but this does not imply unchanged behavior for every action stream. Constant positive/negative NAV32 errors rise from .03844/.03643 to .05352/.05223. Returning-cue error and perturbation-induced pose error also increase slightly within their allowed margins. “Without harm” was operationalized by those margins, not exact equality.
 
 <figure>
-  <a href="{{ '/assets/research/soam-e0/hold.png' | relative_url }}"><img src="{{ '/assets/research/soam-e0/hold.png' | relative_url }}" alt="E0-HOLD NAV32 SHORT24 and LONG128 descriptive mean trajectories across twenty paired roots." loading="lazy"></a>
-  <figcaption>Unchanged archived follow-up figure. Descriptive means have no confidence bands; the thirteen adjusted criteria above own the decision.</figcaption>
+  <a href="{{ '/assets/research/soam-e0/hold-blindfolded.png' | relative_url }}"><img src="{{ '/assets/research/soam-e0/hold-blindfolded.png' | relative_url }}" alt="E0-HOLD NAV32 SHORT24 and LONG128 descriptive mean trajectories across twenty paired roots." loading="lazy"></a>
+  <figcaption>Follow-up figure with clarified labels. Descriptive means have no confidence bands; the thirteen adjusted criteria above own the decision.</figcaption>
 </figure>
 
 ## Mandatory controls and diagnostic limits
 
-| Model | Stationary error SHORT → LONG | Free-64 NMSE SHORT → LONG | Transverse ratio SHORT → LONG |
+| Model | Zero-action drift SHORT → LONG | Blindfolded action NMSE (64 steps) SHORT → LONG | Transverse ratio SHORT → LONG |
 | --- | --- | --- | --- |
 | NAV32 | 12.332° → 5.698° | .03290 → .03651 | .10684 → .13996 |
 | SYM32 | 17.085° → 5.388° | .32763 → .35428 | .22372 → .21948 |
@@ -196,7 +198,7 @@ E0-HOLD protocol/manifest: `docs/STUDY_E0_HOLD_PROTOCOL.md`, `docs/protocols/stu
 - Manifest SHA-256: `a00dfbf23ef1c2b1a781f6481cb7f950085a37f03556fded8af007d62c0693cd`.
 - Configuration SHA-256: `0634f6691b22eb9e5591d0b07d3efebe98a35e6233f2c5cabe9a10b08ec9874c`.
 
-The project records are `reports/STUDY_E0.md`, `reports/STUDY_E0_HOLD.md`, their decision reports and the corresponding `reports/study-e0/` and `reports/study-e0-hold/` receipts, root tables, analysis scripts and checksum inventories. Full raw archives remain local under `runs/study-e0-v1` and `runs/study-e0-hold-v1`. These paths identify project records; they are not download links. This publication includes methods, aggregate results and unchanged figures, without publishing source or raw-data bundles. No fitting or new bootstrap estimation was performed for publication.
+The project records are `reports/STUDY_E0.md`, `reports/STUDY_E0_HOLD.md`, their decision reports and the corresponding `reports/study-e0/` and `reports/study-e0-hold/` receipts, root tables, analysis scripts and checksum inventories. Full raw archives remain local under `runs/study-e0-v1` and `runs/study-e0-hold-v1`. These paths identify project records; they are not download links. This publication includes methods, aggregate results and figures with clarified labels, without publishing source or raw-data bundles. No fitting or new bootstrap estimation was performed for publication.
 
 ## Interpretation and conditional recommendation
 
@@ -212,9 +214,9 @@ The following tables reproduce the archived reductions. All intervals here are o
 
 | Endpoint | SHORT24 | LONG128 |
 | --- | --- | --- |
-| Free-64 NMSE | 0.0329005 [0.0295632, 0.0371969] | 0.0365065 [0.0338843, 0.0392005] |
+| Blindfolded action NMSE (64 steps) | 0.0329005 [0.0295632, 0.0371969] | 0.0365065 [0.0338843, 0.0392005] |
 | Grounded NMSE | 0.00689544 [0.00581089, 0.00826015] | 0.00805349 [0.00735645, 0.00884529] |
-| Stationary error, ° | 12.3324 [11.2445, 13.6428] | 5.69773 [5.38681, 6.0163] |
+| Zero-action drift, ° | 12.3324 [11.2445, 13.6428] | 5.69773 [5.38681, 6.0163] |
 | Transverse ratio | 0.10684 [0.0945697, 0.119538] | 0.139958 [0.122521, 0.156568] |
 | Induced pose error, ° | 0.186243 [0.177003, 0.195486] | 0.221384 [0.204545, 0.237333] |
 | Tangent retention | 0.987359 [0.983262, 0.991063] | 0.982743 [0.979427, 0.986044] |
@@ -224,9 +226,9 @@ The following tables reproduce the archived reductions. All intervals here are o
 
 | Endpoint | SHORT24 | LONG128 |
 | --- | --- | --- |
-| Free-64 NMSE | 0.327634 [0.303794, 0.352675] | 0.354281 [0.328374, 0.37977] |
+| Blindfolded action NMSE (64 steps) | 0.327634 [0.303794, 0.352675] | 0.354281 [0.328374, 0.37977] |
 | Grounded NMSE | 0.0301367 [0.0288127, 0.0314533] | 0.0356162 [0.0338523, 0.0372869] |
-| Stationary error, ° | 17.0849 [15.5292, 18.7912] | 5.38794 [5.07228, 5.70147] |
+| Zero-action drift, ° | 17.0849 [15.5292, 18.7912] | 5.38794 [5.07228, 5.70147] |
 | Transverse ratio | 0.223715 [0.213173, 0.234865] | 0.21948 [0.208644, 0.229673] |
 | Induced pose error, ° | 0.87642 [0.831257, 0.925656] | 0.652449 [0.630196, 0.675487] |
 | Tangent retention | 0.990595 [0.98527, 0.995265] | 0.984764 [0.981605, 0.987671] |
@@ -236,9 +238,9 @@ The following tables reproduce the archived reductions. All intervals here are o
 
 | Endpoint | SHORT24 | LONG128 |
 | --- | --- | --- |
-| Free-64 NMSE | 0.0771703 [0.0682723, 0.0874571] | 0.265815 [0.237733, 0.294108] |
+| Blindfolded action NMSE (64 steps) | 0.0771703 [0.0682723, 0.0874571] | 0.265815 [0.237733, 0.294108] |
 | Grounded NMSE | 0.00735498 [0.00699708, 0.00775162] | 0.0132893 [0.01235, 0.0143347] |
-| Stationary error, ° | 12.9749 [11.2569, 14.8145] | 2.63115 [2.38296, 2.87429] |
+| Zero-action drift, ° | 12.9749 [11.2569, 14.8145] | 2.63115 [2.38296, 2.87429] |
 | Transverse ratio | 0.120523 [0.113435, 0.127281] | 0.119239 [0.113648, 0.124772] |
 | Induced pose error, ° | 0.986031 [0.953409, 1.01723] | 0.838072 [0.804717, 0.870595] |
 | Tangent retention | 0.999761 [0.998878, 1.0006] | 0.99985 [0.999045, 1.00072] |
@@ -248,9 +250,9 @@ The following tables reproduce the archived reductions. All intervals here are o
 
 | Endpoint | Mean [95% interval] |
 | --- | --- |
-| Free-64 NMSE | 0.000568776 [0.000534997, 0.000609759] |
+| Blindfolded action NMSE (64 steps) | 0.000568776 [0.000534997, 0.000609759] |
 | Grounded NMSE | 4.5372e-05 [4.14395e-05, 5.03748e-05] |
-| Stationary error, ° | 1.66684e-06 [1.58038e-06, 1.76415e-06] |
+| Zero-action drift, ° | 1.66684e-06 [1.58038e-06, 1.76415e-06] |
 | Transverse ratio | 1 [1, 1] |
 | Induced pose error, ° | 9.60871e-06 [7.9509e-06, 1.17784e-05] |
 | Tangent retention | 1 [1, 1] |
@@ -260,9 +262,9 @@ The following tables reproduce the archived reductions. All intervals here are o
 
 | Endpoint | NAV32 | SYM32 | GRU32 |
 | --- | --- | --- | --- |
-| Free-64 NMSE | 0.00360598 [0.00067086, 0.00592524] | 0.026647 [-0.0015387, 0.0533523] | 0.188645 [0.164413, 0.213374] |
+| Blindfolded action NMSE (64 steps) | 0.00360598 [0.00067086, 0.00592524] | 0.026647 [-0.0015387, 0.0533523] | 0.188645 [0.164413, 0.213374] |
 | Grounded NMSE | 0.00115804 [-0.000208432, 0.00226305] | 0.00547946 [0.00386384, 0.00711058] | 0.00593434 [0.00521388, 0.00675767] |
-| Stationary error, ° | -6.63463 [-8.05516, -5.4285] | -11.6969 [-13.3172, -10.1601] | -10.3437 [-12.1392, -8.65834] |
+| Zero-action drift, ° | -6.63463 [-8.05516, -5.4285] | -11.6969 [-13.3172, -10.1601] | -10.3437 [-12.1392, -8.65834] |
 | Transverse ratio | 0.0331174 [0.0155364, 0.0519631] | -0.00423446 [-0.0169767, 0.00777109] | -0.00128351 [-0.00660077, 0.00433345] |
 | Induced pose error, ° | 0.035141 [0.0186508, 0.0515727] | -0.223971 [-0.272848, -0.180757] | -0.147959 [-0.170517, -0.126687] |
 | Tangent retention | -0.00461644 [-0.00945553, 8.34246e-05] | -0.00583062 [-0.011708, 0.000534356] | 8.89921e-05 [-0.00120727, 0.0014077] |
