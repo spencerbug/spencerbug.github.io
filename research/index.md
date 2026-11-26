@@ -9,9 +9,18 @@ Protocols explain what a test can establish. Results record what happened. Decis
 
 ## SOAM: shared recurrent memory
 
+**New, November 26:** [Four articles on capacity, sparse routing, stored information and cue completion]({{ '/blog/soam-capacity-and-optimization/' | relative_url }}) cover six completed November 24–26 development studies. The [companion evidence report]({{ '/research/soam-memory-studies-november-2026/' | relative_url }}) preserves useful partial gains, failed reliability guards and the distinction between assisted storage and ordinary retrieval.
+
 The [Studies A–F series]({{ '/research/soam-studies/' | relative_url }}) branches from E1 into focused investigations. A, B, the inserted B2 correction study, C-H1 hypothesis preservation and D0–D2 persistent acquisition are complete. D-R1 recurrent retrieval and D-R2 exact-code decoding are also complete, preserving a negative practical-settling result and an inconclusive precision-limited diagnosis. E0 and E0-HOLD now test a single navigable population: longer stationary training improves drift but fails the declared joint fix. D3/D4, selective scheduling, broader Study E work and F remain conditional.
 
 <div class="writing-list">
+  <article class="writing-card">
+    <div class="card-meta"><span class="topic-pill">Six memory studies</span><span class="topic-pill">Development results</span><time datetime="2026-11-26">November 26, 2026</time></div>
+    <h3><a href="{{ '/research/soam-memory-studies-november-2026/' | relative_url }}">Capacity, access and cue completion</a></h3>
+    <p>Small-load recall, sparse participation and assisted storage work. Reliable ordinary retrieval remains the challenge. Per-bank results, controls, resource accounting and provenance for six completed studies.</p>
+    <p><a href="{{ '/blog/soam-capacity-and-optimization/' | relative_url }}">Start the four-part article series →</a></p>
+  </article>
+
   <article class="writing-card">
     <div class="card-meta"><span class="topic-pill">E0 + E0-HOLD</span><span class="topic-pill">Results + decisions</span><time datetime="2026-11-21">November 21, 2026</time></div>
     <h3><a href="{{ '/research/soam-stationary-memory-and-navigation/' | relative_url }}">Stationary retention, action navigation and local recovery</a></h3>

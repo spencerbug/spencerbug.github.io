@@ -1,0 +1,5 @@
+/* Keep evidence columns readable on small screens; scroll inside each table. */
+.memory-evidence-table { overflow-x: auto; margin: 1.2rem 0; }
+.post-content .memory-evidence-table table { display: table; min-width: 720px; margin-bottom: 0; }
+.memory-evidence-table th, .memory-evidence-table td { vertical-align: top; }
+.memory-evidence-table:focus-visible { outline: 2px solid var(--link-color, #0072b2); outline-offset: 3px; }

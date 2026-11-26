@@ -1,0 +1,59 @@
+{
+  "publication_date": "2026-11-26",
+  "source_repository": "spencerbug/soam",
+  "synthesis_checkout_revision": "3472382267038e6965af3c256fdd1d0e5b4826b8",
+  "scope": "Report provenance for a publication synthesis. Raw experiment arrays are not included. No new scientific trials or confidence estimates.",
+  "sources": [
+    {
+      "path": "reports/STUDY_GCAP_DEV.md",
+      "sha256": "9707675089f650b7732051870bb0543984cad2858e6fbaa9b50679fb9e1e97f3"
+    },
+    {
+      "path": "reports/GCAP_OPT_CAMPAIGN.md",
+      "sha256": "231292b23298cdf26868ae44867ec51c425097862263c707a1e3729d67472616"
+    },
+    {
+      "path": "reports/SPARSE_MODULATION_CAMPAIGN.md",
+      "sha256": "f7aaf0418bd6657ad081483224904fa9dc08dbb0cb69486d1a431d014872d412"
+    },
+    {
+      "path": "reports/ASSOCIATIVE_INFORMATION_CAMPAIGN.md",
+      "sha256": "d65d8b6343b96a9966169edfa02c92252cbf61a10c0735c691d3549be455c262"
+    },
+    {
+      "path": "reports/SYMMETRIC_CUE_ASSIST.md",
+      "sha256": "936fe1cea43b693d42da5a5beb22f1649e01b26e401de24f39090d28f1a34d36"
+    },
+    {
+      "path": "reports/PASSIVE_BRANCH_COMPLETION.md",
+      "sha256": "8d37d3acef21824c0e222f13d9d612a65d2d63f1c5ea2169bc48110250f00d56"
+    },
+    {
+      "path": "reports/cue-assist-campaign/adjudication/result.json",
+      "sha256": "8b6885f1e51d591972b8fa924dd08b524137d82aa79f6bf7b2c2b846a99c2c44"
+    },
+    {
+      "path": "reports/passive-branch-campaign/adjudication/judgment.md",
+      "sha256": "a0b57f257bd69a92b99461078147daf53abb0dc31245c448ab551e8892152383"
+    },
+    {
+      "path": "reports/associative-information-b/report.md",
+      "sha256": "220a368b0ffb1bc128a2e16d35bb376ce0749a853c35f34bc8d3eb8e0f3eff1e"
+    },
+    {
+      "path": "reports/passive-branch-a/report.md",
+      "sha256": "8368daff3f15db894f6f9e77d194ee2f70ca59cad55e8307b61accb88dc6b349"
+    },
+    {
+      "path": "reports/passive-branch-b/report.md",
+      "sha256": "45c65be667e1af94cbaa68a71e105d609cbd0dbc6da1eb10d1e844996bee94f0"
+    }
+  ],
+  "figure": {
+    "file": "passive-recall.png",
+    "data": "passive-recall.csv",
+    "source": "reports/PASSIVE_BRANCH_COMPLETION.md",
+    "unit": "exact 16-bit feature reconstructions / 256 resolving decisions per bank",
+    "independent_units": 4
+  }
+}

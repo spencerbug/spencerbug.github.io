@@ -1,0 +1,5 @@
+bank,raw_exact,restart_exact,retain_exact,retain_minus_restart,lookup_exact
+1,54,142,141,-1,256
+2,60,169,152,-17,256
+3,65,132,124,-8,256
+4,58,135,134,-1,256

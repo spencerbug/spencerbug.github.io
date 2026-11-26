@@ -8,6 +8,12 @@ description: "Studies A–F, with B2 between B and C: recurrent gates, sensory c
 <link rel="stylesheet" href="{{ '/assets/soam-e1-results.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+## November 24–26 memory studies
+
+The latest [four-part article series]({{ '/blog/soam-capacity-and-optimization/' | relative_url }}) follows the completed navigation work into usable capacity, sparse routing, independent payload storage, symmetric cue completion and passive candidate retention. These six bounded development studies establish useful partial capabilities while preserving failed reliability guards and unresolved optimization. Their [companion report]({{ '/research/soam-memory-studies-november-2026/' | relative_url }}) includes all headline per-bank comparisons and resource limits. They do not pass the historical sharing gate or establish learned memory organization.
+
+## Earlier studies and conditional paths
+
 This series follows the A–F investigations I requested after SOAM's first shared-population experiment, **E1**, with **B2 inserted between B and C** to test robust correction. E1's tested candidate failed its useful-sharing gate. That result raised smaller questions about recurrent dynamics, sensing, and memory that can be investigated independently of the original architecture.
 
 **Studies A, B, B2, C-H1, D0–D2, D-R1, D-R2, E0 and E0-HOLD are complete.** The [A/B article]({{ '/blog/soam-studies-a-b-gates-and-correction/' | relative_url }}) establishes the predictor/corrector interface. The [B2 article]({{ '/blog/soam-study-b2-robust-correction/' | relative_url }}) tests how a tiny filter can become less vulnerable to bad evidence. The [C article]({{ '/blog/soam-study-c-hypothesis-preservation/' | relative_url }}) tests whether distinct candidate states preserve uncertainty better than competent single-state controls. The [D article]({{ '/blog/soam-study-d-acquisition-and-retention/' | relative_url }}) separates isolated acquisition from sequential retention. Each installment has a companion report; earlier reports also include evidence downloads. The [joint D-R1/R2 article]({{ '/blog/soam-retrieval-and-decoding/' | relative_url }}) separates stored-code preservation, recurrent settling and decoded usefulness. The [joint E0/HOLD article]({{ '/blog/soam-stationary-memory-and-navigation/' | relative_url }}) separates holding a pose, navigating through actions and recovering from a local disturbance. D3/D4, selective scheduling within C, broader E work and F remain conditional; no successor is selected.
