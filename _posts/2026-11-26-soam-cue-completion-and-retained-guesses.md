@@ -10,6 +10,8 @@ description: "One symmetric sweep helped, but more settling missed its target. I
 <link rel="stylesheet" href="{{ '/assets/soam-study-d.css' | relative_url }}">
 {% include soam-memory-series-nav.html %}
 
+**Follow-up, November 27:** [Corrective writing substantially improves ordinary retrieval]({{ '/blog/soam-corrective-memory-writing/' | relative_url }}) on these same banks, with unchanged representation and dynamics. The visual follow-up preserves this study's retention result and the remaining ambiguity failure.
+
 ## A partial observation becomes a guess
 
 Suppose an observation reveals enough of a familiar item to suggest a completion, but leaves several features hidden. A recurrent cue memory can use learned co-occurrences to fill those gaps. A second stage can then retrieve the content associated with the completed cue.

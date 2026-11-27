@@ -1,0 +1,46 @@
+{
+  "publication_date": "2026-11-27",
+  "study_closure_commit": "0d0ba5c",
+  "scope": "Archived evidence rendering and a single trace excerpt; no new fits, inference, estimates or experiments.",
+  "sources": [
+    {
+      "path": "reports/CUE_BASIN_DIAGNOSTIC.md",
+      "sha256": "ce608d247cba99b9fe929e1a47c9cc921b71febc72a562d89047df57259c0a90"
+    },
+    {
+      "path": "reports/WRITER_REPAIR.md",
+      "sha256": "0f9607b812aa76bc9a1a5cc9341e58f333ce68f7d6bb07bc642bd8392aa31509"
+    },
+    {
+      "path": "reports/WRITER_RETRIEVAL.md",
+      "sha256": "8fababc39145197d854575348cdb9505dedc05bbb3854cc6df8a9d4b0e0f6f38"
+    },
+    {
+      "path": "reports/writer-repair/summary.json",
+      "sha256": "fc835e825804f740d31f531b9a740b1892e2fa1d4612656ee0c1df2e03380f2c"
+    },
+    {
+      "path": "reports/writer-repair/verification.json",
+      "sha256": "f3f39918ee5e260f41d3b520326f62d885214f088e46c1d22dc00a6e65e54b35"
+    },
+    {
+      "path": "reports/writer-retrieval/summary.json",
+      "sha256": "6b1019b47d1c4cba35f7a5eb00bdcbf02f39fa051024a2e0e87d247e93b380ee"
+    },
+    {
+      "path": "reports/writer-retrieval/description.json",
+      "sha256": "f0d91fd26c1506bef624ec84cb2a7bd299a63e37e282d84de1e0a92111002908"
+    },
+    {
+      "path": "reports/writer-retrieval/freeze.json",
+      "sha256": "1f8228c4eb2d430ab5c147e9368b8f3800bc9723b2ae65e86adc9641391864b1"
+    },
+    {
+      "path": "reports/writer-repair/freeze.json",
+      "sha256": "160e91dcd69c5453bcb4ff6e79eea7c96b8bc69faaf6915ec52d26c570d9a921"
+    }
+  ],
+  "figure_data": "recall-counts.csv and confidence-counts.csv; local-support from WR1 verification witness",
+  "independent_units": 4,
+  "exposure": "previously exposed PB1 development banks"
+}

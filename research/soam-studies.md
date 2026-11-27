@@ -8,6 +8,10 @@ description: "Studies A–F, with B2 between B and C: recurrent gates, sensory c
 <link rel="stylesheet" href="{{ '/assets/soam-e1-results.css' | relative_url }}">
 {% include soam-studies-nav.html %}
 
+## November 27 corrective writer
+
+[The visual writer article]({{ '/blog/soam-corrective-memory-writing/' | relative_url }}) and [companion report]({{ '/research/soam-corrective-memory-writing/' | relative_url }}) follow the local cue diagnostic into corrected writing and ordinary retrieval. Repaired weights raise resolving recall to 1,018/1,024 while accepting all ambiguous responses and getting half wrong. The unchanged representation is sufficient for this improvement; online acquisition, biological implementation and general capacity remain untested. Earlier study decisions below retain their historical scope.
+
 ## November 24–26 memory studies
 
 The latest [four-part article series]({{ '/blog/soam-capacity-and-optimization/' | relative_url }}) follows the completed navigation work into usable capacity, sparse routing, independent payload storage, symmetric cue completion and passive candidate retention. These six bounded development studies establish useful partial capabilities while preserving failed reliability guards and unresolved optimization. Their [companion report]({{ '/research/soam-memory-studies-november-2026/' | relative_url }}) includes all headline per-bank comparisons and resource limits. They do not pass the historical sharing gate or establish learned memory organization.
